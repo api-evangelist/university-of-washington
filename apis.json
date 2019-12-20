@@ -1,0 +1,84 @@
+{
+    "name": "University of Washington",
+    "description": "The UW is a leading research university with three campuses, a world-class academic medical center and extensive continuing education programs. The students, faculty and researchers who come here are driven to turn ideas into actions. They transform ou...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-04-55-pm.png",
+    "tags": [
+        "have api",
+        "profile",
+        "universities",
+        "university leader",
+        "university portal",
+        "washington"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/university-of-washington\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "University of Washington",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-04-55-pm.png",
+            "humanURL": "http:\/\/www.washington.edu\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/university-of-washington-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/university-of-washington"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/university-of-washington"
+        },
+        {
+            "type": "Email",
+            "url": "registrar@uw.edu"
+        },
+        {
+            "type": "Email",
+            "url": "uwprivacy@uw.edu"
+        },
+        {
+            "type": "Email",
+            "url": "uwdmca@u.washington.edu"
+        },
+        {
+            "type": "Email",
+            "url": "gencat@uw.edu"
+        },
+        {
+            "type": "Email",
+            "url": "fulwiler@uw.edu"
+        },
+        {
+            "type": "Email",
+            "url": "help@u.washington.edu"
+        },
+        {
+            "type": "Email",
+            "url": "advice@uw.edu"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/uw-edu"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/webservices.washington.edu\/"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.washington.edu\/"
+        }
+    ]
+}
