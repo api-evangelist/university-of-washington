@@ -1,0 +1,58 @@
+---
+name: University of Washington
+description: University of Washington public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/university-of-washington/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 4
+    summary: >-
+      UW has an unusually mature, institutionally documented API footprint via
+      UW-IT Enterprise Web Services, with a public service registry and live
+      Swagger/OpenAPI specs for Student, IdCard, and Identity Registry web
+      services, plus a public DSpace REST + OAI-PMH repository (ResearchWorks)
+      and active public GitHub orgs. All documentation and registry URLs
+      verified live (HTTP 200); production data endpoints are authenticated and
+      access-gated by design, so no open data endpoints were exercised. No
+      endpoints were fabricated; only confirmed, reachable URLs are cataloged.
+    endpoints:
+      - url: https://webservices.washington.edu/
+        status: 200
+        note: Enterprise Web Services public registry homepage.
+      - url: https://webservices.washington.edu/sws/
+        status: 200
+        note: Student Web Service documentation (public/private API split).
+      - url: https://ws.admin.washington.edu/student/swagger/index.html
+        status: 200
+        note: SWS Swagger/OpenAPI interactive documentation.
+      - url: https://webservices.washington.edu/idcardws/index.html
+        status: 200
+        note: IdCard Web Service documentation (Husky Card photos).
+      - url: https://ws.admin.washington.edu/idcard/swagger/index.html
+        status: 200
+        note: IdCard Swagger/OpenAPI documentation.
+      - url: https://iam-tools.u.washington.edu/apis/irwsv2/
+        status: 200
+        note: Identity Registration Web Service V2 API spec.
+      - url: https://it.uw.edu/summary/enterprise-web-services/
+        status: 200
+        note: UW-IT Enterprise Web Services overview page.
+      - url: https://digital.lib.washington.edu/researchworks/
+        status: 200
+        note: ResearchWorks institutional repository (DSpace).
+      - url: https://digital.lib.washington.edu/server/api
+        status: 200
+        note: ResearchWorks DSpace REST API root (public, browsable).
+      - url: https://digital.lib.washington.edu/server/oai/request?verb=Identify
+        status: 200
+        note: ResearchWorks OAI-PMH endpoint (Identify verb).
+      - url: https://github.com/uw-it-aca
+        status: 200
+        note: UW Student & Educational Technology Services GitHub org (public repos).
+      - url: https://github.com/uwwebservices
+        status: 200
+        note: UW Web Services GitHub org (no public repos at review time).
+      - url: https://www.washington.edu/
+        status: 200
+        note: Official institution website.

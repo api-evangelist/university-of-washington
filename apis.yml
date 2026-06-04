@@ -1,0 +1,133 @@
+---
+aid: university-of-washington
+name: University of Washington
+description: >-
+  The University of Washington (UW) is a public research university based in
+  Seattle, Washington, United States, ranked #52 in the QS World University
+  Rankings 2025. UW operates a mature, institutionally documented developer
+  footprint through its UW-IT Enterprise Web Services (EWS) program, which
+  exposes a registry of REST/SOAP web services for student, identity, person,
+  group, and ID-card data, each with public Swagger/OpenAPI documentation.
+  Most production data endpoints require an institutional UW NetID,
+  certificate-based authentication, and approved access; the documentation,
+  service registry, and Swagger specifications are publicly browsable. UW also
+  publishes open scholarly metadata through its ResearchWorks DSpace repository
+  (REST API and OAI-PMH) and maintains active public GitHub organizations.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/university-of-washington/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - United States
+  - Student Information
+  - Identity
+  - Library
+  - Open Data
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: university-of-washington:student-web-service
+    name: Student Web Service (SWS)
+    description: >-
+      The Student Web Service gives applications access to information in the
+      UW Student database such as course data, registration data, section
+      data, person data, and term data. It exposes a set of public and private
+      APIs; production access requires approval and authentication, while the
+      Swagger/OpenAPI documentation is public. Owned by the Office of the
+      Registrar.
+    humanURL: https://webservices.washington.edu/sws/
+    baseURL: https://ws.admin.washington.edu/student
+    tags: [ Students, Courses, Registration, Enterprise Web Services ]
+    properties:
+      - type: Documentation
+        url: https://webservices.washington.edu/sws/
+      - type: OpenAPI
+        url: https://ws.admin.washington.edu/student/swagger/index.html
+  - aid: university-of-washington:idcard-web-service
+    name: IdCard Web Service
+    description: >-
+      The IdCard Web Service gives applications access to information
+      associated with the Husky ID Card, such as cardholder photos.
+      Production access is gated and authenticated; the Swagger/OpenAPI
+      documentation is publicly viewable.
+    humanURL: https://webservices.washington.edu/idcardws/index.html
+    baseURL: https://ws.admin.washington.edu/idcard
+    tags: [ Identity, ID Card, Photos, Enterprise Web Services ]
+    properties:
+      - type: Documentation
+        url: https://webservices.washington.edu/idcardws/index.html
+      - type: OpenAPI
+        url: https://ws.admin.washington.edu/idcard/swagger/index.html
+  - aid: university-of-washington:identity-registry-web-service
+    name: Identity Registration Web Service (IRWS)
+    description: >-
+      The Identity Registration Web Service is the UW-IT Identity Registry
+      REST API (V1 and V2) providing access to identity and person registry
+      data. Access is authenticated and approval-gated; the API specification
+      is publicly documented.
+    humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+    tags: [ Identity, IAM, Person, Enterprise Web Services ]
+    properties:
+      - type: Documentation
+        url: https://iam-tools.u.washington.edu/apis/irwsv2/
+      - type: Documentation
+        url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - aid: university-of-washington:enterprise-web-services
+    name: UW-IT Enterprise Web Services Registry
+    description: >-
+      Enterprise Web Services (EWS) is UW-IT's secure collection of REST/SOAP
+      web services that let enterprise business applications access commonly
+      shared source data in a scalable, real-time, highly available
+      architecture. The public registry catalogs services including Student,
+      Person, Groups, HRP, IdCard, Financial, and Space web services, each
+      with its own documentation and Swagger specification.
+    humanURL: https://webservices.washington.edu/
+    tags: [ Enterprise Web Services, Registry, Integration, Data ]
+    properties:
+      - type: Documentation
+        url: https://webservices.washington.edu/
+      - type: Documentation
+        url: https://it.uw.edu/summary/enterprise-web-services/
+  - aid: university-of-washington:researchworks-dspace
+    name: ResearchWorks Repository (DSpace REST + OAI-PMH)
+    description: >-
+      ResearchWorks is UW's institutional digital repository for disseminating
+      text-based scholarly work produced by the UW community, running on
+      DSpace. It exposes a public DSpace REST API and an OAI-PMH endpoint for
+      open metadata harvesting of repository content.
+    humanURL: https://digital.lib.washington.edu/researchworks/
+    baseURL: https://digital.lib.washington.edu/server/api
+    tags: [ Library, Institutional Repository, DSpace, OAI-PMH, Open Access ]
+    properties:
+      - type: Documentation
+        url: https://digital.lib.washington.edu/researchworks/
+      - type: OAI-PMH
+        url: https://digital.lib.washington.edu/server/oai/request?verb=Identify
+common:
+  - type: Website
+    url: https://www.washington.edu/
+  - type: DeveloperPortal
+    url: https://webservices.washington.edu/
+  - type: GitHub
+    url: https://github.com/uw-it-aca
+  - type: GitHub
+    url: https://github.com/uwwebservices
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/university-of-washington/
+  - type: Plans
+    url: plans/university-of-washington-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/university-of-washington-rate-limits.yml
+  - type: FinOps
+    url: finops/university-of-washington-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
