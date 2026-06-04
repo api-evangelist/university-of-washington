@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://ws.admin.washington.edu/idcard/v1/photo/9136CCB8F87E411D89C497AABB0BFAB1.json",
+    "description": "Retrieve photo metadata and sized image resource links for a cardholder by RegID."
+  },
+  "response": {
+    "regId": "9136CCB8F87E411D89C497AABB0BFAB1",
+    "fullName": "Husky, Harry E",
+    "nameAndRegID": "Husky, Harry E (9136CCB8F87E411D89C497AABB0BFAB1)",
+    "fileExtension": "jpg",
+    "height": 480,
+    "totalCount": 1,
+    "format": "json",
+    "small": { "Href": "/idcard/v1/photo/9136CCB8F87E411D89C497AABB0BFAB1-92.jpg" },
+    "medium": { "Href": "/idcard/v1/photo/9136CCB8F87E411D89C497AABB0BFAB1-184.jpg" },
+    "large": { "Href": "/idcard/v1/photo/9136CCB8F87E411D89C497AABB0BFAB1-480.jpg" },
+    "customHeight": { "Href": "/idcard/v1/photo/9136CCB8F87E411D89C497AABB0BFAB1-{height}.jpg" }
+  }
+}

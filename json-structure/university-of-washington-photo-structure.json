@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.com/university-of-washington/json-structure/photo.json",
+  "name": "Photo",
+  "type": "object",
+  "description": "JSON Structure for a University of Washington IdCard Web Service (IdCardWS) v1 photo object.",
+  "properties": {
+    "nameAndRegID": { "type": "string" },
+    "fullName": { "type": "string" },
+    "regId": { "type": "string" },
+    "fileExtension": { "type": "string" },
+    "height": { "type": "int32" },
+    "totalCount": { "type": "int32" },
+    "format": { "type": "string" },
+    "small": { "type": "object", "properties": { "Href": { "type": "string" } } },
+    "medium": { "type": "object", "properties": { "Href": { "type": "string" } } },
+    "large": { "type": "object", "properties": { "Href": { "type": "string" } } },
+    "customHeight": { "type": "object", "properties": { "Href": { "type": "string" } } }
+  },
+  "required": [ "regId" ]
+}

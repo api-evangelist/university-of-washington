@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/university-of-washington/json-schema/course.json",
+  "title": "Course",
+  "description": "A course offered by the University of Washington, as returned by the Student Web Service (SWS) v5 CourseViewModel.",
+  "type": "object",
+  "properties": {
+    "CourseNumber": { "type": "string", "description": "Course number." },
+    "CourseTitle": { "type": "string", "description": "Course title." },
+    "CourseCampus": { "type": "string", "description": "Course campus." },
+    "CourseTitleLong": { "type": "string", "description": "Long course title." },
+    "CourseDescription": { "type": "string", "description": "Course description." },
+    "CourseCollege": { "type": "string", "description": "College that owns the course." },
+    "CourseComment": { "type": "string", "description": "Free-text comment about the course." },
+    "CreditControl": { "type": "string", "description": "Credit control indicator." },
+    "GradingSystem": { "type": "string", "description": "Grading system used for the course." },
+    "MinimumTermCredit": { "type": "number", "description": "Minimum credits per term." },
+    "MaximumTermCredit": { "type": "number", "description": "Maximum credits per term." },
+    "MaximumCredit": { "type": "number", "description": "Maximum credits for the course." },
+    "Curriculum": {
+      "type": "object",
+      "description": "Reference (ResourceUri) to the owning curriculum.",
+      "properties": {
+        "Href": { "type": "string" }
+      }
+    },
+    "FirstEffectiveTerm": {
+      "type": "object",
+      "description": "Reference (ResourceUri) to the first term this course is effective.",
+      "properties": {
+        "Href": { "type": "string" },
+        "Year": { "type": "integer" },
+        "Quarter": { "type": "string" }
+      }
+    },
+    "LastEffectiveTerm": {
+      "type": "object",
+      "description": "Reference (ResourceUri) to the last term this course is effective.",
+      "properties": {
+        "Href": { "type": "string" },
+        "Year": { "type": "integer" },
+        "Quarter": { "type": "string" }
+      }
+    },
+    "RepositoryTimeStamp": { "type": "string", "description": "Repository timestamp for the record." }
+  },
+  "additionalProperties": false
+}

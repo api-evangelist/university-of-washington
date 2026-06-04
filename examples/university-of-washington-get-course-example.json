@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://ws.admin.washington.edu/student/v5/course/2013,autumn,CSE,142.json",
+    "description": "Retrieve a single course by year, quarter, curriculum abbreviation, and course number."
+  },
+  "response": {
+    "CourseNumber": "142",
+    "CourseTitle": "COMPUTER PRGRMNG I",
+    "CourseTitleLong": "Computer Programming I",
+    "CourseCampus": "Seattle",
+    "CourseDescription": "Basic programming-in-the-small abilities and concepts including procedural programming.",
+    "CourseCollege": "Arts and Sciences",
+    "CourseComment": "",
+    "CreditControl": "",
+    "GradingSystem": "",
+    "MinimumTermCredit": 4,
+    "MaximumTermCredit": 4,
+    "MaximumCredit": 4,
+    "Curriculum": {
+      "Href": "/student/v5/curriculum/2013,autumn,CSE.json"
+    },
+    "FirstEffectiveTerm": {
+      "Href": "/student/v5/term/2013,autumn.json",
+      "Year": 2013,
+      "Quarter": "autumn"
+    },
+    "LastEffectiveTerm": {
+      "Href": "/student/v5/term/9999,autumn.json",
+      "Year": 9999,
+      "Quarter": "autumn"
+    },
+    "RepositoryTimeStamp": "2013-09-01T00:00:00"
+  }
+}

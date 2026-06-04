@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "uw": "https://api-evangelist.com/university-of-washington/vocab#",
+    "@vocab": "https://api-evangelist.com/university-of-washington/vocab#",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "University": {
+      "@id": "schema:CollegeOrUniversity",
+      "@context": {
+        "name": "schema:name",
+        "url": "schema:url"
+      }
+    },
+    "Course": {
+      "@id": "schema:Course",
+      "@context": {
+        "CourseNumber": "schema:courseCode",
+        "CourseTitle": "schema:name",
+        "CourseDescription": "schema:description",
+        "CourseCampus": "uw:campus",
+        "CourseCollege": "uw:college",
+        "MinimumTermCredit": "uw:minimumTermCredit",
+        "MaximumTermCredit": "uw:maximumTermCredit",
+        "MaximumCredit": "uw:maximumCredit",
+        "Curriculum": { "@id": "uw:curriculum", "@type": "@id" },
+        "FirstEffectiveTerm": "uw:firstEffectiveTerm",
+        "LastEffectiveTerm": "uw:lastEffectiveTerm"
+      }
+    },
+    "Photo": {
+      "@id": "schema:Photograph",
+      "@context": {
+        "regId": "uw:regId",
+        "fullName": "schema:name",
+        "fileExtension": "schema:encodingFormat",
+        "height": "schema:height",
+        "small": { "@id": "schema:thumbnailUrl", "@type": "@id" },
+        "medium": { "@id": "schema:contentUrl", "@type": "@id" },
+        "large": { "@id": "schema:image", "@type": "@id" }
+      }
+    },
+    "Curriculum": "uw:Curriculum",
+    "Term": "uw:Term",
+    "Campus": "uw:Campus"
+  },
+  "@type": "University",
+  "name": "University of Washington",
+  "url": "https://www.washington.edu/"
+}

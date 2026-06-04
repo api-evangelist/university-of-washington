@@ -1,0 +1,61 @@
+vocabulary:
+  name: University of Washington Enterprise Web Services Vocabulary
+  description: >-
+    Controlled vocabulary of core terms observed across the University of
+    Washington UW-IT Enterprise Web Services (EWS) machine-readable API
+    descriptions, specifically the Student Web Service (SWS v5) and the
+    IdCard Web Service (IdCardWS v1).
+  version: "1.0.0"
+  terms:
+    - term: Student Web Service
+      definition: >-
+        UW-IT RESTful API (SWS) providing access to central student data including
+        course, curriculum, term, section, registration, and person data.
+      tags: [ sws, student, enterprise-web-services ]
+    - term: IdCard Web Service
+      definition: >-
+        UW-IT RESTful API (IdCardWS) providing access to Husky ID Card data,
+        including cardholder photos and card records.
+      tags: [ idcardws, identity, id-card ]
+    - term: RegID
+      definition: >-
+        UW registration identifier, a unique 32-character hexadecimal identifier
+        for a person used to key person, card, and photo resources.
+      tags: [ identity, person, identifier ]
+    - term: Course
+      definition: >-
+        A unit of instruction identified by year, quarter, curriculum abbreviation,
+        and course number, owned by a college and curriculum.
+      tags: [ sws, course, academic ]
+    - term: Curriculum
+      definition: >-
+        A grouping of courses under a curriculum abbreviation within a college.
+      tags: [ sws, curriculum, academic ]
+    - term: Term
+      definition: >-
+        An academic term identified by year and quarter (autumn, winter, spring, summer).
+      tags: [ sws, term, calendar ]
+    - term: Quarter
+      definition: >-
+        One of the four UW academic periods within a year - autumn, winter, spring, or summer.
+      tags: [ sws, term, calendar ]
+    - term: Campus
+      definition: >-
+        A UW campus location (Seattle, Bothell, Tacoma) associated with a course or section.
+      tags: [ sws, campus ]
+    - term: Photo
+      definition: >-
+        A cardholder photo resource exposed in small, medium, large, and custom-height sizes.
+      tags: [ idcardws, photo, identity ]
+    - term: ResourceUri
+      definition: >-
+        A hypermedia reference (Href) object linking from one EWS resource to a related resource.
+      tags: [ hypermedia, link ]
+    - term: ViewModel
+      definition: >-
+        The UW EWS naming convention for the JSON representation of a response object.
+      tags: [ convention, schema ]
+    - term: Degree Audit
+      definition: >-
+        SWS resource representing a student degree audit and audit exceptions.
+      tags: [ sws, degree, audit ]

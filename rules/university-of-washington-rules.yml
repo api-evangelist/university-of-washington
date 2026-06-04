@@ -1,0 +1,49 @@
+extends: []
+formats:
+  - oas3
+documentationUrl: https://webservices.washington.edu/
+rules:
+  uw-info-contact:
+    description: UW Enterprise Web Services specs should declare a contact (the EWS & Events Team).
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  uw-info-description:
+    description: API info object must include a description.
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: truthy
+  uw-server-relative-path:
+    description: UW EWS specs use a relative server path matching the service mount (e.g. /student, /idcard).
+    severity: info
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[a-z]+$"
+  uw-paths-versioned:
+    description: Operation paths should be version-prefixed (e.g. /v5/..., /v1/...) per UW EWS convention.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/v[0-9]+(/.*)?$|^/$"
+  uw-viewmodel-schema-naming:
+    description: Response object schemas follow the UW ...ViewModel / ...ResourceUri naming convention.
+    severity: info
+    given: $.components.schemas[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "(ViewModel|ResourceUri|Model|List|ViewFormats)$"
+  uw-operation-response:
+    description: Every operation must define at least one response.
+    severity: error
+    given: $.paths[*][*].responses
+    then:
+      function: truthy

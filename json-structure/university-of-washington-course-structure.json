@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.com/university-of-washington/json-structure/course.json",
+  "name": "Course",
+  "type": "object",
+  "description": "JSON Structure for a University of Washington Student Web Service (SWS) v5 course object.",
+  "properties": {
+    "CourseNumber": { "type": "string" },
+    "CourseTitle": { "type": "string" },
+    "CourseCampus": { "type": "string" },
+    "CourseTitleLong": { "type": "string" },
+    "CourseDescription": { "type": "string" },
+    "CourseCollege": { "type": "string" },
+    "CourseComment": { "type": "string" },
+    "CreditControl": { "type": "string" },
+    "GradingSystem": { "type": "string" },
+    "MinimumTermCredit": { "type": "number" },
+    "MaximumTermCredit": { "type": "number" },
+    "MaximumCredit": { "type": "number" },
+    "Curriculum": {
+      "type": "object",
+      "properties": {
+        "Href": { "type": "string" }
+      }
+    },
+    "FirstEffectiveTerm": {
+      "type": "object",
+      "properties": {
+        "Href": { "type": "string" },
+        "Year": { "type": "int32" },
+        "Quarter": { "type": "string" }
+      }
+    },
+    "LastEffectiveTerm": {
+      "type": "object",
+      "properties": {
+        "Href": { "type": "string" },
+        "Year": { "type": "int32" },
+        "Quarter": { "type": "string" }
+      }
+    },
+    "RepositoryTimeStamp": { "type": "string" }
+  },
+  "required": [ "CourseNumber", "Curriculum" ]
+}

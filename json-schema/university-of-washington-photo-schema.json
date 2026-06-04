@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/university-of-washington/json-schema/photo.json",
+  "title": "Photo",
+  "description": "A Husky ID Card cardholder photo resource, as returned by the IdCard Web Service (IdCardWS) v1 PhotoViewModel.",
+  "type": "object",
+  "properties": {
+    "nameAndRegID": { "type": "string", "description": "Combined display name and registration ID." },
+    "fullName": { "type": "string", "description": "Cardholder full name." },
+    "regId": { "type": "string", "description": "UW registration ID (RegID) for the cardholder." },
+    "fileExtension": { "type": "string", "description": "File extension / format of the photo." },
+    "height": { "type": "integer", "description": "Height in pixels." },
+    "small": { "$ref": "#/$defs/PhotoResourceUri" },
+    "medium": { "$ref": "#/$defs/PhotoResourceUri" },
+    "large": { "$ref": "#/$defs/PhotoResourceUri" },
+    "customHeight": { "$ref": "#/$defs/PhotoResourceUri" },
+    "totalCount": { "type": "integer", "description": "Total number of matching records." },
+    "format": { "type": "string", "description": "Requested view format." }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "PhotoResourceUri": {
+      "type": "object",
+      "description": "A hypermedia reference to a sized photo resource.",
+      "properties": {
+        "Href": { "type": "string" }
+      }
+    }
+  }
+}
