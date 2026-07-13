@@ -1,0 +1,14 @@
+{
+  "repo": "university-of-washington",
+  "feeds": [
+    {
+      "source": "https://www.washington.edu/news/feed/",
+      "feed_url": "https://www.washington.edu/news/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 12
+}
