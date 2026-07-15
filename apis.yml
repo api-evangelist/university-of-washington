@@ -115,6 +115,8 @@ apis:
       - type: OAI-PMH
         url: https://digital.lib.washington.edu/server/oai/request?verb=Identify
 common:
+  - type: AgenticAccess
+    url: agentic-access/university-of-washington-agentic-access.yml
   - type: DomainSecurity
     url: security/university-of-washington-domain-security.yml
   - type: Website
