@@ -1,0 +1,547 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus DegreeAuditException API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: DegreeAuditException
+paths:
+  /v5/degreeauditexception:
+    post:
+      tags:
+      - DegreeAuditException
+      summary: Create a Degree Audit Exception
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception\",\r\n                    \"ews_guid\" : \"01F0C569-ED8C-41B8-B20F-1F20A122CD70\",\r\n                    \"LongDescription\" : \"Create a Degree Audit Exception\",\r\n                    \"ShortDescription\" : \"Create a Degree Audit Exception\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               In addition, the SDB driver maintains a list of X.509 certs that are allowed to make changes and access \r\n                               degree audit exception info.\",\r\n                    \"Links\" : [ \"https://wiki.cac.washington.edu/display/SWS/Degree+Audit+Exception+Resource+V5\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: DegreeAuditExceptionCreate
+      responses:
+        '400':
+          description: http body must not be null | http body length must be greater than zero | Unable to parse request to create degree audit exception. | validation of AcceptCode/RejectCode fields failed for your degree audit exception request. Check characters, capitals and typos. | RegId not found.
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+    get:
+      tags:
+      - DegreeAuditException
+      summary: Search for a degree audit exception using the reg_id
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception Search\",\r\n                    \"ews_guid\" : \"A8F00FF6-0326-48C1-BBA6-9902BB1BD331\",\r\n                    \"LongDescription\" : \"Search for a degree audit exception using the reg_id\",\r\n                    \"ShortDescription\" : \"Search for a degree audit exception\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               In addition, the SDB driver maintains a list of X.509 certs that are allowed to make changes and access \r\n                               degree audit exception info.\",\r\n                    \"Links\" : [ \"https://wiki.cac.washington.edu/display/SWS/Degree+Audit+Exception+Resource+V5\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: DegreeAuditExceptionSearch
+      parameters:
+      - name: reg_id
+        in: query
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: regid'
+        '404':
+          description: No degree audit exceptions found.
+        '500':
+          description: RegId not found. | InternalServerError
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionSearchViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '503':
+          description: ServiceUnavailable
+  /v5/degreeauditexception/{regid}:
+    get:
+      tags:
+      - DegreeAuditException
+      summary: Get degree audit exceptions for a student
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception Student Search\",\r\n                    \"ews_guid\" : \"57A37914-7E83-4A74-9380-C26DB90A845C\",\r\n                    \"LongDescription\" : \"Get a list of degree audit exceptions for a student\",\r\n                    \"ShortDescription\" : \"Get a degree audit exception list\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               In addition, the SDB driver maintains a list of X.509 certs that are allowed to make changes and access \r\n                               degree audit exception info.\",\r\n                    \"Links\" : [ \"https://wiki.cac.washington.edu/display/SWS/Degree+Audit+Exception+Resource+V5\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetDegreeAuditException
+      parameters:
+      - name: regid
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: regid'
+        '404':
+          description: No degree audit exceptions found.
+        '500':
+          description: RegId not found. | InternalServerError
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionListViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionListViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionListViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionListViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionListViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditExceptionListViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '503':
+          description: ServiceUnavailable
+  /v5/degreeauditexception/{subtype}/{controlcode}/{sequenceno}/{regid}:
+    delete:
+      tags:
+      - DegreeAuditException
+      summary: Delete a specific degree audit exception
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception Delete\",\r\n                    \"ews_guid\" : \"86C2707B-9E66-40A1-9CEA-B950BC6E7B43\",\r\n                    \"LongDescription\" : \"Delete a specific degree audit exception\",\r\n                    \"ShortDescription\" : \"Delete a degree audit exception\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               In addition, the SDB driver maintains a list of X.509 certs that are allowed to make changes and access \r\n                               degree audit exception info.\",\r\n                    \"Links\" : [ \"https://wiki.cac.washington.edu/display/SWS/Degree+Audit+Exception+Resource+V5\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: DegreeAuditExceptionDelete
+      parameters:
+      - name: subtype
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: controlcode
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: sequenceno
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: regid
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: a control code must be an 2 characters. | Invalid arg: a sequence number must be an integer. | Invalid arg: a subtype is required | Invalid arg: a sequence number is required with this subtype. | Invalid arg: regid'
+        '404':
+          description: No degree audit exception found.
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    ExceptionTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Exception Term DAE Entry Date Model\"\r\n}"
+    CLEntryTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cleyr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cleqtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"CL Entry Term DAE Entry Date Model\"\r\n}"
+    UWEntryTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.uweyr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.uweqtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"UW Entry Term DAE Entry Date Model\"\r\n}"
+    CatalogTerm2DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cat2yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cat2qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Catalog Term 2 DAE Entry Date Model\"\r\n}"
+    DegreeAuditExceptionViewModel:
+      type: object
+      properties:
+        AuthorizationDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.athdt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Authorization date\"\r\n            }\r\n            </pre>"
+          nullable: true
+        AuthorizationName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.athdt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Authorization name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        AcceptCode1:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.ac1\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Accept code 1\"\r\n            }\r\n            </pre>"
+          nullable: true
+        AcceptCode2:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.ac2\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Accept code 2\"\r\n            }\r\n            </pre>"
+          nullable: true
+        AssignCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.asncd\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Assign code\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CatalogTerm1:
+          $ref: '#/components/schemas/CatalogTerm1DAEEntryDateViewModel'
+        CatalogTerm2:
+          $ref: '#/components/schemas/CatalogTerm2DAEEntryDateViewModel'
+        CatalogTerm3:
+          $ref: '#/components/schemas/CatalogTerm3DAEEntryDateViewModel'
+        CLEntryTerm:
+          $ref: '#/components/schemas/CLEntryTermDAEEntryDateViewModel'
+        Comment:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.cline\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Comment\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ControlCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.ctlcd\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Control code\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Course:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.crs\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ExceptionTerm:
+          $ref: '#/components/schemas/ExceptionTermDAEEntryDateViewModel'
+        ExceptionEnteredDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.exdt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Exception entered date\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ExceptionUserID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.exuid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Exception user id\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FirstTerm:
+          $ref: '#/components/schemas/FirstTermDAEEntryDateViewModel'
+        InternalComment:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.icmt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Internal comment\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastTerm:
+          $ref: '#/components/schemas/LastTermDAEEntryDateViewModel'
+        MatchControl:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.mtctl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Match control\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MaxCount:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.mxct\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Max count\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MaxHours:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.maxhrs\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Max hours\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MaxHoursCheck:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.mxhrck\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Max hours check\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MinorCatalogTerm1:
+          $ref: '#/components/schemas/MinorCatalogTerm1DAEEntryDateViewModel'
+        MinorCatalogTerm2:
+          $ref: '#/components/schemas/MinorCatalogTerm2DAEEntryDateViewModel'
+        MinorCatalogTerm3:
+          $ref: '#/components/schemas/MinorCatalogTerm3DAEEntryDateViewModel'
+        NonUWCourse:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.NonUWCourse\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Non UW course\"\r\n            }\r\n            </pre>"
+          nullable: true
+        PseudoName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.psnm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pseudo name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.sysk\" }\r\n                ],\r\n                \"TechnicalDescription\": \"FReg id\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RejectCode1:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.rjcd1\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Reject code 1\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RejectCode2:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.rjcd2\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Reject code 2\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RejectCourse:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.rcrs\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Reject course\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RequiredCount:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.reqct\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Required count\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RequiredHours:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.reqhrs\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Required hours\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RequirementName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.rqnm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Requirement name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RequiredGPA:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.reqgpa\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Require GPA\"\r\n            }\r\n            </pre>"
+          nullable: true
+        SCEntryCollege:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.sccol\" }\r\n                ],\r\n                \"TechnicalDescription\": \"SC entry college\"\r\n            }\r\n            </pre>"
+          nullable: true
+        SCEntryTerm:
+          $ref: '#/components/schemas/SCEntryTermDAEEntryDateViewModel'
+        SequenceNumber:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Sequence number\"\r\n            }\r\n            </pre>"
+          nullable: true
+        SubType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI370.csr/rsp/exe.sbtyp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Subtype\"\r\n            }\r\n            </pre>"
+          nullable: true
+        UWEntryTerm:
+          $ref: '#/components/schemas/UWEntryTermDAEEntryDateViewModel'
+        Value:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Exception Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\r\n}"
+    FirstTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.fyr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ftm\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"First Term DAE Entry Date Model\"\r\n}"
+    DegreeAuditExceptionSearchViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        DegreeAuditExceptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DegreeAuditExceptionViewModel'
+          nullable: true
+          readOnly: true
+        Current:
+          $ref: '#/components/schemas/DegreeAuditExceptionSearchResourceUri'
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Exception Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\r\n}"
+    CatalogTerm1DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cat1yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cat1qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\" \r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Catalog Term 1 DAE Entry Date Model\"\r\n}"
+    MinorCatalogTerm1DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ovr/mc1yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ovr/mc1qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Minor Catalog Term 1 DAE Entry Date Model\"\r\n}"
+    SCEntryTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.sceyr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.sceqtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"SC Entry Term DAE Entry Date Model\"\r\n}"
+    MinorCatalogTerm2DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ovr/mc2yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ovr/mc2qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Minor Catalog Term 2 DAE Entry Date Model\"\r\n}"
+    MinorCatalogTerm3DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ovr/mc3yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ovr/mc3qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Minor Catalog Term 3 DAE Entry Date Model\"\r\n}"
+    CatalogTerm3DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cat3yr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.cat3qtr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Catalog Term 3 DAE Entry Date Model\"\r\n}"
+    DegreeAuditExceptionSearchResourceUri:
+      type: object
+      properties:
+        RegId:
+          type: string
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Exception Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}],\r\n    \"TargetOperationId\" : [\"DegreeAuditExceptionSearch\"]\r\n}"
+    LastTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.lyr\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                        \"OriginatingSchema\" : [\r\n                            { \"source\":\"SDB.SWI370.ltm\" }\r\n                        ],\r\n                        \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Last Term DAE Entry Date Model\"\r\n}"
+    DegreeAuditExceptionListViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        DegreeAuditExceptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DegreeAuditExceptionViewModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Exception List Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\r\n}"

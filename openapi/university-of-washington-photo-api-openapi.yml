@@ -1,0 +1,338 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Photo API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Photo
+paths:
+  /v1/photo/{reg_Id}:
+    get:
+      tags:
+      - Photo
+      summary: Get the Id card photo (image/jpeg) for the indicated person.
+      operationId: Photo
+      parameters:
+      - name: reg_Id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v1/photo/{reg_Id}.{file_extension}:
+    get:
+      tags:
+      - Photo
+      summary: Get the Id card photo (image/jpeg) for the indicated person.
+      operationId: PhotoWithExtension
+      parameters:
+      - name: reg_Id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: file_extension
+        in: path
+        description: 'Accepted values: jpg'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v1/photo:
+    get:
+      tags:
+      - Photo
+      operationId: PhotoSearch
+      parameters:
+      - name: reg_id
+        in: query
+        schema:
+          type: string
+          default: ''
+      - name: net_id
+        in: query
+        schema:
+          type: string
+          default: ''
+      - name: student_number
+        in: query
+        schema:
+          type: string
+          default: ''
+      - name: employee_id
+        in: query
+        schema:
+          type: string
+          default: ''
+      - name: height
+        in: query
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/PhotoSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PhotoSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PhotoSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PhotoSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhotoSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PhotoSearchViewModel'
+        '400':
+          description: Bad Request
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    PhotoSearchViewModel:
+      type: object
+      properties:
+        metadata:
+          type: string
+          nullable: true
+        pageCount:
+          type: string
+          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
+          nullable: true
+        previousPageStart:
+          type: string
+          description: The counter value for the start of the previous search results page.
+          nullable: true
+          readOnly: true
+        pageSize:
+          type: string
+          description: Requested number of records for the current search results page.
+          nullable: true
+        pageStart:
+          type: string
+          description: The counter value for the start of the current search results page.
+          nullable: true
+        nextPageStart:
+          type: string
+          description: The counter value for the start of the next search results page.
+          nullable: true
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        searchResultsCount:
+          type: integer
+          format: int32
+          readOnly: true
+        photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhotoViewModel'
+          nullable: true
+          readOnly: true
+        title:
+          type: string
+          nullable: true
+          readOnly: true
+        current:
+          $ref: '#/components/schemas/PhotoSearchResourceUri'
+      additionalProperties: false
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32
+    PhotoSearchResourceUri:
+      type: object
+      properties:
+        href:
+          type: string
+          nullable: true
+        regId:
+          type: string
+          nullable: true
+        netId:
+          type: string
+          nullable: true
+        studentNumber:
+          type: string
+          nullable: true
+        employeeId:
+          type: string
+          nullable: true
+        height:
+          type: string
+          nullable: true
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+      additionalProperties: false
+    PhotoResourceUri:
+      type: object
+      properties:
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+        href:
+          type: string
+          nullable: true
+        uriAppender:
+          type: string
+          nullable: true
+        fileExtension:
+          type: string
+          nullable: true
+        height:
+          type: integer
+          format: int32
+          nullable: true
+        regId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PhotoViewModel:
+      type: object
+      properties:
+        metadata:
+          type: string
+          nullable: true
+        pageCount:
+          type: string
+          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
+          nullable: true
+        previousPageStart:
+          type: string
+          description: The counter value for the start of the previous search results page.
+          nullable: true
+          readOnly: true
+        pageSize:
+          type: string
+          description: Requested number of records for the current search results page.
+          nullable: true
+        pageStart:
+          type: string
+          description: The counter value for the start of the current search results page.
+          nullable: true
+        nextPageStart:
+          type: string
+          description: The counter value for the start of the next search results page.
+          nullable: true
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        nameAndRegID:
+          type: string
+          nullable: true
+          readOnly: true
+        fullName:
+          type: string
+          nullable: true
+          readOnly: true
+        regId:
+          type: string
+          nullable: true
+          readOnly: true
+        fileExtension:
+          type: string
+          nullable: true
+          readOnly: true
+        height:
+          type: integer
+          format: int32
+          nullable: true
+          readOnly: true
+        small:
+          $ref: '#/components/schemas/PhotoResourceUri'
+        medium:
+          $ref: '#/components/schemas/PhotoResourceUri'
+        large:
+          $ref: '#/components/schemas/PhotoResourceUri'
+        customHeight:
+          $ref: '#/components/schemas/PhotoResourceUri'
+      additionalProperties: false

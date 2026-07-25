@@ -1,0 +1,193 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Card API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Card
+paths:
+  /v1/card:
+    get:
+      tags:
+      - Card
+      operationId: GetCards
+      parameters:
+      - name: mag_strip_code
+        in: query
+        schema:
+          type: string
+          default: ''
+      - name: prox_rfid
+        in: query
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/CardSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CardSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CardSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CardSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CardSearchViewModel'
+        '301':
+          description: Moved Permanently
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '410':
+          description: Gone
+        '202':
+          description: Accepted
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32
+    CardSearchResourceUri:
+      type: object
+      properties:
+        href:
+          type: string
+          nullable: true
+        magStripCode:
+          type: string
+          nullable: true
+        proxRFID:
+          type: string
+          nullable: true
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+      additionalProperties: false
+    CardSearchResultViewModel:
+      type: object
+      properties:
+        metadata:
+          type: string
+          nullable: true
+        pageCount:
+          type: string
+          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
+          nullable: true
+        previousPageStart:
+          type: string
+          description: The counter value for the start of the previous search results page.
+          nullable: true
+          readOnly: true
+        pageSize:
+          type: string
+          description: Requested number of records for the current search results page.
+          nullable: true
+        pageStart:
+          type: string
+          description: The counter value for the start of the current search results page.
+          nullable: true
+        nextPageStart:
+          type: string
+          description: The counter value for the start of the next search results page.
+          nullable: true
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        regID:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    CardSearchViewModel:
+      type: object
+      properties:
+        metadata:
+          type: string
+          nullable: true
+        pageCount:
+          type: string
+          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
+          nullable: true
+        previousPageStart:
+          type: string
+          description: The counter value for the start of the previous search results page.
+          nullable: true
+          readOnly: true
+        pageSize:
+          type: string
+          description: Requested number of records for the current search results page.
+          nullable: true
+        pageStart:
+          type: string
+          description: The counter value for the start of the current search results page.
+          nullable: true
+        nextPageStart:
+          type: string
+          description: The counter value for the start of the next search results page.
+          nullable: true
+          readOnly: true
+        pageStartOffset:
+          type: integer
+          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        cardSearchResultVM:
+          $ref: '#/components/schemas/CardSearchResultViewModel'
+        xhtmlTitle:
+          type: string
+          nullable: true
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        cards:
+          type: array
+          items:
+            $ref: '#/components/schemas/CardSearchResultViewModel'
+          nullable: true
+          readOnly: true
+        current:
+          $ref: '#/components/schemas/CardSearchResourceUri'
+      additionalProperties: false

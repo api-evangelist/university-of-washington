@@ -1,0 +1,294 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus EnrollmentMajor API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: EnrollmentMajor
+paths:
+  /v5/enrollment/{year},{quarter},{regid}/major:
+    get:
+      tags:
+      - EnrollmentMajor
+      summary: Get the enrolled major for a specific student
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Enrollment Major Search\",\r\n                    \"ews_guid\" : \"5B4A9CC8-2744-4FCB-9977-495798098EE5\",\r\n                    \"LongDescription\" : \"Display the enrolled major for the specified year, quarter and regid\",\r\n                    \"ShortDescription\" : \"Get a specific enrolled major\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:MajorUpdater\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.major\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetEnrollmentMajor
+      parameters:
+      - name: year
+        in: path
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          type: string
+      - name: quarter
+        in: path
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        required: true
+        schema:
+          type: string
+      - name: regid
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter | Invalid arg: regid ID | No student found for RegID | not a graduate student in requested year / quarter | one or more params are missing'
+        '404':
+          description: No major found.
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+    put:
+      tags:
+      - EnrollmentMajor
+      summary: Update the enrollment majors for a specific student
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Enrollment Major\",\r\n                    \"ews_guid\" : \"9F380A08-D597-44AD-87BE-A2B2B1B4F328\",\r\n                    \"LongDescription\" : \"Update the list of enrollment majors for a specific student\",\r\n                    \"ShortDescription\" : \"Update enrollment majors\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:MajorUpdater\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               The put request allows you to make a change to an existing major in the returned results of the get request.\r\n                               You must PUT back the full set of majors, even if you are only changing one.\r\n                               The count of majors in the PUT must match the count of majors from the GET.\r\n                               Required/validated request header fields are x-uw-act-as (netid) and if-match(etag). \r\n                               You must include the ETag from the GET in the PUT. This ensures that you are working with the current representation.\r\n                               Required/validated fields in the payload for person is Student name.\r\n                               Required/validated fields in the payload for each major are Abbreviation, DegreeLevel, DegreeType, \r\n                               and Pathway. All other fields are ignored in the PUT.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.major\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: UpdateEnrollmentMajor
+      parameters:
+      - name: year
+        in: path
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          type: string
+      - name: quarter
+        in: path
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        required: true
+        schema:
+          type: string
+      - name: regid
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: The information about the desired majors is in this targetViewModel
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentMajorListViewUpdateModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentMajorListViewUpdateModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentMajorListViewUpdateModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentMajorListViewUpdateModel'
+        required: true
+      responses:
+        '201':
+          description: Updated
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentMajorListViewModel'
+        '304':
+          description: No changes detected in request.
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter | invalid year/quarter (past quarter) | invalid year/quarter (transcript posted) | invalid year/quarter (not active reg quarter) | invalid year/quarter (no autumn changes prior to last day summer) | year/quarter must be after admit year/quarter | student not currently enrolled  | not a graduate student  in requested year/quarter | no changes specified | invalid current majors | current major not found | duplicate new major inputs | requested new major/pathway is invalid | requested new major/pathway/deglvl/type is invalie | new major already present | inputs result in duplicate majors | HTTP if-match header is empty; it is required for a PUT request. | Invalid arg: direct caller ID | x-uw-act-as is required. | No student found for RegID | Number of majors from the GET does not match number of majors in the PUT | major cannot be in a different position in the list'
+        '404':
+          description: Term not found
+        '412':
+          description: if-match ETag does not match current Etag
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    EnrollmentMajorListViewUpdateModel:
+      type: object
+      properties:
+        StudentName:
+          type: string
+          nullable: true
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        Majors:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorViewModelRetro'
+          nullable: true
+        StudentSystemKey:
+          type: string
+          nullable: true
+        RegID:
+          type: string
+          nullable: true
+        Term:
+          $ref: '#/components/schemas/TermResourceUri'
+      additionalProperties: false
+    EnrollmentMajorListViewModel:
+      type: object
+      properties:
+        StudentName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI610.trm/mjr.nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        Majors:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorViewModelRetro'
+          nullable: true
+        StudentSystemKey:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI610.trm/mjr.sysk\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student System Key\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Term:
+          $ref: '#/components/schemas/TermResourceUri'
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Enrollment Major List Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\r\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pronouns:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Year for the given term\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter for the given term\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Term Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\r\n    \"TargetOperationId\" : [\"GetTerm\"]\r\n}"
+    MajorViewModelRetro:
+      type: object
+      properties:
+        Abbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree level\"\r\n            }\r\n            </pre>"
+          format: int32
+        DegreeName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree type\"\r\n            }\r\n            </pre>"
+          format: int32
+        FullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\r\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major pathway\"\r\n            }\r\n            </pre>"
+          format: int32
+        ShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Major Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\r\n}"

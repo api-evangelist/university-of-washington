@@ -1,0 +1,114 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Campus
+paths:
+  /v5/campus:
+    get:
+      tags:
+      - Campus
+      summary: Get available campuses
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Campus List\",\r\n                    \"ews_guid\" : \"317D6605-20FA-4D10-80A0-75C655B489F3\",\r\n                    \"LongDescription\" : \"Display a list of campuses\",\r\n                    \"ShortDescription\" : \"Campus list\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"hardcoded\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               Unlike other search resources, it does not require any query string to return the search result.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.campus\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: CampusSearch
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/CampusSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CampusSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CampusSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CampusSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampusSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CampusSearchViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    CampusSearchResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Campus Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\r\n    \"TargetOperationId\" : [\"CampusSearch\"]\r\n}"
+    CampusSearchViewModel:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/CampusSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/CampusSearchResourceUri'
+        PageSize:
+          type: string
+          nullable: true
+        PageStart:
+          type: string
+          nullable: true
+        Previous:
+          $ref: '#/components/schemas/CampusSearchResourceUri'
+        TotalCount:
+          type: integer
+          format: int32
+        Campuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampusResourceUri'
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Campus Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}]\r\n}"
+    CampusResourceUri:
+      type: object
+      properties:
+        CampusShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation of campus\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CampusFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Full Name of the Campus\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CampusName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Name of the campus\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Campus Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\r\n    \"TargetOperationId\" : [\"CampusSearch\"]\r\n}"

@@ -1,0 +1,607 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Enrollment API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Enrollment
+paths:
+  /v5/enrollment/{year},{quarter},{reg_id}:
+    get:
+      tags:
+      - Enrollment
+      summary: Get a specific enrollment
+      description: "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Enrollment Search\",\r\n                     \"ews_guid\" : \"7D3E229D-2513-48D1-9760-BA7D587288C8\",\r\n                     \"LongDescription\" : \"Display information about a specific enrollment\",\r\n                     \"ShortDescription\" : \"Enrollment information\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:GradeReader\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                The verbose flag chooses a full representation or the standard representation.\",\r\n                     \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.enrolledstudent\", \r\n                                 \"https://metadata.uw.edu/Catalog/ViewItem/Term/79542d58-fb29-40f7-addb-df2638759804\" ],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>"
+      operationId: GetEnrollment
+      parameters:
+      - name: year
+        in: path
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          maxLength: 4
+          minLength: 4
+          type: string
+      - name: quarter
+        in: path
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        required: true
+        schema:
+          maxLength: 6
+          minLength: 6
+          type: string
+      - name: reg_id
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          maxLength: 32
+          minLength: 32
+          type: string
+      - name: transcriptable_course
+        in: query
+        description: "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+        schema:
+          type: string
+          default: 'yes'
+      - name: verbose
+        in: query
+        description: Choose on or true to enable.  Otherwise off or false.
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter | Invalid arg: regid | Invalid verbose value'
+        '404':
+          description: No enrollment found.
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/EnrollmentViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EnrollmentViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v5/enrollment:
+    get:
+      tags:
+      - Enrollment
+      summary: Search for enrollments that match the supplied parameters
+      description: "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Enrollment\",\r\n                     \"ews_guid\" : \"71A7F163-1585-4970-91FF-F543363264A4\",\r\n                     \"LongDescription\" : \"Search for enrollments filtered by regid, change since date and transcriptable course flag\",\r\n                     \"ShortDescription\" : \"Search for enrollments\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:GradeReader\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                The verbose flag chooses a full representation or the standard representation.\",\r\n                     \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.enrolledstudent\" ],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>"
+      operationId: EnrollmentSearchFull
+      parameters:
+      - name: changed_since_date
+        in: query
+        description: If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by.
+        schema:
+          type: string
+          default: ''
+      - name: reg_id
+        in: query
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        schema:
+          type: string
+          default: ''
+      - name: verbose
+        in: query
+        description: Choose on or true to enable.  Otherwise off or false.
+        schema:
+          type: string
+          default: ''
+      - name: transcriptable_course
+        in: query
+        description: "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+        schema:
+          type: string
+          default: 'yes'
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter | Invalid arg: regid | Invalid verbose value'
+        '404':
+          description: No enrollment found.
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/EnrollmentSearchFullViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentSearchFullViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/EnrollmentSearchFullViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EnrollmentSearchFullViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentSearchFullViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentSearchFullViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    MinorViewModel:
+      type: object
+      properties:
+        Abbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CampusName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Minor full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Name:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Minor name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript_tran_minor_group.tran_minor_path\" },\r\n                    { \"source\":\"SWSSDB.student_1_minor_group.minor_pathway\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Minor pathway\"\r\n            }\r\n            </pre>"
+          format: int32
+        ShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Minor short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_code\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Code\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Full Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Minor Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\r\n}"
+    EnrollmentSearchFullViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        PageSize:
+          type: string
+          nullable: true
+        PageStart:
+          type: string
+          nullable: true
+        Enrollments:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentViewModelBase'
+          nullable: true
+          readOnly: true
+        Current:
+          $ref: '#/components/schemas/EnrollmentSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/EnrollmentSearchResourceUri'
+        Previous:
+          $ref: '#/components/schemas/EnrollmentSearchResourceUri'
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Enrollment Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\r\n}"
+    SectionResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.Year\"},\r\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.Quarter\"},\r\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CurriculumAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CourseNumber:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course number\"\r\n            }\r\n            </pre>"
+          nullable: true
+        SectionID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Section ID\"\r\n            }\r\n            </pre>"
+          nullable: true
+        SLN:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\r\n                ],\r\n                \"TechnicalDescription\": \"SLN\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Section Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\r\n    \"TargetOperationId\" : [\"GetSection\"]\r\n}"
+    EnrollmentViewModel:
+      type: object
+      properties:
+        FullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major full name. If transcripts not posted, then this value is dependent on pending_major ,as it can join from student path or registration path.\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        Registrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegistrationViewModel'
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ClassLevel:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.class\" },\r\n                    { \"source\":\"SWSSDB.registration.regis_class\" },\r\n                    { \"source\":\"SWSSDB.student_1.class\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Class level. If transcripts not posted, then this value is dependent on pending_class\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ClassCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.class\" },\r\n                    { \"source\":\"SWSSDB.registration.regis_class\" },\r\n                    { \"source\":\"SWSSDB.student_1.class\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Class code. If transcripts not posted, then this value is dependent on pending_class\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ClassDescription:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.class\" },\r\n                    { \"source\":\"SWSSDB.registration.regis_class\" },\r\n                    { \"source\":\"SWSSDB.student_1.class\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Class description. If transcripts not posted, then this value is dependent on pending_class\"\r\n            }\r\n            </pre>"
+          nullable: true
+        HonorsProgram:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.honors_program\" },\r\n                    { \"source\":\"SWSSDB.registration.regis_hnrs_prg\" },\r\n                    { \"source\":\"SWSSDB.student_1.honors_program\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Honors program. If transcripts not posted, then this value is dependent on pending_hnrs_prg\"\r\n            }\r\n            </pre>"
+        LeaveEndQuarter:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.leave_ends_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Leave End Quarter. Null if transcripts not posted\"\r\n            }\r\n            </pre>"
+          format: int32
+        LeaveEndYear:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.leave_ends_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Leave End Year. Null if transcripts not posted\"\r\n            }\r\n            </pre>"
+          format: int32
+        Majors:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorViewModel'
+          nullable: true
+        Minors:
+          type: array
+          items:
+            $ref: '#/components/schemas/MinorViewModel'
+          nullable: true
+        EnrollmentStatus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.enroll_status\" },\r\n                    { \"source\":\"SWSSDB.transcript.enroll_status\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Enrollment Status\"\r\n            }\r\n            </pre>"
+          nullable: true
+        EnrollmentStatusDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.reg_en_stat_dt\" },\r\n                    { \"source\":\"SWSSDB.transcript.tr_en_stat_dt\" },\r\n                    \r\n                ],\r\n                \"TechnicalDescription\": \"Enrollment Status Date\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CurrentRegisteredCredits:
+          type: number
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.current_credits\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Current Registered Credits\"\r\n            }\r\n            </pre>"
+          format: double
+          nullable: true
+        Metadata:
+          type: string
+          nullable: true
+        PendingClassChange:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.pending_class\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending class change. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+        PendingMajorChange:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.pending_major\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending major change. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+        PendingHonorsChange:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.pending_hnrs_prg\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending honors change. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+        PendingResidentChange:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.pending_resident\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending resident change. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+        PendingResident:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.resident\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending resident. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+          nullable: true
+        PendingResidencyDescription:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.resident\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending residency description. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+          nullable: true
+        PendingSpecialProgramChange:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.pending_sp_pgm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pending Special Program change. Null if transcripts already cutover\"\r\n            }\r\n            </pre>"
+        QtrGradePoints:
+          type: number
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.qtr_grade_points\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter Grade Points. Null if transcript not posted\"\r\n            }\r\n            </pre>"
+          format: double
+          nullable: true
+        QtrGradedAttmp:
+          type: number
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.qtr_graded_attmp\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter Graded Attmp. Null if transcript not posted\"\r\n            }\r\n            </pre>"
+          format: double
+          nullable: true
+        QtrNonGrdEarned:
+          type: number
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript.qtr_nongrd_earned\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter Non Grd Earned. Null if transcript not posted\"\r\n            }\r\n            </pre>"
+          format: double
+          nullable: true
+        Term:
+          $ref: '#/components/schemas/TermResourceUri'
+        RepositoryTimeStamp:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Enrollment Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\r\n}"
+    EnrollmentSearchResourceUri:
+      type: object
+      properties:
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Verbose:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value for determining payload size\"\r\n            }\r\n            </pre>"
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Enrollment Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}],\r\n    \"TargetOperationId\" : [\"GetEnrollment\"]\r\n}"
+    MajorViewModel:
+      type: object
+      properties:
+        Abbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree level\"\r\n            }\r\n            </pre>"
+          format: int32
+        DegreeName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree type\"\r\n            }\r\n            </pre>"
+          format: int32
+        FullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\r\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major pathway\"\r\n            }\r\n            </pre>"
+          format: int32
+        ShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_code\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Code\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Full Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Expanded Major Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\r\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pronouns:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
+    EnrollmentViewModelBase:
+      type: object
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Enrollment Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}],\r\n    \"RuntimeTypes\" : [\"EnrollmentViewModel\"]\r\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Year for the given term\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter for the given term\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Term Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\r\n    \"TargetOperationId\" : [\"GetTerm\"]\r\n}"
+    RegistrationViewModel:
+      type: object
+      properties:
+        Section:
+          $ref: '#/components/schemas/SectionResourceUri'
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        DuplicateCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.dup_enroll\" },\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Duplicate code. 0 or empty depending on flipyear for EO.\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          format: uri
+          nullable: true
+        Instructor:
+          $ref: '#/components/schemas/PersonResourceUri'
+        RequestStatus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.request_status\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.request_status\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Request Status\"\r\n            }\r\n            </pre>"
+          nullable: true
+        IsActive:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.request_status\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.is_active\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Is registration active\"\r\n            }\r\n            </pre>"
+        RequestDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.request_dt\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.request_date\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Request date\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Credits:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.credits\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.course_credits\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.credits\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Credits\"\r\n            }\r\n            </pre>"
+          nullable: true
+        VariableCredit:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.v_cred\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.variable_credits\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Variable Credits\"\r\n            }\r\n            </pre>"
+        HonorsCourse:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.honor_course\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.honor_course\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Honors course\"\r\n            }\r\n            </pre>"
+        WritingCourse:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.writing_ind\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.writing\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Writing course\"\r\n            }\r\n            </pre>"
+        Auditor:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.grading_system\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.grade_system\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.auditor\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Auditor\"\r\n            }\r\n            </pre>"
+        FeeBaseType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.self_sust_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Fee base type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Grade:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.grade\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.grade\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.grade\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grade\"\r\n            }\r\n            </pre>"
+          nullable: true
+        GradeDocumentID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.grade_doc_number\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.grade_doc_id\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grade document id\"\r\n            }\r\n            </pre>"
+          nullable: true
+        GradeDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.grade_dt\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.grade_dt\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.grade_date\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grade date\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RepeatCourse:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.grade\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Repeat course\"\r\n            }\r\n            </pre>"
+        SourceDateString:
+          type: string
+          nullable: true
+        Metadata:
+          type: string
+          nullable: true
+        RepositoryTimeStamp:
+          type: string
+          nullable: true
+        GradingSystem:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.grading_system\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grading system EO only\"\r\n            }\r\n            </pre>"
+          nullable: true
+        AccessDateRangeStart:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.access_start_date\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Access date range start EO only\"\r\n            }\r\n            </pre>"
+          nullable: true
+        AccessDateRangeEnd:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.access_end_date\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Access date range end EO only\"\r\n            }\r\n            </pre>"
+          nullable: true
+        IsCredit:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.is_credit\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Is credit EO only\"\r\n            }\r\n            </pre>"
+        StartDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.start_date\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Start date EO only\"\r\n            }\r\n            </pre>"
+          nullable: true
+        EndDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.end_date\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Access date range start EO only\"\r\n            }\r\n            </pre>"
+          nullable: true
+        EducationUnitType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.educational_unit_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Education unit type EO only\"\r\n            }\r\n            </pre>"
+          nullable: true
+        IsIndependentStart:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSRegistrations.IsIndependentStart\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Is independent start EO only\"\r\n            }\r\n            </pre>"
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Registration Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}]\r\n}"

@@ -1,0 +1,401 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Degree API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Degree
+paths:
+  /v5/degree/{major_abbr},{pathway},{level},{type},{year},{quarter}:
+    get:
+      tags:
+      - Degree
+      summary: Get a specific degree program that matches the supplied parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree\",\r\n                    \"ews_guid\" : \"7106549C-4066-485F-B6CA-2B03BF2D5D05\",\r\n                    \"LongDescription\" : \"Return a specific degree program that matches the supplied parameters\",\r\n                    \"ShortDescription\" : \"Return a specific degree program\",\r\n                    \"OriginatingSchema\" : [  { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               A student can be enrolled in multiple degrees. Degrees are children of Programs (major/pathway).\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetDegree
+      parameters:
+      - name: major_abbr
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+          default: ''
+      - name: pathway
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+          default: ''
+      - name: level
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+          default: ''
+      - name: type
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+          default: ''
+      - name: year
+        in: path
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          maxLength: 4
+          minLength: 4
+          type: string
+          default: ''
+      - name: quarter
+        in: query
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        schema:
+          maxLength: 6
+          minLength: 6
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter'
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/DegreeViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DegreeViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v5/degree:
+    get:
+      tags:
+      - Degree
+      summary: Search for a degree program that matches the supplied parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Search\",\r\n                    \"ews_guid\" : \"F830EF22-38C3-4279-A199-9C8A8038C149\",\r\n                    \"LongDescription\" : \"Search for a degree program that matches the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a degree program\",\r\n                    \"OriginatingSchema\" : [  { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               A student can be enrolled in multiple degrees. Degrees are children of Programs (major/pathway).\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: DegreeSearch
+      parameters:
+      - name: campus
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: major_abbr
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: pathway
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: year
+        in: query
+        description: 'The 4 digit year.  For example: 2025'
+        schema:
+          type: string
+          default: ''
+      - name: quarter
+        in: query
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        schema:
+          type: string
+          default: ''
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: page_start
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter | Invalid arg: major_abbr | Invalid arg: pathway'
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/DegreeSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DegreeSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeSearchViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    ProgramResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Program Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Program\"}],\r\n    \"TargetOperationId\" : [\"GetProgram\"]\r\n}"
+    DegreeSearchResourceUri:
+      type: object
+      properties:
+        CampusShortName:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          format: int32
+        Quarter:
+          type: string
+          nullable: true
+        Pathway:
+          type: string
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          nullable: true
+        PageStart:
+          type: string
+          nullable: true
+        PageSize:
+          type: string
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Degree\"}],\r\n    \"TargetOperationId\" : [\"DegreeSearch\"]\r\n}"
+    DepartmentViewModel:
+      type: object
+      properties:
+        CollegeAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_college\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Full Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Department Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}]\r\n}"
+    DegreeSearchViewModel:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/DegreeSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/DegreeSearchResourceUri'
+        Previous:
+          $ref: '#/components/schemas/DegreeSearchResourceUri'
+        TotalCount:
+          type: integer
+          format: int32
+        Degrees:
+          type: array
+          items:
+            $ref: '#/components/schemas/DegreeViewModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Degree\"}]\r\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Year for the given term\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter for the given term\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Term Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\r\n    \"TargetOperationId\" : [\"GetTerm\"]\r\n}"
+    DegreeResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_level\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Level\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_last_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_last_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Degree\"}],\r\n    \"TargetOperationId\" : [\"GetDegree\"]\r\n}"
+    ProgramViewModel:
+      type: object
+      properties:
+        ProgramUri:
+          $ref: '#/components/schemas/ProgramResourceUri'
+        Department:
+          $ref: '#/components/schemas/DepartmentViewModel'
+        MajorFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FirstEffectiveTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        LastEffectiveTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Program Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Program\"}]\r\n}"
+    DegreeViewModel:
+      type: object
+      properties:
+        DegreeUri:
+          $ref: '#/components/schemas/DegreeResourceUri'
+        Program:
+          $ref: '#/components/schemas/ProgramViewModel'
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_level\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree level\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Title:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Title\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FirstEffectiveTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        LastEffectiveTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Degree\"}]\r\n}"

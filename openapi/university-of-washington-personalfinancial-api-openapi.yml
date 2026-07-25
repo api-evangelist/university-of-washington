@@ -1,0 +1,107 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus PersonalFinancial API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: PersonalFinancial
+paths:
+  /v5/person/{reg_id}/financial:
+    get:
+      tags:
+      - PersonalFinancial
+      summary: Get the financial notices for the specified student
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Personal Financial\",\r\n                    \"ews_guid\" : \"1AEDCF78-AEBD-4ECF-BD40-2149F2300DB6\",\r\n                    \"LongDescription\" : \"Display the financial notices that are relevant to the specified student\",\r\n                    \"ShortDescription\" : \"Display a student's financial notices\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:StudentFinancialReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               The personal financial resource describes a UW person in an academic-centric way. \r\n                               If the person is a student the person's name will be the name from the Student System. \r\n                               If the person is a faculty that name will be provided by the HR system.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.tuition\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetPersonalFinancial
+      parameters:
+      - name: reg_id
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: regid ID'
+        '404':
+          description: No personal financial found.
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/PersonalFinancialViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PersonalFinancialViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PersonalFinancialViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PersonalFinancialViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalFinancialViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PersonalFinancialViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    PersonalFinancialViewModel:
+      type: object
+      properties:
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        AccountBalance:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"SDB.SWI102.acctamt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Account balanace\"\r\n            }\r\n            </pre>"
+          nullable: true
+        PCEAccountBalance:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"UWEO.selSWSPersonFinancial.AccountBalance\" }\r\n                ],\r\n                \"TechnicalDescription\": \"PCE Account Balance\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Personal Financial Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonFinancial\"}]\r\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pronouns:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"

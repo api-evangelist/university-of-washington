@@ -1,0 +1,406 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Term API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Term
+paths:
+  /v5/term/current:
+    get:
+      tags:
+      - Term
+      summary: Get the current term
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Current)\",\r\n                    \"ews_guid\" : \"AC24C6B9-5259-4DB6-A9E8-AA05013DA0A9\",\r\n                    \"LongDescription\" : \"Get the current term. It is often a starting point to accessing other term based resources.\",\r\n                    \"ShortDescription\" : \"Get the current term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetTermCurrent
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v5/term/next:
+    get:
+      tags:
+      - Term
+      summary: Get the next term
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Next)\",\r\n                    \"ews_guid\" : \"9C4B72E7-96D7-450E-9D2F-B6235F6C4A52\",\r\n                    \"LongDescription\" : \"Get the next term \",\r\n                    \"ShortDescription\" : \"Get the next term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetTermNext
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v5/term/previous:
+    get:
+      tags:
+      - Term
+      summary: Get the previous term
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Previous)\",\r\n                    \"ews_guid\" : \"9B182AB0-922F-4868-AAA2-99867635201F\",\r\n                    \"LongDescription\" : \"Get the previous term \",\r\n                    \"ShortDescription\" : \"Get the previous term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetTermPrevious
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+  /v5/term/{year},{quarter}:
+    get:
+      tags:
+      - Term
+      summary: Get the specific term that matches the supplied parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term\",\r\n                    \"ews_guid\" : \"4457E842-C465-47AA-9E35-B2858FAADCBC\",\r\n                    \"LongDescription\" : \"Get a specific term matching the supplied parameters\",\r\n                    \"ShortDescription\" : \"Get a specific term\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetTerm
+      parameters:
+      - name: year
+        in: path
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          maxLength: 4
+          minLength: 4
+          type: string
+      - name: quarter
+        in: path
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        required: true
+        schema:
+          maxLength: 6
+          minLength: 6
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter'
+        '404':
+          description: Term not found.
+        '500':
+          description: Term is null or empty. | InternalServerError
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    TimeSchedulePublishedViewModel:
+      type: object
+      properties:
+        Bothell:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_web_ts_bot\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule published for the Bothell campus\"\r\n            }\r\n            </pre>"
+        Seattle:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_web_ts_sea\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule published for the Seattle campus\"\r\n            }\r\n            </pre>"
+        Tacoma:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_web_ts_tac\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule published for the Tacoma campus\"\r\n            }\r\n            </pre>"
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Time Schedule Published Model\"\r\n}"
+    TermViewModel:
+      type: object
+      properties:
+        AcademicCatalog:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.catdt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Academic Catalog\"\r\n            }\r\n            </pre>"
+          nullable: true
+        ATermLastDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.ldya\" }\r\n                ],\r\n                \"TechnicalDescription\": \"A term last day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        BTermFirstDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.fdyb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"B term first day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CensusDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.cnsdy\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Census day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FifthDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.fidy\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Fifth day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FinancialAidYear:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.fayr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Financial Aid Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        GradeSubmissionDeadline:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.grdln\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grade submission deadline\"\r\n            }\r\n            </pre>"
+          nullable: true
+        GradingPeriodClose:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.grc\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grading period close\"\r\n            }\r\n            </pre>"
+          nullable: true
+        GradingPeriodOpen:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.gro\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grading period open\"\r\n            }\r\n            </pre>"
+          nullable: true
+        GradingPeriodOpenATerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.groa\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Grading period open A-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FirstDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.fdy\" }\r\n                ],\r\n                \"TechnicalDescription\": \"First day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FirstDayMedSchool:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.fdym\" }\r\n                ],\r\n                \"TechnicalDescription\": \"First day med school\"\r\n            }\r\n            </pre>"
+          nullable: true
+        TimeScheduleConstruction:
+          $ref: '#/components/schemas/TimeScheduleConstructionViewModel'
+        TimeSchedulePublished:
+          $ref: '#/components/schemas/TimeSchedulePublishedViewModel'
+        LastAddDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lady\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last add day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastAddDayATerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.ladya\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last add day A-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastAddDayBTerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.ladyb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last add day B-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDayOfClasses:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.ldy\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last day of classes\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDropDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lddy\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last drop day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDropDayATerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lddya\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last drop day A-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDropDayBTerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lddyb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last drop day B-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDropDayNotRecorded:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lddyn\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last drop day not recorded\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDropDayNotRecordedATerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lddyna\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last drop day not recorded A-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastDropDayNotRecordedBTerm:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.lddynb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last drop day not recorded B-term\"\r\n            }\r\n            </pre>"
+          nullable: true
+        LastFinalExamDay:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.ldyex\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Last final exam day\"\r\n            }\r\n            </pre>"
+          nullable: true
+        NextTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        PreviousTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter consists of winter, spring, summer, and autumn.\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RepositoryTimeStamp:
+          type: string
+          nullable: true
+        Metadata:
+          type: string
+          nullable: true
+        RegistrationPeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegistrationPeriodViewModel'
+          nullable: true
+        RegistrationServicesStart:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.rsdt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Registration services start\"\r\n            }\r\n            </pre>"
+          nullable: true
+        StudentAccountStart:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.sast\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student accounts start\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          format: int32
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Term Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}]\r\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Year for the given term\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter for the given term\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Term Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\r\n    \"TargetOperationId\" : [\"GetTerm\"]\r\n}"
+    TimeScheduleConstructionViewModel:
+      type: object
+      properties:
+        Bothell:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_b\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule construction on for the Bothell campus\"\r\n            }\r\n            </pre>"
+        Seattle:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_s\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule construction on for the Seattle campus\"\r\n            }\r\n            </pre>"
+        Tacoma:
+          type: boolean
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_t\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule construction on for the Tacoma campus\"\r\n            }\r\n            </pre>"
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Time Schedule Construction Model\"\r\n}"
+    RegistrationPeriodViewModel:
+      type: object
+      properties:
+        StartDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.sdt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Registration period start\"\r\n            }\r\n            </pre>"
+          nullable: true
+        EndDate:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI701.term.edt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Registration period end\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Registration Period Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}]\r\n}"

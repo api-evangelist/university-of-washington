@@ -1,0 +1,223 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Version API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Version
+paths:
+  /:
+    get:
+      tags:
+      - Version
+      summary: Get available versions
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Service Version\",\r\n                    \"sws_guid\" : \"3BFD2A3E-5BAE-47D3-9BE2-4A603320F632\",\r\n                    \"LongDescription\" : \"Get available versions\",\r\n                    \"ShortDescription\" : \"Get available versions\",\r\n                    \"OriginatingSchema\" : [{ \"source\": \"hardcoded\" }],\r\n                    \"Notes\" : \"The version list resource lists the contract versions that are currently available for the service.\r\n                                Each contract version in the list links to a resource list which provides a list of search resources.\r\n                                Also provided in this resource are the code versions that supports the given contract versions.\r\n                                The code version is divided into 2 types:\r\n                                    Domain Core Version\r\n                                    Service Version\r\n                                This is primarily useful for change management.\",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetVersions
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/VersionListViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/VersionListViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/VersionListViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VersionListViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionListViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VersionListViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    VersionListViewModel:
+      type: object
+      properties:
+        metadata:
+          type: string
+          nullable: true
+        pageCount:
+          type: string
+          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
+          nullable: true
+        previousPageStart:
+          type: string
+          description: The counter value for the start of the previous search results page.
+          nullable: true
+          readOnly: true
+        pageSize:
+          type: string
+          description: Requested number of records for the current search results page.
+          nullable: true
+        pageStart:
+          type: string
+          description: The counter value for the start of the current search results page.
+          nullable: true
+        nextPageStart:
+          type: string
+          description: The counter value for the start of the next search results page.
+          nullable: true
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        listModel:
+          $ref: '#/components/schemas/IVersionList'
+        listViewModel:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionViewModel'
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        current:
+          $ref: '#/components/schemas/VersionViewModel'
+        supportedVersions:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionViewModel'
+          nullable: true
+          readOnly: true
+        serviceVersion:
+          type: string
+          nullable: true
+        domainCoreVersion:
+          type: string
+          nullable: true
+        environment:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Version List Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\r\n    \"TargetOperationId\" : [\"VersionList\"],\r\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\r\n}"
+    IVersionList:
+      type: object
+      properties:
+        dfdsSendRequestTiming:
+          type: number
+          format: double
+        dfdsOpenRequestTiming:
+          type: number
+          format: double
+        expires:
+          type: string
+          format: date-time
+          readOnly: true
+        serviceCodeVersion:
+          type: string
+          nullable: true
+        domainCoreVersion:
+          type: string
+          nullable: true
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionModel'
+          nullable: true
+      additionalProperties: false
+    VersionViewModel:
+      type: object
+      properties:
+        metadata:
+          type: string
+          nullable: true
+        pageCount:
+          type: string
+          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
+          nullable: true
+        previousPageStart:
+          type: string
+          description: The counter value for the start of the previous search results page.
+          nullable: true
+          readOnly: true
+        pageSize:
+          type: string
+          description: Requested number of records for the current search results page.
+          nullable: true
+        pageStart:
+          type: string
+          description: The counter value for the start of the current search results page.
+          nullable: true
+        nextPageStart:
+          type: string
+          description: The counter value for the start of the next search results page.
+          nullable: true
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        versionNumber:
+          type: string
+          nullable: true
+          readOnly: true
+        href:
+          type: string
+          format: uri
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Version Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"EWSE.Version\"}],\r\n    \"TargetOperationId\" : [\"Version\"],\r\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\r\n}"
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32
+    VersionModel:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        metadata:
+          type: string
+          nullable: true
+        versionNumber:
+          type: string
+          nullable: true
+        isCurrent:
+          type: boolean
+      additionalProperties: false

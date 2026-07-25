@@ -1,0 +1,265 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus MajorStudents API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: MajorStudents
+paths:
+  /v5/majorstudents:
+    get:
+      tags:
+      - MajorStudents
+      summary: Search for students that are enrolled in a specific program of study
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Major Students Search\",\r\n                    \"ews_guid\" : \"F19F924A-533A-4049-A340-59C88A502F45\",\r\n                    \"LongDescription\" : \"Returns a list of students that are enrolled in a specific program of study\",\r\n                    \"ShortDescription\" : \"list of students that are enrolled in a program of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               See the DegreeAuditProgram resource for programs of study. See the campus resource for campus codes.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.major\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetMajorStudents
+      parameters:
+      - name: year
+        in: query
+        description: 'The 4 digit year.  For example: 2025'
+        schema:
+          type: string
+          default: ''
+      - name: quarter
+        in: query
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        schema:
+          type: string
+          default: ''
+      - name: campus
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: degree_level
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: degree_type
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: major_abbreviation
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: pathway
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: page_start
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter | Invalid arg: campus | Invalid arg: degree_level | Invalid arg: degree_type | Invalid arg: major_abbreviation | Invalid arg: pathway | Invalid arg: pageSize | Invalid arg: pageStart | Invalid arg: page_start must be >= 0 | Invalid arg: page_size maximum 500'
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/MajorStudentsViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MajorStudentsViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MajorStudentsViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MajorStudentsViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MajorStudentsViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MajorStudentsViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    MajorStudentsPersonResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Name:
+          type: string
+          nullable: true
+        RegID:
+          type: string
+          nullable: true
+        Pronouns:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Major Students Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
+    MajorStudentsViewModel:
+      type: object
+      properties:
+        Major:
+          $ref: '#/components/schemas/MajorViewModel'
+        Students:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorStudentsPersonResourceUri'
+          nullable: true
+        PageStart:
+          type: string
+          nullable: true
+        PageSize:
+          type: string
+          nullable: true
+        TotalCount:
+          type: integer
+          format: int32
+        Current:
+          $ref: '#/components/schemas/MajorStudentsResourceUri'
+        Previous:
+          $ref: '#/components/schemas/MajorStudentsResourceUri'
+        Next:
+          $ref: '#/components/schemas/MajorStudentsResourceUri'
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Major Students Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\r\n}"
+    MajorViewModel:
+      type: object
+      properties:
+        Abbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree level\"\r\n            }\r\n            </pre>"
+          format: int32
+        DegreeName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree type\"\r\n            }\r\n            </pre>"
+          format: int32
+        FullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\r\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major pathway\"\r\n            }\r\n            </pre>"
+          format: int32
+        ShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentCode:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_code\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Code\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Full Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Expanded Major Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\r\n}"
+    MajorStudentsResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        PageStart:
+          type: string
+          nullable: true
+        PageSize:
+          type: string
+          nullable: true
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.regis_yr\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration.regis_qtr\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree level\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" }\r\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\r\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Major Students Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\r\n    \"TargetOperationId\" : [\"GetMajorStudents\"]\r\n}"

@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus DegreeAuditProgram API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: DegreeAuditProgram
+paths:
+  /v5/degreeauditprogram:
+    get:
+      tags:
+      - DegreeAuditProgram
+      summary: Search for degree audit programs that match the supplied parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Program Search\",\r\n                    \"ews_guid\" : \"4CD2A808-F00C-4878-B330-442015FB6B6A\",\r\n                    \"LongDescription\" : \"Search for a list of programs that can be used for a degree audit which can be filtered by \r\n                                          campus, major and degree group\",\r\n                    \"ShortDescription\" : \"Search for a list of educational programs\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               For campus codes see the campus resource.\r\n                               The service formats and sends a query string to the Student database. You may search by \r\n                               any combination of the campus, major_abbreviation and degree_group parameters.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: DegreeAuditProgramSearch
+      parameters:
+      - name: campus
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: major_abbreviation
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: degree_group
+        in: query
+        description: GRADUATE, MINOR, UNDERGRADUATE or blank. When nothing is specified for degree_group then all results are returned.
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: campus | Invalid arg: majorAbbreviation | Invalid arg: Degree Group'
+        '404':
+          description: No degree audit programs found.
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditProgramSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditProgramSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditProgramSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditProgramSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditProgramSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditProgramSearchViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    DegreeAuditProgramSearchResultViewModel:
+      type: object
+      properties:
+        DegreeAuditProgramTitle:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dpg.ttl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Audit Program Title\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dpg.brcd\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dpg.dlvl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Level\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dpg.dtyp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dpg.mabb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major Abbreivation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dpg.pth\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        regid_placeholder:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Program Search Result Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\r\n}"
+    DegreeAuditProgramSearchResourceURI:
+      type: object
+      properties:
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeGroup:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Program Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}],\r\n    \"TargetOperationId\" : [\"DegreeAuditProgramSearch\"]\r\n}"
+    DegreeAuditProgramSearchViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        DegreeAuditPrograms:
+          type: array
+          items:
+            $ref: '#/components/schemas/DegreeAuditProgramSearchResultViewModel'
+          nullable: true
+          readOnly: true
+        Current:
+          $ref: '#/components/schemas/DegreeAuditProgramSearchResourceURI'
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Program Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\r\n}"

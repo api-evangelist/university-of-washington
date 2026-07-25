@@ -1,0 +1,154 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus DegreeAuditStatus API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: DegreeAuditStatus
+paths:
+  /v5/degreeauditstatus/{campus},{majorabbreviation},{pathway},{degreelevel},{degreetype},{regid},{jobid}:
+    get:
+      tags:
+      - DegreeAuditStatus
+      summary: Get the specified status of a degree audit request
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Status\",\r\n                    \"ews_guid\" : \"7503B636-AA7A-4145-B326-A90CA48965AE\",\r\n                    \"LongDescription\" : \"Returns the specified status of a degree audit request\",\r\n                    \"ShortDescription\" : \"The status of a degree audit request\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               This resource is associated with a previous degree audit create request.  See the degree audit resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetDegreeAuditStatus
+      parameters:
+      - name: campus
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: majorAbbreviation
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: pathway
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: degreeLevel
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: degreeType
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: regid
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      - name: jobid
+        in: path
+        description: Every request to create a degree audit generates a jobid.  It is required to identify the status.
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: campus | Invalid arg: majorAbbreviation | Invalid arg: pathway | Invalid arg: degreeLevel | Invalid arg: degreeType | Invalid arg: regid | Invalid arg: jobid'
+        '404':
+          description: CTC Student audit status cannot be retrieved via the SWS DegreeAuditStatus resource. | Term not found
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditStatusViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditStatusViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditStatusViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditStatusViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditStatusViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeAuditStatusViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    DegreeAuditResourceUri:
+      type: object
+      properties:
+        Campus:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/brcd\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeLevel:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/dlvl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Level\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/dtyp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/mabb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/pth\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/sysk\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}],\r\n    \"TargetOperationId\" : [\"DegreeAuditSearch\"]\r\n}"
+    DegreeAuditStatusViewModel:
+      type: object
+      properties:
+        Title:
+          type: string
+          nullable: true
+        Status:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DegreeAuditURI:
+          $ref: '#/components/schemas/DegreeAuditResourceUri'
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Status Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}]\r\n}"

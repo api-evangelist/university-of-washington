@@ -1,0 +1,143 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Notice API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Notice
+paths:
+  /v5/notice/{uwregid}:
+    get:
+      tags:
+      - Notice
+      summary: Get the notices for the specified student
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Notice\",\r\n                    \"ews_guid\" : \"DBDF33C9-EB9E-4C67-8E71-61477BE427A9\",\r\n                    \"LongDescription\" : \"Display the notices that should be relevant to the specified student at the time of request.\r\n                                          (e.g. alert notice, general notice, dates and deadlines notice, checklist item notice)\",\r\n                    \"ShortDescription\" : \"Notices for a student\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:NoticeReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetNotice
+      parameters:
+      - name: uwregid
+        in: path
+        description: RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: regid ID'
+        '404':
+          description: No notice found.
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/MainNoticeViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MainNoticeViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/MainNoticeViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MainNoticeViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MainNoticeViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MainNoticeViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    MainNoticeViewModel:
+      type: object
+      properties:
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        Notices:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoticeViewModel'
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Person Notices Model\"\r\n}"
+    NoticeViewModel:
+      type: object
+      properties:
+        NoticeAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoticeAttributeViewModel'
+          nullable: true
+        NoticeCategory:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.msg.cat\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice Category\"\r\n            }\r\n            </pre>"
+          nullable: true
+        NoticeContent:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.msg.txt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice Content\"\r\n            }\r\n            </pre>"
+          nullable: true
+        NoticeType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.msg.typ\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice Type\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Notice Model\"\r\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        RegID:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pronouns:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
+    NoticeAttributeViewModel:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.attr.nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice attribute name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DataType:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.attr.typ\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Data Type\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Value:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.attr.val\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Value\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Notice Attribute Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}]\r\n}"

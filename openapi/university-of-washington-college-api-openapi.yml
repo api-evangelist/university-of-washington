@@ -1,0 +1,170 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus College API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: College
+paths:
+  /v5/college:
+    get:
+      tags:
+      - College
+      summary: Search for colleges that match the supplied parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"College Search\",\r\n                    \"ews_guid\" : \"76D0EC71-692F-42A9-959C-3C4EA5D8A1F4\",\r\n                    \"LongDescription\" : \"Display a filtered list of colleges.  \r\n                                          Can filter by year, quarter, how many future terms to look ahead, and campus short name.\",\r\n                    \"ShortDescription\" : \"Display a filtered list of colleges\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               For campus short name refer to the campus resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.college\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: CollegeSearch
+      parameters:
+      - name: year
+        in: query
+        description: 'The 4 digit year.  For example: 2025'
+        schema:
+          type: string
+          default: ''
+      - name: quarter
+        in: query
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        schema:
+          type: string
+          default: ''
+      - name: future_terms
+        in: query
+        description: Number of future terms to look ahead
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: campus_short_name
+        in: query
+        description: Choose Seattle, Bothell, or Tacoma
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: Invalid input
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/CollegeSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CollegeSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CollegeSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CollegeSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollegeSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CollegeSearchViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '500':
+          description: InternalServerError
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    CollegeSearchResultViewModel:
+      type: object
+      properties:
+        CampusShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [        \r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeFullNameTitleCased:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College full name title cased\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        CollegeShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_coll_code.college_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\r\n            }\r\n            </pre>"
+          format: int32
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"College Search Result\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\r\n}"
+    CollegeSearchResourceUri:
+      type: object
+      properties:
+        CampusShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FutureTerms:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Number of future terms to look ahead\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Year:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"College Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}],\r\n    \"TargetOperationId\" : [\"CollegeSearch\"]\r\n}"
+    CollegeSearchViewModel:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/CollegeSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/CollegeSearchResourceUri'
+        Previous:
+          $ref: '#/components/schemas/CollegeSearchResourceUri'
+        TotalCount:
+          type: integer
+          format: int32
+        Colleges:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollegeSearchResultViewModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"College Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\r\n}"

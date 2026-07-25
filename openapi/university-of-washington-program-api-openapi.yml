@@ -1,0 +1,315 @@
+openapi: 3.0.1
+info:
+  title: IdCard Web Service (IdCardWS) Campus Program API
+  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  contact:
+    name: Enterprise Web Services & Events Team
+    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
+    email: idcardws-support@uw.edu
+  version: v1
+servers:
+- url: /idcard
+tags:
+- name: Program
+paths:
+  /v5/program/{major_abbr},{pathway},{year},{quarter}:
+    get:
+      tags:
+      - Program
+      summary: Search for a program of study that matches the parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Program\",\r\n                    \"ews_guid\" : \"0B74F119-61ED-44EF-9B5D-61DDF180B9F6\",\r\n                    \"LongDescription\" : \"Find the information about a program of study that matches the parameters\",\r\n                    \"ShortDescription\" : \"Information about a program of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               Program is previously considered major and pathway.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degreemajor\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: GetProgram
+      parameters:
+      - name: major_abbr
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: pathway
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          maxLength: 4
+          minLength: 4
+          type: string
+      - name: quarter
+        in: path
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        required: true
+        schema:
+          maxLength: 6
+          minLength: 6
+          type: string
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter'
+        '500':
+          description: System.FormatException | Program is null or empty. | InternalServerError
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/ProgramViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProgramViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProgramViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProgramViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgramViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProgramViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '503':
+          description: ServiceUnavailable
+  /v5/program:
+    get:
+      tags:
+      - Program
+      summary: Search for programs of study that match the supplied parameters
+      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Program Search\",\r\n                    \"ews_guid\" : \"8135DEB6-FC3B-4672-B36A-62FB43EE4279\",\r\n                    \"LongDescription\" : \"Search for a set of programs of study that match the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a list of programs of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               Program is previously considered major and pathway.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degreemajor\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      operationId: ProgramSearch
+      parameters:
+      - name: year
+        in: query
+        description: 'The 4 digit year.  For example: 2025'
+        required: true
+        schema:
+          type: string
+          default: ''
+      - name: quarter
+        in: query
+        description: 'The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn'
+        required: true
+        schema:
+          type: string
+          default: ''
+      - name: major_abbr
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: pathway
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      - name: page_start
+        in: query
+        description: ''
+        schema:
+          type: string
+          default: ''
+      responses:
+        '400':
+          description: 'Invalid arg: year | Invalid arg: quarter'
+        '500':
+          description: System.FormatException | InternalServerError
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/ProgramSearchViewModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProgramSearchViewModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProgramSearchViewModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProgramSearchViewModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgramSearchViewModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProgramSearchViewModel'
+        '202':
+          description: Accepted
+        '301':
+          description: MovedPermanently
+        '302':
+          description: Found
+        '304':
+          description: NotModified
+        '401':
+          description: Identity '{identity}' is not authorized to access this resource.
+        '405':
+          description: MethodNotAllowed
+        '503':
+          description: ServiceUnavailable
+components:
+  schemas:
+    ProgramResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Program Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Program\"}],\r\n    \"TargetOperationId\" : [\"GetProgram\"]\r\n}"
+    ProgramSearchResourceUri:
+      type: object
+      properties:
+        Year:
+          type: integer
+          format: int32
+        Quarter:
+          type: string
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"SWSSDB.sr_major_code.major_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        PageStart:
+          type: string
+          nullable: true
+        PageSize:
+          type: string
+          nullable: true
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Program Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Program\"}],\r\n    \"TargetOperationId\" : [\"ProgramSearch\"]\r\n}"
+    DepartmentViewModel:
+      type: object
+      properties:
+        CollegeAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_college\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentAbbreviation:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Abbreviation\"\r\n            }\r\n            </pre>"
+          nullable: true
+        DepartmentFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department Full Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Department Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}]\r\n}"
+    ProgramSearchViewModel:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/ProgramSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/ProgramSearchResourceUri'
+        Previous:
+          $ref: '#/components/schemas/ProgramSearchResourceUri'
+        TotalCount:
+          type: integer
+          format: int32
+        Programs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramViewModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Program Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Program\"}]\r\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type: string
+          nullable: true
+        Year:
+          type: integer
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Year for the given term\"\r\n            }\r\n            </pre>"
+          format: int32
+        Quarter:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter for the given term\"\r\n            }\r\n            </pre>"
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Term Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\r\n    \"TargetOperationId\" : [\"GetTerm\"]\r\n}"
+    ProgramViewModel:
+      type: object
+      properties:
+        ProgramUri:
+          $ref: '#/components/schemas/ProgramResourceUri'
+        Department:
+          $ref: '#/components/schemas/DepartmentViewModel'
+        MajorFullName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Full name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        MajorShortName:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Short name\"\r\n            }\r\n            </pre>"
+          nullable: true
+        Pathway:
+          type: string
+          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_pathway\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
+          nullable: true
+        FirstEffectiveTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        LastEffectiveTerm:
+          $ref: '#/components/schemas/TermResourceUri'
+        Href:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: "{\r\n    \"DisplayTitle\" : \"Program Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Program\"}]\r\n}"
