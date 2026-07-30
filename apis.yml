@@ -14,9 +14,21 @@ description: >-
   publishes open scholarly metadata through its ResearchWorks DSpace repository
   (REST API and OAI-PMH) and maintains active public GitHub organizations.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-washington.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-washington/refs/heads/main/apis.yml
 tags:
   - Education
@@ -33,87 +45,429 @@ modified: '2026-06-03'
 # 2026-06-03: added local OpenAPI 3.0 specs (SWS v5, IdCardWS v1) and derived artifacts.
 specificationVersion: '0.19'
 apis:
-  - aid: university-of-washington:student-web-service
-    name: Student Web Service (SWS)
-    description: >-
-      The Student Web Service gives applications access to information in the
-      UW Student database such as course data, registration data, section
-      data, person data, and term data. It exposes a set of public and private
-      APIs; production access requires approval and authentication, while the
-      Swagger/OpenAPI documentation is public. Owned by the Office of the
-      Registrar.
-    humanURL: https://webservices.washington.edu/sws/
-    baseURL: https://ws.admin.washington.edu/student
-    tags: [ Students, Courses, Registration, Enterprise Web Services ]
-    properties:
-      - type: Documentation
-        url: https://webservices.washington.edu/sws/
-      - type: OpenAPI
-        url: https://ws.admin.washington.edu/student/swagger/index.html
-      - type: OpenAPI
-        url: openapi/university-of-washington-student-web-service.yaml
-  - aid: university-of-washington:idcard-web-service
-    name: IdCard Web Service
-    description: >-
-      The IdCard Web Service gives applications access to information
-      associated with the Husky ID Card, such as cardholder photos.
-      Production access is gated and authenticated; the Swagger/OpenAPI
-      documentation is publicly viewable.
-    humanURL: https://webservices.washington.edu/idcardws/index.html
-    baseURL: https://ws.admin.washington.edu/idcard
-    tags: [ Identity, ID Card, Photos, Enterprise Web Services ]
-    properties:
-      - type: Documentation
-        url: https://webservices.washington.edu/idcardws/index.html
-      - type: OpenAPI
-        url: https://ws.admin.washington.edu/idcard/swagger/index.html
-      - type: OpenAPI
-        url: openapi/university-of-washington-idcard-web-service.yaml
-  - aid: university-of-washington:identity-registry-web-service
-    name: Identity Registration Web Service (IRWS)
-    description: >-
-      The Identity Registration Web Service is the UW-IT Identity Registry
-      REST API (V1 and V2) providing access to identity and person registry
-      data. Access is authenticated and approval-gated; the API specification
-      is publicly documented.
-    humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
-    tags: [ Identity, IAM, Person, Enterprise Web Services ]
-    properties:
-      - type: Documentation
-        url: https://iam-tools.u.washington.edu/apis/irwsv2/
-      - type: Documentation
-        url: https://iam-tools.u.washington.edu/apis/irwsv1/
-  - aid: university-of-washington:enterprise-web-services
-    name: UW-IT Enterprise Web Services Registry
-    description: >-
-      Enterprise Web Services (EWS) is UW-IT's secure collection of REST/SOAP
-      web services that let enterprise business applications access commonly
-      shared source data in a scalable, real-time, highly available
-      architecture. The public registry catalogs services including Student,
-      Person, Groups, HRP, IdCard, Financial, and Space web services, each
-      with its own documentation and Swagger specification.
-    humanURL: https://webservices.washington.edu/
-    tags: [ Enterprise Web Services, Registry, Integration, Data ]
-    properties:
-      - type: Documentation
-        url: https://webservices.washington.edu/
-      - type: Documentation
-        url: https://it.uw.edu/summary/enterprise-web-services/
-  - aid: university-of-washington:researchworks-dspace
-    name: ResearchWorks Repository (DSpace REST + OAI-PMH)
-    description: >-
-      ResearchWorks is UW's institutional digital repository for disseminating
-      text-based scholarly work produced by the UW community, running on
-      DSpace. It exposes a public DSpace REST API and an OAI-PMH endpoint for
-      open metadata harvesting of repository content.
-    humanURL: https://digital.lib.washington.edu/researchworks/
-    baseURL: https://digital.lib.washington.edu/server/api
-    tags: [ Library, Institutional Repository, DSpace, OAI-PMH, Open Access ]
-    properties:
-      - type: Documentation
-        url: https://digital.lib.washington.edu/researchworks/
-      - type: OAI-PMH
-        url: https://digital.lib.washington.edu/server/oai/request?verb=Identify
+- aid: university-of-washington:identity-registry-web-service
+  name: Identity Registration Web Service (IRWS)
+  description: >-
+    The Identity Registration Web Service is the UW-IT Identity Registry REST API (V1 and V2) providing
+    access to identity and person registry data. Access is authenticated and approval-gated; the API specification
+    is publicly documented.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  tags:
+  - Identity
+  - IAM
+  - Person
+  - Enterprise Web Services
+  properties:
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+- aid: university-of-washington:enterprise-web-services
+  name: UW-IT Enterprise Web Services Registry
+  description: >-
+    Enterprise Web Services (EWS) is UW-IT's secure collection of REST/SOAP web services that let enterprise
+    business applications access commonly shared source data in a scalable, real-time, highly available
+    architecture. The public registry catalogs services including Student, Person, Groups, HRP, IdCard,
+    Financial, and Space web services, each with its own documentation and Swagger specification.
+  humanURL: https://webservices.washington.edu/
+  tags:
+  - Enterprise Web Services
+  - Registry
+  - Integration
+  - Data
+  properties:
+  - type: Documentation
+    url: https://webservices.washington.edu/
+  - type: Documentation
+    url: https://it.uw.edu/summary/enterprise-web-services/
+- aid: university-of-washington:researchworks-dspace
+  name: ResearchWorks Repository (DSpace REST + OAI-PMH)
+  description: >-
+    ResearchWorks is UW's institutional digital repository for disseminating text-based scholarly work
+    produced by the UW community, running on DSpace. It exposes a public DSpace REST API and an OAI-PMH
+    endpoint for open metadata harvesting of repository content.
+  humanURL: https://digital.lib.washington.edu/researchworks/
+  baseURL: https://digital.lib.washington.edu/server/api
+  tags:
+  - Library
+  - Institutional Repository
+  - DSpace
+  - OAI-PMH
+  - Open Access
+  properties:
+  - type: Documentation
+    url: https://digital.lib.washington.edu/researchworks/
+  - type: OAI-PMH
+    url: https://digital.lib.washington.edu/server/oai/request?verb=Identify
+- aid: university-of-washington:university-of-washington-campus-api
+  name: University of Washington Campus API
+  description: The Campus API from University of Washington — 1 operation(s) for campus.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Campus
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-campus-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-card-api
+  name: University of Washington Card API
+  description: The Card API from University of Washington — 1 operation(s) for card.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Card
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-card-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-college-api
+  name: University of Washington College API
+  description: The College API from University of Washington — 1 operation(s) for college.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - College
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-college-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-course-api
+  name: University of Washington Course API
+  description: The Course API from University of Washington — 2 operation(s) for course.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Course
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-course-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-curriculum-api
+  name: University of Washington Curriculum API
+  description: The Curriculum API from University of Washington — 1 operation(s) for curriculum.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Curriculum
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-curriculum-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-degree-api
+  name: University of Washington Degree API
+  description: The Degree API from University of Washington — 2 operation(s) for degree.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Degree
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-degree-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-degreeaudit-api
+  name: University of Washington DegreeAudit API
+  description: The DegreeAudit API from University of Washington — 2 operation(s) for degreeaudit.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - DegreeAudit
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-degreeaudit-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-degreeauditexception-api
+  name: University of Washington DegreeAuditException API
+  description: >-
+    The DegreeAuditException API from University of Washington — 3 operation(s) for degreeauditexception.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - DegreeAuditException
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-degreeauditexception-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-degreeauditprogram-api
+  name: University of Washington DegreeAuditProgram API
+  description: >-
+    The DegreeAuditProgram API from University of Washington — 1 operation(s) for degreeauditprogram.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - DegreeAuditProgram
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-degreeauditprogram-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-degreeauditstatus-api
+  name: University of Washington DegreeAuditStatus API
+  description: >-
+    The DegreeAuditStatus API from University of Washington — 1 operation(s) for degreeauditstatus.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - DegreeAuditStatus
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-degreeauditstatus-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-department-api
+  name: University of Washington Department API
+  description: The Department API from University of Washington — 1 operation(s) for department.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Department
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-department-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-enrollment-api
+  name: University of Washington Enrollment API
+  description: The Enrollment API from University of Washington — 2 operation(s) for enrollment.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Enrollment
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-enrollment-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-enrollmentmajor-api
+  name: University of Washington EnrollmentMajor API
+  description: >-
+    The EnrollmentMajor API from University of Washington — 1 operation(s) for enrollmentmajor.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - EnrollmentMajor
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-enrollmentmajor-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-majorstudents-api
+  name: University of Washington MajorStudents API
+  description: The MajorStudents API from University of Washington — 1 operation(s) for majorstudents.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - MajorStudents
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-majorstudents-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-notice-api
+  name: University of Washington Notice API
+  description: The Notice API from University of Washington — 1 operation(s) for notice.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Notice
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-notice-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-person-api
+  name: University of Washington Person API
+  description: The Person API from University of Washington — 5 operation(s) for person.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Person
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-person-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-personalfinancial-api
+  name: University of Washington PersonalFinancial API
+  description: >-
+    The PersonalFinancial API from University of Washington — 1 operation(s) for personalfinancial.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - PersonalFinancial
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-personalfinancial-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-photo-api
+  name: University of Washington Photo API
+  description: The Photo API from University of Washington — 3 operation(s) for photo.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Photo
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-photo-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-program-api
+  name: University of Washington Program API
+  description: The Program API from University of Washington — 2 operation(s) for program.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Program
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-program-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-registration-api
+  name: University of Washington Registration API
+  description: The Registration API from University of Washington — 3 operation(s) for registration.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Registration
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-registration-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-resourcelist-api
+  name: University of Washington ResourceList API
+  description: The ResourceList API from University of Washington — 2 operation(s) for resourcelist.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - ResourceList
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-resourcelist-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-schedule-api
+  name: University of Washington Schedule API
+  description: The Schedule API from University of Washington — 2 operation(s) for schedule.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Schedule
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-schedule-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-section-api
+  name: University of Washington Section API
+  description: The Section API from University of Washington — 5 operation(s) for section.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Section
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-section-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-term-api
+  name: University of Washington Term API
+  description: The Term API from University of Washington — 4 operation(s) for term.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Term
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-term-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-testscore-api
+  name: University of Washington TestScore API
+  description: The TestScore API from University of Washington — 2 operation(s) for testscore.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - TestScore
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-testscore-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
+- aid: university-of-washington:university-of-washington-version-api
+  name: University of Washington Version API
+  description: The Version API from University of Washington — 1 operation(s) for version.
+  humanURL: https://webservices.washington.edu/sws/
+  baseURL: https://ws.admin.washington.edu/student
+  tags:
+  - Version
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-version-api-openapi.yml
+  - type: Documentation
+    url: https://webservices.washington.edu/sws/
+  - type: Documentation
+    url: https://webservices.washington.edu/idcardws/index.html
 common:
   - type: AgenticAccess
     url: agentic-access/university-of-washington-agentic-access.yml
