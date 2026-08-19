@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus PersonalFinancial API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PersonalFinancial",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the financial notices for the specified student",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/person/:reg_id/financial",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Personal Financial\",\r\n                    \"ews_guid\" : \"1AEDCF78-AEBD-4ECF-BD40-2149F2300DB6\",\r\n                    \"LongDescription\" : \"Display the financial notices that are relevant to the specified student\",\r\n                    \"ShortDescription\" : \"Display a student's financial notices\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \""
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

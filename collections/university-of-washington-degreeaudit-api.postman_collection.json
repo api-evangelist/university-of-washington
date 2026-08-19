@@ -1,0 +1,1444 @@
+{
+  "item": [
+    {
+      "id": "6a734641-1b9c-4416-9c4d-10722aa253e9",
+      "name": "DegreeAudit",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a4e0ddc-66ec-4fdc-82b1-20d8d786503a",
+          "name": "Create a Degree Audit",
+          "request": {
+            "name": "Create a Degree Audit",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Create\",\r\n                    \"ews_guid\" : \"BE01A04F-C2C3-4589-A499-E6367FE626CB\",\r\n                    \"LongDescription\" : \"Create a degree audit that shows a student's progress and plan \r\n                                          towards obtaining a degree\",\r\n                    \"ShortDescription\" : \"Create a degree audit\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\", \r\n                                \"https://wiki.cac.washington.edu/display/SWS/How+to+use+Degree+Audit+Resources\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "degreeaudit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac25b841-7bf1-4b7f-a4d2-be101d210dce",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de93d6bc-d64e-4c6d-8cc3-8f14a19b96d9",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d30b0239-7024-482f-b591-bb33f1653a6c",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72652cbc-b873-4981-ba11-4d827a74894a",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77db37d0-2df4-4f86-b386-08a10b5bede5",
+              "name": "http body must not be null | http body length must be greater than zero | unable to parse request to create degree audit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f870eb91-29cd-4ea6-aab7-64d1c5e24f19",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ebaebd8-fc5e-472a-816d-df86eab16a64",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc41b39b-38c9-42a8-ac28-5b94a1a0358e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25bd849d-c2ad-49f0-b40e-611e3a0b1e57",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31b645ad-840c-4dc1-b4df-708996610ab6",
+          "name": "Search for Degree Audit for a specific person",
+          "request": {
+            "name": "Search for Degree Audit for a specific person",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Search\",\r\n                    \"ews_guid\" : \"7B4C6A0F-DA28-4E2E-96BF-F0C619C32462\",\r\n                    \"LongDescription\" : \"Search for degree audits for a specific person that shows a student's progress and plan \r\n                                          towards obtaining degrees\",\r\n                    \"ShortDescription\" : \"Search for degree audits for a specific person\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\", \r\n                                \"https://wiki.cac.washington.edu/display/SWS/How+to+use+Degree+Audit+Resources\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "degreeaudit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reg_id",
+                  "value": "",
+                  "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37f08e4a-ac16-44f6-9767-594e8aa85990",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 2167,\n  \"DegreeAudits\": [\n    {\n      \"DegreeAuditURI\": {\n        \"Campus\": \"string\",\n        \"DegreeLevel\": \"string\",\n        \"DegreeType\": \"string\",\n        \"Href\": \"string\",\n        \"MajorAbbreviation\": \"string\",\n        \"Pathway\": \"string\",\n        \"RegID\": \"string\"\n      },\n      \"StudentName\": \"string\",\n      \"StudentSystemKey\": \"string\",\n      \"DatePrepared\": \"string\"\n    },\n    {\n      \"DegreeAuditURI\": {\n        \"Campus\": \"string\",\n        \"DegreeLevel\": \"string\",\n        \"DegreeType\": \"string\",\n        \"Href\": \"string\",\n        \"MajorAbbreviation\": \"string\",\n        \"Pathway\": \"string\",\n        \"RegID\": \"string\"\n      },\n      \"StudentName\": \"string\",\n      \"StudentSystemKey\": \"string\",\n      \"DatePrepared\": \"string\"\n    }\n  ],\n  \"Current\": {\n    \"Href\": \"string\",\n    \"RegID\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e3cc506-a0eb-413f-9969-c36b37ae5fe1",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acbb8930-445a-4d1e-97b0-8840cc3831db",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7b8ee5d-68a0-4c03-bad8-f6aea7a9e3dc",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "463d78f8-277a-4496-9c08-65a71a367bc7",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cbd41e7-715c-4fde-86ab-fc8554e6fdf9",
+              "name": "Invalid arg: regid ID | invalid system key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29c9c06d-e998-4530-8b92-954bb5d5b71b",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8578b813-dff2-439b-9158-3d1b3eb44009",
+              "name": "No degree audits found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f7924f8-5abd-445d-8585-82cc5f06b83d",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dea2199d-be3f-48c4-8d57-321bca2c55f5",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44d8d7f8-cc29-403c-928c-5e730798745c",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35250ad5-e069-42a7-98d1-a9723205815d",
+          "name": "Get a specific Degree Audit",
+          "request": {
+            "name": "Get a specific Degree Audit",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit\",\r\n                    \"ews_guid\" : \"38D7E02F-66EA-42E8-990B-AAB6F53FA10C\",\r\n                    \"LongDescription\" : \"Retrieve a specific degree audit that shows a student's progress and plan \r\n                                          towards obtaining a degree\",\r\n                    \"ShortDescription\" : \"Retrieve a degree audit\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               For information on programs of study to populate the parameters see the degree audit program resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\", \r\n                                \"https://wiki.cac.washington.edu/display/SWS/How+to+use+Degree+Audit+Resources\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "degreeaudit",
+                "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "majorAbbreviation",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeLevel",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "degreeType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "918e0cf6-3ce1-4522-8a1b-00923f9a636f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Campus\": \"string\",\n  \"DatePrepared\": \"string\",\n  \"DegreeAuditReport\": [\n    {\n      \"Line\": \"string\",\n      \"Type\": \"string\"\n    },\n    {\n      \"Line\": \"string\",\n      \"Type\": \"string\"\n    }\n  ],\n  \"DegreeLevel\": \"string\",\n  \"DegreeType\": \"string\",\n  \"GraduationDate\": \"string\",\n  \"MajorAbbreviation\": \"string\",\n  \"Pathway\": \"string\",\n  \"Person\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"ProgramEntry\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\"\n  },\n  \"ProgramTitle\": \"string\",\n  \"RegID\": \"string\",\n  \"UWEntry\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "665ac2e4-84c5-4edd-b79e-400ff72b32ab",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dcd21126-ec4a-4158-8b46-c51c6c521d80",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ad9bb79-ec5e-4985-b061-50d76d5eb8ae",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39952745-e169-4671-91d9-933da8e960f0",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e848a1c7-2ca9-40f3-91bc-66944630b756",
+              "name": "Invalid arg: campus | Invalid arg: majorAbbreviation | Invalid arg: pathway | Invalid arg: degreeLevel | Invalid arg: degreeType | Invalid arg: regid ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9a0024a-0c6a-4e53-8609-314f5c0158a5",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bea6ee5-ce40-486c-af57-4d1361f60cba",
+              "name": "No degree audit found. | CTC Student audits are not available via SWS DegreeAudit resource. | A pending degree audit was found. Try again later. | Term not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39a537eb-58fd-4829-b9ab-ccdf37fa2635",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c3ca88d-afb7-4c8e-917f-e49bee4cea7d",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2afa06e-6dc5-4443-9bb0-a6ef9d7a2bfe",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeaudit",
+                    "{{campus}},{{majorabbreviation}},{{pathway}},{{degreelevel}},{{degreetype}},{{regid}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "majorAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeLevel",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "degreeType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "campus"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "pathway"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "regid"
+    }
+  ],
+  "info": {
+    "_postman_id": "0870a6e5-6718-4454-b906-3debb4a27b51",
+    "name": "IdCard Web Service (IdCardWS) Campus DegreeAudit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

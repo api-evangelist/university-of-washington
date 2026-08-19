@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Section API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Section",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a course section offered in the year/quarter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/course/:year,:quarter,:curriculum_abbreviation,:course_number/:section_id",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "section_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section\",\r\n                     \"ews_guid\" : \"17D4611C-D94A-478C-95CD-EAB4B7E37FAE\",\r\n                     \"LongDescription\" : \"A resource to retrieve a specific course section of a course offered in the year/quarter \r\n                                           for the specified curriculum\",\r\n                     \"ShortDescription\" : \"Get a specific course section\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb"
+        },
+        {
+          "info": {
+            "name": "Search for course sections that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/section",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "future_terms",
+                "value": "",
+                "type": "query",
+                "description": "Choose from 0 - 400"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "search_by",
+                "value": "",
+                "type": "query",
+                "description": "Choose instructor or gradesubmissiondelegate"
+              },
+              {
+                "name": "include_secondaries",
+                "value": "",
+                "type": "query",
+                "description": "Choose on or true or false."
+              },
+              {
+                "name": "delete_flag",
+                "value": "",
+                "type": "query",
+                "description": "Any combination of active, suspended or withdrawn separated by ,."
+              },
+              {
+                "name": "changed_since_date",
+                "value": "",
+                "type": "query",
+                "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+              },
+              {
+                "name": "transcriptable_course",
+                "value": "",
+                "type": "query",
+                "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "facility_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "room_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sln",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section Search\",\r\n                     \"ews_guid\" : \"A5877849-AE6E-409C-BDCE-EA4AAFADD0AC\",\r\n                     \"LongDescription\" : \"Search for course sections that match the supplied parameters\",\r\n                     \"ShortDescription\" : \"Get a list of course sections\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\"  }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \" This resou"
+        },
+        {
+          "info": {
+            "name": "Get course sections offered in the year/quarter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/section/:year,:quarter",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section Search by Term\",\r\n                     \"ews_guid\" : \"EC0A49F3-5969-4020-81CA-924BCA67E7AB\",\r\n                     \"LongDescription\" : \"A resource to retrieve a list of course sections offered in the year/quarter.\",\r\n                     \"ShortDescription\" : \"Search for all course sections by term\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                     \"Notes\" : \"This resource require"
+        },
+        {
+          "info": {
+            "name": "Get the status of a course section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/course/:year,:quarter,:curriculum_abbreviation,:course_number/:section_id/status",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "section_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Section Status\",\r\n                    \"ews_guid\" : \"0FE09C52-834E-4F65-A35D-23D7D890C727\",\r\n                    \"LongDescription\" : \"Get the status of a course section including how many spots are open and whether \r\n                                          students can register for the section.\",\r\n                    \"ShortDescription\" : \"Get the status of a course section\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\""
+        },
+        {
+          "info": {
+            "name": "Get the status of a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/course/:year,:quarter,:curriculum_abbreviation,:course_number/status",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Section Status List\",\r\n                    \"ews_guid\" : \"135BD797-FC81-42C3-954D-EF67D7869B41\",\r\n                    \"LongDescription\" : \"Get the information about a specific course's section statuses, searching by \r\n                                          the associated course\",\r\n                    \"ShortDescription\" : \"Get the status of a course's sections\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

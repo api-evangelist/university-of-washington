@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Registration API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the registration associating a student with a particular course section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/registration/:year,:quarter,:curriculum_abbreviation,:course_number,:section_id,:reg_id,:duplicate_code",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "section_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "duplicate_code",
+                "value": "",
+                "type": "path",
+                "description": "Optional parameter (made optional by question mark in template).  Duplicate Code allows registration of a student in a given section multiple times. \r\n            The duplicate code argument uniquely identifies a specific registration record among others within the same course section. For example, an initial registration may begin with 'Added to class' (duplicate code blank), but then at a later point may become 'Dropped from class' (duplicate code A), followed by a re-registration into the course section 'Added to class' (duplicate code B). \r\n            When a registration is transcript-ed(prior quarter) the duplicate codes will often change to a numeral(1,2,3...) and many of the original registrations will be removed and replaced with a single transcript record. \r\n            Duplicate codes are not serial but often appear to be. They are to be used only to identify uniqueness and should not be assumed to represent any business meaning."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Registration with Duplicate Code\",\r\n                    \"ews_guid\" : \"6E4840B1-C6C1-47F2-8366-07BAAFE5F358\",\r\n                    \"LongDescription\" : \"The Registration resource represents a given student's association to a specific course section, \r\n                                            and can refer to both current, past, and future associations.\",\r\n                    \"ShortDescription\" : \"Search for a registration record\",\r"
+        },
+        {
+          "info": {
+            "name": "Get the registration associating a student with a particular course section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/registration/:year,:quarter,:curriculum_abbreviation,:course_number,:section_id,:reg_id,",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "section_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Registration\",\r\n                    \"ews_guid\" : \"6E4840B1-C6C1-47F2-8366-07BAAFE5F358\",\r\n                    \"LongDescription\" : \"The Registration resource represents a given student's association to a specific course section, \r\n                                            and can refer to both current, past, and future associations.\",\r\n                    \"ShortDescription\" : \"Search for a registration record\",\r\n                   "
+        },
+        {
+          "info": {
+            "name": "Search for registrations that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/registration",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "section_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "Choose on or true to enable.  Otherwise off or false."
+              },
+              {
+                "name": "instructor_reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Choose on or true to enable.  Otherwise off or false. If enabled it returns a list of search result URIs and some information about each registration. Each item contains a link that can be used to request a single registration payload.  If disabled (default) it returns a full list of registration resource payloads."
+              },
+              {
+                "name": "changed_since_date",
+                "value": "",
+                "type": "query",
+                "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+              },
+              {
+                "name": "transcriptable_course",
+                "value": "",
+                "type": "query",
+                "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Registration Search\",\r\n                     \"ews_guid\" : \"72184D14-4C07-4EBB-AE85-1ABD4979B106\",\r\n                     \"LongDescription\" : \"Search for a registration record in many ways\",\r\n                     \"ShortDescription\" : \"Search for registration records\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

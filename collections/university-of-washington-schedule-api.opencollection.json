@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Schedule API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the schedules associating a student with registered course sections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/schedule/:reg_id",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Student Schedule Search\",\r\n                    \"ews_guid\" : \"C473DFA9-17C8-4FF8-8505-4043A7535812\",\r\n                    \"LongDescription\" : \"Schedule provides data associating a student with registered course sections \r\n                                          for the current term\",\r\n                    \"ShortDescription\" : \"Search for schedule records for the current term\",\r\n                    \"OriginatingSchema\" : [ { \"source\":"
+        },
+        {
+          "info": {
+            "name": "Get the schedules associating a student with registered course sections for the year/quarter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/schedule/:year,:quarter,:reg_id",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Student Schedule by Term\",\r\n                    \"ews_guid\" : \"23B5A449-6A90-4794-8989-9AD28F33F92B\",\r\n                    \"LongDescription\" : \"Schedule provides data associating a student with registered course sections for a particular \r\n                                          year/quarter\",\r\n                    \"ShortDescription\" : \"Search for schedule records for a particular year/quarter\",\r\n                    \"OriginatingSche"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

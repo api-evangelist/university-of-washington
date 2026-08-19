@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Degree API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Degree",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a specific degree program that matches the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degree/:major_abbr,:pathway,:level,:type,:year,:quarter",
+            "params": [
+              {
+                "name": "major_abbr",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree\",\r\n                    \"ews_guid\" : \"7106549C-4066-485F-B6CA-2B03BF2D5D05\",\r\n                    \"LongDescription\" : \"Return a specific degree program that matches the supplied parameters\",\r\n                    \"ShortDescription\" : \"Return a specific degree program\",\r\n                    \"OriginatingSchema\" : [  { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n"
+        },
+        {
+          "info": {
+            "name": "Search for a degree program that matches the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degree",
+            "params": [
+              {
+                "name": "campus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "major_abbr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Search\",\r\n                    \"ews_guid\" : \"F830EF22-38C3-4279-A199-9C8A8038C149\",\r\n                    \"LongDescription\" : \"Search for a degree program that matches the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a degree program\",\r\n                    \"OriginatingSchema\" : [  { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n   "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,916 @@
+{
+  "item": [
+    {
+      "id": "2c863006-008c-4bd1-a3c9-a52c2edddc67",
+      "name": "TestScore",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "972664f6-e3ce-4510-a294-54b06798a7c3",
+          "name": "Get the student's test scores for admission",
+          "request": {
+            "name": "Get the student's test scores for admission",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Test Score\",\r\n                    \"ews_guid\" : \"D2F4747C-952C-4F53-A86B-FF007F1F73C4\",\r\n                    \"LongDescription\" : \"Get information about a student's academic test scores (e.g. GMAT, SAT, TOEFL, etc.) \r\n                                          for admission\",\r\n                    \"ShortDescription\" : \"Get test scores for admission\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/ipeds.admissionstestscores\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "testscore",
+                ":regID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "regID",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a406547f-216c-4bda-9b3d-4bf3eb1e660b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Person\": {\n    \"EmployeeID\": \"string\",\n    \"FirstName\": \"string\",\n    \"LastName\": \"string\",\n    \"Pronouns\": \"string\",\n    \"RegID\": \"string\",\n    \"StudentName\": \"string\",\n    \"StudentNumber\": \"string\",\n    \"StudentSystemKey\": \"string\",\n    \"UWNetID\": \"string\",\n    \"Uri\": {\n      \"Name\": \"string\",\n      \"RegID\": \"string\",\n      \"Pronouns\": \"string\",\n      \"Href\": \"string\"\n    }\n  },\n  \"TestsTaken\": [\n    {\n      \"TestType\": {\n        \"Description\": \"string\",\n        \"MinScore\": 5169,\n        \"MaxScore\": 2812,\n        \"Name\": \"string\"\n      },\n      \"Scores\": [\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": true,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 5575\n        },\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": false,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 8553\n        }\n      ]\n    },\n    {\n      \"TestType\": {\n        \"Description\": \"string\",\n        \"MinScore\": 9665,\n        \"MaxScore\": 7701,\n        \"Name\": \"string\"\n      },\n      \"Scores\": [\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": false,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 4611\n        },\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": true,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 1508\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0af3749-1247-4d0c-9c2e-b56380464201",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "112cf0e2-b570-4ceb-ab57-93015e58ab7b",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05203ff6-1b2b-42a2-848a-a9e0ffd823dd",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c646c26-6430-41dd-9f6f-6c5fb3340ff9",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e93da502-cf82-45d5-bd0f-6dd7623065d9",
+              "name": "Invalid arg: regID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18bc96c9-f518-4b11-a016-9987dbfb8abf",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e18d8867-55d4-4d31-bc47-3e1e23d85fc3",
+              "name": "No TestScore found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f41b2489-d0c4-4259-86ba-2263923969f4",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d16d4a4a-b842-4dfa-a128-99f93895dfe7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16aa7cba-a009-4719-9c0b-75e214aa572e",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    ":regID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "regID",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1f2c2eb-7f10-4ee9-b26c-dd39e7fc0f7d",
+          "name": "Get the student's test scores of a specific test type",
+          "request": {
+            "name": "Get the student's test scores of a specific test type",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Test Score by Type\",\r\n                    \"ews_guid\" : \"F4BBB30B-CEB8-4FF5-87AA-A522ECA0782E\",\r\n                    \"LongDescription\" : \"Get information about a student's test scores of a specific test type for admission\",\r\n                    \"ShortDescription\" : \"Get specific type of test scores for admission\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/ipeds.admissionstestscores\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "testscore",
+                "{{testType}},{{regID}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92b15339-d742-4338-a9bd-2039021b1d94",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Person\": {\n    \"EmployeeID\": \"string\",\n    \"FirstName\": \"string\",\n    \"LastName\": \"string\",\n    \"Pronouns\": \"string\",\n    \"RegID\": \"string\",\n    \"StudentName\": \"string\",\n    \"StudentNumber\": \"string\",\n    \"StudentSystemKey\": \"string\",\n    \"UWNetID\": \"string\",\n    \"Uri\": {\n      \"Name\": \"string\",\n      \"RegID\": \"string\",\n      \"Pronouns\": \"string\",\n      \"Href\": \"string\"\n    }\n  },\n  \"TestsTaken\": [\n    {\n      \"TestType\": {\n        \"Description\": \"string\",\n        \"MinScore\": 7490,\n        \"MaxScore\": 5160,\n        \"Name\": \"string\"\n      },\n      \"Scores\": [\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": false,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 961\n        },\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": false,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 6212\n        }\n      ]\n    },\n    {\n      \"TestType\": {\n        \"Description\": \"string\",\n        \"MinScore\": 8625,\n        \"MaxScore\": 6554,\n        \"Name\": \"string\"\n      },\n      \"Scores\": [\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": true,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 7953\n        },\n        {\n          \"EnteredDate\": \"string\",\n          \"Percentile\": \"string\",\n          \"RevisedScore\": true,\n          \"TakenDate\": \"string\",\n          \"TestScore\": 9687\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55299ddf-538e-4214-a7f9-c5924d15675e",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35fea2fa-207e-40e7-9db3-e9c6f8b89258",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94a69093-4527-4df2-b217-a829d49094a4",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bbdcb41-a53e-400c-8df4-6e44a43d6e46",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ccbffdf1-c745-4451-9efb-9af6f1ccf563",
+              "name": "Invalid arg: regID | Invalid arg: Test Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53d3551b-b3c2-424f-98ec-c68cd147ada1",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "162577cd-c881-4cf8-b59a-1b7114650a2a",
+              "name": "No TestScore found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1ca9a69-213c-463b-bbc6-c99c9be84b61",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4db90abc-4ecd-4aa6-91ad-2e33551dc343",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "593928ac-afb1-4c59-bcce-68a904b1db5d",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "testscore",
+                    "{{testType}},{{regID}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The type of the test (e.g. GMAT, SAT, TOEFL)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "testType"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "regID"
+    }
+  ],
+  "info": {
+    "_postman_id": "bf2f78f2-8dff-4531-b152-2d12ce4e9d2f",
+    "name": "IdCard Web Service (IdCardWS) Campus TestScore API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

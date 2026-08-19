@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Notice API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the notices for the specified student",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/notice/:uwregid",
+            "params": [
+              {
+                "name": "uwregid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Notice\",\r\n                    \"ews_guid\" : \"DBDF33C9-EB9E-4C67-8E71-61477BE427A9\",\r\n                    \"LongDescription\" : \"Display the notices that should be relevant to the specified student at the time of request.\r\n                                          (e.g. alert notice, general notice, dates and deadlines notice, checklist item notice)\",\r\n                    \"ShortDescription\" : \"Notices for a student\",\r\n                  "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

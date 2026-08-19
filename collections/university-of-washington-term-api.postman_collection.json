@@ -1,0 +1,1402 @@
+{
+  "item": [
+    {
+      "id": "66c7e29c-4365-4bc5-a1cd-2bc3bf22c501",
+      "name": "Term",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4dfdac1-325a-4be8-951e-5ced781b0d96",
+          "name": "Get the current term",
+          "request": {
+            "name": "Get the current term",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Current)\",\r\n                    \"ews_guid\" : \"AC24C6B9-5259-4DB6-A9E8-AA05013DA0A9\",\r\n                    \"LongDescription\" : \"Get the current term. It is often a starting point to accessing other term based resources.\",\r\n                    \"ShortDescription\" : \"Get the current term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "term",
+                "current"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "504d1fdc-d038-42e8-a009-7646c7a7ec6c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AcademicCatalog\": \"string\",\n  \"ATermLastDay\": \"string\",\n  \"BTermFirstDay\": \"string\",\n  \"CensusDay\": \"string\",\n  \"FifthDay\": \"string\",\n  \"FinancialAidYear\": \"string\",\n  \"GradeSubmissionDeadline\": \"string\",\n  \"GradingPeriodClose\": \"string\",\n  \"GradingPeriodOpen\": \"string\",\n  \"GradingPeriodOpenATerm\": \"string\",\n  \"FirstDay\": \"string\",\n  \"FirstDayMedSchool\": \"string\",\n  \"TimeScheduleConstruction\": {\n    \"Bothell\": true,\n    \"Seattle\": false,\n    \"Tacoma\": false\n  },\n  \"TimeSchedulePublished\": {\n    \"Bothell\": false,\n    \"Seattle\": false,\n    \"Tacoma\": false\n  },\n  \"LastAddDay\": \"string\",\n  \"LastAddDayATerm\": \"string\",\n  \"LastAddDayBTerm\": \"string\",\n  \"LastDayOfClasses\": \"string\",\n  \"LastDropDay\": \"string\",\n  \"LastDropDayATerm\": \"string\",\n  \"LastDropDayBTerm\": \"string\",\n  \"LastDropDayNotRecorded\": \"string\",\n  \"LastDropDayNotRecordedATerm\": \"string\",\n  \"LastDropDayNotRecordedBTerm\": \"string\",\n  \"LastFinalExamDay\": \"string\",\n  \"NextTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 7824,\n    \"Quarter\": \"string\"\n  },\n  \"PreviousTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 3639,\n    \"Quarter\": \"string\"\n  },\n  \"Quarter\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"Metadata\": \"string\",\n  \"RegistrationPeriods\": [\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    },\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    }\n  ],\n  \"RegistrationServicesStart\": \"string\",\n  \"StudentAccountStart\": \"string\",\n  \"Year\": 2678\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "890a82f3-c190-47b2-89d7-73382cee50bb",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "250247ef-3a31-4488-a439-15854137af94",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b728f8a-b094-4f9e-9a91-58f81abe368e",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd4dc875-7493-461e-810a-0ab81a2b3ba3",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c5284a8-0ff0-4a2d-96df-e01580f9af8a",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7587c1b7-7a5a-483d-a9c7-f59a567ed022",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5379e7ab-7474-47df-ad93-84a2c3c8ece6",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e644226b-d970-420f-bd62-2a0e29a5bbf1",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67bf3d2a-d8df-40fd-b71d-97e51e7f87db",
+          "name": "Get the next term",
+          "request": {
+            "name": "Get the next term",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Next)\",\r\n                    \"ews_guid\" : \"9C4B72E7-96D7-450E-9D2F-B6235F6C4A52\",\r\n                    \"LongDescription\" : \"Get the next term \",\r\n                    \"ShortDescription\" : \"Get the next term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "term",
+                "next"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb8e29d7-a118-408a-9b28-5d805bb69bf7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AcademicCatalog\": \"string\",\n  \"ATermLastDay\": \"string\",\n  \"BTermFirstDay\": \"string\",\n  \"CensusDay\": \"string\",\n  \"FifthDay\": \"string\",\n  \"FinancialAidYear\": \"string\",\n  \"GradeSubmissionDeadline\": \"string\",\n  \"GradingPeriodClose\": \"string\",\n  \"GradingPeriodOpen\": \"string\",\n  \"GradingPeriodOpenATerm\": \"string\",\n  \"FirstDay\": \"string\",\n  \"FirstDayMedSchool\": \"string\",\n  \"TimeScheduleConstruction\": {\n    \"Bothell\": false,\n    \"Seattle\": true,\n    \"Tacoma\": true\n  },\n  \"TimeSchedulePublished\": {\n    \"Bothell\": false,\n    \"Seattle\": false,\n    \"Tacoma\": true\n  },\n  \"LastAddDay\": \"string\",\n  \"LastAddDayATerm\": \"string\",\n  \"LastAddDayBTerm\": \"string\",\n  \"LastDayOfClasses\": \"string\",\n  \"LastDropDay\": \"string\",\n  \"LastDropDayATerm\": \"string\",\n  \"LastDropDayBTerm\": \"string\",\n  \"LastDropDayNotRecorded\": \"string\",\n  \"LastDropDayNotRecordedATerm\": \"string\",\n  \"LastDropDayNotRecordedBTerm\": \"string\",\n  \"LastFinalExamDay\": \"string\",\n  \"NextTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 9233,\n    \"Quarter\": \"string\"\n  },\n  \"PreviousTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 395,\n    \"Quarter\": \"string\"\n  },\n  \"Quarter\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"Metadata\": \"string\",\n  \"RegistrationPeriods\": [\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    },\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    }\n  ],\n  \"RegistrationServicesStart\": \"string\",\n  \"StudentAccountStart\": \"string\",\n  \"Year\": 2847\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e6e3dfe-693e-43e3-a71d-ad50e61406ab",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "804e5bf4-a464-4ccd-a1bd-21c478e11c78",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b786437-ba89-4adf-8331-49c643234d47",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "469286e7-55ee-4f30-917e-2fdc9c093193",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d25d2625-861f-48ae-8ff4-6259c93cc1fa",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c11fc939-7454-454f-8ad8-ba906cd78c24",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67e54d5c-4a13-4f64-9e45-7aef8ad64c3f",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70f876df-d438-42f6-a9c0-188ed7644716",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "703302c7-90a0-4344-93c1-7234c0031901",
+          "name": "Get the previous term",
+          "request": {
+            "name": "Get the previous term",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Previous)\",\r\n                    \"ews_guid\" : \"9B182AB0-922F-4868-AAA2-99867635201F\",\r\n                    \"LongDescription\" : \"Get the previous term \",\r\n                    \"ShortDescription\" : \"Get the previous term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "term",
+                "previous"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd057913-ee53-4706-8ee6-cb26eb944702",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AcademicCatalog\": \"string\",\n  \"ATermLastDay\": \"string\",\n  \"BTermFirstDay\": \"string\",\n  \"CensusDay\": \"string\",\n  \"FifthDay\": \"string\",\n  \"FinancialAidYear\": \"string\",\n  \"GradeSubmissionDeadline\": \"string\",\n  \"GradingPeriodClose\": \"string\",\n  \"GradingPeriodOpen\": \"string\",\n  \"GradingPeriodOpenATerm\": \"string\",\n  \"FirstDay\": \"string\",\n  \"FirstDayMedSchool\": \"string\",\n  \"TimeScheduleConstruction\": {\n    \"Bothell\": false,\n    \"Seattle\": true,\n    \"Tacoma\": true\n  },\n  \"TimeSchedulePublished\": {\n    \"Bothell\": false,\n    \"Seattle\": false,\n    \"Tacoma\": true\n  },\n  \"LastAddDay\": \"string\",\n  \"LastAddDayATerm\": \"string\",\n  \"LastAddDayBTerm\": \"string\",\n  \"LastDayOfClasses\": \"string\",\n  \"LastDropDay\": \"string\",\n  \"LastDropDayATerm\": \"string\",\n  \"LastDropDayBTerm\": \"string\",\n  \"LastDropDayNotRecorded\": \"string\",\n  \"LastDropDayNotRecordedATerm\": \"string\",\n  \"LastDropDayNotRecordedBTerm\": \"string\",\n  \"LastFinalExamDay\": \"string\",\n  \"NextTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 9233,\n    \"Quarter\": \"string\"\n  },\n  \"PreviousTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 395,\n    \"Quarter\": \"string\"\n  },\n  \"Quarter\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"Metadata\": \"string\",\n  \"RegistrationPeriods\": [\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    },\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    }\n  ],\n  \"RegistrationServicesStart\": \"string\",\n  \"StudentAccountStart\": \"string\",\n  \"Year\": 2847\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ae930ce-3a6e-43b5-92e5-50b18e3b00ee",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb2c7845-3e8d-4513-b99a-48acdff2e02c",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efeda90d-9426-40f7-ace4-d10fb211885d",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92c2b3c9-2cdc-4531-b0f6-8dbf3f0c0720",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39220866-77c9-4786-85f8-bcee590d6b71",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86993de6-c749-4f40-bd1a-2db5b32daa8c",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb5c95e4-9478-47c9-8356-23ff1b41035a",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3268768-da2d-451b-bc7e-14ce46876207",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43c5bc19-c41c-4ef1-9b2c-01ec847ea169",
+          "name": "Get the specific term that matches the supplied parameters",
+          "request": {
+            "name": "Get the specific term that matches the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term\",\r\n                    \"ews_guid\" : \"4457E842-C465-47AA-9E35-B2858FAADCBC\",\r\n                    \"LongDescription\" : \"Get a specific term matching the supplied parameters\",\r\n                    \"ShortDescription\" : \"Get a specific term\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               The term resource describes important dates and times for the academic term.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/36884191-96e2-43ea-b6bc-c0dfa138bf9e\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "term",
+                "{{year}},{{quarter}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85dd90b5-dc91-47c3-a8cf-d7680eb4c9a0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AcademicCatalog\": \"string\",\n  \"ATermLastDay\": \"string\",\n  \"BTermFirstDay\": \"string\",\n  \"CensusDay\": \"string\",\n  \"FifthDay\": \"string\",\n  \"FinancialAidYear\": \"string\",\n  \"GradeSubmissionDeadline\": \"string\",\n  \"GradingPeriodClose\": \"string\",\n  \"GradingPeriodOpen\": \"string\",\n  \"GradingPeriodOpenATerm\": \"string\",\n  \"FirstDay\": \"string\",\n  \"FirstDayMedSchool\": \"string\",\n  \"TimeScheduleConstruction\": {\n    \"Bothell\": false,\n    \"Seattle\": true,\n    \"Tacoma\": true\n  },\n  \"TimeSchedulePublished\": {\n    \"Bothell\": false,\n    \"Seattle\": false,\n    \"Tacoma\": true\n  },\n  \"LastAddDay\": \"string\",\n  \"LastAddDayATerm\": \"string\",\n  \"LastAddDayBTerm\": \"string\",\n  \"LastDayOfClasses\": \"string\",\n  \"LastDropDay\": \"string\",\n  \"LastDropDayATerm\": \"string\",\n  \"LastDropDayBTerm\": \"string\",\n  \"LastDropDayNotRecorded\": \"string\",\n  \"LastDropDayNotRecordedATerm\": \"string\",\n  \"LastDropDayNotRecordedBTerm\": \"string\",\n  \"LastFinalExamDay\": \"string\",\n  \"NextTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 9233,\n    \"Quarter\": \"string\"\n  },\n  \"PreviousTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 395,\n    \"Quarter\": \"string\"\n  },\n  \"Quarter\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"Metadata\": \"string\",\n  \"RegistrationPeriods\": [\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    },\n    {\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\"\n    }\n  ],\n  \"RegistrationServicesStart\": \"string\",\n  \"StudentAccountStart\": \"string\",\n  \"Year\": 2847\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92d28b92-6788-4d07-9dfe-4378bc78f1e7",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b90fafb-b282-413a-bc67-4bde27f1c2ec",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13c433c2-ce17-422e-980f-2d695cc4fe1b",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d89e33d-7442-48e2-a67f-17dcef3c432c",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a89e6d6-daa3-4e27-a173-7726f0afa89b",
+              "name": "Invalid arg: year | Invalid arg: quarter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f7c0dec-162c-454a-91c4-8f699426aed7",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98d1bd21-a239-482b-ac5d-fcaad4194a8a",
+              "name": "Term not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed0522f6-3441-4c05-aeb3-2f7c71fbba2e",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63fd051a-69d9-4838-aa35-be9784758912",
+              "name": "Term is null or empty. | InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4772b15-8053-4b98-8a51-42cdaa6c41eb",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "term",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    }
+  ],
+  "info": {
+    "_postman_id": "4acb47f4-c92d-4037-a7b6-20594d006ef6",
+    "name": "IdCard Web Service (IdCardWS) Campus Term API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

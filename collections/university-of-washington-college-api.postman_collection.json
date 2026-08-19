@@ -1,0 +1,569 @@
+{
+  "item": [
+    {
+      "id": "9b6fae9d-7590-4f61-aa4c-1e173a152848",
+      "name": "College",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b303d87d-40c5-48b3-8f51-c3d407b9aced",
+          "name": "Search for colleges that match the supplied parameters",
+          "request": {
+            "name": "Search for colleges that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"College Search\",\r\n                    \"ews_guid\" : \"76D0EC71-692F-42A9-959C-3C4EA5D8A1F4\",\r\n                    \"LongDescription\" : \"Display a filtered list of colleges.  \r\n                                          Can filter by year, quarter, how many future terms to look ahead, and campus short name.\",\r\n                    \"ShortDescription\" : \"Display a filtered list of colleges\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               For campus short name refer to the campus resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.college\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "college"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "future_terms",
+                  "value": "0",
+                  "description": "Number of future terms to look ahead"
+                },
+                {
+                  "disabled": false,
+                  "key": "campus_short_name",
+                  "value": "",
+                  "description": "Choose Seattle, Bothell, or Tacoma"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0132d47e-fb55-46ed-b914-3daa38f67d7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Current\": {\n    \"CampusShortName\": \"string\",\n    \"FutureTerms\": 5236,\n    \"Quarter\": \"string\",\n    \"Year\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"CampusShortName\": \"string\",\n    \"FutureTerms\": 849,\n    \"Quarter\": \"string\",\n    \"Year\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"CampusShortName\": \"string\",\n    \"FutureTerms\": 4053,\n    \"Quarter\": \"string\",\n    \"Year\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"TotalCount\": 5737,\n  \"Colleges\": [\n    {\n      \"CampusShortName\": \"string\",\n      \"CollegeAbbreviation\": \"string\",\n      \"CollegeFullName\": \"string\",\n      \"CollegeFullNameTitleCased\": \"string\",\n      \"CollegeName\": \"string\",\n      \"CollegeShortName\": \"string\",\n      \"Quarter\": \"string\",\n      \"Year\": 1951\n    },\n    {\n      \"CampusShortName\": \"string\",\n      \"CollegeAbbreviation\": \"string\",\n      \"CollegeFullName\": \"string\",\n      \"CollegeFullNameTitleCased\": \"string\",\n      \"CollegeName\": \"string\",\n      \"CollegeShortName\": \"string\",\n      \"Quarter\": \"string\",\n      \"Year\": 9650\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "669f995f-d3d6-4f0d-9520-2ab24393db9a",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c795d32c-ef4a-47da-a2f4-30405ce04de5",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c68ea230-64ab-4397-8270-a38adfd593e3",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41ce701c-09b5-4ef2-9a5b-a9c404254911",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2482101b-6200-4a90-bc5e-7b5954b94302",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd3d5afe-f9fd-48ea-a1ba-9d67ef8f7013",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82626de2-e3ee-4133-85af-fb7300df499f",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57777995-6384-4e67-a164-1b5679e0f48c",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19d1dd0d-f4f0-47f0-8c83-dfbb86306380",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "college"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "campus_short_name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "385afc12-a43a-4136-88ec-5f612e2fa900",
+    "name": "IdCard Web Service (IdCardWS) Campus College API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

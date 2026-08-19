@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Photo API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Photo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Id card photo (image/jpeg) for the indicated person.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v1/photo/:reg_Id",
+            "params": [
+              {
+                "name": "reg_Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the Id card photo (image/jpeg) for the indicated person."
+        },
+        {
+          "info": {
+            "name": "Get the Id card photo (image/jpeg) for the indicated person.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v1/photo/:reg_Id.:file_extension",
+            "params": [
+              {
+                "name": "reg_Id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_extension",
+                "value": "",
+                "type": "path",
+                "description": "Accepted values: jpg"
+              }
+            ]
+          },
+          "docs": "Get the Id card photo (image/jpeg) for the indicated person."
+        },
+        {
+          "info": {
+            "name": "PhotoSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v1/photo",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "net_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "student_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "height",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

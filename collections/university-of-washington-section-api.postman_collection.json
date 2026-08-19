@@ -1,0 +1,2927 @@
+{
+  "item": [
+    {
+      "id": "1b625b10-c93b-4474-929f-f9e28001be7b",
+      "name": "Section",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f297a8d1-a82f-4f06-b4de-08a9ad78b36c",
+          "name": "Get a course section offered in the year/quarter",
+          "request": {
+            "name": "Get a course section offered in the year/quarter",
+            "description": {
+              "content": "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section\",\r\n                     \"ews_guid\" : \"17D4611C-D94A-478C-95CD-EAB4B7E37FAE\",\r\n                     \"LongDescription\" : \"A resource to retrieve a specific course section of a course offered in the year/quarter \r\n                                           for the specified curriculum\",\r\n                     \"ShortDescription\" : \"Get a specific course section\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\"  }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                  - AccessToken \",\r\n                     \"Links\" : [\"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\"],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "course",
+                "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                ":section_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "section_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8b8df5a-dc31-41ea-90d0-264fe3eee9ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Term\": {\n    \"Href\": \"string\",\n    \"Year\": 9454,\n    \"Quarter\": \"string\"\n  },\n  \"CourseCampus\": \"string\",\n  \"CreditControl\": \"string\",\n  \"RoomCapacity\": 846,\n  \"SummerTerm\": \"string\",\n  \"Course\": {\n    \"Href\": \"string\",\n    \"Year\": 4786,\n    \"Quarter\": \"string\",\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\"\n  },\n  \"SectionID\": \"string\",\n  \"CourseTitle\": \"string\",\n  \"CourseTitleLong\": \"string\",\n  \"CourseDescription\": \"string\",\n  \"ClassWebsiteUrl\": \"string\",\n  \"Curriculum\": {\n    \"DepartmentAbbreviation\": \"string\",\n    \"CollegeName\": \"string\",\n    \"TimeScheduleLinkAbbreviation\": \"string\"\n  },\n  \"ResponsibleCourseNumber\": \"string\",\n  \"ResponsibleCurriculumAbbreviation\": \"string\",\n  \"FeeAmount\": \"string\",\n  \"FeeBudget\": \"string\",\n  \"FeeWorktag\": \"string\",\n  \"FeeType\": \"string\",\n  \"AddCodeRequired\": true,\n  \"EnrollmentRestrictions\": false,\n  \"FinancialAidEligible\": true,\n  \"FinancialAidEligibleDisplay\": \"string\",\n  \"IndependentStudy\": false,\n  \"SLN\": \"string\",\n  \"TimeScheduleComments\": {\n    \"CollegeComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    },\n    \"CourseComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    },\n    \"CurriculumComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    },\n    \"DepartmentComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    },\n    \"InstituteComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    },\n    \"SectionComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    },\n    \"TimeScheduleGeneratedComments\": {\n      \"Lines\": [\n        {\n          \"Text\": \"string\"\n        },\n        {\n          \"Text\": \"string\"\n        }\n      ]\n    }\n  },\n  \"DeleteFlag\": \"string\",\n  \"DistanceLearning\": true,\n  \"DistanceLearningCalendarType\": {\n    \"Code\": \"string\",\n    \"Description\": \"string\"\n  },\n  \"DistanceLearningType\": {\n    \"Code\": \"string\",\n    \"Description\": \"string\"\n  },\n  \"EndDate\": \"string\",\n  \"FinalExam\": {\n    \"Building\": \"string\",\n    \"FinalExamBuilding\": {\n      \"Href\": \"string\"\n    },\n    \"Date\": \"string\",\n    \"EndTime\": \"string\",\n    \"MeetingStatus\": \"string\",\n    \"RoomNumber\": \"string\",\n    \"StartTime\": \"string\"\n  },\n  \"GradingSystem\": \"string\",\n  \"HonorsCourse\": true,\n  \"InstituteName\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"Metadata\": \"string\",\n  \"JointSections\": [\n    {\n      \"Year\": 266,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"Href\": \"string\"\n    },\n    {\n      \"Year\": 8990,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"Href\": \"string\"\n    }\n  ],\n  \"CourseHasVariableContent\": true,\n  \"SameVariableContentAs\": [\n    {\n      \"Href\": \"string\",\n      \"Year\": 1776,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"SLN\": \"string\"\n    },\n    {\n      \"Href\": \"string\",\n      \"Year\": 6820,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"SLN\": \"string\"\n    }\n  ],\n  \"MaximumCredit\": \"string\",\n  \"MaximumTermCredit\": \"string\",\n  \"MinimumTermCredit\": \"string\",\n  \"ResearchCredit\": true,\n  \"ServiceLearning\": true,\n  \"SectionType\": \"string\",\n  \"SecondaryGradingOption\": false,\n  \"StartDate\": \"string\",\n  \"DuplicateEnrollmentAllowed\": false,\n  \"PrimarySection\": {\n    \"Href\": \"string\",\n    \"Year\": 9200,\n    \"Quarter\": \"string\",\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"SectionID\": \"string\",\n    \"SLN\": \"string\"\n  },\n  \"LinkedSectionTypes\": [\n    {\n      \"LinkedSections\": [\n        {\n          \"Section\": {\n            \"Href\": \"string\",\n            \"Year\": 8482,\n            \"Quarter\": \"string\",\n            \"CurriculumAbbreviation\": \"string\",\n            \"CourseNumber\": \"string\",\n            \"SectionID\": \"string\",\n            \"SLN\": \"string\"\n          },\n          \"IsPrimarySection\": false\n        },\n        {\n          \"Section\": {\n            \"Href\": \"string\",\n            \"Year\": 552,\n            \"Quarter\": \"string\",\n            \"CurriculumAbbreviation\": \"string\",\n            \"CourseNumber\": \"string\",\n            \"SectionID\": \"string\",\n            \"SLN\": \"string\"\n          },\n          \"IsPrimarySection\": true\n        }\n      ],\n      \"Type\": \"string\"\n    },\n    {\n      \"LinkedSections\": [\n        {\n          \"Section\": {\n            \"Href\": \"string\",\n            \"Year\": 9018,\n            \"Quarter\": \"string\",\n            \"CurriculumAbbreviation\": \"string\",\n            \"CourseNumber\": \"string\",\n            \"SectionID\": \"string\",\n            \"SLN\": \"string\"\n          },\n          \"IsPrimarySection\": false\n        },\n        {\n          \"Section\": {\n            \"Href\": \"string\",\n            \"Year\": 6167,\n            \"Quarter\": \"string\",\n            \"CurriculumAbbreviation\": \"string\",\n            \"CourseNumber\": \"string\",\n            \"SectionID\": \"string\",\n            \"SLN\": \"string\"\n          },\n          \"IsPrimarySection\": true\n        }\n      ],\n      \"Type\": \"string\"\n    }\n  ],\n  \"Meetings\": [\n    {\n      \"MeetingIndex\": \"string\",\n      \"MeetingType\": \"string\",\n      \"DaysOfWeek\": {\n        \"Days\": [\n          {\n            \"Name\": \"string\"\n          },\n          {\n            \"Name\": \"string\"\n          }\n        ],\n        \"Text\": \"string\"\n      },\n      \"DaysOfWeekToBeArranged\": true,\n      \"StartTime\": \"string\",\n      \"EndTime\": \"string\",\n      \"BuildingToBeArranged\": false,\n      \"Building\": \"string\",\n      \"Meeting\": {\n        \"Href\": \"string\"\n      },\n      \"RoomToBeArranged\": true,\n      \"RoomNumber\": \"string\",\n      \"Instructors\": [\n        {\n          \"FacultySequenceNumber\": \"string\",\n          \"TSPrint\": false,\n          \"PercentInvolve\": \"string\",\n          \"Person\": {\n            \"Name\": \"string\",\n            \"RegID\": \"string\",\n            \"Pronouns\": \"string\",\n            \"Href\": \"string\"\n          },\n          \"GradeRoster\": \"string\"\n        },\n        {\n          \"FacultySequenceNumber\": \"string\",\n          \"TSPrint\": false,\n          \"PercentInvolve\": \"string\",\n          \"Person\": {\n            \"Name\": \"string\",\n            \"RegID\": \"string\",\n            \"Pronouns\": \"string\",\n            \"Href\": \"string\"\n          },\n          \"GradeRoster\": \"string\"\n        }\n      ],\n      \"EOS_StartDate\": \"string\",\n      \"EOS_EndDate\": \"string\"\n    },\n    {\n      \"MeetingIndex\": \"string\",\n      \"MeetingType\": \"string\",\n      \"DaysOfWeek\": {\n        \"Days\": [\n          {\n            \"Name\": \"string\"\n          },\n          {\n            \"Name\": \"string\"\n          }\n        ],\n        \"Text\": \"string\"\n      },\n      \"DaysOfWeekToBeArranged\": false,\n      \"StartTime\": \"string\",\n      \"EndTime\": \"string\",\n      \"BuildingToBeArranged\": false,\n      \"Building\": \"string\",\n      \"Meeting\": {\n        \"Href\": \"string\"\n      },\n      \"RoomToBeArranged\": false,\n      \"RoomNumber\": \"string\",\n      \"Instructors\": [\n        {\n          \"FacultySequenceNumber\": \"string\",\n          \"TSPrint\": true,\n          \"PercentInvolve\": \"string\",\n          \"Person\": {\n            \"Name\": \"string\",\n            \"RegID\": \"string\",\n            \"Pronouns\": \"string\",\n            \"Href\": \"string\"\n          },\n          \"GradeRoster\": \"string\"\n        },\n        {\n          \"FacultySequenceNumber\": \"string\",\n          \"TSPrint\": false,\n          \"PercentInvolve\": \"string\",\n          \"Person\": {\n            \"Name\": \"string\",\n            \"RegID\": \"string\",\n            \"Pronouns\": \"string\",\n            \"Href\": \"string\"\n          },\n          \"GradeRoster\": \"string\"\n        }\n      ],\n      \"EOS_StartDate\": \"string\",\n      \"EOS_EndDate\": \"string\"\n    }\n  ],\n  \"GradeSubmissionDelegates\": [\n    {\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DelegateLevel\": \"string\"\n    },\n    {\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DelegateLevel\": \"string\"\n    }\n  ],\n  \"Auditors\": 7931,\n  \"CurrentEnrollment\": 7239,\n  \"LimitEstimateEnrollment\": 6290,\n  \"LimitEstimateEnrollmentIndicator\": \"string\",\n  \"StudentCreditHours\": \"string\",\n  \"SelfRegistrationAllowed\": false,\n  \"GeneralEducationRequirements\": {\n    \"Diversity\": false,\n    \"EnglishComposition\": false,\n    \"IndividualsAndSocieties\": true,\n    \"NaturalWorld\": false,\n    \"QuantitativeAndSymbolicReasoning\": true,\n    \"VisualLiteraryAndPerformingArts\": false,\n    \"Writing\": true\n  },\n  \"Registrations\": {\n    \"Year\": 401,\n    \"Quarter\": \"string\",\n    \"RegID\": \"string\",\n    \"SectionID\": \"string\",\n    \"IsActive\": false,\n    \"Verbose\": false,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"InstructorRegID\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"OnlineLearningType\": {\n    \"Code\": \"string\",\n    \"Description\": \"string\"\n  },\n  \"LMSOwnership\": \"string\",\n  \"PrimaryLMS\": \"string\",\n  \"IsIndependentStart\": false,\n  \"EOS_CID\": \"string\",\n  \"BlockRegistrationParents\": [\n    {\n      \"Href\": \"string\",\n      \"Year\": 8065,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"SLN\": \"string\"\n    },\n    {\n      \"Href\": \"string\",\n      \"Year\": 7335,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"SLN\": \"string\"\n    }\n  ],\n  \"BlockRegistrationChildren\": [\n    {\n      \"Href\": \"string\",\n      \"Year\": 2800,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"SLN\": \"string\"\n    },\n    {\n      \"Href\": \"string\",\n      \"Year\": 5880,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"SLN\": \"string\"\n    }\n  ],\n  \"TimeMaskException\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b25114d-d38c-41c2-8e41-b5d987ed0b9a",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68d797ec-f129-48ce-a434-8af4f4cc1603",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b40193a-220b-4d56-93d5-cc70a112fd62",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09ce7457-b397-4f9c-8755-caf4005be618",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afe930c3-536f-483f-a649-97d523af8748",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: curriculum abbreviation | Invalid arg: course number | Invalid arg: section ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c25ecce7-7850-475e-9043-5696a5cbbce5",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2b71329-58cf-4b3e-a6bf-dcb4ff4a2f72",
+              "name": "No section found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f6191b9-ed1e-458e-aee6-97f6f1bdc822",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e4d97ff-bce7-435a-9389-aa1368db736c",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3be312ee-b29c-45e9-848c-80c03ab7d4ab",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a7c1d98-ac96-4035-a0d2-4ec09efa4801",
+          "name": "Search for course sections that match the supplied parameters",
+          "request": {
+            "name": "Search for course sections that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section Search\",\r\n                     \"ews_guid\" : \"A5877849-AE6E-409C-BDCE-EA4AAFADD0AC\",\r\n                     \"LongDescription\" : \"Search for course sections that match the supplied parameters\",\r\n                     \"ShortDescription\" : \"Get a list of course sections\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\"  }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \" This resource requires any of the following ASTRA roles:\r\n                                   - sws:Support\r\n                                   - sws:GradeSubmitter\r\n                                   - sws:UnitReader\r\n                                 This resource supports the following authentication types:\r\n                                   - X.509 Certificate\r\n                                   - NetID\r\n                                   - AccessToken\r\n                                 For the Section_Search resource, the query string parameters can be configured in different ways, \r\n                                 depending on the desired results.\r\n                                 To return a full listing of all the courses and sections in the curriculum, enter the year, quarter, \r\n                                 and curriculum abbreviation parameters.\r\n                                 To return list of sections for a specified course, enter the year, quarter, curriculum abbreviation, \r\n                                 and the course number parameters.\r\n                                 To return a list of all the sections that an instructor is teaching across multiple curricula, \r\n                                 enter the year, quarter and (instructor) regID parameters.\r\n                                 To return a list of all the sections that an instructor is teaching in the specified curriculum, \r\n                                 enter the year, quarter, curriculum abbreviation and (instructor) regID parameters.\r\n                                 To return a list of all the sections that a course has been offered at UW, enter the starting year \r\n                                 in the year field, leave quarter empty, specify the curriculum abbreviation and course number parameters.\r\n                                 To return a list of all the sections that a course has been offered at UW but filter them for a specific \r\n                                 set of Delete Flag values, enter the starting year in the year field, leave quarter empty, specify \r\n                                 the curriculum abbreviation, course number and desired delete flag values.\r\n                                 To return a list of all the sections that a course has but exclude courses that do not have sections, \r\n                                 use the exclude_courses_without_sections flag. To use this mode, you may not also search for future terms \r\n                                 at the same time.\",\r\n                     \"Links\" : [\"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\"],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "section"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "future_terms",
+                  "value": "0",
+                  "description": "Choose from 0 - 400"
+                },
+                {
+                  "disabled": false,
+                  "key": "curriculum_abbreviation",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "course_number",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "reg_id",
+                  "value": "",
+                  "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                },
+                {
+                  "disabled": false,
+                  "key": "search_by",
+                  "value": "",
+                  "description": "Choose instructor or gradesubmissiondelegate"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_secondaries",
+                  "value": "",
+                  "description": "Choose on or true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "delete_flag",
+                  "value": "",
+                  "description": "Any combination of active, suspended or withdrawn separated by ,."
+                },
+                {
+                  "disabled": false,
+                  "key": "changed_since_date",
+                  "value": "",
+                  "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+                },
+                {
+                  "disabled": false,
+                  "key": "transcriptable_course",
+                  "value": "yes",
+                  "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "facility_code",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "room_number",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "sln",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4ebb3fb-3653-4872-bd70-d59c21f671df",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 9625,\n  \"PageSize\": \"string\",\n  \"PageStart\": \"string\",\n  \"Sections\": [\n    {\n      \"Year\": 3057,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"Href\": \"string\"\n    },\n    {\n      \"Year\": 4387,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CourseNumber\": \"string\",\n      \"SectionID\": \"string\",\n      \"Href\": \"string\"\n    }\n  ],\n  \"Current\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"FutureTerms\": 1604,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"DeleteFlag\": \"string\",\n    \"RegID\": \"string\",\n    \"SearchBy\": \"string\",\n    \"IncludeSecondaries\": true,\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"FacilityCode\": \"string\",\n    \"RoomNumber\": \"string\",\n    \"SLN\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"FutureTerms\": 6627,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"DeleteFlag\": \"string\",\n    \"RegID\": \"string\",\n    \"SearchBy\": \"string\",\n    \"IncludeSecondaries\": true,\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"FacilityCode\": \"string\",\n    \"RoomNumber\": \"string\",\n    \"SLN\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"FutureTerms\": 2340,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"DeleteFlag\": \"string\",\n    \"RegID\": \"string\",\n    \"SearchBy\": \"string\",\n    \"IncludeSecondaries\": true,\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"FacilityCode\": \"string\",\n    \"RoomNumber\": \"string\",\n    \"SLN\": \"string\",\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1b2aff7-c399-4655-b635-9242d975bfe6",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3d8345b-045d-4cbb-9bcd-9df45fe53d68",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2294d9b6-40d8-4fba-9873-377d826feacd",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7426208-64a1-4041-986d-7ad1afc570ec",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6103f39-4df8-4587-98b6-6b1bc3ff9054",
+              "name": "Invalid Search for changed since date value | Invalid year | Invalid quarter | Invalid number of future terms | Invalid reg id | Invalid search by | Invalid curriculum | Invalid course number | Invalid include secondaries | Invalid delete_flag: should be any comma-separated combination of 'active', 'suspended', or 'withdrawn' | Year and quarter is required when searching by SLN | Invalid input: no secondary sections when filtering by delete_flag | year required | Invalid input: either instructor, curriculum, facility code or sln required | Invalid input: no secondary sections when filtering by delete_flag | Year and quarter is required when searching by facility code | Page start must be an integer greater than 0. | Page size must be an integer between 1 and 500, inclusive.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc02439b-87d9-4ae6-9d28-5fc1e4d7fac6",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93c4ac79-d151-4084-88b2-31afd6e07eb4",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93b786d5-2517-4b03-8c8d-c61310909626",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d49d855f-bb0b-4947-92e1-14e13eb0b927",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "search_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_secondaries",
+                      "value": ""
+                    },
+                    {
+                      "key": "delete_flag",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    },
+                    {
+                      "key": "facility_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "room_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "sln",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b6b5cd2-5b71-442a-9699-c5fe7268a394",
+          "name": "Get course sections offered in the year/quarter",
+          "request": {
+            "name": "Get course sections offered in the year/quarter",
+            "description": {
+              "content": "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section Search by Term\",\r\n                     \"ews_guid\" : \"EC0A49F3-5969-4020-81CA-924BCA67E7AB\",\r\n                     \"LongDescription\" : \"A resource to retrieve a list of course sections offered in the year/quarter.\",\r\n                     \"ShortDescription\" : \"Search for all course sections by term\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                  - AccessToken \",\r\n                     \"Links\" : [\"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\"],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "section",
+                "{{year}},{{quarter}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1057323-9df1-4073-bcb9-3b6a33a4fe57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 8331,\n  \"PageSize\": \"string\",\n  \"PageStart\": \"string\",\n  \"Sections\": [\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"Year\": 7874,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"SLN\": \"string\"\n      },\n      \"CourseCampus\": \"string\",\n      \"CourseTitle\": \"string\",\n      \"CourseTitleLong\": \"string\",\n      \"SLN\": \"string\",\n      \"EndDate\": \"string\",\n      \"SectionType\": \"string\",\n      \"RepositoryTimeStamp\": \"string\",\n      \"Metadata\": \"string\",\n      \"MaximumCredit\": \"string\",\n      \"MaximumTermCredit\": \"string\",\n      \"MinimumTermCredit\": \"string\",\n      \"StartDate\": \"string\",\n      \"Meetings\": [\n        {\n          \"MeetingIndex\": \"string\",\n          \"MeetingType\": \"string\",\n          \"DaysOfWeek\": {\n            \"Days\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"Text\": \"string\"\n          },\n          \"DaysOfWeekToBeArranged\": true,\n          \"StartTime\": \"string\",\n          \"EndTime\": \"string\",\n          \"BuildingToBeArranged\": true,\n          \"Building\": \"string\",\n          \"RoomToBeArranged\": true,\n          \"RoomNumber\": \"string\",\n          \"Instructors\": [\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"MeetingIndex\": \"string\",\n          \"MeetingType\": \"string\",\n          \"DaysOfWeek\": {\n            \"Days\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"Text\": \"string\"\n          },\n          \"DaysOfWeekToBeArranged\": true,\n          \"StartTime\": \"string\",\n          \"EndTime\": \"string\",\n          \"BuildingToBeArranged\": true,\n          \"Building\": \"string\",\n          \"RoomToBeArranged\": false,\n          \"RoomNumber\": \"string\",\n          \"Instructors\": [\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"Year\": 3202,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"SLN\": \"string\"\n      },\n      \"CourseCampus\": \"string\",\n      \"CourseTitle\": \"string\",\n      \"CourseTitleLong\": \"string\",\n      \"SLN\": \"string\",\n      \"EndDate\": \"string\",\n      \"SectionType\": \"string\",\n      \"RepositoryTimeStamp\": \"string\",\n      \"Metadata\": \"string\",\n      \"MaximumCredit\": \"string\",\n      \"MaximumTermCredit\": \"string\",\n      \"MinimumTermCredit\": \"string\",\n      \"StartDate\": \"string\",\n      \"Meetings\": [\n        {\n          \"MeetingIndex\": \"string\",\n          \"MeetingType\": \"string\",\n          \"DaysOfWeek\": {\n            \"Days\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"Text\": \"string\"\n          },\n          \"DaysOfWeekToBeArranged\": false,\n          \"StartTime\": \"string\",\n          \"EndTime\": \"string\",\n          \"BuildingToBeArranged\": true,\n          \"Building\": \"string\",\n          \"RoomToBeArranged\": true,\n          \"RoomNumber\": \"string\",\n          \"Instructors\": [\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"MeetingIndex\": \"string\",\n          \"MeetingType\": \"string\",\n          \"DaysOfWeek\": {\n            \"Days\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"Text\": \"string\"\n          },\n          \"DaysOfWeekToBeArranged\": true,\n          \"StartTime\": \"string\",\n          \"EndTime\": \"string\",\n          \"BuildingToBeArranged\": true,\n          \"Building\": \"string\",\n          \"RoomToBeArranged\": false,\n          \"RoomNumber\": \"string\",\n          \"Instructors\": [\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"Person\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"Current\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f171879-2d39-466b-940d-d7251dff6389",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96a1bfc7-954a-4148-acde-17a09f3e0e75",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3bec9920-d25b-4b8f-ad36-1eb9dfe81f3c",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d781b3ea-43b6-4208-baaf-3173d46f6251",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d35382fd-be89-4834-8031-740cfa874158",
+              "name": "Section Term search does not support paging of less then 500 sections per request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83f42bf1-45f9-4d61-84dd-83720970b4c0",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1b46817-a0c8-42be-b524-0fea1d11fc3e",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b00d157d-a0b1-4ba7-8ca0-e022624409e7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c803ae07-3cd0-4300-a04a-d36d098e79e3",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "section",
+                    "{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9198db96-2659-4864-91df-377888654a45",
+          "name": "Get the status of a course section",
+          "request": {
+            "name": "Get the status of a course section",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Section Status\",\r\n                    \"ews_guid\" : \"0FE09C52-834E-4F65-A35D-23D7D890C727\",\r\n                    \"LongDescription\" : \"Get the status of a course section including how many spots are open and whether \r\n                                          students can register for the section.\",\r\n                    \"ShortDescription\" : \"Get the status of a course section\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:SectionStatusReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "course",
+                "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                ":section_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "section_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcdd8214-8dc8-4bc0-bd35-20d9fd1119fe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CurrentEnrollment\": 4495,\n  \"JointCurrentEnrollment\": 3958,\n  \"CurrentRegistrationPeriod\": \"string\",\n  \"AddCodeRequired\": false,\n  \"FacultyCodeRequired\": false,\n  \"LimitEstimateEnrollment\": 4745,\n  \"JointLimitEstimateEnrollment\": 4112,\n  \"LimitEstimateEnrollmentIndicator\": \"string\",\n  \"RoomCapacity\": 5089,\n  \"Section\": {\n    \"Href\": \"string\",\n    \"Year\": 286,\n    \"Quarter\": \"string\",\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"SectionID\": \"string\",\n    \"SLN\": \"string\"\n  },\n  \"SLN\": \"string\",\n  \"SpaceAvailable\": 4907,\n  \"JointSpaceAvailable\": 7629,\n  \"Status\": \"string\",\n  \"ResponsibleCurriculumAbbreviation\": \"string\",\n  \"ResponsibleCourseNumber\": \"string\",\n  \"ResponsibleSectionID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f072996-ad8f-48fe-b3d8-1ea5a68417bc",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad1a9944-423b-4631-b6b1-b5d741b69b13",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79720151-23c2-4268-88b3-7b524a9f3f53",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0d4cf534-73ac-40e1-9ff4-654d876925ef",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1738db4-5246-4e83-8fa0-f863f9c79654",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6969e45-fa69-4784-bbd8-1faf09989050",
+              "name": "No section status found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4406bf40-7a78-46b8-ba74-42c2f2a970fa",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c8ad414-246d-4eae-a5ca-cbac28332587",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "463165c2-12fe-4809-9439-988afb15242a",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    ":section_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a8aa25b-b924-401f-976c-34c18c370692",
+          "name": "Get the status of a course",
+          "request": {
+            "name": "Get the status of a course",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Section Status List\",\r\n                    \"ews_guid\" : \"135BD797-FC81-42C3-954D-EF67D7869B41\",\r\n                    \"LongDescription\" : \"Get the information about a specific course's section statuses, searching by \r\n                                          the associated course\",\r\n                    \"ShortDescription\" : \"Get the status of a course's sections\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:SectionStatusReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "course",
+                "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e576bf02-44e7-439f-93b1-039e1adca11d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SectionStatuses\": [\n    {\n      \"CurrentEnrollment\": 8755,\n      \"JointCurrentEnrollment\": 2859,\n      \"CurrentRegistrationPeriod\": \"string\",\n      \"AddCodeRequired\": false,\n      \"FacultyCodeRequired\": true,\n      \"LimitEstimateEnrollment\": 9714,\n      \"JointLimitEstimateEnrollment\": 9755,\n      \"LimitEstimateEnrollmentIndicator\": \"string\",\n      \"RoomCapacity\": 8885,\n      \"Section\": {\n        \"Href\": \"string\",\n        \"Year\": 5803,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"SLN\": \"string\"\n      },\n      \"SLN\": \"string\",\n      \"SpaceAvailable\": 6520,\n      \"JointSpaceAvailable\": 5137,\n      \"Status\": \"string\",\n      \"ResponsibleCurriculumAbbreviation\": \"string\",\n      \"ResponsibleCourseNumber\": \"string\",\n      \"ResponsibleSectionID\": \"string\"\n    },\n    {\n      \"CurrentEnrollment\": 7405,\n      \"JointCurrentEnrollment\": 7996,\n      \"CurrentRegistrationPeriod\": \"string\",\n      \"AddCodeRequired\": true,\n      \"FacultyCodeRequired\": true,\n      \"LimitEstimateEnrollment\": 5520,\n      \"JointLimitEstimateEnrollment\": 6639,\n      \"LimitEstimateEnrollmentIndicator\": \"string\",\n      \"RoomCapacity\": 7322,\n      \"Section\": {\n        \"Href\": \"string\",\n        \"Year\": 6004,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"SLN\": \"string\"\n      },\n      \"SLN\": \"string\",\n      \"SpaceAvailable\": 588,\n      \"JointSpaceAvailable\": 2158,\n      \"Status\": \"string\",\n      \"ResponsibleCurriculumAbbreviation\": \"string\",\n      \"ResponsibleCourseNumber\": \"string\",\n      \"ResponsibleSectionID\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d883742-fa4a-47a1-8de4-d0780dddd546",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff4254e9-85a8-421a-a2b1-6030b32890a4",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f872de9-59f3-41ab-a55f-58d193a1bc11",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8ce3b2f-cffc-4ff4-b673-fe90014d3c73",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62a5010d-6e7b-4e92-8ff8-f91d29735b3d",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82887a05-e7a1-4a52-8643-33675e912611",
+              "name": "No section status found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf533551-9d33-4462-bfbd-5780f341dbf0",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b14fda67-c063-4cee-a118-a699687111ea",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9be38efa-460f-43ce-9c31-3a59a796db65",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "course",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}}",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "curriculum_abbreviation"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "course_number"
+    }
+  ],
+  "info": {
+    "_postman_id": "1ce6c39b-3413-4a30-a0f4-411b898ba57b",
+    "name": "IdCard Web Service (IdCardWS) Campus Section API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

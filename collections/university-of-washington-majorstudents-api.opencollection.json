@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus MajorStudents API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MajorStudents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for students that are enrolled in a specific program of study",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/majorstudents",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "campus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "degree_level",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "degree_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "major_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Major Students Search\",\r\n                    \"ews_guid\" : \"F19F924A-533A-4049-A340-59C88A502F45\",\r\n                    \"LongDescription\" : \"Returns a list of students that are enrolled in a specific program of study\",\r\n                    \"ShortDescription\" : \"list of students that are enrolled in a program of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Card API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Card",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetCards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v1/card",
+            "params": [
+              {
+                "name": "mag_strip_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prox_rfid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus College API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "College",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for colleges that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/college",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "future_terms",
+                "value": "",
+                "type": "query",
+                "description": "Number of future terms to look ahead"
+              },
+              {
+                "name": "campus_short_name",
+                "value": "",
+                "type": "query",
+                "description": "Choose Seattle, Bothell, or Tacoma"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"College Search\",\r\n                    \"ews_guid\" : \"76D0EC71-692F-42A9-959C-3C4EA5D8A1F4\",\r\n                    \"LongDescription\" : \"Display a filtered list of colleges.  \r\n                                          Can filter by year, quarter, how many future terms to look ahead, and campus short name.\",\r\n                    \"ShortDescription\" : \"Display a filtered list of colleges\",\r\n                    \"OriginatingSchema\" : [ { \"s"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

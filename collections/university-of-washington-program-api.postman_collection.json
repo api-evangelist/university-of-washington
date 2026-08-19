@@ -1,0 +1,1050 @@
+{
+  "item": [
+    {
+      "id": "f117c36a-c040-4e81-ab79-b7cdc3047bc4",
+      "name": "Program",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5722f8c-4655-4e50-852d-243fee7debb0",
+          "name": "Search for a program of study that matches the parameters",
+          "request": {
+            "name": "Search for a program of study that matches the parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Program\",\r\n                    \"ews_guid\" : \"0B74F119-61ED-44EF-9B5D-61DDF180B9F6\",\r\n                    \"LongDescription\" : \"Find the information about a program of study that matches the parameters\",\r\n                    \"ShortDescription\" : \"Information about a program of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               Program is previously considered major and pathway.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degreemajor\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "program",
+                "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9235860-14aa-4f9a-9538-6d308aebef30",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ProgramUri\": {\n    \"Href\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"Pathway\": \"string\",\n    \"Year\": 546,\n    \"Quarter\": \"string\"\n  },\n  \"Department\": {\n    \"CollegeAbbreviation\": \"string\",\n    \"DepartmentAbbreviation\": \"string\",\n    \"DepartmentFullName\": \"string\"\n  },\n  \"MajorFullName\": \"string\",\n  \"MajorName\": \"string\",\n  \"MajorShortName\": \"string\",\n  \"Pathway\": \"string\",\n  \"FirstEffectiveTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 8758,\n    \"Quarter\": \"string\"\n  },\n  \"LastEffectiveTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 4157,\n    \"Quarter\": \"string\"\n  },\n  \"Href\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98d59fbd-a21f-42c5-b3ca-fd5eca203d8b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00fce157-f689-4461-94d9-170d2d0c4eea",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae5d2969-956a-4230-aa8c-6378c40ac557",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "419fb41b-56f8-48ba-9388-bf1f54019c6e",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ad6dd07-ace9-4314-af54-6ec061e4d7d4",
+              "name": "Invalid arg: year | Invalid arg: quarter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14827b0a-765c-4f8a-a345-0f5d0ba0f03a",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c51df2f-5c73-41a5-a926-2e54fedb2ef6",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fdaf4ba-8462-4f38-a2b1-fb63f67cfdb9",
+              "name": "System.FormatException | Program is null or empty. | InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fad76510-bab5-41ca-bb64-533360519642",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program",
+                    "{{major_abbr}},{{pathway}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "339b5a9c-f790-49fc-9303-aebe3a7fa719",
+          "name": "Search for programs of study that match the supplied parameters",
+          "request": {
+            "name": "Search for programs of study that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Program Search\",\r\n                    \"ews_guid\" : \"8135DEB6-FC3B-4672-B36A-62FB43EE4279\",\r\n                    \"LongDescription\" : \"Search for a set of programs of study that match the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a list of programs of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               Program is previously considered major and pathway.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degreemajor\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "program"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "(Required) The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "major_abbr",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "pathway",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bf8e61c-fed3-4cdc-9303-1b6729dcd709",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Current\": {\n    \"Year\": 1355,\n    \"Quarter\": \"string\",\n    \"Pathway\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"Year\": 1488,\n    \"Quarter\": \"string\",\n    \"Pathway\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"Year\": 3666,\n    \"Quarter\": \"string\",\n    \"Pathway\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"TotalCount\": 3428,\n  \"Programs\": [\n    {\n      \"ProgramUri\": {\n        \"Href\": \"string\",\n        \"MajorAbbreviation\": \"string\",\n        \"Pathway\": \"string\",\n        \"Year\": 1191,\n        \"Quarter\": \"string\"\n      },\n      \"Department\": {\n        \"CollegeAbbreviation\": \"string\",\n        \"DepartmentAbbreviation\": \"string\",\n        \"DepartmentFullName\": \"string\"\n      },\n      \"MajorFullName\": \"string\",\n      \"MajorName\": \"string\",\n      \"MajorShortName\": \"string\",\n      \"Pathway\": \"string\",\n      \"FirstEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 2696,\n        \"Quarter\": \"string\"\n      },\n      \"LastEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 1678,\n        \"Quarter\": \"string\"\n      },\n      \"Href\": \"string\"\n    },\n    {\n      \"ProgramUri\": {\n        \"Href\": \"string\",\n        \"MajorAbbreviation\": \"string\",\n        \"Pathway\": \"string\",\n        \"Year\": 3609,\n        \"Quarter\": \"string\"\n      },\n      \"Department\": {\n        \"CollegeAbbreviation\": \"string\",\n        \"DepartmentAbbreviation\": \"string\",\n        \"DepartmentFullName\": \"string\"\n      },\n      \"MajorFullName\": \"string\",\n      \"MajorName\": \"string\",\n      \"MajorShortName\": \"string\",\n      \"Pathway\": \"string\",\n      \"FirstEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 2003,\n        \"Quarter\": \"string\"\n      },\n      \"LastEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 891,\n        \"Quarter\": \"string\"\n      },\n      \"Href\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a9956cd-acab-452f-a6f5-33d6c04b5aeb",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "682df052-40b5-4941-9c41-85b149ca3021",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18799206-319a-48bd-929d-9fe9bd8cba3e",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb41b0f4-c2a6-4905-bfce-a21458e84c75",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abdf29b1-f73a-4ce8-adb0-96a26a8ae9f8",
+              "name": "Invalid arg: year | Invalid arg: quarter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb32b584-7920-498e-8179-e905d29c09b8",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dc73762-9517-46f6-8432-0eb703f39113",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b975f574-e1e7-4ea3-b484-93488173ede0",
+              "name": "System.FormatException | InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4313ce2e-fc96-4bb1-b516-80717abb79db",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "major_abbr"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "pathway"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    }
+  ],
+  "info": {
+    "_postman_id": "46bb8191-359e-450d-a2e0-8bb9eac899d1",
+    "name": "IdCard Web Service (IdCardWS) Campus Program API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

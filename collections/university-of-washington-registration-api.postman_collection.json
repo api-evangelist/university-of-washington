@@ -1,0 +1,1899 @@
+{
+  "item": [
+    {
+      "id": "595d9c4c-fd2b-4696-a1e1-f06ad2dad33d",
+      "name": "Registration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e0dbbc9b-b0b5-4e47-b554-04257d73f3df",
+          "name": "Get the registration associating a student with a particular course section",
+          "request": {
+            "name": "Get the registration associating a student with a particular course section",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Registration with Duplicate Code\",\r\n                    \"ews_guid\" : \"6E4840B1-C6C1-47F2-8366-07BAAFE5F358\",\r\n                    \"LongDescription\" : \"The Registration resource represents a given student's association to a specific course section, \r\n                                            and can refer to both current, past, and future associations.\",\r\n                    \"ShortDescription\" : \"Search for a registration record\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:GradeReader\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.studentcourseregistration\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "registration",
+                "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08affcc9-e4f0-4308-915a-c8840e3ee524",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Section\": {\n    \"Href\": \"string\",\n    \"Year\": 3887,\n    \"Quarter\": \"string\",\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"SectionID\": \"string\",\n    \"SLN\": \"string\"\n  },\n  \"Person\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"DuplicateCode\": \"string\",\n  \"Href\": \"http://EyOfWcJPUBecTIJQ.krjgcrQg7GAQJKWCVgEJfGQtc74XVd\",\n  \"Instructor\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"RequestStatus\": \"string\",\n  \"IsActive\": true,\n  \"RequestDate\": \"string\",\n  \"Credits\": \"string\",\n  \"VariableCredit\": false,\n  \"HonorsCourse\": false,\n  \"WritingCourse\": false,\n  \"Auditor\": false,\n  \"FeeBaseType\": \"string\",\n  \"Grade\": \"string\",\n  \"GradeDocumentID\": \"string\",\n  \"GradeDate\": \"string\",\n  \"RepeatCourse\": false,\n  \"SourceDateString\": \"string\",\n  \"Metadata\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"GradingSystem\": \"string\",\n  \"AccessDateRangeStart\": \"string\",\n  \"AccessDateRangeEnd\": \"string\",\n  \"IsCredit\": true,\n  \"StartDate\": \"string\",\n  \"EndDate\": \"string\",\n  \"EducationUnitType\": \"string\",\n  \"IsIndependentStart\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "749e3b06-39a2-40b7-8d0f-efe90466b1c5",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99917d4d-d105-421f-8f04-3f3602b3468f",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f2a2022-6397-49b9-8d53-d4e02e365fc2",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c89e441-3e2c-45b9-91b2-460d7513b9e9",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1970d75-8fbb-4e62-b381-f74ea184391b",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: curriculum abbreviation | Invalid arg: course number | Invalid arg: section id | Invalid arg: reg ID | Invalid arg: duplicate code | Student not found for regid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dcea9ea-3404-40c2-9188-d21f54d8c2a8",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87002a9b-2f39-4c42-89f0-21930c3f9d42",
+              "name": "No registration found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19763f59-6ce7-4aaf-b7cf-ebac60d9e375",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21794ff2-aaa6-43c3-a486-7463ea1dc0d2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77de21b8-471b-4ce7-ba85-252fd4505121",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},{{duplicate_code}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b84a9a66-16da-41c6-97a7-66e59c976128",
+          "name": "Get the registration associating a student with a particular course section",
+          "request": {
+            "name": "Get the registration associating a student with a particular course section",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Registration\",\r\n                    \"ews_guid\" : \"6E4840B1-C6C1-47F2-8366-07BAAFE5F358\",\r\n                    \"LongDescription\" : \"The Registration resource represents a given student's association to a specific course section, \r\n                                            and can refer to both current, past, and future associations.\",\r\n                    \"ShortDescription\" : \"Search for a registration record\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:GradeReader\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.studentcourseregistration\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "registration",
+                "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab252354-c871-439a-84ec-e714c84642ca",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Section\": {\n    \"Href\": \"string\",\n    \"Year\": 3887,\n    \"Quarter\": \"string\",\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"SectionID\": \"string\",\n    \"SLN\": \"string\"\n  },\n  \"Person\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"DuplicateCode\": \"string\",\n  \"Href\": \"http://EyOfWcJPUBecTIJQ.krjgcrQg7GAQJKWCVgEJfGQtc74XVd\",\n  \"Instructor\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"RequestStatus\": \"string\",\n  \"IsActive\": true,\n  \"RequestDate\": \"string\",\n  \"Credits\": \"string\",\n  \"VariableCredit\": false,\n  \"HonorsCourse\": false,\n  \"WritingCourse\": false,\n  \"Auditor\": false,\n  \"FeeBaseType\": \"string\",\n  \"Grade\": \"string\",\n  \"GradeDocumentID\": \"string\",\n  \"GradeDate\": \"string\",\n  \"RepeatCourse\": false,\n  \"SourceDateString\": \"string\",\n  \"Metadata\": \"string\",\n  \"RepositoryTimeStamp\": \"string\",\n  \"GradingSystem\": \"string\",\n  \"AccessDateRangeStart\": \"string\",\n  \"AccessDateRangeEnd\": \"string\",\n  \"IsCredit\": true,\n  \"StartDate\": \"string\",\n  \"EndDate\": \"string\",\n  \"EducationUnitType\": \"string\",\n  \"IsIndependentStart\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64dea2bf-ae30-4896-8dd7-89f46a2a6202",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8ac6f89-9ce3-4ad6-9997-4ee657e8a4dc",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82b683d2-5813-48e7-8c9c-866fe14c6f23",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49009c62-0c4b-41ba-a7f0-9028f471b7b5",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c3f057e-b8c2-45d5-8884-44f85e054c3d",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: curriculum abbreviation | Invalid arg: course number | Invalid arg: section id | Invalid arg: reg ID | Invalid arg: duplicate code | Student not found for regid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fcfb799-ac26-427a-a69d-c110a0f6b6c9",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67fcbacc-f269-42b7-bb90-f877bd2949ed",
+              "name": "No registration found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35f3dedd-6c95-4d79-8270-8747e53c5df6",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "957aa551-df1f-4bb8-935c-fc3c8a286214",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d41e0348-baf4-4a54-bd68-627e54b0420c",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration",
+                    "{{year}},{{quarter}},{{curriculum_abbreviation}},{{course_number}},{{section_id}},{{reg_id}},"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "542f570c-25c3-473a-a4ba-9298734a3d12",
+          "name": "Search for registrations that match the supplied parameters",
+          "request": {
+            "name": "Search for registrations that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Registration Search\",\r\n                     \"ews_guid\" : \"72184D14-4C07-4EBB-AE85-1ABD4979B106\",\r\n                     \"LongDescription\" : \"Search for a registration record in many ways\",\r\n                     \"ShortDescription\" : \"Search for registration records\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeReader\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                To return a list of all the student enrollment activity for a specified section including adds and drops, \r\n                                enter values for the Year, Quarter, Curriculum Abbreviation, and Section ID attributes.\r\n                                To return a list of all students who are actively enrolled in the specified section, enter values \r\n                                for the Year, Quarter, Curriculum Abbreviation, and Section ID attributes, and select the Active \r\n                                Registrations checkbox.\r\n                                To return a list of all sections in which a specified student is actively enrolled, enter the Year, Quarter, \r\n                                and Reg_ID attributes and select the Active Registrations checkbox.\r\n                                To return list of all sections in which a student is enrolled including those that have been dropped, \r\n                                enter the Year, Quarter, and Reg_ID attributes. Notice that is_active has been omitted. The default value \r\n                                for this attribute is off.\",\r\n                     \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.studentcourseregistration\" ],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "registration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "curriculum_abbreviation",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "course_number",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "section_id",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "reg_id",
+                  "value": "",
+                  "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "",
+                  "description": "Choose on or true to enable.  Otherwise off or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "instructor_reg_id",
+                  "value": "",
+                  "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                },
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "",
+                  "description": "Choose on or true to enable.  Otherwise off or false. If enabled it returns a list of search result URIs and some information about each registration. Each item contains a link that can be used to request a single registration payload.  If disabled (default) it returns a full list of registration resource payloads."
+                },
+                {
+                  "disabled": false,
+                  "key": "changed_since_date",
+                  "value": "",
+                  "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+                },
+                {
+                  "disabled": false,
+                  "key": "transcriptable_course",
+                  "value": "yes",
+                  "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "404f7841-b7be-4556-ac63-d3f09d70b209",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 2207,\n  \"PageSize\": \"string\",\n  \"PageStart\": \"string\",\n  \"Current\": {\n    \"Year\": 3311,\n    \"Quarter\": \"string\",\n    \"RegID\": \"string\",\n    \"SectionID\": \"string\",\n    \"IsActive\": true,\n    \"Verbose\": false,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"InstructorRegID\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"Year\": 6536,\n    \"Quarter\": \"string\",\n    \"RegID\": \"string\",\n    \"SectionID\": \"string\",\n    \"IsActive\": true,\n    \"Verbose\": false,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"InstructorRegID\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"Year\": 9458,\n    \"Quarter\": \"string\",\n    \"RegID\": \"string\",\n    \"SectionID\": \"string\",\n    \"IsActive\": false,\n    \"Verbose\": true,\n    \"CurriculumAbbreviation\": \"string\",\n    \"CourseNumber\": \"string\",\n    \"InstructorRegID\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"TranscriptableCourse\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b2f76d7-9ddb-44c5-b73c-4996f6062e03",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7432e87e-fa61-4427-93d8-b5460003ae4f",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b51e8630-98f2-4045-ae7b-6465bbf1a716",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05efe7ac-2a52-4eee-bec2-3ac4de6d4150",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d21ca281-9b46-48e8-a5ec-93ee441dba9a",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: curriculum abbreviation | Invalid arg: course number | Invalid arg: section id | Invalid arg: reg ID | Invalid arg: isactive | RegistrationSearch only supports searches using 3-8 params. | Invalid input: Cannot use cache bypass with use of transcriptable system or changed since | Invalid input | Student not found for regid | Maximum size for a change since request is 1000 | Page size must be an integer between 1 and 500, inclusive.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51bde216-a30e-4fbb-b656-866178da4467",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7bfa8b3b-8fe0-4fa7-b464-0b2b9fcfd541",
+              "name": "No registration found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6cb596b-9818-463d-91de-993cbcdb6a56",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2d08e13-cceb-41ba-92d8-7c85c4db45b6",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "876835f8-5751-40b2-b567-28b981e7a78e",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "curriculum_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "course_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "section_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_active",
+                      "value": ""
+                    },
+                    {
+                      "key": "instructor_reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "curriculum_abbreviation"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "course_number"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "section_id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "reg_id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Optional parameter (made optional by question mark in template).  Duplicate Code allows registration of a student in a given section multiple times. \r\n            The duplicate code argument uniquely identifies a specific registration record among others within the same course section. For example, an initial registration may begin with 'Added to class' (duplicate code blank), but then at a later point may become 'Dropped from class' (duplicate code A), followed by a re-registration into the course section 'Added to class' (duplicate code B). \r\n            When a registration is transcript-ed(prior quarter) the duplicate codes will often change to a numeral(1,2,3...) and many of the original registrations will be removed and replaced with a single transcript record. \r\n            Duplicate codes are not serial but often appear to be. They are to be used only to identify uniqueness and should not be assumed to represent any business meaning.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "duplicate_code"
+    }
+  ],
+  "info": {
+    "_postman_id": "f59ec9ed-5a08-4009-a378-6f0358f9de72",
+    "name": "IdCard Web Service (IdCardWS) Campus Registration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

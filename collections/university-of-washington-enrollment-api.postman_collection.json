@@ -1,0 +1,1142 @@
+{
+  "item": [
+    {
+      "id": "62ba9923-6e2f-40e9-8bca-beb9bb3218c6",
+      "name": "Enrollment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c815fbd7-8e11-41a9-a201-5cc99142295e",
+          "name": "Get a specific enrollment",
+          "request": {
+            "name": "Get a specific enrollment",
+            "description": {
+              "content": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Enrollment Search\",\r\n                     \"ews_guid\" : \"7D3E229D-2513-48D1-9760-BA7D587288C8\",\r\n                     \"LongDescription\" : \"Display information about a specific enrollment\",\r\n                     \"ShortDescription\" : \"Enrollment information\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:GradeReader\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                The verbose flag chooses a full representation or the standard representation.\",\r\n                     \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.enrolledstudent\", \r\n                                 \"https://metadata.uw.edu/Catalog/ViewItem/Term/79542d58-fb29-40f7-addb-df2638759804\" ],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "enrollment",
+                "{{year}},{{quarter}},{{reg_id}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transcriptable_course",
+                  "value": "yes",
+                  "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "",
+                  "description": "Choose on or true to enable.  Otherwise off or false."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec8323f6-1e89-40df-81b0-cd8dcdf6d841",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"FullName\": \"string\",\n  \"Person\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Registrations\": [\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"Year\": 2513,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"SLN\": \"string\"\n      },\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DuplicateCode\": \"string\",\n      \"Href\": \"http://GWgUGDmDQvAtbCKeZUcmS.jzvdm-F+njDoi+fer49L8ExHHrT7aQ-ScQhZXGmh8mH.QDf\",\n      \"Instructor\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"RequestStatus\": \"string\",\n      \"IsActive\": false,\n      \"RequestDate\": \"string\",\n      \"Credits\": \"string\",\n      \"VariableCredit\": false,\n      \"HonorsCourse\": true,\n      \"WritingCourse\": false,\n      \"Auditor\": false,\n      \"FeeBaseType\": \"string\",\n      \"Grade\": \"string\",\n      \"GradeDocumentID\": \"string\",\n      \"GradeDate\": \"string\",\n      \"RepeatCourse\": true,\n      \"SourceDateString\": \"string\",\n      \"Metadata\": \"string\",\n      \"RepositoryTimeStamp\": \"string\",\n      \"GradingSystem\": \"string\",\n      \"AccessDateRangeStart\": \"string\",\n      \"AccessDateRangeEnd\": \"string\",\n      \"IsCredit\": false,\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\",\n      \"EducationUnitType\": \"string\",\n      \"IsIndependentStart\": false\n    },\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"Year\": 4681,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"SLN\": \"string\"\n      },\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DuplicateCode\": \"string\",\n      \"Href\": \"https://VWJftmswKlAlaXmHyEztCigckEnVozeW.zwsjQVioBd1XwFZAR\",\n      \"Instructor\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"RequestStatus\": \"string\",\n      \"IsActive\": false,\n      \"RequestDate\": \"string\",\n      \"Credits\": \"string\",\n      \"VariableCredit\": true,\n      \"HonorsCourse\": true,\n      \"WritingCourse\": true,\n      \"Auditor\": false,\n      \"FeeBaseType\": \"string\",\n      \"Grade\": \"string\",\n      \"GradeDocumentID\": \"string\",\n      \"GradeDate\": \"string\",\n      \"RepeatCourse\": false,\n      \"SourceDateString\": \"string\",\n      \"Metadata\": \"string\",\n      \"RepositoryTimeStamp\": \"string\",\n      \"GradingSystem\": \"string\",\n      \"AccessDateRangeStart\": \"string\",\n      \"AccessDateRangeEnd\": \"string\",\n      \"IsCredit\": true,\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\",\n      \"EducationUnitType\": \"string\",\n      \"IsIndependentStart\": false\n    }\n  ],\n  \"RegID\": \"string\",\n  \"ClassLevel\": \"string\",\n  \"ClassCode\": \"string\",\n  \"ClassDescription\": \"string\",\n  \"HonorsProgram\": false,\n  \"LeaveEndQuarter\": 4607,\n  \"LeaveEndYear\": 3395,\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"string\",\n      \"Campus\": \"string\",\n      \"DegreeLevel\": 9072,\n      \"DegreeName\": \"string\",\n      \"DegreeType\": 8039,\n      \"FullName\": \"string\",\n      \"MajorName\": \"string\",\n      \"Pathway\": 8326,\n      \"ShortName\": \"string\",\n      \"CollegeAbbreviation\": \"string\",\n      \"CollegeFullName\": \"string\",\n      \"DepartmentCode\": \"string\",\n      \"DepartmentAbbreviation\": \"string\",\n      \"DepartmentFullName\": \"string\"\n    },\n    {\n      \"Abbreviation\": \"string\",\n      \"Campus\": \"string\",\n      \"DegreeLevel\": 2829,\n      \"DegreeName\": \"string\",\n      \"DegreeType\": 5296,\n      \"FullName\": \"string\",\n      \"MajorName\": \"string\",\n      \"Pathway\": 6623,\n      \"ShortName\": \"string\",\n      \"CollegeAbbreviation\": \"string\",\n      \"CollegeFullName\": \"string\",\n      \"DepartmentCode\": \"string\",\n      \"DepartmentAbbreviation\": \"string\",\n      \"DepartmentFullName\": \"string\"\n    }\n  ],\n  \"Minors\": [\n    {\n      \"Abbreviation\": \"string\",\n      \"CampusName\": \"string\",\n      \"FullName\": \"string\",\n      \"Name\": \"string\",\n      \"Pathway\": 382,\n      \"ShortName\": \"string\",\n      \"DepartmentCode\": \"string\",\n      \"DepartmentAbbreviation\": \"string\",\n      \"DepartmentFullName\": \"string\"\n    },\n    {\n      \"Abbreviation\": \"string\",\n      \"CampusName\": \"string\",\n      \"FullName\": \"string\",\n      \"Name\": \"string\",\n      \"Pathway\": 7796,\n      \"ShortName\": \"string\",\n      \"DepartmentCode\": \"string\",\n      \"DepartmentAbbreviation\": \"string\",\n      \"DepartmentFullName\": \"string\"\n    }\n  ],\n  \"EnrollmentStatus\": \"string\",\n  \"EnrollmentStatusDate\": \"string\",\n  \"CurrentRegisteredCredits\": 5063.942037928752,\n  \"Metadata\": \"string\",\n  \"PendingClassChange\": true,\n  \"PendingMajorChange\": false,\n  \"PendingHonorsChange\": true,\n  \"PendingResidentChange\": true,\n  \"PendingResident\": \"string\",\n  \"PendingResidencyDescription\": \"string\",\n  \"PendingSpecialProgramChange\": false,\n  \"QtrGradePoints\": 1205.1093751887277,\n  \"QtrGradedAttmp\": 8614.40067433328,\n  \"QtrNonGrdEarned\": 6585.067870996285,\n  \"Term\": {\n    \"Href\": \"string\",\n    \"Year\": 2072,\n    \"Quarter\": \"string\"\n  },\n  \"RepositoryTimeStamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cd5a058-420c-48a6-a6e9-2ed9129cd54e",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c870a906-0eb0-4a9c-8ec2-8abcd952dd62",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "880e90c7-f560-49cd-970e-e0b87f71a7cb",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7666748-5a5d-4ee4-a538-41e55f725b92",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c0e7787-419e-4e89-9ea0-e4e5d60a0e28",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: regid | Invalid verbose value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5425e16-a560-449f-aeeb-c49d11e603e1",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "342b5af0-03f9-4c0b-a26f-3eac3594b378",
+              "name": "No enrollment found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7250ccb5-5998-4659-b6e4-9cc1c0cb294e",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89c7aca7-f1a5-4fbc-8185-c7cfec03d277",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc93731b-3578-47da-ad72-27d63f9c2e2a",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3d43469-8421-4317-8155-f1817e27e9aa",
+          "name": "Search for enrollments that match the supplied parameters",
+          "request": {
+            "name": "Search for enrollments that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Enrollment\",\r\n                     \"ews_guid\" : \"71A7F163-1585-4970-91FF-F543363264A4\",\r\n                     \"LongDescription\" : \"Search for enrollments filtered by regid, change since date and transcriptable course flag\",\r\n                     \"ShortDescription\" : \"Search for enrollments\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:GradeReader\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                The verbose flag chooses a full representation or the standard representation.\",\r\n                     \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.enrolledstudent\" ],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "enrollment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "changed_since_date",
+                  "value": "",
+                  "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+                },
+                {
+                  "disabled": false,
+                  "key": "reg_id",
+                  "value": "",
+                  "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                },
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "",
+                  "description": "Choose on or true to enable.  Otherwise off or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "transcriptable_course",
+                  "value": "yes",
+                  "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29b4061a-0042-444a-ae9c-7a80da5add68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 6389,\n  \"PageSize\": \"string\",\n  \"PageStart\": \"string\",\n  \"Current\": {\n    \"RegID\": \"string\",\n    \"Verbose\": true,\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"RegID\": \"string\",\n    \"Verbose\": true,\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"RegID\": \"string\",\n    \"Verbose\": false,\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60af149d-6805-4624-a5cf-ed4ff2e32e12",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28a1d059-c964-4c0e-a4af-31850101961c",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6724b97d-2173-467e-b8de-28971eb454c2",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ce9b7a3-9def-474d-af32-2f5bba0341f2",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85ec5d9c-5073-45a1-8e25-ae30f8accb2c",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: regid | Invalid verbose value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ece0756f-f431-474c-b618-fd892020b52b",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7241cc8-3a5c-4063-a394-ac0fc3a207eb",
+              "name": "No enrollment found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb4cf7a4-ef18-4fc4-8369-577b58455be7",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be2bb603-699d-4b2a-b44f-733f0aa32be6",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17c69c50-c91f-4859-8398-924920666b4c",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "transcriptable_course",
+                      "value": "yes"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "reg_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "b4605360-c694-4cc8-b65d-54d630943f71",
+    "name": "IdCard Web Service (IdCardWS) Campus Enrollment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

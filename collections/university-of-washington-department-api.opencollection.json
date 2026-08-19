@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Department API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Department",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for departments that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/department",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "future_terms",
+                "value": "",
+                "type": "query",
+                "description": "Number of future terms to look ahead"
+              },
+              {
+                "name": "college_abbreviation",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Department Search\",\r\n                    \"ews_guid\" : \"D9639897-147A-4091-955A-549E643B70A2\",\r\n                    \"LongDescription\" : \"Display a list of departments by college_abbreviation and optionally filter on year, quarter and\r\n                                         future_terms\",\r\n                    \"ShortDescription\" : \"List of departments\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n          "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

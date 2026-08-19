@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Program API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Program",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for a program of study that matches the parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/program/:major_abbr,:pathway,:year,:quarter",
+            "params": [
+              {
+                "name": "major_abbr",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Program\",\r\n                    \"ews_guid\" : \"0B74F119-61ED-44EF-9B5D-61DDF180B9F6\",\r\n                    \"LongDescription\" : \"Find the information about a program of study that matches the parameters\",\r\n                    \"ShortDescription\" : \"Information about a program of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA "
+        },
+        {
+          "info": {
+            "name": "Search for programs of study that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/program",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "major_abbr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Program Search\",\r\n                    \"ews_guid\" : \"8135DEB6-FC3B-4672-B36A-62FB43EE4279\",\r\n                    \"LongDescription\" : \"Search for a set of programs of study that match the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a list of programs of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the followin"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

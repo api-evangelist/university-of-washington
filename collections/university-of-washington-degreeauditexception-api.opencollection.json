@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus DegreeAuditException API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DegreeAuditException",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for a degree audit exception using the reg_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degreeauditexception",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception Search\",\r\n                    \"ews_guid\" : \"A8F00FF6-0326-48C1-BBA6-9902BB1BD331\",\r\n                    \"LongDescription\" : \"Search for a degree audit exception using the reg_id\",\r\n                    \"ShortDescription\" : \"Search for a degree audit exception\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of th"
+        },
+        {
+          "info": {
+            "name": "Create a Degree Audit Exception",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/idcard/v5/degreeauditexception"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception\",\r\n                    \"ews_guid\" : \"01F0C569-ED8C-41B8-B20F-1F20A122CD70\",\r\n                    \"LongDescription\" : \"Create a Degree Audit Exception\",\r\n                    \"ShortDescription\" : \"Create a Degree Audit Exception\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n      "
+        },
+        {
+          "info": {
+            "name": "Get degree audit exceptions for a student",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degreeauditexception/:regid",
+            "params": [
+              {
+                "name": "regid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception Student Search\",\r\n                    \"ews_guid\" : \"57A37914-7E83-4A74-9380-C26DB90A845C\",\r\n                    \"LongDescription\" : \"Get a list of degree audit exceptions for a student\",\r\n                    \"ShortDescription\" : \"Get a degree audit exception list\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any "
+        },
+        {
+          "info": {
+            "name": "Delete a specific degree audit exception",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/idcard/v5/degreeauditexception/:subtype/:controlcode/:sequenceno/:regid",
+            "params": [
+              {
+                "name": "subtype",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "controlcode",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sequenceno",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "regid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Exception Delete\",\r\n                    \"ews_guid\" : \"86C2707B-9E66-40A1-9CEA-B950BC6E7B43\",\r\n                    \"LongDescription\" : \"Delete a specific degree audit exception\",\r\n                    \"ShortDescription\" : \"Delete a degree audit exception\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTR"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

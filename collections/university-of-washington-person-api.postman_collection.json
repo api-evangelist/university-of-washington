@@ -1,0 +1,3402 @@
+{
+  "item": [
+    {
+      "id": "4022c9cc-0eeb-44be-9666-7fbf36cd3834",
+      "name": "Person",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de8988a0-6ac7-4664-87dd-21d6217ebd83",
+          "name": "Get a student's registration blocks",
+          "request": {
+            "name": "Get a student's registration blocks",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Registration Blocks\",\r\n                    \"ews_guid\" : \"2dc0dda5-6ddb-4794-8a59-765214234fd6\",\r\n                    \"LongDescription\" : \"Get a student's registration blocks by their reg_id\",\r\n                    \"ShortDescription\" : \"Get a student's registration blocks by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" },\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:RegistrationBlockerReader\r\n                                 - sws:RegistrationBlockerWriter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person",
+                ":reg_id",
+                "registrationblock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_id",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a103ba87-f0fb-4f04-8fa2-b71232114cb3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"StudentName\": \"string\",\n  \"RegID\": \"string\",\n  \"StudentSystemKey\": \"string\",\n  \"Covid19StatusCode\": 2206,\n  \"Covid19StatusDescription\": \"string\",\n  \"Covid19StatusDate\": \"string\",\n  \"Covid19StatusUpdateDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c774ab74-e112-4f08-a36f-94c119b0d01e",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f212232-eb7d-4a7c-90af-752692a0d9f9",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53fb8428-5236-4856-9ab3-0a893c58bea3",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6621d2b5-7df8-455e-adda-2f91ad482b73",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59785c2b-4639-4754-b053-5225f2a34725",
+              "name": "Invalid arg: reg_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1490fb4f-b62d-4805-a2ed-3ba85eed88b4",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e54c5503-d3d7-4bdd-9b79-38706b13961d",
+              "name": "Student system key not found for uwregid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d56147c2-91ab-47a0-af6c-47856ee5dc49",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb895424-a54c-40ba-a699-19cf05360abf",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51aae724-9aab-4448-9460-61ec2a2ed881",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87d09382-5211-469b-b66a-4a6dc0e625c6",
+          "name": "Update a student's registration blocks",
+          "request": {
+            "name": "Update a student's registration blocks",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Update Registration Blocks\",\r\n                    \"ews_guid\" : \"316f881d-1ad4-49ce-8489-56f640a69d4e\",\r\n                    \"LongDescription\" : \"Update a student's registration blocks by their reg_id\",\r\n                    \"ShortDescription\" : \"Update a student's registration blocks by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" },\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:RegistrationBlockerWriter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person",
+                ":reg_id",
+                "registrationblock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_id",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3c0e6c9-885c-41b9-a55a-125266f7fbf9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"StudentName\": \"string\",\n  \"RegID\": \"string\",\n  \"StudentSystemKey\": \"string\",\n  \"Covid19StatusCode\": 2206,\n  \"Covid19StatusDescription\": \"string\",\n  \"Covid19StatusDate\": \"string\",\n  \"Covid19StatusUpdateDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a4b4f8a-5941-4767-bd4d-a8e0f58cb108",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5a31591-9f14-4fd3-a371-b0c05371c89b",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9965db3d-3405-499d-b8a7-2f42b468a3a9",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ea79822-2621-466c-9d0c-cb2a4c37d4a7",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "575de9ff-a6a8-47f1-8b24-1c96d43fe5ad",
+              "name": "No StudentSystemKey found for RegID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cae48c6-37a8-409d-811d-5f4281ef2a7c",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d059d7f-2f58-4565-b55e-ee5ef086c6c8",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5fa6de5-9728-4323-9a65-3a1da63f437c",
+              "name": "if-match ETag does not match current Etag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "635688e5-04ff-47e2-8e60-495996ea0ca2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "213930c2-bd0d-47db-b2a0-177bcc761db3",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "registrationblock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Covid19StatusCode\": \"<integer>\",\n  \"Covid19StatusDate\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"StudentName\": \"<string>\",\n  \"StudentSystemKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7691009-eb0a-4491-a08e-c0ebcbb076f2",
+          "name": "Search for a student's earned degrees",
+          "request": {
+            "name": "Search for a student's earned degrees",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degrees Earned\",\r\n                    \"ews_guid\" : \"3d62835e-53c7-4b18-9311-6a819f7a5f9d\",\r\n                    \"LongDescription\" : \"Search for a student's earned degrees by their reg_id\",\r\n                    \"ShortDescription\" : \"Search for a student's earned degrees s by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:StudentRestrictedReader\r\n                                 - sws:StudentDisabilityReader\r\n                                 - sws:StudentEthnicityReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person",
+                ":reg_id",
+                "degree"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deg_status",
+                  "value": "9"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_id",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29a9773c-7a1d-47c1-8cd6-851ff5df5502",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"StudentFullName\": \"string\",\n  \"StudentSystemKey\": \"string\",\n  \"StudentRegID\": \"string\",\n  \"StudentNumber\": \"string\",\n  \"StudentUWNetID\": \"string\",\n  \"Degrees\": [\n    {\n      \"Campus\": \"string\",\n      \"DegreeLevel\": 176,\n      \"DegreeTitle\": \"string\",\n      \"DegreeType\": 3084,\n      \"DegreeEarnedYear\": 4828,\n      \"DegreeEarnedQuarter\": \"string\",\n      \"DegreeStatus\": 5786,\n      \"DiplomaName\": \"string\",\n      \"DiplomaMail\": 7861,\n      \"DiplomaMailToLocalAddress\": true\n    },\n    {\n      \"Campus\": \"string\",\n      \"DegreeLevel\": 2053,\n      \"DegreeTitle\": \"string\",\n      \"DegreeType\": 8177,\n      \"DegreeEarnedYear\": 6298,\n      \"DegreeEarnedQuarter\": \"string\",\n      \"DegreeStatus\": 6269,\n      \"DiplomaName\": \"string\",\n      \"DiplomaMail\": 3755,\n      \"DiplomaMailToLocalAddress\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dee36f2d-fdf3-4bc9-9ebf-39c5a98a6bac",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8dd6626-03be-438c-bb18-9c91ac20d5f1",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd662845-3469-42af-a6cd-4bfb8d25d108",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42abee24-897e-471a-b311-6fd70820c5b9",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1c05daa-91d0-4753-88d4-ec724d890333",
+              "name": "Invalid arg: reg_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b81ebd9-de41-4c16-9213-be2d7ad56c73",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7970012a-ed53-4349-9399-0f3932c5480c",
+              "name": "No earned degrees found for reg ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7fdf667-1354-4bd0-977a-be1e916b2378",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0678c7c0-e1fa-4431-b45d-7ee48f51c00b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b23afbf-af14-457d-9ece-073e5e99702c",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deg_status",
+                      "value": "9"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c2c8cc4-5c96-4a12-91e1-0ae93e750bde",
+          "name": "Search for a student's academic advisers",
+          "request": {
+            "name": "Search for a student's academic advisers",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Academic Advisers\",\r\n                    \"ews_guid\" : \"A27E0900-CA26-4722-B192-529E21170E39\",\r\n                    \"LongDescription\" : \"Search for a student's academic advisers by their reg_id\",\r\n                    \"ShortDescription\" : \"Search for a student's academic advisers by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"aadb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:StudentRestrictedReader\r\n                                 - sws:StudentDisabilityReader\r\n                                 - sws:StudentEthnicityReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               The academic adviser resource describes the academic advisers for a student. If the person is a not student \r\n                               then there will be no records found. Adviser data can come various sources such as programs (Undergraduate Advising, Honors,\r\n                               Office of Minority Affairs, etc.) as well as specific departments (Engineering, Arts, etc.).\",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person",
+                ":reg_id",
+                "advisers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_id",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f589e9f-4d46-4b23-a1c2-7cedf3350bd0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"StudentFullName\": \"string\",\n  \"StudentPronouns\": \"string\",\n  \"StudentNumber\": \"string\",\n  \"StudentSystemKey\": \"string\",\n  \"StudentUWNetID\": \"string\",\n  \"StudentRegID\": \"string\",\n  \"AcademicAdvisers\": [\n    {\n      \"AdvisingFullName\": \"string\",\n      \"AdvisingPronouns\": \"string\",\n      \"AdvisingEmailAddress\": \"string\",\n      \"AdvisingPhoneNumber\": \"string\",\n      \"AdvisingUWNetID\": \"string\",\n      \"AdvisingRegID\": \"string\",\n      \"AdvisingProgram\": \"string\",\n      \"BookingUrl\": \"string\",\n      \"IsDepartmentAdviser\": true,\n      \"StudentAdvisingIsActive\": false,\n      \"Metadata\": \"string\",\n      \"RepositoryTimeStamp\": \"string\"\n    },\n    {\n      \"AdvisingFullName\": \"string\",\n      \"AdvisingPronouns\": \"string\",\n      \"AdvisingEmailAddress\": \"string\",\n      \"AdvisingPhoneNumber\": \"string\",\n      \"AdvisingUWNetID\": \"string\",\n      \"AdvisingRegID\": \"string\",\n      \"AdvisingProgram\": \"string\",\n      \"BookingUrl\": \"string\",\n      \"IsDepartmentAdviser\": false,\n      \"StudentAdvisingIsActive\": true,\n      \"Metadata\": \"string\",\n      \"RepositoryTimeStamp\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75e0f59f-14ae-4f5c-8c16-b883d3a07dc3",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a644732c-8f84-433d-aecc-d62cc86bd5c8",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9ace625-180f-4260-b15b-08836ffb0662",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92654ccd-f344-4565-ae8e-39d30b6d2a69",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3dc5deae-0cdd-4b9a-b1fc-0fb80af1498b",
+              "name": "Invalid arg: reg_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a466e89-f9e8-4bca-bb36-754a93592dac",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b8270f90-15be-4950-b248-df355ed433e1",
+              "name": "No academic advisers found for reg ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdd9782e-4747-487b-8f97-28b0293ed580",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6148477a-5ec8-4a09-962d-544f350b7258",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c45012fb-4bae-45ab-9908-863ed98e784d",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id",
+                    "advisers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52d09cc9-3d00-4f21-97d3-631b746f211a",
+          "name": "Search for a person by their reg_id",
+          "request": {
+            "name": "Search for a person by their reg_id",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Person\",\r\n                    \"ews_guid\" : \"A27E0900-CA26-4722-B192-529E21170E39\",\r\n                    \"LongDescription\" : \"Search for a person by their reg_id\",\r\n                    \"ShortDescription\" : \"Search for a person by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:StudentRestrictedReader\r\n                                 - sws:StudentDisabilityReader\r\n                                 - sws:StudentEthnicityReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID.\r\n                               The person resource describes a UW person in an academic-centric way. If the person is a student \r\n                               the person's name will be the name from the Student System. If the person is a faculty\r\n                               that name will be provided by the HR system.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.uwstudent\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person",
+                ":reg_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_id",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f70670d6-f8ae-4a50-b813-b32c73a75702",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"UWNetID\": \"string\",\n  \"RegID\": \"string\",\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"StudentName\": \"string\",\n  \"Pronouns\": \"string\",\n  \"RegisteredName\": \"string\",\n  \"StudentSystemKey\": \"string\",\n  \"EmployeeID\": \"string\",\n  \"StudentNumber\": \"string\",\n  \"BirthDate\": \"string\",\n  \"Gender\": \"string\",\n  \"DirectoryRelease\": false,\n  \"Email\": \"string\",\n  \"LocalAddress\": {\n    \"Line1\": \"string\",\n    \"Line2\": \"string\",\n    \"City\": \"string\",\n    \"State\": \"string\",\n    \"Zip\": \"string\",\n    \"Country\": \"string\",\n    \"PostalCode\": \"string\"\n  },\n  \"PermanentAddress\": {\n    \"Line1\": \"string\",\n    \"Line2\": \"string\",\n    \"City\": \"string\",\n    \"State\": \"string\",\n    \"Zip\": \"string\",\n    \"Country\": \"string\",\n    \"PostalCode\": \"string\"\n  },\n  \"LocalPhone\": \"string\",\n  \"PermanentPhone\": \"string\",\n  \"Veteran\": {\n    \"Code\": \"string\",\n    \"Description\": \"string\"\n  },\n  \"LastEnrolled\": {\n    \"Href\": \"string\",\n    \"Year\": 88,\n    \"Quarter\": \"string\"\n  },\n  \"Notices\": {\n    \"RegID\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"PersonFinancial\": {\n    \"RegID\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Resident\": \"string\",\n  \"ResidencyDescription\": \"string\",\n  \"VisaType\": \"string\",\n  \"TestScore\": {\n    \"RegID\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Disability\": [\n    {\n      \"Code\": \"string\",\n      \"Description\": \"string\"\n    },\n    {\n      \"Code\": \"string\",\n      \"Description\": \"string\"\n    }\n  ],\n  \"Sports\": [\n    {\n      \"Code\": \"string\",\n      \"Description\": \"string\"\n    },\n    {\n      \"Code\": \"string\",\n      \"Description\": \"string\"\n    }\n  ],\n  \"Ethnicity\": {\n    \"Ethnic\": [\n      {\n        \"Code\": \"string\",\n        \"Description\": \"string\"\n      },\n      {\n        \"Code\": \"string\",\n        \"Description\": \"string\"\n      }\n    ],\n    \"Hispanic\": [\n      {\n        \"Code\": \"string\",\n        \"Description\": \"string\"\n      },\n      {\n        \"Code\": \"string\",\n        \"Description\": \"string\"\n      }\n    ]\n  },\n  \"CurrentEnrollment\": {\n    \"ClassLevel\": \"string\",\n    \"ClassCode\": \"string\",\n    \"ClassDescription\": \"string\",\n    \"HonorsProgram\": false,\n    \"LeaveEndQuarter\": 5773,\n    \"LeaveEndYear\": 6241,\n    \"Majors\": [\n      {\n        \"Abbreviation\": \"string\",\n        \"Campus\": \"string\",\n        \"DegreeLevel\": 2420,\n        \"DegreeName\": \"string\",\n        \"DegreeType\": 6098,\n        \"FullName\": \"string\",\n        \"MajorName\": \"string\",\n        \"Pathway\": 8746,\n        \"ShortName\": \"string\",\n        \"CollegeAbbreviation\": \"string\",\n        \"CollegeFullName\": \"string\",\n        \"DepartmentCode\": \"string\",\n        \"DepartmentAbbreviation\": \"string\",\n        \"DepartmentFullName\": \"string\"\n      },\n      {\n        \"Abbreviation\": \"string\",\n        \"Campus\": \"string\",\n        \"DegreeLevel\": 2003,\n        \"DegreeName\": \"string\",\n        \"DegreeType\": 7375,\n        \"FullName\": \"string\",\n        \"MajorName\": \"string\",\n        \"Pathway\": 8399,\n        \"ShortName\": \"string\",\n        \"CollegeAbbreviation\": \"string\",\n        \"CollegeFullName\": \"string\",\n        \"DepartmentCode\": \"string\",\n        \"DepartmentAbbreviation\": \"string\",\n        \"DepartmentFullName\": \"string\"\n      }\n    ],\n    \"Minors\": [\n      {\n        \"Abbreviation\": \"string\",\n        \"CampusName\": \"string\",\n        \"FullName\": \"string\",\n        \"Name\": \"string\",\n        \"Pathway\": 2271,\n        \"ShortName\": \"string\",\n        \"DepartmentCode\": \"string\",\n        \"DepartmentAbbreviation\": \"string\",\n        \"DepartmentFullName\": \"string\"\n      },\n      {\n        \"Abbreviation\": \"string\",\n        \"CampusName\": \"string\",\n        \"FullName\": \"string\",\n        \"Name\": \"string\",\n        \"Pathway\": 1980,\n        \"ShortName\": \"string\",\n        \"DepartmentCode\": \"string\",\n        \"DepartmentAbbreviation\": \"string\",\n        \"DepartmentFullName\": \"string\"\n      }\n    ],\n    \"EnrollmentStatus\": \"string\",\n    \"EnrollmentStatusDate\": \"string\",\n    \"CurrentRegisteredCredits\": 1889.0584978179847,\n    \"Metadata\": \"string\",\n    \"PendingClassChange\": false,\n    \"PendingMajorChange\": true,\n    \"PendingHonorsChange\": false,\n    \"PendingResidentChange\": true,\n    \"PendingResident\": \"string\",\n    \"PendingResidencyDescription\": \"string\",\n    \"PendingSpecialProgramChange\": true,\n    \"QtrGradePoints\": 3950.4343415625476,\n    \"QtrGradedAttmp\": 9888.336116845088,\n    \"QtrNonGrdEarned\": 6689.77352723353,\n    \"Term\": {\n      \"Href\": \"string\",\n      \"Year\": 2110,\n      \"Quarter\": \"string\"\n    },\n    \"RepositoryTimeStamp\": \"string\"\n  },\n  \"AcademicAdvisers\": {\n    \"RegID\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Degrees\": {\n    \"RegID\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"SourceDateString\": \"string\",\n  \"Metadata\": \"string\",\n  \"RepositoryTimeStamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a5937db-bdcf-42ad-a535-f61993ea065d",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84582bc4-8e23-4a8c-a0d7-39bbf32e2e5c",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c432aa7-2bc1-4153-9c5b-266b1fe29c13",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04f88ade-43ca-464e-a84f-6d3f39d9b07f",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbfaa08e-9708-4a89-a92b-55dbe173d091",
+              "name": "Invalid arg: reg_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b20073bd-a65e-4e2b-abd9-bd8776043b60",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "447c1503-2e10-4a13-b178-1d9b245966f0",
+              "name": "No person with reg ID found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ed7c9ca-293f-4bfa-bb77-0c88d3501a37",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a182634-6583-4a5c-9a7b-5d3707045fd7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1877ecd-3a77-4731-a326-14317f9bfa57",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c357c98-30c8-42e5-a11e-ae96a3c8e465",
+          "name": "Search for people that match the supplied parameters",
+          "request": {
+            "name": "Search for people that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Person Search\",\r\n                    \"ews_guid\" : \"FEA18F19-6500-4890-9F1D-B0A096E9FE72\",\r\n                    \"LongDescription\" : \"Search for a person record by an identifier such as reg_id, net_id, student_number, employee_id, \r\n                                          or student system key\",\r\n                    \"ShortDescription\" : \"Search for a person record by an identifier\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:StudentRestrictedReader\r\n                                 - sws:StudentDisabilityReader\r\n                                 - sws:StudentEthnicityReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               One and only one of the parameters needs to be supplied.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.uwstudent\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reg_id",
+                  "value": "",
+                  "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                },
+                {
+                  "disabled": false,
+                  "key": "net_id",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "student_number",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "employee_id",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "student_system_key",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "changed_since_date",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "",
+                  "description": "Choose on or true to enable.  Otherwise off or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48f679c4-8622-48ae-bd07-b59d11b21c64",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 3905,\n  \"PageSize\": \"string\",\n  \"PageStart\": \"string\",\n  \"Current\": {\n    \"EmployeeID\": \"string\",\n    \"NetID\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Verbose\": true,\n    \"RegID\": \"string\",\n    \"StudentNumber\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"StudentSystemKey\": \"string\",\n    \"HasDisability\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"EmployeeID\": \"string\",\n    \"NetID\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Verbose\": true,\n    \"RegID\": \"string\",\n    \"StudentNumber\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"StudentSystemKey\": \"string\",\n    \"HasDisability\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"EmployeeID\": \"string\",\n    \"NetID\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Verbose\": false,\n    \"RegID\": \"string\",\n    \"StudentNumber\": \"string\",\n    \"ChangedSinceDate\": \"string\",\n    \"StudentSystemKey\": \"string\",\n    \"HasDisability\": \"string\",\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a1a359c-6924-419d-ba97-b392aa568475",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "132ba1a2-73bf-4003-a671-6316878602b9",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ebdfaa7-9859-4df4-a206-f6bc7a181532",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8219f67-5b23-4227-a141-27d3ac43cb83",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02a57caa-dd76-499e-b17f-d0a5bd1ad4aa",
+              "name": "Invalid arg: reg ID | Invalid arg: net ID | Invalid arg: student number | Invalid arg: employee ID | Invalid arg: student system key | Only one search criteria may be provided. | You must enter at least one characters for first_name. | You must enter at least two characters for last_name. | You cannot search by only birth_date. Searching by that field requires either last_name and/or first_name. | If you enter a value for birth_date, you may not enter a value for reg_id, net_id, student_number, employee_id and/or student_system_key. | The request has exceeded the maximum amount of results allowed. Please refine your search. | Error in search criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4fadd70-eb8c-48d8-a13b-6b7da5cac5e1",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04f85ad7-c0c2-4fee-aa90-153325b6ed92",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a54d6d8-234f-4bc3-8f70-19df137938e1",
+              "name": "Error in search criteria | InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf48df59-53d6-4c34-8e95-ad3c2165696d",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_system_key",
+                      "value": ""
+                    },
+                    {
+                      "key": "changed_since_date",
+                      "value": ""
+                    },
+                    {
+                      "key": "verbose",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a630ee74-8d1b-4d76-bb0f-022f0cbbc7cf",
+    "name": "IdCard Web Service (IdCardWS) Campus Person API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

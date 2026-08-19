@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus ResourceList API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ResourceList",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetResources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v1"
+          }
+        },
+        {
+          "info": {
+            "name": "Get available v5 resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Service Resource List\",\r\n                    \"ews_guid\" : \"4533A5E5-2C26-4923-8574-A6C07FFFE51D\",\r\n                    \"LongDescription\" : \"Get available resources\",\r\n                    \"ShortDescription\" : \"Get available resources\",\r\n                    \"OriginatingSchema\" : [ { \"source\": \"hardcoded\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sw"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

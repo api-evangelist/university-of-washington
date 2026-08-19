@@ -1,0 +1,792 @@
+{
+  "item": [
+    {
+      "id": "1f856da9-3ee6-4955-8edd-d4867a835b21",
+      "name": "MajorStudents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c07fa67e-4ac8-497d-ab19-617a297b09d8",
+          "name": "Search for students that are enrolled in a specific program of study",
+          "request": {
+            "name": "Search for students that are enrolled in a specific program of study",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Major Students Search\",\r\n                    \"ews_guid\" : \"F19F924A-533A-4049-A340-59C88A502F45\",\r\n                    \"LongDescription\" : \"Returns a list of students that are enrolled in a specific program of study\",\r\n                    \"ShortDescription\" : \"list of students that are enrolled in a program of study\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               See the DegreeAuditProgram resource for programs of study. See the campus resource for campus codes.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.major\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "majorstudents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "campus",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "degree_level",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "degree_type",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "major_abbreviation",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "pathway",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1b59f31-42e7-439b-b4da-d094b750b1fd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Major\": {\n    \"Abbreviation\": \"string\",\n    \"Campus\": \"string\",\n    \"DegreeLevel\": 1373,\n    \"DegreeName\": \"string\",\n    \"DegreeType\": 8941,\n    \"FullName\": \"string\",\n    \"MajorName\": \"string\",\n    \"Pathway\": 9547,\n    \"ShortName\": \"string\",\n    \"CollegeAbbreviation\": \"string\",\n    \"CollegeFullName\": \"string\",\n    \"DepartmentCode\": \"string\",\n    \"DepartmentAbbreviation\": \"string\",\n    \"DepartmentFullName\": \"string\"\n  },\n  \"Students\": [\n    {\n      \"Href\": \"string\",\n      \"Name\": \"string\",\n      \"RegID\": \"string\",\n      \"Pronouns\": \"string\"\n    },\n    {\n      \"Href\": \"string\",\n      \"Name\": \"string\",\n      \"RegID\": \"string\",\n      \"Pronouns\": \"string\"\n    }\n  ],\n  \"PageStart\": \"string\",\n  \"PageSize\": \"string\",\n  \"TotalCount\": 5262,\n  \"Current\": {\n    \"Href\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"Campus\": \"string\",\n    \"DegreeLevel\": \"string\",\n    \"DegreeType\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"Pathway\": \"string\"\n  },\n  \"Previous\": {\n    \"Href\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"Campus\": \"string\",\n    \"DegreeLevel\": \"string\",\n    \"DegreeType\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"Pathway\": \"string\"\n  },\n  \"Next\": {\n    \"Href\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Year\": \"string\",\n    \"Quarter\": \"string\",\n    \"Campus\": \"string\",\n    \"DegreeLevel\": \"string\",\n    \"DegreeType\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"Pathway\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f276b048-53eb-4bc4-8fce-2cbc258e3080",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "139d4684-8b10-4eeb-ac83-7ee5bf19620b",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a28cb026-bcfe-444e-9c23-6b066a8e3b82",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1814e199-de5c-40bd-a94c-b6d8fb9e2573",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e24d8ddc-eab0-4585-96cc-c82a9e7909ff",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: campus | Invalid arg: degree_level | Invalid arg: degree_type | Invalid arg: major_abbreviation | Invalid arg: pathway | Invalid arg: pageSize | Invalid arg: pageStart | Invalid arg: page_start must be >= 0 | Invalid arg: page_size maximum 500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37838e0b-cd52-4a5c-a3b1-2f061ed32d64",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2bc0e18-5950-4d42-8b88-23f80b4669b0",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce187842-f52d-4750-abda-5e4478d76e09",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14ca24c3-ef0a-4c9f-89ec-853f81655032",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "majorstudents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_level",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_type",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a057a89f-def1-44db-a653-244ae6f2dc6b",
+    "name": "IdCard Web Service (IdCardWS) Campus MajorStudents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

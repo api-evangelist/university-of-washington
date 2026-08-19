@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Curriculum API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Curriculum",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for curriculums that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/curriculum",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "future_terms",
+                "value": "",
+                "type": "query",
+                "description": "Number of future terms to look ahead"
+              },
+              {
+                "name": "department_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "college_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "view_unpublished",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Curriculum Search\",\r\n                    \"ews_guid\" : \"AC340F89-812E-4FCB-B357-DCCFE65E0059\",\r\n                    \"LongDescription\" : \"Search for a list of curriculum results that match the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a list of curriculum results\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the fo"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1461 @@
+{
+  "item": [
+    {
+      "id": "d0c6dd86-8c40-475d-85b5-4f25c8d089ac",
+      "name": "Photo",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1a99f5e-b519-4c00-a335-707211b72d41",
+          "name": "Get the Id card photo (image/jpeg) for the indicated person.",
+          "request": {
+            "name": "Get the Id card photo (image/jpeg) for the indicated person.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "photo",
+                ":reg_Id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64511d88-61f9-49a4-9a40-5766eef2b7fb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6108abff-55d6-4fb0-ba46-c261d71203c6",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3fb1473-7628-4ede-8c77-032eab129497",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9668d7e1-8bac-4214-ba82-831be0d3401d",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f28a3903-a16b-482a-a21c-85a1ea9963ec",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37db1718-62c4-4398-8484-b57f11a30973",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b5a3185-cfed-4720-a4ff-3bc6c2c8539b",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80b7555b-e767-42c4-a6ac-aefc835efe14",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f075c474-f06e-4624-a75c-3c199ff2312c",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de31f941-edac-41e6-b0fe-bd054a0906ca",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5741a1e8-c4de-47d7-af64-021990ac7791",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    ":reg_Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "178d5400-c376-4490-b92e-c75fda315370",
+          "name": "Get the Id card photo (image/jpeg) for the indicated person.",
+          "request": {
+            "name": "Get the Id card photo (image/jpeg) for the indicated person.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "photo",
+                "{{reg_Id}}.{{file_extension}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44c0bbf2-a72a-4844-a17f-9a25a04940df",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64987040-d893-450f-8ee7-d4c54b5864e9",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32d7bdcc-876b-43b3-b22a-9b7622575ed0",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b768403-c2b7-4a50-966e-0b4d9bc66c38",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c141bbba-f183-4fff-b5cf-ad6cd41f1078",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3bba261-5033-4728-b5f4-11c9f77359ac",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55bf54b8-0583-47a6-b605-618909f4dbf6",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83989342-1029-4b44-a400-34d21414f604",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a19cab62-e099-40b5-9540-8b8e9a11b67e",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbc55fa7-c478-4d18-a916-adf11ab526ad",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2abf0f0e-0eb5-4b32-a9c9-1c556382139f",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo",
+                    "{{reg_Id}}.{{file_extension}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58f32fb9-16f6-4b87-9b4f-0f0ce7beaa61",
+          "name": "Photo Search",
+          "request": {
+            "name": "Photo Search",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "photo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reg_id",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "net_id",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "student_number",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "employee_id",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f233386-ac3e-4ee1-b6e5-99c07cf34dd3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": \"string\",\n  \"pageCount\": \"string\",\n  \"previousPageStart\": \"string\",\n  \"pageSize\": \"string\",\n  \"pageStart\": \"string\",\n  \"nextPageStart\": \"string\",\n  \"totalCount\": 3124,\n  \"pageStartOffset\": 7700,\n  \"format\": 5,\n  \"searchResultsCount\": 3012,\n  \"photos\": [\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 4025,\n      \"pageStartOffset\": 4858,\n      \"format\": 5,\n      \"nameAndRegID\": \"string\",\n      \"fullName\": \"string\",\n      \"regId\": \"string\",\n      \"fileExtension\": \"string\",\n      \"height\": 5436,\n      \"small\": {\n        \"viewFormat\": 2,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 1293,\n        \"regId\": \"string\"\n      },\n      \"medium\": {\n        \"viewFormat\": 1,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 8327,\n        \"regId\": \"string\"\n      },\n      \"large\": {\n        \"viewFormat\": 2,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 6639,\n        \"regId\": \"string\"\n      },\n      \"customHeight\": {\n        \"viewFormat\": 3,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 5900,\n        \"regId\": \"string\"\n      }\n    },\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 8169,\n      \"pageStartOffset\": 9674,\n      \"format\": 5,\n      \"nameAndRegID\": \"string\",\n      \"fullName\": \"string\",\n      \"regId\": \"string\",\n      \"fileExtension\": \"string\",\n      \"height\": 8983,\n      \"small\": {\n        \"viewFormat\": 1,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 811,\n        \"regId\": \"string\"\n      },\n      \"medium\": {\n        \"viewFormat\": 5,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 5470,\n        \"regId\": \"string\"\n      },\n      \"large\": {\n        \"viewFormat\": 3,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 8259,\n        \"regId\": \"string\"\n      },\n      \"customHeight\": {\n        \"viewFormat\": 5,\n        \"href\": \"string\",\n        \"uriAppender\": \"string\",\n        \"fileExtension\": \"string\",\n        \"height\": 5110,\n        \"regId\": \"string\"\n      }\n    }\n  ],\n  \"title\": \"string\",\n  \"current\": {\n    \"href\": \"string\",\n    \"regId\": \"string\",\n    \"netId\": \"string\",\n    \"studentNumber\": \"string\",\n    \"employeeId\": \"string\",\n    \"height\": \"string\",\n    \"viewFormat\": 5\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac62983d-0823-4f42-9e97-e4fbbe99bd6d",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb0597b4-02f1-446c-bab6-56c144d29a75",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30e7bbbb-2a1d-47d4-be68-2db63355e1ed",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe228497-c2db-499a-adf0-b78e475618dc",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ed701fe-ac90-490d-9754-fa6a6339982f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4195fab3-d0fb-4e36-b907-c973e3853ff6",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd8b6769-6c54-4378-be78-b0153ef4fa85",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "358d15a3-dca9-4159-a88d-51ac2f0fb027",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d0809c1-6f8f-41d4-898a-506d692b4212",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reg_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "net_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "student_number",
+                      "value": ""
+                    },
+                    {
+                      "key": "employee_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "height",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "reg_Id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Accepted values: jpg",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "file_extension"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b2de3bf-e74c-4952-919d-3d7a532fa542",
+    "name": "IdCard Web Service (IdCardWS) Campus Photo API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

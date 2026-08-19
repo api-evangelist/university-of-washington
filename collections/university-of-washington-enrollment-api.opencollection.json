@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Enrollment API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enrollment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a specific enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/enrollment/:year,:quarter,:reg_id",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "transcriptable_course",
+                "value": "",
+                "type": "query",
+                "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Choose on or true to enable.  Otherwise off or false."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Enrollment Search\",\r\n                     \"ews_guid\" : \"7D3E229D-2513-48D1-9760-BA7D587288C8\",\r\n                     \"LongDescription\" : \"Display information about a specific enrollment\",\r\n                     \"ShortDescription\" : \"Enrollment information\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of t"
+        },
+        {
+          "info": {
+            "name": "Search for enrollments that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/enrollment",
+            "params": [
+              {
+                "name": "changed_since_date",
+                "value": "",
+                "type": "query",
+                "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+              },
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Choose on or true to enable.  Otherwise off or false."
+              },
+              {
+                "name": "transcriptable_course",
+                "value": "",
+                "type": "query",
+                "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Enrollment\",\r\n                     \"ews_guid\" : \"71A7F163-1585-4970-91FF-F543363264A4\",\r\n                     \"LongDescription\" : \"Search for enrollments filtered by regid, change since date and transcriptable course flag\",\r\n                     \"ShortDescription\" : \"Search for enrollments\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                     \"Notes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

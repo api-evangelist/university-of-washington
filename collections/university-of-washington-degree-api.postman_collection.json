@@ -1,0 +1,1162 @@
+{
+  "item": [
+    {
+      "id": "6d1f9b2f-b117-4b47-b0a1-9c99b035872d",
+      "name": "Degree",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df25f064-fdba-4b14-b817-3fe8bfa20a91",
+          "name": "Get a specific degree program that matches the supplied parameters",
+          "request": {
+            "name": "Get a specific degree program that matches the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree\",\r\n                    \"ews_guid\" : \"7106549C-4066-485F-B6CA-2B03BF2D5D05\",\r\n                    \"LongDescription\" : \"Return a specific degree program that matches the supplied parameters\",\r\n                    \"ShortDescription\" : \"Return a specific degree program\",\r\n                    \"OriginatingSchema\" : [  { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               A student can be enrolled in multiple degrees. Degrees are children of Programs (major/pathway).\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "degree",
+                "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c8b12d6-bebb-47f1-8718-7f530989cb22",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DegreeUri\": {\n    \"Href\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"Pathway\": \"string\",\n    \"DegreeLevel\": \"string\",\n    \"DegreeType\": \"string\",\n    \"Year\": 6695,\n    \"Quarter\": \"string\"\n  },\n  \"Program\": {\n    \"ProgramUri\": {\n      \"Href\": \"string\",\n      \"MajorAbbreviation\": \"string\",\n      \"Pathway\": \"string\",\n      \"Year\": 5988,\n      \"Quarter\": \"string\"\n    },\n    \"Department\": {\n      \"CollegeAbbreviation\": \"string\",\n      \"DepartmentAbbreviation\": \"string\",\n      \"DepartmentFullName\": \"string\"\n    },\n    \"MajorFullName\": \"string\",\n    \"MajorName\": \"string\",\n    \"MajorShortName\": \"string\",\n    \"Pathway\": \"string\",\n    \"FirstEffectiveTerm\": {\n      \"Href\": \"string\",\n      \"Year\": 6666,\n      \"Quarter\": \"string\"\n    },\n    \"LastEffectiveTerm\": {\n      \"Href\": \"string\",\n      \"Year\": 4955,\n      \"Quarter\": \"string\"\n    },\n    \"Href\": \"string\"\n  },\n  \"Campus\": \"string\",\n  \"DegreeLevel\": \"string\",\n  \"DegreeType\": \"string\",\n  \"Title\": \"string\",\n  \"FirstEffectiveTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 2087,\n    \"Quarter\": \"string\"\n  },\n  \"LastEffectiveTerm\": {\n    \"Href\": \"string\",\n    \"Year\": 4001,\n    \"Quarter\": \"string\"\n  },\n  \"Href\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f0c22e6-dfb5-4ef7-8b5c-21629ce2473b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f749b7de-28f4-4e40-97f1-8d806edcb2a3",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9241e2b9-70ee-4c2e-b777-4b777b9828c0",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d0bcca7-139d-43f8-bf09-4660d3413a65",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d09f8ba-12ee-4c2f-844c-b9b362155c07",
+              "name": "Invalid arg: year | Invalid arg: quarter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc36ce15-7a2e-41d9-b1ff-43b1658247fe",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cd64de7-513f-4c89-87a1-cc11ac0dbe7d",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "927e5aa6-668e-4f88-a4a8-47dcb7044d05",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69938dcd-9bbc-498d-8e01-e7765339e3a2",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree",
+                    "{{major_abbr}},{{pathway}},{{level}},{{type}},{{year}},{{quarter}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a00b83f0-438f-4577-ac27-0f92a824ce15",
+          "name": "Search for a degree program that matches the supplied parameters",
+          "request": {
+            "name": "Search for a degree program that matches the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Search\",\r\n                    \"ews_guid\" : \"F830EF22-38C3-4279-A199-9C8A8038C149\",\r\n                    \"LongDescription\" : \"Search for a degree program that matches the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a degree program\",\r\n                    \"OriginatingSchema\" : [  { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               A student can be enrolled in multiple degrees. Degrees are children of Programs (major/pathway).\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "degree"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "campus",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "major_abbr",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "pathway",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page_start",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbf9c01b-d85b-46ab-8d0a-132e893f30d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Current\": {\n    \"CampusShortName\": \"string\",\n    \"Year\": 2156,\n    \"Quarter\": \"string\",\n    \"Pathway\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"CampusShortName\": \"string\",\n    \"Year\": 4351,\n    \"Quarter\": \"string\",\n    \"Pathway\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"CampusShortName\": \"string\",\n    \"Year\": 6988,\n    \"Quarter\": \"string\",\n    \"Pathway\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"PageStart\": \"string\",\n    \"PageSize\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"TotalCount\": 3971,\n  \"Degrees\": [\n    {\n      \"DegreeUri\": {\n        \"Href\": \"string\",\n        \"MajorAbbreviation\": \"string\",\n        \"Pathway\": \"string\",\n        \"DegreeLevel\": \"string\",\n        \"DegreeType\": \"string\",\n        \"Year\": 121,\n        \"Quarter\": \"string\"\n      },\n      \"Program\": {\n        \"ProgramUri\": {\n          \"Href\": \"string\",\n          \"MajorAbbreviation\": \"string\",\n          \"Pathway\": \"string\",\n          \"Year\": 3728,\n          \"Quarter\": \"string\"\n        },\n        \"Department\": {\n          \"CollegeAbbreviation\": \"string\",\n          \"DepartmentAbbreviation\": \"string\",\n          \"DepartmentFullName\": \"string\"\n        },\n        \"MajorFullName\": \"string\",\n        \"MajorName\": \"string\",\n        \"MajorShortName\": \"string\",\n        \"Pathway\": \"string\",\n        \"FirstEffectiveTerm\": {\n          \"Href\": \"string\",\n          \"Year\": 634,\n          \"Quarter\": \"string\"\n        },\n        \"LastEffectiveTerm\": {\n          \"Href\": \"string\",\n          \"Year\": 1458,\n          \"Quarter\": \"string\"\n        },\n        \"Href\": \"string\"\n      },\n      \"Campus\": \"string\",\n      \"DegreeLevel\": \"string\",\n      \"DegreeType\": \"string\",\n      \"Title\": \"string\",\n      \"FirstEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 8723,\n        \"Quarter\": \"string\"\n      },\n      \"LastEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 8059,\n        \"Quarter\": \"string\"\n      },\n      \"Href\": \"string\"\n    },\n    {\n      \"DegreeUri\": {\n        \"Href\": \"string\",\n        \"MajorAbbreviation\": \"string\",\n        \"Pathway\": \"string\",\n        \"DegreeLevel\": \"string\",\n        \"DegreeType\": \"string\",\n        \"Year\": 3334,\n        \"Quarter\": \"string\"\n      },\n      \"Program\": {\n        \"ProgramUri\": {\n          \"Href\": \"string\",\n          \"MajorAbbreviation\": \"string\",\n          \"Pathway\": \"string\",\n          \"Year\": 9126,\n          \"Quarter\": \"string\"\n        },\n        \"Department\": {\n          \"CollegeAbbreviation\": \"string\",\n          \"DepartmentAbbreviation\": \"string\",\n          \"DepartmentFullName\": \"string\"\n        },\n        \"MajorFullName\": \"string\",\n        \"MajorName\": \"string\",\n        \"MajorShortName\": \"string\",\n        \"Pathway\": \"string\",\n        \"FirstEffectiveTerm\": {\n          \"Href\": \"string\",\n          \"Year\": 1473,\n          \"Quarter\": \"string\"\n        },\n        \"LastEffectiveTerm\": {\n          \"Href\": \"string\",\n          \"Year\": 8744,\n          \"Quarter\": \"string\"\n        },\n        \"Href\": \"string\"\n      },\n      \"Campus\": \"string\",\n      \"DegreeLevel\": \"string\",\n      \"DegreeType\": \"string\",\n      \"Title\": \"string\",\n      \"FirstEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 5291,\n        \"Quarter\": \"string\"\n      },\n      \"LastEffectiveTerm\": {\n        \"Href\": \"string\",\n        \"Year\": 4970,\n        \"Quarter\": \"string\"\n      },\n      \"Href\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a0843be-b6af-46bb-a7c5-9e70c09be321",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d17fa0b-e0ac-4ba2-913b-e312117b8f55",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32343244-abe1-44d4-b903-e2b26a8e717c",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ed3d49c-3674-4f4e-b5ed-a0daffa9ef9c",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93dd9c6d-1ed2-4aea-81c1-807ea009da13",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: major_abbr | Invalid arg: pathway",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c0533a60-d2c3-48bb-8a61-82031a907d8c",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da475121-0ea5-44b3-b87e-3acb93e2e884",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbd76c42-4f81-45e7-bcbf-a00878ffeb9b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a74e9e55-f324-4b67-aca9-457e6ae2f555",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbr",
+                      "value": ""
+                    },
+                    {
+                      "key": "pathway",
+                      "value": ""
+                    },
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_start",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "major_abbr"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "pathway"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "level"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "type"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "year"
+    }
+  ],
+  "info": {
+    "_postman_id": "66f46e3f-a910-498d-9241-79f6df364a73",
+    "name": "IdCard Web Service (IdCardWS) Campus Degree API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus EnrollmentMajor API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "EnrollmentMajor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the enrolled major for a specific student",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/enrollment/:year,:quarter,:regid/major",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "regid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Enrollment Major Search\",\r\n                    \"ews_guid\" : \"5B4A9CC8-2744-4FCB-9977-495798098EE5\",\r\n                    \"LongDescription\" : \"Display the enrolled major for the specified year, quarter and regid\",\r\n                    \"ShortDescription\" : \"Get a specific enrolled major\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n               "
+        },
+        {
+          "info": {
+            "name": "Update the enrollment majors for a specific student",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/idcard/v5/enrollment/:year,:quarter,:regid/major",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "regid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Enrollment Major\",\r\n                    \"ews_guid\" : \"9F380A08-D597-44AD-87BE-A2B2B1B4F328\",\r\n                    \"LongDescription\" : \"Update the list of enrollment majors for a specific student\",\r\n                    \"ShortDescription\" : \"Update enrollment majors\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

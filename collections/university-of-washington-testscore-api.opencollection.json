@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus TestScore API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TestScore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the student's test scores for admission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/testscore/:regID",
+            "params": [
+              {
+                "name": "regID",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Test Score\",\r\n                    \"ews_guid\" : \"D2F4747C-952C-4F53-A86B-FF007F1F73C4\",\r\n                    \"LongDescription\" : \"Get information about a student's academic test scores (e.g. GMAT, SAT, TOEFL, etc.) \r\n                                          for admission\",\r\n                    \"ShortDescription\" : \"Get test scores for admission\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" }"
+        },
+        {
+          "info": {
+            "name": "Get the student's test scores of a specific test type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/testscore/:testType,:regID",
+            "params": [
+              {
+                "name": "testType",
+                "value": "",
+                "type": "path",
+                "description": "The type of the test (e.g. GMAT, SAT, TOEFL)"
+              },
+              {
+                "name": "regID",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Test Score by Type\",\r\n                    \"ews_guid\" : \"F4BBB30B-CEB8-4FF5-87AA-A522ECA0782E\",\r\n                    \"LongDescription\" : \"Get information about a student's test scores of a specific test type for admission\",\r\n                    \"ShortDescription\" : \"Get specific type of test scores for admission\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" :"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

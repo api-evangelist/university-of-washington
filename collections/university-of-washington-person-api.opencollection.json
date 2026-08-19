@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Person API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Person",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a student's registration blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/person/:reg_id/registrationblock",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Registration Blocks\",\r\n                    \"ews_guid\" : \"2dc0dda5-6ddb-4794-8a59-765214234fd6\",\r\n                    \"LongDescription\" : \"Get a student's registration blocks by their reg_id\",\r\n                    \"ShortDescription\" : \"Get a student's registration blocks by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" },\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA "
+        },
+        {
+          "info": {
+            "name": "Update a student's registration blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/idcard/v5/person/:reg_id/registrationblock",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Update Registration Blocks\",\r\n                    \"ews_guid\" : \"316f881d-1ad4-49ce-8489-56f640a69d4e\",\r\n                    \"LongDescription\" : \"Update a student's registration blocks by their reg_id\",\r\n                    \"ShortDescription\" : \"Update a student's registration blocks by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" },\r\n                    \"Notes\" : \"This resource requires any of the fol"
+        },
+        {
+          "info": {
+            "name": "Search for a student's earned degrees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/person/:reg_id/degree",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "deg_status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degrees Earned\",\r\n                    \"ews_guid\" : \"3d62835e-53c7-4b18-9311-6a819f7a5f9d\",\r\n                    \"LongDescription\" : \"Search for a student's earned degrees by their reg_id\",\r\n                    \"ShortDescription\" : \"Search for a student's earned degrees s by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires "
+        },
+        {
+          "info": {
+            "name": "Search for a student's academic advisers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/person/:reg_id/advisers",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Academic Advisers\",\r\n                    \"ews_guid\" : \"A27E0900-CA26-4722-B192-529E21170E39\",\r\n                    \"LongDescription\" : \"Search for a student's academic advisers by their reg_id\",\r\n                    \"ShortDescription\" : \"Search for a student's academic advisers by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"aadb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requ"
+        },
+        {
+          "info": {
+            "name": "Search for a person by their reg_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/person/:reg_id",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Person\",\r\n                    \"ews_guid\" : \"A27E0900-CA26-4722-B192-529E21170E39\",\r\n                    \"LongDescription\" : \"Search for a person by their reg_id\",\r\n                    \"ShortDescription\" : \"Search for a person by their reg_id\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTR"
+        },
+        {
+          "info": {
+            "name": "Search for people that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/person",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "net_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "student_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "student_system_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_since_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Choose on or true to enable.  Otherwise off or false."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Person Search\",\r\n                    \"ews_guid\" : \"FEA18F19-6500-4890-9F1D-B0A096E9FE72\",\r\n                    \"LongDescription\" : \"Search for a person record by an identifier such as reg_id, net_id, student_number, employee_id, \r\n                                          or student system key\",\r\n                    \"ShortDescription\" : \"Search for a person record by an identifier\",\r\n                    \"OriginatingSchema\" : [ { \"so"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

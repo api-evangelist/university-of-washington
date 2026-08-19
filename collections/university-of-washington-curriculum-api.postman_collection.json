@@ -1,0 +1,658 @@
+{
+  "item": [
+    {
+      "id": "9cbb3d7d-76fd-4f4a-a430-3f6180cab25c",
+      "name": "Curriculum",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b97f0756-d47a-4a53-b7c8-50798e75b4a6",
+          "name": "Search for curriculums that match the supplied parameters",
+          "request": {
+            "name": "Search for curriculums that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Curriculum Search\",\r\n                    \"ews_guid\" : \"AC340F89-812E-4FCB-B357-DCCFE65E0059\",\r\n                    \"LongDescription\" : \"Search for a list of curriculum results that match the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a list of curriculum results\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               You do not need to specify all parameters to return a successful search result. This search resource \r\n                               supports different combinations of search parameters to provide different search results.\r\n                               For college abbreviations refer to the college resource.  \r\n                               For department abbreviations refer to the department resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.curriculum\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "curriculum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "",
+                  "description": "(Required) The 4 digit year.  For example: 2025"
+                },
+                {
+                  "disabled": false,
+                  "key": "quarter",
+                  "value": "",
+                  "description": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+                },
+                {
+                  "disabled": false,
+                  "key": "future_terms",
+                  "value": "0",
+                  "description": "Number of future terms to look ahead"
+                },
+                {
+                  "disabled": false,
+                  "key": "department_abbreviation",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "college_abbreviation",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "view_unpublished",
+                  "value": "false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "728777fa-deb1-4423-863d-ae0796486ae7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 9436,\n  \"Curricula\": [\n    {\n      \"Year\": 1564,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CurriculumName\": \"string\",\n      \"CurriculumFullName\": \"string\",\n      \"Href\": \"string\"\n    },\n    {\n      \"Year\": 8766,\n      \"Quarter\": \"string\",\n      \"CurriculumAbbreviation\": \"string\",\n      \"CurriculumName\": \"string\",\n      \"CurriculumFullName\": \"string\",\n      \"Href\": \"string\"\n    }\n  ],\n  \"PageSize\": \"string\",\n  \"PageStart\": \"string\",\n  \"Current\": {\n    \"Year\": 9357,\n    \"Quarter\": \"string\",\n    \"DepartmentAbbreviation\": \"string\",\n    \"CollegeAbbreviation\": \"string\",\n    \"FutureTerms\": 4702,\n    \"ViewUnpublished\": false,\n    \"Href\": \"string\"\n  },\n  \"Next\": {\n    \"Year\": 800,\n    \"Quarter\": \"string\",\n    \"DepartmentAbbreviation\": \"string\",\n    \"CollegeAbbreviation\": \"string\",\n    \"FutureTerms\": 7777,\n    \"ViewUnpublished\": true,\n    \"Href\": \"string\"\n  },\n  \"Previous\": {\n    \"Year\": 8199,\n    \"Quarter\": \"string\",\n    \"DepartmentAbbreviation\": \"string\",\n    \"CollegeAbbreviation\": \"string\",\n    \"FutureTerms\": 3936,\n    \"ViewUnpublished\": false,\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c2b7a60-4272-4a6c-9d23-152cb109335b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "91c4ba38-8ed2-4437-bf30-17909bc6e7da",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98d77cb0-4481-4613-8aa4-b72353ae1e75",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce460631-9c56-42f4-9aa3-bef8f309cbc8",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97f59f5d-f814-4928-af4c-cea75b5b61c6",
+              "name": "Invalid input | Invalid arg: college abbreviation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dd7220c-2485-4ce8-bca7-d45b38629521",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed144750-34d3-4aa6-b044-e615fd34a313",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3740995b-ca97-4650-9310-e452a5842c86",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71f24b41-2917-4663-a9df-7ecb176da241",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "curriculum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": ""
+                    },
+                    {
+                      "key": "quarter",
+                      "value": ""
+                    },
+                    {
+                      "key": "future_terms",
+                      "value": "0"
+                    },
+                    {
+                      "key": "department_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "college_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "view_unpublished",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a6840049-9b66-4458-8094-c7eb01d17647",
+    "name": "IdCard Web Service (IdCardWS) Campus Curriculum API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus DegreeAudit API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DegreeAudit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for Degree Audit for a specific person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degreeaudit",
+            "params": [
+              {
+                "name": "reg_id",
+                "value": "",
+                "type": "query",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Search\",\r\n                    \"ews_guid\" : \"7B4C6A0F-DA28-4E2E-96BF-F0C619C32462\",\r\n                    \"LongDescription\" : \"Search for degree audits for a specific person that shows a student's progress and plan \r\n                                          towards obtaining degrees\",\r\n                    \"ShortDescription\" : \"Search for degree audits for a specific person\",\r\n                    \"OriginatingSchema\" : [ {"
+        },
+        {
+          "info": {
+            "name": "Create a Degree Audit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/idcard/v5/degreeaudit"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Create\",\r\n                    \"ews_guid\" : \"BE01A04F-C2C3-4589-A499-E6367FE626CB\",\r\n                    \"LongDescription\" : \"Create a degree audit that shows a student's progress and plan \r\n                                          towards obtaining a degree\",\r\n                    \"ShortDescription\" : \"Create a degree audit\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, { \"sour"
+        },
+        {
+          "info": {
+            "name": "Get a specific Degree Audit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degreeaudit/:campus,:majorabbreviation,:pathway,:degreelevel,:degreetype,:regid",
+            "params": [
+              {
+                "name": "campus",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "majorAbbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "degreeLevel",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "degreeType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "regid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit\",\r\n                    \"ews_guid\" : \"38D7E02F-66EA-42E8-990B-AAB6F53FA10C\",\r\n                    \"LongDescription\" : \"Retrieve a specific degree audit that shows a student's progress and plan \r\n                                          towards obtaining a degree\",\r\n                    \"ShortDescription\" : \"Retrieve a degree audit\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, {"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

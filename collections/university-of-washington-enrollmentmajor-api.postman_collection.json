@@ -1,0 +1,995 @@
+{
+  "item": [
+    {
+      "id": "75ab7b2f-5e7d-4019-9b63-71002362fed5",
+      "name": "EnrollmentMajor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27dcc904-6424-44b0-89a0-b0089c2c7909",
+          "name": "Get the enrolled major for a specific student",
+          "request": {
+            "name": "Get the enrolled major for a specific student",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Enrollment Major Search\",\r\n                    \"ews_guid\" : \"5B4A9CC8-2744-4FCB-9977-495798098EE5\",\r\n                    \"LongDescription\" : \"Display the enrolled major for the specified year, quarter and regid\",\r\n                    \"ShortDescription\" : \"Get a specific enrolled major\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:MajorUpdater\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.major\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "enrollment",
+                "{{year}},{{quarter}},{{regid}}",
+                "major"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "835ee955-770e-4070-a259-58534fed8bee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"StudentName\": \"string\",\n  \"Person\": {\n    \"Name\": \"string\",\n    \"RegID\": \"string\",\n    \"Pronouns\": \"string\",\n    \"Href\": \"string\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"string\",\n      \"Campus\": \"string\",\n      \"DegreeLevel\": 2702,\n      \"DegreeName\": \"string\",\n      \"DegreeType\": 2271,\n      \"FullName\": \"string\",\n      \"MajorName\": \"string\",\n      \"Pathway\": 9124,\n      \"ShortName\": \"string\"\n    },\n    {\n      \"Abbreviation\": \"string\",\n      \"Campus\": \"string\",\n      \"DegreeLevel\": 9760,\n      \"DegreeName\": \"string\",\n      \"DegreeType\": 8518,\n      \"FullName\": \"string\",\n      \"MajorName\": \"string\",\n      \"Pathway\": 5214,\n      \"ShortName\": \"string\"\n    }\n  ],\n  \"StudentSystemKey\": \"string\",\n  \"RegID\": \"string\",\n  \"Term\": {\n    \"Href\": \"string\",\n    \"Year\": 5294,\n    \"Quarter\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a365363-eca8-45f8-bfc1-6b6e6dbe5e8f",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2e9ba13-03dc-4d34-9cb9-3cdc15761fb7",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54b8381f-fc30-4604-b98e-e37cfb8d1e4c",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15168eb1-d638-4ed8-b071-21eb25b4fa23",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f567b0a-457e-46c5-b9b7-d0692730460a",
+              "name": "Invalid arg: year | Invalid arg: quarter | Invalid arg: regid ID | No student found for RegID | not a graduate student in requested year / quarter | one or more params are missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5b56611-0e4f-42d4-a173-383f7178941c",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad41fd51-ad4f-4bbf-af10-94c6704abaa8",
+              "name": "No major found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4313941a-685e-4b98-9d96-efbe34860d15",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f758184f-1516-4297-a04e-90742a64ed1b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a26266c2-04c5-47b5-af94-6481886299c3",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5de32732-3b7d-433f-a746-4f118b0cbde6",
+          "name": "Update the enrollment majors for a specific student",
+          "request": {
+            "name": "Update the enrollment majors for a specific student",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Enrollment Major\",\r\n                    \"ews_guid\" : \"9F380A08-D597-44AD-87BE-A2B2B1B4F328\",\r\n                    \"LongDescription\" : \"Update the list of enrollment majors for a specific student\",\r\n                    \"ShortDescription\" : \"Update enrollment majors\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:MajorUpdater\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               The put request allows you to make a change to an existing major in the returned results of the get request.\r\n                               You must PUT back the full set of majors, even if you are only changing one.\r\n                               The count of majors in the PUT must match the count of majors from the GET.\r\n                               Required/validated request header fields are x-uw-act-as (netid) and if-match(etag). \r\n                               You must include the ETag from the GET in the PUT. This ensures that you are working with the current representation.\r\n                               Required/validated fields in the payload for person is Student name.\r\n                               Required/validated fields in the payload for each major are Abbreviation, DegreeLevel, DegreeType, \r\n                               and Pathway. All other fields are ignored in the PUT.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.major\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "enrollment",
+                "{{year}},{{quarter}},{{regid}}",
+                "major"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6aa807c3-bedf-4dd9-861a-993963bdc534",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"StudentName\": \"string\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"string\",\n  \"RegID\": \"string\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26af71a7-dbc1-4711-a645-661d2ecb0a59",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "761a5469-618f-4b1d-b094-217cd6785684",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0db3a19-0834-4b43-bcdf-361698c3754c",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad1aeeff-365a-4347-bb33-4bd5cbbb53c9",
+              "name": "No changes detected in request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "337383fc-d94c-4a48-ab8f-f20e56612120",
+              "name": "Invalid arg: year | Invalid arg: quarter | invalid year/quarter (past quarter) | invalid year/quarter (transcript posted) | invalid year/quarter (not active reg quarter) | invalid year/quarter (no autumn changes prior to last day summer) | year/quarter must be after admit year/quarter | student not currently enrolled  | not a graduate student  in requested year/quarter | no changes specified | invalid current majors | current major not found | duplicate new major inputs | requested new major/pathway is invalid | requested new major/pathway/deglvl/type is invalie | new major already present | inputs result in duplicate majors | HTTP if-match header is empty; it is required for a PUT request. | Invalid arg: direct caller ID | x-uw-act-as is required. | No student found for RegID | Number of majors from the GET does not match number of majors in the PUT | major cannot be in a different position in the list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5ae4e00-4db1-4a14-8308-b8da73d165b8",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2acca723-2ee7-4e24-a873-ade31240057e",
+              "name": "Term not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82b0b3af-0e27-4d23-a788-460c265a9d90",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "404142a1-fb56-4667-bbc3-0be64362932b",
+              "name": "if-match ETag does not match current Etag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9658c8c2-bf87-4eff-afd1-28496cf7dd39",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "322d5ffb-d9e3-4426-adbe-b45a9d7a48d3",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "enrollment",
+                    "{{year}},{{quarter}},{{regid}}",
+                    "major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StudentName\": \"<string>\",\n  \"Person\": {\n    \"Name\": \"<string>\",\n    \"RegID\": \"<string>\",\n    \"Pronouns\": \"<string>\",\n    \"Href\": \"<string>\"\n  },\n  \"Majors\": [\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    },\n    {\n      \"Abbreviation\": \"<string>\",\n      \"Campus\": \"<string>\",\n      \"DegreeLevel\": \"<integer>\",\n      \"DegreeName\": \"<string>\",\n      \"DegreeType\": \"<integer>\",\n      \"FullName\": \"<string>\",\n      \"MajorName\": \"<string>\",\n      \"Pathway\": \"<integer>\",\n      \"ShortName\": \"<string>\"\n    }\n  ],\n  \"StudentSystemKey\": \"<string>\",\n  \"RegID\": \"<string>\",\n  \"Term\": {\n    \"Href\": \"<string>\",\n    \"Year\": \"<integer>\",\n    \"Quarter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "regid"
+    }
+  ],
+  "info": {
+    "_postman_id": "d060ff0b-2cff-47c0-8308-dc5444819cb6",
+    "name": "IdCard Web Service (IdCardWS) Campus EnrollmentMajor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

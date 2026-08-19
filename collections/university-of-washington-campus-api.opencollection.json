@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available campuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/campus"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Campus List\",\r\n                    \"ews_guid\" : \"317D6605-20FA-4D10-80A0-75C655B489F3\",\r\n                    \"LongDescription\" : \"Display a list of campuses\",\r\n                    \"ShortDescription\" : \"Campus list\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"hardcoded\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n         "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

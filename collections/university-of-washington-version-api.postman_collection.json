@@ -1,0 +1,334 @@
+{
+  "item": [
+    {
+      "id": "43ed8b98-f358-4a69-bc27-1f11c45d554b",
+      "name": "Version",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac4954c0-c47b-4312-a6d7-af3b79ed2786",
+          "name": "Get available versions",
+          "request": {
+            "name": "Get available versions",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Service Version\",\r\n                    \"sws_guid\" : \"3BFD2A3E-5BAE-47D3-9BE2-4A603320F632\",\r\n                    \"LongDescription\" : \"Get available versions\",\r\n                    \"ShortDescription\" : \"Get available versions\",\r\n                    \"OriginatingSchema\" : [{ \"source\": \"hardcoded\" }],\r\n                    \"Notes\" : \"The version list resource lists the contract versions that are currently available for the service.\r\n                                Each contract version in the list links to a resource list which provides a list of search resources.\r\n                                Also provided in this resource are the code versions that supports the given contract versions.\r\n                                The code version is divided into 2 types:\r\n                                    Domain Core Version\r\n                                    Service Version\r\n                                This is primarily useful for change management.\",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ca82a20-1a20-444c-94a5-8147b5f565cf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": \"string\",\n  \"pageCount\": \"string\",\n  \"previousPageStart\": \"string\",\n  \"pageSize\": \"string\",\n  \"pageStart\": \"string\",\n  \"nextPageStart\": \"string\",\n  \"totalCount\": 3723,\n  \"pageStartOffset\": 5964,\n  \"format\": 1,\n  \"listModel\": {\n    \"dfdsSendRequestTiming\": 570.9051894748285,\n    \"dfdsOpenRequestTiming\": 6425.368119043093,\n    \"expires\": \"2010-07-16T10:00:24.047Z\",\n    \"serviceCodeVersion\": \"string\",\n    \"domainCoreVersion\": \"string\",\n    \"list\": [\n      {\n        \"key\": \"string\",\n        \"metadata\": \"string\",\n        \"versionNumber\": \"string\",\n        \"isCurrent\": true\n      },\n      {\n        \"key\": \"string\",\n        \"metadata\": \"string\",\n        \"versionNumber\": \"string\",\n        \"isCurrent\": false\n      }\n    ]\n  },\n  \"listViewModel\": [\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 2017,\n      \"pageStartOffset\": 5777,\n      \"format\": 3,\n      \"versionNumber\": \"string\",\n      \"href\": \"https://AKLfVGdHztNsE.yypBeSEH\"\n    },\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 7467,\n      \"pageStartOffset\": 8969,\n      \"format\": 1,\n      \"versionNumber\": \"string\",\n      \"href\": \"https://dzAK.jea2oRmHISiuPiiJCSaBU1F2NCh6NUSIJykgsiyhlY\"\n    }\n  ],\n  \"title\": \"string\",\n  \"current\": {\n    \"metadata\": \"string\",\n    \"pageCount\": \"string\",\n    \"previousPageStart\": \"string\",\n    \"pageSize\": \"string\",\n    \"pageStart\": \"string\",\n    \"nextPageStart\": \"string\",\n    \"totalCount\": 2663,\n    \"pageStartOffset\": 5170,\n    \"format\": 3,\n    \"versionNumber\": \"string\",\n    \"href\": \"https://WS.roqgMpUvBYkzNzNs\"\n  },\n  \"supportedVersions\": [\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 2513,\n      \"pageStartOffset\": 9622,\n      \"format\": 5,\n      \"versionNumber\": \"string\",\n      \"href\": \"https://WSaBxDmmwipoIYUGxmCsXfPcYwROJ.gtazr0-IEbpsJru,NYh033Ru4I82g4p3XdnNB4hND5F9Zcbv8nssQR9JkE\"\n    },\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 507,\n      \"pageStartOffset\": 6393,\n      \"format\": 2,\n      \"versionNumber\": \"string\",\n      \"href\": \"http://T.rzHUWfqo4j.5dFB2GVdQytYsX,rbDq\"\n    }\n  ],\n  \"serviceVersion\": \"string\",\n  \"domainCoreVersion\": \"string\",\n  \"environment\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f49d29d-e4a6-4c17-a17d-690fdfdb17f2",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f8d3522-3ae9-4cc9-b27d-28ba4881271d",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "daa85d4e-57fc-4d5f-8eab-23c3e9150fa4",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e53f0255-5530-40b4-8282-885d3eb62eae",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3235fd8-10bb-4153-be56-30bbd7933426",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "827571ee-6cd8-4424-8aa0-8d53baa950a3",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d487a1f3-6597-42fc-ba69-e189bf0970ee",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04958ed2-d0d7-4c4e-9f6b-ec1aed16bcfa",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "07425b20-d332-4d20-a0b2-22f5f5cdc977",
+    "name": "IdCard Web Service (IdCardWS) Campus Version API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

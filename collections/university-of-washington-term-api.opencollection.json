@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Term API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Term",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/term/current"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Current)\",\r\n                    \"ews_guid\" : \"AC24C6B9-5259-4DB6-A9E8-AA05013DA0A9\",\r\n                    \"LongDescription\" : \"Get the current term. It is often a starting point to accessing other term based resources.\",\r\n                    \"ShortDescription\" : \"Get the current term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the follow"
+        },
+        {
+          "info": {
+            "name": "Get the next term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/term/next"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Next)\",\r\n                    \"ews_guid\" : \"9C4B72E7-96D7-450E-9D2F-B6235F6C4A52\",\r\n                    \"LongDescription\" : \"Get the next term \",\r\n                    \"ShortDescription\" : \"Get the next term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n             "
+        },
+        {
+          "info": {
+            "name": "Get the previous term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/term/previous"
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term (Previous)\",\r\n                    \"ews_guid\" : \"9B182AB0-922F-4868-AAA2-99867635201F\",\r\n                    \"LongDescription\" : \"Get the previous term \",\r\n                    \"ShortDescription\" : \"Get the previous term \",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n "
+        },
+        {
+          "info": {
+            "name": "Get the specific term that matches the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/term/:year,:quarter",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Term\",\r\n                    \"ews_guid\" : \"4457E842-C465-47AA-9E35-B2858FAADCBC\",\r\n                    \"LongDescription\" : \"Get a specific term matching the supplied parameters\",\r\n                    \"ShortDescription\" : \"Get a specific term\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

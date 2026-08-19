@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus DegreeAuditProgram API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DegreeAuditProgram",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for degree audit programs that match the supplied parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degreeauditprogram",
+            "params": [
+              {
+                "name": "campus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "major_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "degree_group",
+                "value": "",
+                "type": "query",
+                "description": "GRADUATE, MINOR, UNDERGRADUATE or blank. When nothing is specified for degree_group then all results are returned."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Program Search\",\r\n                    \"ews_guid\" : \"4CD2A808-F00C-4878-B330-442015FB6B6A\",\r\n                    \"LongDescription\" : \"Search for a list of programs that can be used for a degree audit which can be filtered by \r\n                                          campus, major and degree group\",\r\n                    \"ShortDescription\" : \"Search for a list of educational programs\",\r\n                    \"OriginatingSc"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

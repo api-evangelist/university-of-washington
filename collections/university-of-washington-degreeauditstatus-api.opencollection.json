@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus DegreeAuditStatus API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DegreeAuditStatus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the specified status of a degree audit request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/degreeauditstatus/:campus,:majorabbreviation,:pathway,:degreelevel,:degreetype,:regid,:jobid",
+            "params": [
+              {
+                "name": "campus",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "majorAbbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pathway",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "degreeLevel",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "degreeType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "regid",
+                "value": "",
+                "type": "path",
+                "description": "RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+              },
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "Every request to create a degree audit generates a jobid.  It is required to identify the status."
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Status\",\r\n                    \"ews_guid\" : \"7503B636-AA7A-4145-B326-A90CA48965AE\",\r\n                    \"LongDescription\" : \"Returns the specified status of a degree audit request\",\r\n                    \"ShortDescription\" : \"The status of a degree audit request\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the follo"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

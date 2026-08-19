@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IdCard Web Service (IdCardWS) Campus Course API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the information about a specific course",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/course/:year,:quarter,:curriculum_abbreviation,:course_number",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "path",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Course\",\r\n                    \"ews_guid\" : \"A081D91E-7332-4975-9C5E-67F0133CC94C\",\r\n                    \"LongDescription\" : \"Display the information about a specific course. \r\n                                          Can filter by year, quarter, curriculum and course number.\",\r\n                    \"ShortDescription\" : \"Display the information about a specific course\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" },"
+        },
+        {
+          "info": {
+            "name": "CourseSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/idcard/v5/course",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "The 4 digit year.  For example: 2025"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query",
+                "description": "The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn"
+              },
+              {
+                "name": "curriculum_abbreviation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "course_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "course_title_contains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "course_title_starts",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_courses_without_sections",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "future_terms",
+                "value": "",
+                "type": "query",
+                "description": "Number of future terms to look ahead"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_since_date",
+                "value": "",
+                "type": "query",
+                "description": "If you have a value in ChangedSinceDate all other input fields will be ignored and will return all data that has changed since the date entered. This is used for applications that only need the changes since they last checked without having to know specific details to search by."
+              },
+              {
+                "name": "transcriptable_course",
+                "value": "",
+                "type": "query",
+                "description": "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all then both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+              },
+              {
+                "name": "view_unpublished",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<pre>\r\n                 {\r\n                     \"DisplayTitle\" : \"Course Search\",\r\n                     \"ews_guid\" : \"991BDC13-42C4-4EF7-991B-785CC2516B0E\",\r\n                     \"LongDescription\" : \"Search for courses that match the supplied parameters\",\r\n                     \"ShortDescription\" : \"Search for courses\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

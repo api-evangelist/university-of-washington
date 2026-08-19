@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "49715e95-95d4-4ebd-b1e9-5498566f4b2d",
+      "name": "Card",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aed3d62a-e613-4f48-8381-1127fddca1d2",
+          "name": "Get Cards",
+          "request": {
+            "name": "Get Cards",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "card"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mag_strip_code",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "prox_rfid",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a29a0bd0-73a3-4561-9f95-a54ca0959d95",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": \"string\",\n  \"pageCount\": \"string\",\n  \"previousPageStart\": \"string\",\n  \"pageSize\": \"string\",\n  \"pageStart\": \"string\",\n  \"nextPageStart\": \"string\",\n  \"pageStartOffset\": 8623,\n  \"format\": 5,\n  \"cardSearchResultVM\": {\n    \"metadata\": \"string\",\n    \"pageCount\": \"string\",\n    \"previousPageStart\": \"string\",\n    \"pageSize\": \"string\",\n    \"pageStart\": \"string\",\n    \"nextPageStart\": \"string\",\n    \"totalCount\": 7794,\n    \"pageStartOffset\": 6138,\n    \"format\": 5,\n    \"regID\": \"string\"\n  },\n  \"xhtmlTitle\": \"string\",\n  \"totalCount\": 3814,\n  \"cards\": [\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 2081,\n      \"pageStartOffset\": 3527,\n      \"format\": 2,\n      \"regID\": \"string\"\n    },\n    {\n      \"metadata\": \"string\",\n      \"pageCount\": \"string\",\n      \"previousPageStart\": \"string\",\n      \"pageSize\": \"string\",\n      \"pageStart\": \"string\",\n      \"nextPageStart\": \"string\",\n      \"totalCount\": 3335,\n      \"pageStartOffset\": 1854,\n      \"format\": 3,\n      \"regID\": \"string\"\n    }\n  ],\n  \"current\": {\n    \"href\": \"string\",\n    \"magStripCode\": \"string\",\n    \"proxRFID\": \"string\",\n    \"viewFormat\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cedf9d27-9d24-42ef-84dd-48ade7f25f2d",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9d1315e-4376-4181-bb7f-21305f0ed4ea",
+              "name": "Moved Permanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a761f647-4a30-4c13-8e2e-7c25c2616f17",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79cb5057-da24-4295-bfd6-85a7177c2c9f",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a424fbe-9e29-4803-b8c6-29930c455e1a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b51ac85-9c28-49a6-ae20-4655b96c3284",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc93e3a8-a06c-43be-b641-df4fbfa2ab90",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae0dd20c-4948-442d-a140-539a3d28f581",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74df54fe-c6e5-4dc3-8072-9f65a93016cf",
+              "name": "Gone",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc52cc39-5296-451c-9e5c-7bb12aebee07",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57ed1705-3d39-4ad0-8cba-818c65963f0d",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mag_strip_code",
+                      "value": ""
+                    },
+                    {
+                      "key": "prox_rfid",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1b3d925b-27d5-4a9d-8506-866cb77b7988",
+    "name": "IdCard Web Service (IdCardWS) Campus Card API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

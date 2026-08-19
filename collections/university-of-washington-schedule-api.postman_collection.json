@@ -1,0 +1,926 @@
+{
+  "item": [
+    {
+      "id": "ba0f7ad4-e46d-494f-8fbd-4d7ca0c1372b",
+      "name": "Schedule",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a1d59d1-f26b-4cd0-9e9f-02eda7c10f93",
+          "name": "Get the schedules associating a student with registered course sections",
+          "request": {
+            "name": "Get the schedules associating a student with registered course sections",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Student Schedule Search\",\r\n                    \"ews_guid\" : \"C473DFA9-17C8-4FF8-8505-4043A7535812\",\r\n                    \"LongDescription\" : \"Schedule provides data associating a student with registered course sections \r\n                                          for the current term\",\r\n                    \"ShortDescription\" : \"Search for schedule records for the current term\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:ScheduleReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "schedule",
+                ":reg_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reg_id",
+                  "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3a26ce9-9cb2-45e9-b732-b5f29531af7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Term\": {\n    \"FirstDay\": \"string\",\n    \"BTermFirstDay\": \"string\",\n    \"LastDayOfClasses\": \"string\",\n    \"ATermLastDay\": \"string\",\n    \"Quarter\": \"string\",\n    \"Year\": 3220\n  },\n  \"Schedule\": [\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"SLN\": \"string\",\n        \"Year\": 3773,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"CourseTitle\": \"string\",\n        \"CourseTitleLong\": \"string\",\n        \"Meetings\": [\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": false,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": false,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": false,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          },\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": true,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": true,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": true,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          }\n        ],\n        \"SectionType\": \"string\",\n        \"FinalExam\": {\n          \"Building\": \"string\",\n          \"FinalExamBuilding\": {\n            \"Href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"Date\": \"string\",\n          \"EndTime\": \"string\",\n          \"MeetingStatus\": \"string\",\n          \"RoomNumber\": \"string\",\n          \"StartTime\": \"string\"\n        }\n      },\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DuplicateCode\": \"string\",\n      \"Href\": \"https://zX.ssgxGRNHmZDvmsvO2ORD1fx.\",\n      \"Instructor\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"RequestStatus\": \"string\",\n      \"IsActive\": true,\n      \"RequestDate\": \"string\",\n      \"Credits\": \"string\",\n      \"VariableCredit\": false,\n      \"HonorsCourse\": false,\n      \"WritingCourse\": true,\n      \"Auditor\": false,\n      \"FeeBaseType\": \"string\",\n      \"RepeatCourse\": false,\n      \"SourceDateString\": \"string\",\n      \"Metadata\": \"string\",\n      \"AccessDateRangeStart\": \"string\",\n      \"AccessDateRangeEnd\": \"string\",\n      \"IsCredit\": false,\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\",\n      \"EducationUnitType\": \"string\",\n      \"IsIndependentStart\": false\n    },\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"SLN\": \"string\",\n        \"Year\": 6363,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"CourseTitle\": \"string\",\n        \"CourseTitleLong\": \"string\",\n        \"Meetings\": [\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": true,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": true,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": true,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          },\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": false,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": true,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": true,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          }\n        ],\n        \"SectionType\": \"string\",\n        \"FinalExam\": {\n          \"Building\": \"string\",\n          \"FinalExamBuilding\": {\n            \"Href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"Date\": \"string\",\n          \"EndTime\": \"string\",\n          \"MeetingStatus\": \"string\",\n          \"RoomNumber\": \"string\",\n          \"StartTime\": \"string\"\n        }\n      },\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DuplicateCode\": \"string\",\n      \"Href\": \"https://UtiBxmstykWrXtuZpaZawprp.jybyzuRtliXKFiW2KgbhFB3.KSq+IfNf,OmNam8Vh-P8Tq\",\n      \"Instructor\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"RequestStatus\": \"string\",\n      \"IsActive\": false,\n      \"RequestDate\": \"string\",\n      \"Credits\": \"string\",\n      \"VariableCredit\": false,\n      \"HonorsCourse\": true,\n      \"WritingCourse\": true,\n      \"Auditor\": true,\n      \"FeeBaseType\": \"string\",\n      \"RepeatCourse\": false,\n      \"SourceDateString\": \"string\",\n      \"Metadata\": \"string\",\n      \"AccessDateRangeStart\": \"string\",\n      \"AccessDateRangeEnd\": \"string\",\n      \"IsCredit\": true,\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\",\n      \"EducationUnitType\": \"string\",\n      \"IsIndependentStart\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9be64340-c80f-4d2b-b4de-8ff7ad433071",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "698c516c-6557-430f-82c7-6d17ba82c023",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33d7e42a-5024-40db-ab44-586aceab7171",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b2919293-58a8-486a-ac25-01189c391006",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b236948-d74c-408d-9130-08e539711ff9",
+              "name": "Invalid arg: reg ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11b62e2c-e340-4adc-989e-e5dadcd10cc6",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d83d6ec-ff79-4cb0-8507-bbdfd34d2f2a",
+              "name": "No schedule found for reg ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "172f9daf-a44c-4173-b449-424dfb26e4eb",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8034834e-7237-4a9f-a4a1-10ceffdd3470",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "412815f2-75ee-488a-8b46-2b86bc04c454",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    ":reg_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reg_id",
+                      "description": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fd59700-6a91-448e-84ab-8618678a4b45",
+          "name": "Get the schedules associating a student with registered course sections for the year/quarter",
+          "request": {
+            "name": "Get the schedules associating a student with registered course sections for the year/quarter",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Student Schedule by Term\",\r\n                    \"ews_guid\" : \"23B5A449-6A90-4794-8989-9AD28F33F92B\",\r\n                    \"LongDescription\" : \"Schedule provides data associating a student with registered course sections for a particular \r\n                                          year/quarter\",\r\n                    \"ShortDescription\" : \"Search for schedule records for a particular year/quarter\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:ScheduleReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "schedule",
+                "{{year}},{{quarter}},{{reg_id}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1aaed0dc-1f07-4a9a-8e09-30e70a25aa68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Term\": {\n    \"FirstDay\": \"string\",\n    \"BTermFirstDay\": \"string\",\n    \"LastDayOfClasses\": \"string\",\n    \"ATermLastDay\": \"string\",\n    \"Quarter\": \"string\",\n    \"Year\": 1597\n  },\n  \"Schedule\": [\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"SLN\": \"string\",\n        \"Year\": 9453,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"CourseTitle\": \"string\",\n        \"CourseTitleLong\": \"string\",\n        \"Meetings\": [\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": false,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": false,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": false,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          },\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": true,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": false,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": true,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          }\n        ],\n        \"SectionType\": \"string\",\n        \"FinalExam\": {\n          \"Building\": \"string\",\n          \"FinalExamBuilding\": {\n            \"Href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"Date\": \"string\",\n          \"EndTime\": \"string\",\n          \"MeetingStatus\": \"string\",\n          \"RoomNumber\": \"string\",\n          \"StartTime\": \"string\"\n        }\n      },\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DuplicateCode\": \"string\",\n      \"Href\": \"https://zLRDNgqOrsuSU.vymWPG-OsTc4mBjhi2jNZLBTa892E\",\n      \"Instructor\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"RequestStatus\": \"string\",\n      \"IsActive\": true,\n      \"RequestDate\": \"string\",\n      \"Credits\": \"string\",\n      \"VariableCredit\": false,\n      \"HonorsCourse\": true,\n      \"WritingCourse\": true,\n      \"Auditor\": false,\n      \"FeeBaseType\": \"string\",\n      \"RepeatCourse\": false,\n      \"SourceDateString\": \"string\",\n      \"Metadata\": \"string\",\n      \"AccessDateRangeStart\": \"string\",\n      \"AccessDateRangeEnd\": \"string\",\n      \"IsCredit\": false,\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\",\n      \"EducationUnitType\": \"string\",\n      \"IsIndependentStart\": true\n    },\n    {\n      \"Section\": {\n        \"Href\": \"string\",\n        \"SLN\": \"string\",\n        \"Year\": 9416,\n        \"Quarter\": \"string\",\n        \"CurriculumAbbreviation\": \"string\",\n        \"CourseNumber\": \"string\",\n        \"SectionID\": \"string\",\n        \"CourseTitle\": \"string\",\n        \"CourseTitleLong\": \"string\",\n        \"Meetings\": [\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": false,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": false,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": false,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          },\n          {\n            \"MeetingIndex\": \"string\",\n            \"MeetingType\": \"string\",\n            \"DaysOfWeek\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"DaysOfWeekToBeArranged\": false,\n            \"StartTime\": \"string\",\n            \"EndTime\": \"string\",\n            \"BuildingToBeArranged\": true,\n            \"Building\": \"string\",\n            \"Meeting\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"RoomToBeArranged\": true,\n            \"RoomNumber\": \"string\",\n            \"Instructors\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"EOS_StartDate\": \"string\",\n            \"EOS_EndDate\": \"string\"\n          }\n        ],\n        \"SectionType\": \"string\",\n        \"FinalExam\": {\n          \"Building\": \"string\",\n          \"FinalExamBuilding\": {\n            \"Href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"Date\": \"string\",\n          \"EndTime\": \"string\",\n          \"MeetingStatus\": \"string\",\n          \"RoomNumber\": \"string\",\n          \"StartTime\": \"string\"\n        }\n      },\n      \"Person\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"DuplicateCode\": \"string\",\n      \"Href\": \"https://EqkMgtLWnKCeAXYYazojSUiIhZekFwmgr.yxNS2f0Ucl2MRDmr8LNQCfcZuREQvYJZz2rjWYkS5JuXgF-f6rrR\",\n      \"Instructor\": {\n        \"Name\": \"string\",\n        \"RegID\": \"string\",\n        \"Pronouns\": \"string\",\n        \"Href\": \"string\"\n      },\n      \"RequestStatus\": \"string\",\n      \"IsActive\": false,\n      \"RequestDate\": \"string\",\n      \"Credits\": \"string\",\n      \"VariableCredit\": false,\n      \"HonorsCourse\": false,\n      \"WritingCourse\": true,\n      \"Auditor\": false,\n      \"FeeBaseType\": \"string\",\n      \"RepeatCourse\": true,\n      \"SourceDateString\": \"string\",\n      \"Metadata\": \"string\",\n      \"AccessDateRangeStart\": \"string\",\n      \"AccessDateRangeEnd\": \"string\",\n      \"IsCredit\": false,\n      \"StartDate\": \"string\",\n      \"EndDate\": \"string\",\n      \"EducationUnitType\": \"string\",\n      \"IsIndependentStart\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc5bd265-bbf1-4608-9558-4699232c1f6e",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72654f99-219c-4baa-af52-bf9cd1862fbf",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56675230-66af-463f-aef7-c9a9d4cdf089",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8dd067e-b9bd-47ee-9848-fbcf8a4229be",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74b60556-da77-4c54-bc50-9f7b974fb181",
+              "name": "Invalid arg: year | Invalid arg: Year/Quarter must be greater than or equal to the current year/quarter. | Invalid arg: quarter | Invalid arg: Year/Quarter must be greater than or equal to the current year/quarter. | Invalid arg: reg ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4f8038d-7ffe-4709-85ac-a01db8b3f334",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "599307ac-6a56-49ec-8d3b-12ab0a8b4f55",
+              "name": "No schedule found for reg ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1e3fa5c-df5a-4caf-bb7e-4901cef5b255",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f528d15-950b-44c9-b7c6-7d0ec5cc4c54",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33c61bf3-f19d-4462-a873-ebee4d278323",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "schedule",
+                    "{{year}},{{quarter}},{{reg_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 4 digit year.  For example: 2025",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "year"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The 1 digit quarter.  For example: 0=Default, 1=winter, 2=spring, 3=summer, 4=autumn",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "quarter"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) RegIDs are the authoritative unique IDs guaranteed to identify a UW person permanently.  RegIDs are assigned to a person by the Identity Registration Service, the authoritative source for person data reconciled from several data sources which may represent multiple records and accounts for a single person.  A given RegID will always refer to the same person, regardless of name, status or affiliation changes.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "reg_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "b125ea42-92e6-4401-8e23-0d69bf2d4cdf",
+    "name": "IdCard Web Service (IdCardWS) Campus Schedule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}

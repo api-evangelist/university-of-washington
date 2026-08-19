@@ -1,0 +1,564 @@
+{
+  "item": [
+    {
+      "id": "8ba2c355-4305-41b6-914c-52058ee5f548",
+      "name": "DegreeAuditProgram",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7295f634-4a24-4362-93e3-34fb2a477c87",
+          "name": "Search for degree audit programs that match the supplied parameters",
+          "request": {
+            "name": "Search for degree audit programs that match the supplied parameters",
+            "description": {
+              "content": "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Program Search\",\r\n                    \"ews_guid\" : \"4CD2A808-F00C-4878-B330-442015FB6B6A\",\r\n                    \"LongDescription\" : \"Search for a list of programs that can be used for a degree audit which can be filtered by \r\n                                          campus, major and degree group\",\r\n                    \"ShortDescription\" : \"Search for a list of educational programs\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               For campus codes see the campus resource.\r\n                               The service formats and sends a query string to the Student database. You may search by \r\n                               any combination of the campus, major_abbreviation and degree_group parameters.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v5",
+                "degreeauditprogram"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "campus",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "major_abbreviation",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "degree_group",
+                  "value": "",
+                  "description": "GRADUATE, MINOR, UNDERGRADUATE or blank. When nothing is specified for degree_group then all results are returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "833d16b3-3e99-43e5-8a81-da915e189de4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 9710,\n  \"DegreeAuditPrograms\": [\n    {\n      \"DegreeAuditProgramTitle\": \"string\",\n      \"Campus\": \"string\",\n      \"DegreeLevel\": \"string\",\n      \"DegreeType\": \"string\",\n      \"MajorAbbreviation\": \"string\",\n      \"Pathway\": \"string\",\n      \"regid_placeholder\": \"string\"\n    },\n    {\n      \"DegreeAuditProgramTitle\": \"string\",\n      \"Campus\": \"string\",\n      \"DegreeLevel\": \"string\",\n      \"DegreeType\": \"string\",\n      \"MajorAbbreviation\": \"string\",\n      \"Pathway\": \"string\",\n      \"regid_placeholder\": \"string\"\n    }\n  ],\n  \"Current\": {\n    \"Campus\": \"string\",\n    \"MajorAbbreviation\": \"string\",\n    \"DegreeGroup\": \"string\",\n    \"Href\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ef145c0-0a7c-4c0d-9cb7-f6451875daa2",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ab2f6db-b086-4505-886a-7f86f2bb6c31",
+              "name": "MovedPermanently",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ccae415-ab95-4393-8835-98c7b0a0413f",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1e1df61-4480-4f40-82d2-150e1acd2279",
+              "name": "NotModified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e2cd499-26ca-4bcf-9817-01be8b58e920",
+              "name": "Invalid arg: campus | Invalid arg: majorAbbreviation | Invalid arg: Degree Group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d958e875-2414-4aad-a934-5ee4ae7212e2",
+              "name": "Identity '{identity}' is not authorized to access this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6acfd90f-5740-4fba-83ee-d08213f005a0",
+              "name": "No degree audit programs found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "582a8431-5f48-4f00-be29-8f3984935499",
+              "name": "MethodNotAllowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1029ac0a-c3a7-4a4d-9a2b-cad8992b0171",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e36d6eb-72c4-4a15-a2f9-373a7276d8ce",
+              "name": "ServiceUnavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v5",
+                    "degreeauditprogram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campus",
+                      "value": ""
+                    },
+                    {
+                      "key": "major_abbreviation",
+                      "value": ""
+                    },
+                    {
+                      "key": "degree_group",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/idcard",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aed0d374-6335-469f-8905-38a258bb44b8",
+    "name": "IdCard Web Service (IdCardWS) Campus DegreeAuditProgram API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.\n\nContact Support:\n Name: Enterprise Web Services & Events Team\n Email: idcardws-support@uw.edu",
+      "type": "text/plain"
+    }
+  }
+}
