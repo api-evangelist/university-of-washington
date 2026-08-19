@@ -43,7 +43,7 @@ tags:
 created: '2026-06-03'
 modified: '2026-06-03'
 # 2026-06-03: added local OpenAPI 3.0 specs (SWS v5, IdCardWS v1) and derived artifacts.
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: university-of-washington:identity-registry-web-service
   name: Identity Registration Web Service (IRWS)
