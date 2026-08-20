@@ -55,6 +55,11 @@ apis:
   tags:
   - Identity
   - IAM
+  - Persons
+  - Enterprise Web Services
+  tags_raw:
+  - Identity
+  - IAM
   - Person
   - Enterprise Web Services
   properties:
@@ -147,6 +152,8 @@ apis:
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
+  - course
+  tags_raw:
   - Course
   properties:
   - type: OpenAPI
@@ -319,6 +326,8 @@ apis:
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
+  - Persons
+  tags_raw:
   - Person
   properties:
   - type: OpenAPI
