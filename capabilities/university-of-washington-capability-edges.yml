@@ -1,0 +1,123 @@
+slug: university-of-washington
+provider: University of Washington
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 11
+edges:
+- tag: Enrollment
+  spec_file: university-of-washington-enrollment-api-openapi.yml
+  capability_id: BC-4720.10
+  capability_id_l1: BC-4720
+  capability_name: Enrolment & Registration
+  confidence: 0.9
+  evidence: GET /v5/enrollment/{year},{quarter},{reg_id}  GetEnrollment  Get a specific enrollment
+  reason: Term-by-term student enrolment records (year/quarter, registrations, majors/minors) are exactly
+    enrolment and registration administration.
+- tag: Registration
+  spec_file: university-of-washington-registration-api-openapi.yml
+  capability_id: BC-4720.10
+  capability_id_l1: BC-4720
+  capability_name: Enrolment & Registration
+  confidence: 0.9
+  evidence: GetRegistration  Get the registration associating a student with a particular course section
+  reason: Course-section registration records for students are course registration administration under
+    student enrolment and records management.
+- tag: Schedule
+  spec_file: university-of-washington-schedule-api-openapi.yml
+  capability_id: BC-4720
+  capability_id_l1: BC-4720
+  capability_name: Student Enrolment & Records Management
+  confidence: 0.85
+  evidence: GetCurrentSchedule 'Get the schedules associating a student with registered course sections'
+  reason: Returns a student's registered course sections per year/quarter — student enrolment/records
+    domain. Sub-capability ambiguous between enrolment/registration records and timetabling records, so
+    L2 withheld.
+- tag: TestScore
+  spec_file: university-of-washington-testscore-api-openapi.yml
+  capability_id: BC-4710
+  capability_id_l1: BC-4710
+  capability_name: Student Recruitment & Admissions Management
+  confidence: 0.85
+  evidence: GetTestScore 'Get the student's test scores for admission'
+  reason: Admission test score data explicitly for admissions purposes; sub-capability ambiguous between
+    application evidence handling and admissions decisioning.
+- tag: Course
+  spec_file: university-of-washington-course-api-openapi.yml
+  capability_id: BC-4700.40
+  capability_id_l1: BC-4700
+  capability_name: Programme Catalogue Management
+  confidence: 0.78
+  evidence: 'GET /v5/course/{year},{quarter},{curriculum_abbreviation},{course_number}  GetCourse  Get
+    the information about a specific course; schemas: CourseViewModel, GeneralEducationRequirementViewModel'
+  reason: Exposes the institution's course offerings by term and curriculum, including general-education
+    requirement attributes — the machine-readable course catalogue. Maps to Programme Catalogue Management
+    under Curriculum & Programme Management.
+- tag: EnrollmentMajor
+  spec_file: university-of-washington-enrollmentmajor-api-openapi.yml
+  capability_id: BC-4720.10
+  capability_id_l1: BC-4720
+  capability_name: Enrolment & Registration
+  confidence: 0.78
+  evidence: UpdateEnrollmentMajor  Update the enrollment majors for a specific student
+  reason: Reads and updates the major(s) recorded against a student's term enrolment — maintenance of
+    enrolment/registration records for the active student lifecycle.
+- tag: DegreeAudit
+  spec_file: university-of-washington-degreeaudit-api-openapi.yml
+  capability_id: BC-4720.50
+  capability_id_l1: BC-4720
+  capability_name: Graduation & Credentialing
+  confidence: 0.75
+  evidence: POST /v5/degreeaudit  DegreeAuditCreate  Create a Degree Audit; GET /v5/degreeaudit  DegreeAuditSearch  Search
+    for Degree Audit for a specific person
+  reason: Creating and retrieving degree audits for a student is the graduation-eligibility audit against
+    programme requirements, explicitly named in Graduation & Credentialing. Some overlap with academic
+    advising, so not maximal confidence.
+- tag: Person
+  spec_file: university-of-washington-person-api-openapi.yml
+  capability_id: BC-4720
+  capability_id_l1: BC-4720
+  capability_name: Student Enrolment & Records Management
+  confidence: 0.75
+  evidence: GetRegistrationBlocks  Get a student's registration blocks; GetEarnedDegrees  Search for a
+    student's earned degrees
+  reason: Person resource exposes authoritative student record data — registration blocks (holds), earned
+    degrees, academic advisers — i.e. student enrolment and records management. Spans several sub-capabilities,
+    so only L1 asserted.
+- tag: Program
+  spec_file: university-of-washington-program-api-openapi.yml
+  capability_id: BC-4700.40
+  capability_id_l1: BC-4700
+  capability_name: Programme Catalogue Management
+  confidence: 0.72
+  evidence: GetProgram  Search for a program of study that matches the parameters
+  reason: Exposes the institution's programs of study (with department and term context) as queryable
+    catalogue data — programme catalogue management within curriculum & programme management.
+- tag: MajorStudents
+  spec_file: university-of-washington-majorstudents-api-openapi.yml
+  capability_id: BC-4720.10
+  capability_id_l1: BC-4720
+  capability_name: Enrolment & Registration
+  confidence: 0.7
+  evidence: GetMajorStudents  Search for students that are enrolled in a specific program of study
+  reason: Queries the authoritative enrolment records to list students enrolled in a program of study;
+    belongs to student enrolment/records administration.
+- tag: Section
+  spec_file: university-of-washington-section-api-openapi.yml
+  capability_id: BC-4720.30
+  capability_id_l1: BC-4720
+  capability_name: Course Scheduling & Timetabling Records
+  confidence: 0.7
+  evidence: GetSection 'Get a course section offered in the year/quarter'; schemas SectionTermMeetingViewModel,
+    MeetingBuildingUri, SectionStatusListViewModel
+  reason: Authoritative records of course-section offerings with meeting times, buildings and section
+    status — course scheduling/timetabling records; could alternatively be read as catalogue data, hence
+    moderate confidence.

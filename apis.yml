@@ -490,6 +490,9 @@ apis:
   - type: Documentation
     url: https://webservices.washington.edu/idcardws/index.html
 common:
+  - type: CapabilityMap
+    url: capabilities/university-of-washington-capability-edges.yml
+    name: University of Washington Business Capability Map
   - type: AgenticAccess
     url: agentic-access/university-of-washington-agentic-access.yml
   - type: DomainSecurity
