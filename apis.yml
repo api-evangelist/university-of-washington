@@ -69,45 +69,13 @@ created: '2026-06-03'
 modified: '2026-08-30'
 specificationVersion: '0.23'
 apis:
-- aid: university-of-washington:identity-registry-web-service
-  name: Identity Registration Web Service (IRWS)
-  description: The UW-IT Identity Registry REST API. V3 (28 paths) and V2 (13 paths) OpenAPI descriptions
-    are published openly by UW at iam-tools.u.washington.edu and are saved here; the runtime listens on
-    a non-standard port on a restricted network and did not answer from the public internet on 2026-08-30.
-    The V1 specification UW still serves declares a DEVELOPMENT host (mango-dev / registry-dev) as its
-    only server, so V1 is recorded as documentation only and is deliberately NOT saved as a production
-    surface.
-  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
-  tags:
-  - Identity
-  - IAM
-  - Persons
-  - Enterprise Web Services
-  tags_raw:
-  - Identity
-  - IAM
-  - Person
-  - Enterprise Web Services
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-washington-identity-registry-web-service-v3-openapi.yml
-  - type: OpenAPI
-    url: openapi/university-of-washington-identity-registry-web-service-v2-openapi.yml
-  - type: Documentation
-    url: https://iam-tools.u.washington.edu/apis/irwsv3/
-  - type: Documentation
-    url: https://iam-tools.u.washington.edu/apis/irwsv2/
-  - type: Documentation
-    url: https://iam-tools.u.washington.edu/apis/irwsv1/
-  x-operator: institution
-  x-service: Identity Registration Web Service (IRWS)
-  baseURL: https://mango.u.washington.edu:646/registry/v3
 - aid: university-of-washington:enterprise-web-services
   name: UW-IT Enterprise Web Services Registry
-  description: Enterprise Web Services (EWS) is UW-IT's secure collection of REST/SOAP web services that
-    let enterprise business applications access commonly shared source data in a scalable, real-time,
-    highly available architecture. The public registry catalogs services including Student, Person, Groups,
-    HRP, IdCard, Financial, and Space web services, each with its own documentation and Swagger specification.
+  description: >-
+    Enterprise Web Services (EWS) is UW-IT's secure collection of REST/SOAP web services that let enterprise
+    business applications access commonly shared source data in a scalable, real-time, highly available
+    architecture. The public registry catalogs services including Student, Person, Groups, HRP, IdCard,
+    Financial, and Space web services, each with its own documentation and Swagger specification.
   humanURL: https://webservices.washington.edu/
   tags:
   - Enterprise Web Services
@@ -122,63 +90,13 @@ apis:
   - type: Documentation
     url: https://it.uw.edu/summary/enterprise-web-services/
   x-operator: institution
-- aid: university-of-washington:groups-web-service
-  name: UW Groups Web Service (GWS)
-  description: The University of Washington Group Service API — UW-IT's institution-operated group registry
-    and membership service. UW publishes the OpenAPI itself, with an explicit termsOfService (washington.edu/online/terms),
-    an Apache-2.0 license declaration and a help@uw.edu contact, and its servers[] name the production,
-    evaluation and development hosts as well as a deprecated UWCA-certificate host. eduPersonPrincipalName
-    is modelled directly in the contract.
-  humanURL: https://webservices.washington.edu/groups/index.html
-  baseURL: https://groups.uw.edu/group_sws/v3
-  x-operator: institution
-  x-service: Groups Web Service (GWS)
-  tags:
-  - Identity
-  - Group
-  - Membership
-  - IAM
-  - Enterprise Web Services
-  tags_raw:
-  - Identity
-  - Groups
-  - Membership
-  - IAM
-  - Enterprise Web Services
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-washington-groups-web-service-openapi.yml
-  - type: Documentation
-    url: https://iam-tools.u.washington.edu/apis/gws/
-  - type: Documentation
-    url: https://webservices.washington.edu/groups/index.html
-- aid: university-of-washington:token-authentication-web-service
-  name: UW Token Authentication Web Service (TAWS)
-  description: UW-IT's Token Authentication Web Service V2 — the institution-operated issuer for the AccessToken
-    credential that the Student and IdCard Web Services accept. Three paths; the OpenAPI is published
-    by UW at iam-tools.u.washington.edu. The runtime listens on a non-standard port on a restricted network
-    and is not reachable from the public internet.
-  humanURL: https://iam-tools.u.washington.edu/apis/tawsv2/
-  baseURL: https://taws.s.uw.edu:716/token/v2
-  x-operator: institution
-  x-service: Token Authentication Web Service (TAWS)
-  tags:
-  - Identity
-  - Authentication
-  - Tokens
-  - IAM
-  - Enterprise Web Services
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-washington-token-authentication-web-service-v2-openapi.yml
-  - type: Documentation
-    url: https://iam-tools.u.washington.edu/apis/tawsv2/
 - aid: university-of-washington:identity-federation
   name: UW Shibboleth Identity Provider (InCommon)
-  description: UW's Shibboleth identity provider publishes signed SAML 2.0 metadata at a stable URL —
-    entityID urn:mace:incommon:washington.edu, scope washington.edu, InCommon registration ID INC20180221T195121.
-    Machine-readable, unauthenticated, institution-operated by definition, and one of the very few open
-    programmable surfaces most universities have.
+  description: >-
+    UW's Shibboleth identity provider publishes signed SAML 2.0 metadata at a stable URL — entityID urn:mace:incommon:washington.edu,
+    scope washington.edu, InCommon registration ID INC20180221T195121. Machine-readable, unauthenticated,
+    institution-operated by definition, and one of the very few open programmable surfaces most universities
+    have.
   humanURL: https://idp.u.washington.edu/metadata/idp-metadata.xml
   baseURL: https://idp.u.washington.edu/metadata/idp-metadata.xml
   x-operator: institution
@@ -196,10 +114,11 @@ apis:
     url: conformance/university-of-washington-domain-standards-conformance.yml
 - aid: university-of-washington:researchworks-dspace
   name: ResearchWorks Repository (DSpace REST + OAI-PMH)
-  description: ResearchWorks is UW Libraries' institutional repository, running DSpace 9.2 on UW's own
-    host. The DSpace REST root document is public (HTTP 200) and item retrieval is gated (HTTP 401), but
-    the OAI-PMH 2.0 endpoint is fully open and serves ten metadata formats — oai_dc, qdc, mods, mets,
-    didl, ore, xoai, dim, rioxx and uketd_dc — across departmental sets.
+  description: >-
+    ResearchWorks is UW Libraries' institutional repository, running DSpace 9.2 on UW's own host. The
+    DSpace REST root document is public (HTTP 200) and item retrieval is gated (HTTP 401), but the OAI-PMH
+    2.0 endpoint is fully open and serves ten metadata formats — oai_dc, qdc, mods, mets, didl, ore, xoai,
+    dim, rioxx and uketd_dc — across departmental sets.
   humanURL: https://digital.lib.washington.edu/researchworks/
   baseURL: https://digital.lib.washington.edu/server/api
   tags:
@@ -216,14 +135,16 @@ apis:
   - type: APIReference
     url: https://digital.lib.washington.edu/server/api
   x-operator: institution
-  x-operator-note: DSpace 9.2 is community-governed open-source software that UW Libraries self-hosts
-    on its own registrable domain — not a vendor SaaS tenancy. No generic DSpace product specification
-    is saved under this institution; only the deployment and its open OAI-PMH surface are recorded.
+  x-operator-note: >-
+    DSpace 9.2 is community-governed open-source software that UW Libraries self-hosts on its own registrable
+    domain — not a vendor SaaS tenancy. No generic DSpace product specification is saved under this institution;
+    only the deployment and its open OAI-PMH surface are recorded.
 - aid: university-of-washington:university-of-washington-campus-api
   name: Student Web Service (SWS) Campus API
-  description: Student Web Service (SWS) Campus API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Campus API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -237,9 +158,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-card-api
   name: IdCard Web Service (IdCardWS) Card API
-  description: IdCard Web Service (IdCardWS) Card API — a resource of the UW-IT IdCard Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published IdCardWS v1 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate.
+  description: >-
+    IdCard Web Service (IdCardWS) Card API — a resource of the UW-IT IdCard Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published IdCardWS v1 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate.
   humanURL: https://webservices.washington.edu/idcardws/index.html
   baseURL: https://ws.admin.washington.edu/idcard
   tags:
@@ -255,9 +177,10 @@ apis:
   x-service: IdCard Web Service (IdCardWS)
 - aid: university-of-washington:university-of-washington-college-api
   name: Student Web Service (SWS) College API
-  description: Student Web Service (SWS) College API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) College API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -271,9 +194,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-course-api
   name: Student Web Service (SWS) Course API
-  description: Student Web Service (SWS) Course API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Course API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -289,9 +213,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-curriculum-api
   name: Student Web Service (SWS) Curriculum API
-  description: Student Web Service (SWS) Curriculum API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Curriculum API — a resource of the UW-IT Student Web Service, split out
+    per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -305,9 +230,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-degree-api
   name: Student Web Service (SWS) Degree API
-  description: Student Web Service (SWS) Degree API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Degree API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -321,9 +247,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-degreeaudit-api
   name: Student Web Service (SWS) Degree Audit API
-  description: Student Web Service (SWS) Degree Audit API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Degree Audit API — a resource of the UW-IT Student Web Service, split out
+    per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -337,10 +264,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-degreeauditexception-api
   name: Student Web Service (SWS) Degree Audit Exception API
-  description: Student Web Service (SWS) Degree Audit Exception API — a resource of the UW-IT Student
-    Web Service, split out per resource by the API Evangelist refine step from the institution-published
-    SWS v5 OpenAPI. Specification public; data gated by UW NetID / X.509 client certificate and named
-    ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Degree Audit Exception API — a resource of the UW-IT Student Web Service,
+    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
+    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -354,10 +281,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-degreeauditprogram-api
   name: Student Web Service (SWS) Degree Audit Program API
-  description: Student Web Service (SWS) Degree Audit Program API — a resource of the UW-IT Student Web
-    Service, split out per resource by the API Evangelist refine step from the institution-published SWS
-    v5 OpenAPI. Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA
-    roles.
+  description: >-
+    Student Web Service (SWS) Degree Audit Program API — a resource of the UW-IT Student Web Service,
+    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
+    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -371,10 +298,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-degreeauditstatus-api
   name: Student Web Service (SWS) Degree Audit Status API
-  description: Student Web Service (SWS) Degree Audit Status API — a resource of the UW-IT Student Web
-    Service, split out per resource by the API Evangelist refine step from the institution-published SWS
-    v5 OpenAPI. Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA
-    roles.
+  description: >-
+    Student Web Service (SWS) Degree Audit Status API — a resource of the UW-IT Student Web Service, split
+    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
+    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -388,9 +315,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-department-api
   name: Student Web Service (SWS) Department API
-  description: Student Web Service (SWS) Department API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Department API — a resource of the UW-IT Student Web Service, split out
+    per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -404,9 +332,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-enrollment-api
   name: Student Web Service (SWS) Enrollment API
-  description: Student Web Service (SWS) Enrollment API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Enrollment API — a resource of the UW-IT Student Web Service, split out
+    per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -420,8 +349,9 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-enrollmentmajor-api
   name: Student Web Service (SWS) Enrollment Major API
-  description: Student Web Service (SWS) Enrollment Major API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
+  description: >-
+    Student Web Service (SWS) Enrollment Major API — a resource of the UW-IT Student Web Service, split
+    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
     Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
@@ -436,8 +366,9 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-majorstudents-api
   name: Student Web Service (SWS) Major Students API
-  description: Student Web Service (SWS) Major Students API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
+  description: >-
+    Student Web Service (SWS) Major Students API — a resource of the UW-IT Student Web Service, split
+    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
     Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
@@ -452,9 +383,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-notice-api
   name: Student Web Service (SWS) Notice API
-  description: Student Web Service (SWS) Notice API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Notice API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -468,9 +400,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-person-api
   name: Student Web Service (SWS) Person API
-  description: Student Web Service (SWS) Person API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Person API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -486,10 +419,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-personalfinancial-api
   name: Student Web Service (SWS) Personal Financial API
-  description: Student Web Service (SWS) Personal Financial API — a resource of the UW-IT Student Web
-    Service, split out per resource by the API Evangelist refine step from the institution-published SWS
-    v5 OpenAPI. Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA
-    roles.
+  description: >-
+    Student Web Service (SWS) Personal Financial API — a resource of the UW-IT Student Web Service, split
+    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
+    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -503,9 +436,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-photo-api
   name: IdCard Web Service (IdCardWS) Photo API
-  description: IdCard Web Service (IdCardWS) Photo API — a resource of the UW-IT IdCard Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published IdCardWS v1 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate.
+  description: >-
+    IdCard Web Service (IdCardWS) Photo API — a resource of the UW-IT IdCard Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published IdCardWS v1 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate.
   humanURL: https://webservices.washington.edu/idcardws/index.html
   baseURL: https://ws.admin.washington.edu/idcard
   tags:
@@ -521,9 +455,10 @@ apis:
   x-service: IdCard Web Service (IdCardWS)
 - aid: university-of-washington:university-of-washington-program-api
   name: Student Web Service (SWS) Program API
-  description: Student Web Service (SWS) Program API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Program API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -537,9 +472,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-registration-api
   name: Student Web Service (SWS) Registration API
-  description: Student Web Service (SWS) Registration API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Registration API — a resource of the UW-IT Student Web Service, split out
+    per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -553,9 +489,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-resourcelist-api
   name: UW Enterprise Web Services Resource List API
-  description: UW Enterprise Web Services Resource List API — a discovery resource published at the root
-    of both the Student Web Service and the IdCard Web Service. Per-path servers[] in the specification
-    record which host serves which path.
+  description: >-
+    UW Enterprise Web Services Resource List API — a discovery resource published at the root of both
+    the Student Web Service and the IdCard Web Service. Per-path servers[] in the specification record
+    which host serves which path.
   humanURL: https://webservices.washington.edu/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -571,9 +508,10 @@ apis:
   x-service: UW-IT Enterprise Web Services (SWS + IdCardWS)
 - aid: university-of-washington:university-of-washington-schedule-api
   name: Student Web Service (SWS) Schedule API
-  description: Student Web Service (SWS) Schedule API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Schedule API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -587,9 +525,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-section-api
   name: Student Web Service (SWS) Section API
-  description: Student Web Service (SWS) Section API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Section API — a resource of the UW-IT Student Web Service, split out per
+    resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -603,9 +542,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-term-api
   name: Student Web Service (SWS) Term API
-  description: Student Web Service (SWS) Term API — a resource of the UW-IT Student Web Service, split
-    out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Term API — a resource of the UW-IT Student Web Service, split out per resource
+    by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification public;
+    data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -619,9 +559,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-testscore-api
   name: Student Web Service (SWS) Test Score API
-  description: Student Web Service (SWS) Test Score API — a resource of the UW-IT Student Web Service,
-    split out per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI.
-    Specification public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
+  description: >-
+    Student Web Service (SWS) Test Score API — a resource of the UW-IT Student Web Service, split out
+    per resource by the API Evangelist refine step from the institution-published SWS v5 OpenAPI. Specification
+    public; data gated by UW NetID / X.509 client certificate and named ASTRA roles.
   humanURL: https://webservices.washington.edu/sws/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -635,9 +576,10 @@ apis:
   x-service: Student Web Service (SWS)
 - aid: university-of-washington:university-of-washington-version-api
   name: UW Enterprise Web Services Version API
-  description: UW Enterprise Web Services Version API — a discovery resource published at the root of
-    both the Student Web Service and the IdCard Web Service. Per-path servers[] in the specification record
-    which host serves which path.
+  description: >-
+    UW Enterprise Web Services Version API — a discovery resource published at the root of both the Student
+    Web Service and the IdCard Web Service. Per-path servers[] in the specification record which host
+    serves which path.
   humanURL: https://webservices.washington.edu/
   baseURL: https://ws.admin.washington.edu/student
   tags:
@@ -651,6 +593,815 @@ apis:
     url: https://webservices.washington.edu/idcardws/index.html
   x-operator: institution
   x-service: UW-IT Enterprise Web Services (SWS + IdCardWS)
+- aid: university-of-washington:university-of-washington-account-api
+  name: University of Washington Account API
+  description: The Account API from University of Washington — 3 operation(s) for account.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-canonical-api
+  name: University of Washington Account.canonical API
+  description: >-
+    The account.canonical API from University of Washington — 1 operation(s) for account.canonical.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.canonical
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-canonical-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-gps-api
+  name: University of Washington Account.gps API
+  description: The account.gps API from University of Washington — 1 operation(s) for account.gps.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.gps
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-gps-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-history-api
+  name: University of Washington Account.history API
+  description: >-
+    The account.history API from University of Washington — 1 operation(s) for account.history.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.history
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-history-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-mail-api
+  name: University of Washington Account.mail API
+  description: The account.mail API from University of Washington — 1 operation(s) for account.mail.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.mail
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-mail-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-subscription-api
+  name: University of Washington Account.subscription API
+  description: >-
+    The account.subscription API from University of Washington — 1 operation(s) for account.subscription.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-subscription-history-api
+  name: University of Washington Account.subscription.history API
+  description: >-
+    The account.subscription.history API from University of Washington — 1 operation(s) for account.subscription.history.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.subscription.history
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-subscription-history-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-subscription-pac-api
+  name: University of Washington Account.subscription.pac API
+  description: >-
+    The account.subscription.pac API from University of Washington — 1 operation(s) for account.subscription.pac.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.subscription.pac
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-subscription-pac-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-account-subscription-rule-api
+  name: University of Washington Account.subscription.rule API
+  description: >-
+    The account.subscription.rule API from University of Washington — 1 operation(s) for account.subscription.rule.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - account.subscription.rule
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-account-subscription-rule-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-auth-api
+  name: University of Washington Auth API
+  description: The Auth API from University of Washington — 1 operation(s) for auth.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-auth-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-crn-api
+  name: University of Washington Crn API
+  description: The Crn API from University of Washington — 1 operation(s) for crn.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Crn
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-crn-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-d-subscription-compat-api
+  name: University of Washington D Subscription.compat API
+  description: >-
+    The D_subscription.compat API from University of Washington — 1 operation(s) for d_subscription.compat.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - D_subscription.compat
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-d-subscription-compat-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-api
+  name: University of Washington Entity API
+  description: The entity API from University of Washington — 2 operation(s) for entity.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-canonical-api
+  name: University of Washington Entity.canonical API
+  description: >-
+    The entity.canonical API from University of Washington — 1 operation(s) for entity.canonical.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.canonical
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-canonical-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-category-api
+  name: University of Washington Entity.category API
+  description: >-
+    The entity.category API from University of Washington — 1 operation(s) for entity.category.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.category
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-category-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-history-api
+  name: University of Washington Entity.history API
+  description: >-
+    The entity.history API from University of Washington — 1 operation(s) for entity.history.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.history
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-history-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-join-api
+  name: University of Washington Entity.join API
+  description: The entity.join API from University of Washington — 1 operation(s) for entity.join.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.join
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-join-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-name-api
+  name: University of Washington Entity.name API
+  description: The entity.name API from University of Washington — 1 operation(s) for entity.name.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.name
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-name-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-pac-api
+  name: University of Washington Entity.pac API
+  description: The entity.pac API from University of Washington — 1 operation(s) for entity.pac.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.pac
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-pac-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-pds-api
+  name: University of Washington Entity.pds API
+  description: The entity.pds API from University of Washington — 1 operation(s) for entity.pds.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.pds
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-pds-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-profile-name-api
+  name: University of Washington Entity.profile.name API
+  description: >-
+    The entity.profile.name API from University of Washington — 1 operation(s) for entity.profile.name.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.profile.name
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-profile-name-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-profile-pronoun-api
+  name: University of Washington Entity.profile.pronoun API
+  description: >-
+    The entity.profile.pronoun API from University of Washington — 1 operation(s) for entity.profile.pronoun.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.profile.pronoun
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-profile-pronoun-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-profile-recovery-api
+  name: University of Washington Entity.profile.recovery API
+  description: >-
+    The entity.profile.recovery API from University of Washington — 1 operation(s) for entity.profile.recovery.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.profile.recovery
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-profile-recovery-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-sponsor-api
+  name: University of Washington Entity.sponsor API
+  description: >-
+    The entity.sponsor API from University of Washington — 1 operation(s) for entity.sponsor.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.sponsor
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-sponsor-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-sponsor-avf-api
+  name: University of Washington Entity.sponsor.avf API
+  description: >-
+    The entity.sponsor.avf API from University of Washington — 1 operation(s) for entity.sponsor.avf.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.sponsor.avf
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-sponsor-avf-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-entity-verify-api
+  name: University of Washington Entity.verify API
+  description: The entity.verify API from University of Washington — 1 operation(s) for entity.verify.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - entity.verify
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-entity-verify-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-groups-api
+  name: University of Washington Groups API
+  description: Group information--except membership
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-groups-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-membership-api
+  name: University of Washington Membership API
+  description: Group membership information
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Membership
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-membership-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-name-api
+  name: University of Washington Name API
+  description: The Name API from University of Washington — 1 operation(s) for name.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Name
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-name-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-pdsentry-api
+  name: University of Washington Pdsentry API
+  description: The Pdsentry API from University of Washington — 2 operation(s) for pdsentry.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Pdsentry
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-pdsentry-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-reference-subscription-rule-api
+  name: University of Washington Reference.subscription.rule API
+  description: >-
+    The reference.subscription.rule API from University of Washington — 1 operation(s) for reference.subscription.rule.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - reference.subscription.rule
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-reference-subscription-rule-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-regid-api
+  name: University of Washington Regid API
+  description: The Regid API from University of Washington — 3 operation(s) for regid.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Regid
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-regid-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-searches-api
+  name: University of Washington Searches API
+  description: Group and member searches
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Searches
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-searches-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-social-api
+  name: University of Washington Social API
+  description: The Social API from University of Washington — 1 operation(s) for social.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Social
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-social-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-subscription-compat-api
+  name: University of Washington Subscription.compat API
+  description: >-
+    The Subscription.compat API from University of Washington — 1 operation(s) for subscription.compat.
+  humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
+  baseURL: https://mango.u.washington.edu:646/registry/v3
+  tags:
+  - Subscription.compat
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-subscription-compat-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
+- aid: university-of-washington:university-of-washington-pre-auth-api
+  name: University of Washington Pre Auth API
+  description: The Pre Auth API from University of Washington — 1 operation(s) for pre auth.
+  humanURL: https://webservices.washington.edu/
+  baseURL: https://idp.u.washington.edu/metadata/idp-metadata.xml
+  tags:
+  - Pre Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-washington-pre-auth-api-openapi.yml
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv3/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv2/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/irwsv1/
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/gws/
+  - type: Documentation
+    url: https://webservices.washington.edu/groups/index.html
+  - type: Documentation
+    url: https://iam-tools.u.washington.edu/apis/tawsv2/
 common:
 - type: CapabilityMap
   url: capabilities/university-of-washington-capability-edges.yml
