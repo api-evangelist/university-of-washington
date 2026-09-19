@@ -165,6 +165,8 @@ apis:
   humanURL: https://webservices.washington.edu/idcardws/index.html
   baseURL: https://ws.admin.washington.edu/idcard
   tags:
+  - Cards
+  tags_raw:
   - Card
   properties:
   - type: OpenAPI
@@ -443,6 +445,8 @@ apis:
   humanURL: https://webservices.washington.edu/idcardws/index.html
   baseURL: https://ws.admin.washington.edu/idcard
   tags:
+  - Photos
+  tags_raw:
   - Photo
   properties:
   - type: OpenAPI
@@ -621,7 +625,8 @@ apis:
     The account.canonical API from University of Washington — 1 operation(s) for account.canonical.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.canonical
   properties:
   - type: OpenAPI
@@ -643,7 +648,8 @@ apis:
   description: The account.gps API from University of Washington — 1 operation(s) for account.gps.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.gps
   properties:
   - type: OpenAPI
@@ -666,7 +672,8 @@ apis:
     The account.history API from University of Washington — 1 operation(s) for account.history.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.history
   properties:
   - type: OpenAPI
@@ -688,7 +695,8 @@ apis:
   description: The account.mail API from University of Washington — 1 operation(s) for account.mail.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.mail
   properties:
   - type: OpenAPI
@@ -711,7 +719,8 @@ apis:
     The account.subscription API from University of Washington — 1 operation(s) for account.subscription.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.subscription
   properties:
   - type: OpenAPI
@@ -734,7 +743,8 @@ apis:
     The account.subscription.history API from University of Washington — 1 operation(s) for account.subscription.history.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.subscription.history
   properties:
   - type: OpenAPI
@@ -757,7 +767,8 @@ apis:
     The account.subscription.pac API from University of Washington — 1 operation(s) for account.subscription.pac.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.subscription.pac
   properties:
   - type: OpenAPI
@@ -780,7 +791,8 @@ apis:
     The account.subscription.rule API from University of Washington — 1 operation(s) for account.subscription.rule.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - account.subscription.rule
   properties:
   - type: OpenAPI
@@ -803,6 +815,8 @@ apis:
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -870,6 +884,8 @@ apis:
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
   tags:
+  - Entity
+  tags_raw:
   - entity
   properties:
   - type: OpenAPI
@@ -892,7 +908,8 @@ apis:
     The entity.canonical API from University of Washington — 1 operation(s) for entity.canonical.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.canonical
   properties:
   - type: OpenAPI
@@ -915,7 +932,8 @@ apis:
     The entity.category API from University of Washington — 1 operation(s) for entity.category.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.category
   properties:
   - type: OpenAPI
@@ -938,7 +956,8 @@ apis:
     The entity.history API from University of Washington — 1 operation(s) for entity.history.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.history
   properties:
   - type: OpenAPI
@@ -960,7 +979,8 @@ apis:
   description: The entity.join API from University of Washington — 1 operation(s) for entity.join.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.join
   properties:
   - type: OpenAPI
@@ -982,7 +1002,8 @@ apis:
   description: The entity.name API from University of Washington — 1 operation(s) for entity.name.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.name
   properties:
   - type: OpenAPI
@@ -1004,7 +1025,8 @@ apis:
   description: The entity.pac API from University of Washington — 1 operation(s) for entity.pac.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.pac
   properties:
   - type: OpenAPI
@@ -1026,7 +1048,8 @@ apis:
   description: The entity.pds API from University of Washington — 1 operation(s) for entity.pds.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.pds
   properties:
   - type: OpenAPI
@@ -1049,7 +1072,8 @@ apis:
     The entity.profile.name API from University of Washington — 1 operation(s) for entity.profile.name.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.profile.name
   properties:
   - type: OpenAPI
@@ -1072,7 +1096,8 @@ apis:
     The entity.profile.pronoun API from University of Washington — 1 operation(s) for entity.profile.pronoun.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.profile.pronoun
   properties:
   - type: OpenAPI
@@ -1095,7 +1120,8 @@ apis:
     The entity.profile.recovery API from University of Washington — 1 operation(s) for entity.profile.recovery.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.profile.recovery
   properties:
   - type: OpenAPI
@@ -1118,7 +1144,8 @@ apis:
     The entity.sponsor API from University of Washington — 1 operation(s) for entity.sponsor.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.sponsor
   properties:
   - type: OpenAPI
@@ -1141,7 +1168,8 @@ apis:
     The entity.sponsor.avf API from University of Washington — 1 operation(s) for entity.sponsor.avf.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.sponsor.avf
   properties:
   - type: OpenAPI
@@ -1163,7 +1191,8 @@ apis:
   description: The entity.verify API from University of Washington — 1 operation(s) for entity.verify.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - entity.verify
   properties:
   - type: OpenAPI
@@ -1186,6 +1215,8 @@ apis:
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -1274,7 +1305,8 @@ apis:
     The reference.subscription.rule API from University of Washington — 1 operation(s) for reference.subscription.rule.
   humanURL: https://iam-tools.u.washington.edu/apis/irwsv2/
   baseURL: https://mango.u.washington.edu:646/registry/v3
-  tags:
+  tags: []
+  tags_raw:
   - reference.subscription.rule
   properties:
   - type: OpenAPI
@@ -1386,6 +1418,8 @@ apis:
   humanURL: https://webservices.washington.edu/
   baseURL: https://idp.u.washington.edu/metadata/idp-metadata.xml
   tags:
+  - Pre-Auth
+  tags_raw:
   - Pre Auth
   properties:
   - type: OpenAPI
