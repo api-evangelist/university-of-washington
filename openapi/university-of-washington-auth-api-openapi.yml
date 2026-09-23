@@ -1,0 +1,162 @@
+openapi: 3.2.0
+info:
+  title: Token Authentication Web Service REST API V2 Auth API
+  description: This is the API specification for V2 of the UW-IT Token Authentication Rest API. Note that there are header and querystring paramemters not documentered here (see also https://wiki.cac.washington.edu/x/GY6kB). The -type and -pretty querystring parameters are included here for GET requests since they make testing much easier.
+  version: 2.0.0
+servers:
+- url: https://taws.s.uw.edu:716/token/v2
+tags:
+- name: Auth
+paths:
+  /auth/{user}:
+    post:
+      tags:
+      - Auth
+      summary: The Auth endpoint performs second-factor authentication for a user
+      description: The Auth endpoint performs second-factor authentication for a user by sending a push notification to the user's smartphone app, verifying a passcode, or placing a phone call. It is also used to send the user a new batch of passcodes via SMS. The user is typically a UWNetID.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: vendor
+        in: query
+        description: Authentication vendor to use
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: factor
+        in: query
+        description: Authentication factor to use.  Select from list of factors provided by /preauth endpoint or send '{passcode}|passcode' for a passcode factor.
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/AuthPostPayload'
+        required: false
+      responses:
+        '200':
+          description: Authentication succeeded.
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/AuthPostResult'
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+      operationId: postAuthByUser
+      x-operation-id-source: derived
+components:
+  schemas:
+    AuthPostPayload:
+      type: object
+      properties:
+        auth:
+          type: array
+          description: Array of auth objects (should generally contain only one).
+          items:
+            type: object
+            properties:
+              vendor:
+                type: string
+                description: Authentication vendor to use
+              factor:
+                type: string
+                description: Authentication factor to use
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    AuthPostResult:
+      type: object
+      properties:
+        auth:
+          type: array
+          description: Response to POST
+          items:
+            type: object
+            properties:
+              result:
+                type: string
+                description: Either 'allow' or 'deny'. If 'allow', your application should grant access.  If 'deny', it should not.
+              message:
+                type: string
+                description: A string describing the result of the authentication attempt.  This is intended for display to the user.
+externalDocs:
+  description: UW-IT Token Authentication Web Service (TAWS) V2 API documentation
+  url: https://iam-tools.u.washington.edu/apis/tawsv2/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/tawsv2/tawsv2.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-token-authentication-web-service-v2.yaml

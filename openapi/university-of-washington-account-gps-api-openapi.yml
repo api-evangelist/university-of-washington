@@ -1,0 +1,150 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V3 Account.gps…
+  description: 'This is the specification for Identity Registration Web Service REST API V3. See the supplementary API documentation at https://wiki.cac.washington.edu/x/jI8qBQ for header/querystring paramemters, payload attributes, function descriptions and example code not included here. Note: The -type and -pretty querystring parameters are described here for GET requests as they make testing much easier.'
+  version: '3'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: account.gps
+paths:
+  /account.gps/{uwnetid}/:
+    get:
+      tags:
+      - account.gps
+      summary: Query GPS record
+      description: The account.gps resource allows you to retrieve affiliation group information.
+      parameters:
+      - name: uwnetid
+        in: path
+        description: UW Network identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -canonical
+        in: query
+        description: Request information on all identity groups, not just ones entitled
+        schema:
+          type: boolean
+          default: false
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: GPS affiliation group query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountGpsGetResult'
+        '301':
+          description: Moved Permanently
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getAccountGpsByUwnetid
+      x-operation-id-source: derived
+components:
+  schemas:
+    AccountGpsGetResult:
+      type: object
+      properties:
+        account.gps:
+          type: array
+          description: Array of account.gps objects
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: Uw Network identifier
+              regid:
+                type: string
+                description: Registry identifier
+              groups:
+                type: array
+                description: List of affiliation groups
+                items:
+                  type: object
+                  properties:
+                    affiliation-group:
+                      type: string
+                      description: Group membership indicator (0=no; 1=yes:implicit; 2=yes:explicit)
+        totalcount:
+          type: string
+          description: Number of account.gps objects returned
+      description: GPS affiliation groups.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv3/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv3/irwsv3.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml

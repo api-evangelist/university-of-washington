@@ -1,0 +1,496 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V3…
+  description: 'This is the specification for Identity Registration Web Service REST API V3. See the supplementary API documentation at https://wiki.cac.washington.edu/x/jI8qBQ for header/querystring paramemters, payload attributes, function descriptions and example code not included here. Note: The -type and -pretty querystring parameters are described here for GET requests as they make testing much easier.'
+  version: '3'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: entity.category
+paths:
+  /entity.category/{validid}/{category_code}/{source_code}/{instance}:
+    get:
+      tags:
+      - entity.category
+      summary: Query category records
+      description: The entity.category resource allows you to retrieve category records.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: category_code
+        in: path
+        description: Category Code number (optional)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: source_code
+        in: path
+        description: Source Code number (optional)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: instance
+        in: path
+        description: Instance number (optional)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Category record. Schema contains list of all possible properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityCategoryGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getEntityCategoryByValididByCategoryCodeBySourceCodeByInstance
+      x-operation-id-source: derived
+    put:
+      tags:
+      - entity.category
+      summary: Create category record
+      description: The entity.category resource allows you to create a new category record.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: category_code
+        in: path
+        description: Category Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: source_code
+        in: path
+        description: Source Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: instance
+        in: path
+        description: Instance number
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/EntityCategoryPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Entity.category resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityCategoryDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: putEntityCategoryByValididByCategoryCodeBySourceCodeByInstance
+      x-operation-id-source: derived
+    post:
+      tags:
+      - entity.category
+      summary: Update category record
+      description: The entity.category resource allows you to update an existing category record.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: category_code
+        in: path
+        description: Category Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: source_code
+        in: path
+        description: Source Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: instance
+        in: path
+        description: Instance number
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/EntityCategoryPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Entity.category resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityCategoryDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: postEntityCategoryByValididByCategoryCodeBySourceCodeByInstance
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - entity.category
+      summary: Delete category record
+      description: The entity.category resource allows you to delete an existing category record.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: category_code
+        in: path
+        description: Category Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: source_code
+        in: path
+        description: Source Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: instance
+        in: path
+        description: Instance number
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Entity.category resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityCategoryDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: deleteEntityCategoryByValididByCategoryCodeBySourceCodeByInstance
+      x-operation-id-source: derived
+components:
+  schemas:
+    EntityCategoryDeletePutPostResult:
+      type: object
+      properties:
+        entity.category:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
+    EntityCategoryGetResult:
+      type: object
+      properties:
+        entity.category:
+          type: array
+          description: Array of entity.category objects
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Entity identifier
+              category_code:
+                type: string
+                description: Category code
+              category_name:
+                type: string
+                description: Category name
+              source_code:
+                type: string
+                description: Source code
+              source_name:
+                type: string
+                description: Source name
+              expiration:
+                type: string
+                description: Expiration date
+              instance:
+                type: string
+                description: Instance number
+              notify_code:
+                type: string
+                description: Notification code
+              status_code:
+                type: string
+                description: Status of source record
+              status_name:
+                type: string
+                description: Status of source record
+              logname:
+                type: string
+                description: Last change author
+              created:
+                type: string
+                description: Record created date
+              updated:
+                type: string
+                description: Record last updated date
+              post_url:
+                type: string
+                description: URL to post update
+        totalcount:
+          type: string
+          description: Number of entity.category objects returned
+      description: Note that the entity.category object described here documents all possible attributes.  Not all attributes will be returned for all records.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    EntityCategoryPutPostPayload:
+      type: object
+      properties:
+        entity.category:
+          type: object
+          description: Entity.category object.  See supplemental docs for exact attributes.
+          properties:
+            validid:
+              type: string
+              description: Entity identifier
+            category_code:
+              type: string
+              description: Category code
+            source_code:
+              type: string
+              description: Source code
+            instance:
+              type: string
+              description: Instance number
+            notify_code:
+              type: string
+              description: Notification code
+            status_code:
+              type: string
+              description: Status of source record
+      description: Note that the entity.category object can also be presented as an array of exactly one object.
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv3/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv3/irwsv3.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml

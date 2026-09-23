@@ -1,0 +1,557 @@
+# x-archived-from: university-of-washington-token-authentication-web-service-v2-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.0.1
+info:
+  title: Token Authentication Web Service REST API V2
+  description: "This is the API specification for V2 of the UW-IT Token Authentication Rest API.  Note that there are header and querystring paramemters not documentered here (see also https://wiki.cac.washington.edu/x/GY6kB). The -type and -pretty querystring parameters are included here for GET requests since they make testing much easier.  \n\n"
+  version: 2.0.0
+servers:
+- url: https://taws.s.uw.edu:716/token/v2
+externalDocs:
+  description: UW-IT Token Authentication Web Service (TAWS) V2 API documentation
+  url: https://iam-tools.u.washington.edu/apis/tawsv2/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/tawsv2/tawsv2.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-token-authentication-web-service-v2.yaml
+paths:
+  /crn/{user}:
+    get:
+      tags:
+      - Crn
+      summary: The Crn endpoint returns the user's crn list.
+      description: The Crn endpoint returns the user's crn list for use in subsequent Preauth and Auth calls.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: An array of Crn objects
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/CrnGetResult'
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+      - Crn
+      summary: The Crn endpoint sets the user's crn list.
+      description: The Crn endpoint sets the user's crn list or can rename the user identifier.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: crns
+        in: query
+        description: User's crn list.
+        schema:
+          type: string
+          format: string
+      - name: new_user
+        in: query
+        description: User's new identifier.
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Success
+          content: {}
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Crn
+      summary: The Crn endpoint deletes the user's crn list.
+      description: The Crn endpoint deletes the user's crn list.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Success
+          content: {}
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /preauth/{user}:
+    get:
+      tags:
+      - Preauth
+      summary: The Preauth endpoint returns the user's available authentication factors.
+      description: The Preauth endpoint determines whether a user is authorized to log in, and (if so) returns the user's available authentication factors.  The user is typically a UWNetID.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: crn
+        in: query
+        description: Crn value
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: An array of Preauth objects
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/PreauthGetResult'
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/{user}:
+    post:
+      tags:
+      - Auth
+      summary: The Auth endpoint performs second-factor authentication for a user.
+      description: The Auth endpoint performs second-factor authentication for a user by sending a push notification to the user's smartphone app, verifying a passcode, or placing a phone call.  It is also used to send the user a new batch of passcodes via SMS.  The user is typically a UWNetID.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: vendor
+        in: query
+        description: Authentication vendor to use
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: factor
+        in: query
+        description: Authentication factor to use.  Select from list of factors provided by /preauth endpoint or send '{passcode}|passcode' for a passcode factor.
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/AuthPostPayload'
+        required: false
+      responses:
+        '200':
+          description: Authentication succeeded.
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/AuthPostResult'
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+components:
+  schemas:
+    AuthPostPayload:
+      type: object
+      properties:
+        auth:
+          type: array
+          description: Array of auth objects (should generally contain only one).
+          items:
+            type: object
+            properties:
+              vendor:
+                type: string
+                description: Authentication vendor to use
+              factor:
+                type: string
+                description: Authentication factor to use
+    AuthPostResult:
+      type: object
+      properties:
+        auth:
+          type: array
+          description: Response to POST
+          items:
+            type: object
+            properties:
+              result:
+                type: string
+                description: Either 'allow' or 'deny'. If 'allow', your application should grant access.  If 'deny', it should not.
+              message:
+                type: string
+                description: A string describing the result of the authentication attempt.  This is intended for display to the user.
+    CrnGetResult:
+      type: object
+      properties:
+        crn:
+          type: array
+          description: Array of crn objects matching search parameter
+          items:
+            type: object
+            properties:
+              user:
+                type: string
+                description: Unique identifier for a person.
+              crns:
+                type: string
+                description: List of crn's for 2fa authentication
+    PreauthGetResult:
+      type: object
+      properties:
+        preauth:
+          type: array
+          description: Array of preauth objects matching search parameter
+          items:
+            type: object
+            properties:
+              user:
+                type: string
+                description: Unique identifier for a person.
+              vendor:
+                type: string
+                description: Authentication vendor name
+              prompt:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    description: Authentication menu, describing numeric choices for user to choose from
+                  factors:
+                    type: object
+                    properties:
+                      '{number}':
+                        type: string
+                        description: Factor corresponding to numeric menu choice
+                      default:
+                        type: string
+                        description: Default factor to use when menu is not presented to user
+                    description: Authentication factors for menu choices
+                description: Prompt information for user authentication menu choice
+              devices:
+                type: array
+                description: List of authentication devices for a user
+                items:
+                  type: object
+                  properties:
+                    device:
+                      type: string
+                      description: Device identifier
+                    display_name:
+                      type: string
+                      description: A short description, suitable to identify the device in a prompt
+                    name:
+                      type: string
+                      description: The device's name
+                    capabilities:
+                      type: array
+                      description: List of capabilities for the device
+                      items:
+                        type: string
+                        description: 'Can be one of: ''push'', ''sms'', ''phone'', ''mobile_otp''.  ''push'' means the device is activated for Duo Push.  ''sms'' means the device can receive batches of SMS passcodes.  ''phone'' means the device can receive phone calls.  ''mobile_otp'' means the device is capable of generating passcodes with Duo Mobile app.'
+                    sms_nextcode:
+                      type: string
+                      description: Single-character string containing the starting number of the next acceptable passcode previously SMSed to the user.
+                    number:
+                      type: string
+                      description: The phone number of the device
+                    type:
+                      type: string
+                      description: Device type.  Can be either 'phone' or 'token'.
+              result:
+                type: string
+                description: Result of the operation
+              message:
+                type: string
+                description: Message describing the result, suitable for display
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string

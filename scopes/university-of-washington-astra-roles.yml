@@ -1,0 +1,43 @@
+name: University of Washington — ASTRA authorization roles (Student Web Service)
+description: >-
+  The named ASTRA roles the UW-published Student Web Service contract requires per
+  resource. These are UW's authorization scopes; they are read verbatim out of the
+  operation descriptions in the institution's own OpenAPI, not inferred.
+generated: '2026-08-30'
+method: derived
+source: openapi/_original/university-of-washington-student-web-service.yaml
+x-operator: institution
+scheme: ASTRA (UW-IT Authorization Solutions Tools and Resources for Administrators)
+scopes:
+  - name: sws:Support
+    description: Baseline read role granted to EWS support and most read-only resources.
+  - name: sws:UnitReader
+    description: Read access scoped to an academic or administrative unit.
+  - name: sws:AdmReader
+    description: Read access to admissions data.
+  - name: sws:GradeReader
+    description: Read access to grade data.
+  - name: sws:GradeSubmitter
+    description: Write access to submit grades.
+  - name: sws:DegreeAuditSubmitter
+    description: Write access to submit degree audit requests.
+  - name: sws:MajorUpdater
+    description: Write access to update declared majors.
+  - name: sws:NoticeReader
+    description: Read access to student notices.
+  - name: sws:RegistrationBlockerReader
+    description: Read access to registration blocks.
+  - name: sws:RegistrationBlockerWriter
+    description: Write access to registration blocks.
+  - name: sws:ScheduleReader
+    description: Read access to student schedules.
+  - name: sws:SectionStatusReader
+    description: Read access to section enrollment status.
+  - name: sws:StudentDisabilityReader
+    description: Read access to student disability data (restricted).
+  - name: sws:StudentEthnicityReader
+    description: Read access to student ethnicity data (restricted).
+  - name: sws:StudentFinancialReader
+    description: Read access to student personal financial data (restricted).
+  - name: sws:StudentRestrictedReader
+    description: Read access to otherwise restricted student records.

@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Campus API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: Campus
 paths:
@@ -17,7 +17,41 @@ paths:
       tags:
       - Campus
       summary: Get available campuses
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Campus List\",\r\n                    \"ews_guid\" : \"317D6605-20FA-4D10-80A0-75C655B489F3\",\r\n                    \"LongDescription\" : \"Display a list of campuses\",\r\n                    \"ShortDescription\" : \"Campus list\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"hardcoded\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               Unlike other search resources, it does not require any query string to return the search result.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.campus\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Campus List",
+
+        "ews_guid" : "317D6605-20FA-4D10-80A0-75C655B489F3",
+
+        "LongDescription" : "Display a list of campuses",
+
+        "ShortDescription" : "Campus list",
+
+        "OriginatingSchema" : [ { "source":"hardcoded" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken
+
+        Unlike other search resources, it does not require any query string to return the search result.",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.campus" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: CampusSearch
       responses:
         '200':
@@ -59,14 +93,39 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    CampusResourceUri:
+      type: object
+      properties:
+        CampusShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation of campus\"\n            }\n            </pre>"
+        CampusFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Full Name of the Campus\"\n            }\n            </pre>"
+        CampusName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Name of the campus\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Campus Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\n    \"TargetOperationId\" : [\"CampusSearch\"]\n}"
     CampusSearchResourceUri:
       type: object
       properties:
         Href:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Campus Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\r\n    \"TargetOperationId\" : [\"CampusSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Campus Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\n    \"TargetOperationId\" : [\"CampusSearch\"]\n}"
     CampusSearchViewModel:
       type: object
       properties:
@@ -75,40 +134,23 @@ components:
         Next:
           $ref: '#/components/schemas/CampusSearchResourceUri'
         PageSize:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         PageStart:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         Previous:
           $ref: '#/components/schemas/CampusSearchResourceUri'
         TotalCount:
           type: integer
           format: int32
         Campuses:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/CampusResourceUri'
-          nullable: true
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Campus Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}]\r\n}"
-    CampusResourceUri:
-      type: object
-      properties:
-        CampusShortName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Abbreviation of campus\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CampusFullName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Full Name of the Campus\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CampusName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                   { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Name of the campus\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Campus Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\r\n    \"TargetOperationId\" : [\"CampusSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Campus Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}]\n}"

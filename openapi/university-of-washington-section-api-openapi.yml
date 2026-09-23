@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Section API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Section API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: Section
 paths:
@@ -17,7 +17,41 @@ paths:
       tags:
       - Section
       summary: Get a course section offered in the year/quarter
-      description: "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section\",\r\n                     \"ews_guid\" : \"17D4611C-D94A-478C-95CD-EAB4B7E37FAE\",\r\n                     \"LongDescription\" : \"A resource to retrieve a specific course section of a course offered in the year/quarter \r\n                                           for the specified curriculum\",\r\n                     \"ShortDescription\" : \"Get a specific course section\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\"  }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                  - AccessToken \",\r\n                     \"Links\" : [\"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\"],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>"
+      description: '{
+
+        "DisplayTitle" : "Section",
+
+        "ews_guid" : "17D4611C-D94A-478C-95CD-EAB4B7E37FAE",
+
+        "LongDescription" : "A resource to retrieve a specific course section of a course offered in the year/quarter
+
+        for the specified curriculum",
+
+        "ShortDescription" : "Get a specific course section",
+
+        "OriginatingSchema" : [ { "source":"swssdb" }, { "source":"uweo" }, { "source":"irws" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken ",
+
+        "Links" : ["https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection"],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetSection
       parameters:
       - name: year
@@ -99,7 +133,75 @@ paths:
       tags:
       - Section
       summary: Search for course sections that match the supplied parameters
-      description: "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section Search\",\r\n                     \"ews_guid\" : \"A5877849-AE6E-409C-BDCE-EA4AAFADD0AC\",\r\n                     \"LongDescription\" : \"Search for course sections that match the supplied parameters\",\r\n                     \"ShortDescription\" : \"Get a list of course sections\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\"  }, { \"source\":\"irws\" } ],\r\n                     \"Notes\" : \" This resource requires any of the following ASTRA roles:\r\n                                   - sws:Support\r\n                                   - sws:GradeSubmitter\r\n                                   - sws:UnitReader\r\n                                 This resource supports the following authentication types:\r\n                                   - X.509 Certificate\r\n                                   - NetID\r\n                                   - AccessToken\r\n                                 For the Section_Search resource, the query string parameters can be configured in different ways, \r\n                                 depending on the desired results.\r\n                                 To return a full listing of all the courses and sections in the curriculum, enter the year, quarter, \r\n                                 and curriculum abbreviation parameters.\r\n                                 To return list of sections for a specified course, enter the year, quarter, curriculum abbreviation, \r\n                                 and the course number parameters.\r\n                                 To return a list of all the sections that an instructor is teaching across multiple curricula, \r\n                                 enter the year, quarter and (instructor) regID parameters.\r\n                                 To return a list of all the sections that an instructor is teaching in the specified curriculum, \r\n                                 enter the year, quarter, curriculum abbreviation and (instructor) regID parameters.\r\n                                 To return a list of all the sections that a course has been offered at UW, enter the starting year \r\n                                 in the year field, leave quarter empty, specify the curriculum abbreviation and course number parameters.\r\n                                 To return a list of all the sections that a course has been offered at UW but filter them for a specific \r\n                                 set of Delete Flag values, enter the starting year in the year field, leave quarter empty, specify \r\n                                 the curriculum abbreviation, course number and desired delete flag values.\r\n                                 To return a list of all the sections that a course has but exclude courses that do not have sections, \r\n                                 use the exclude_courses_without_sections flag. To use this mode, you may not also search for future terms \r\n                                 at the same time.\",\r\n                     \"Links\" : [\"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\"],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>"
+      description: '{
+
+        "DisplayTitle" : "Section Search",
+
+        "ews_guid" : "A5877849-AE6E-409C-BDCE-EA4AAFADD0AC",
+
+        "LongDescription" : "Search for course sections that match the supplied parameters",
+
+        "ShortDescription" : "Get a list of course sections",
+
+        "OriginatingSchema" : [ { "source":"swssdb" }, { "source":"uweo" }, { "source":"irws" } ],
+
+        "Notes" : " This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken
+
+        For the Section_Search resource, the query string parameters can be configured in different ways,
+
+        depending on the desired results.
+
+        To return a full listing of all the courses and sections in the curriculum, enter the year, quarter,
+
+        and curriculum abbreviation parameters.
+
+        To return list of sections for a specified course, enter the year, quarter, curriculum abbreviation,
+
+        and the course number parameters.
+
+        To return a list of all the sections that an instructor is teaching across multiple curricula,
+
+        enter the year, quarter and (instructor) regID parameters.
+
+        To return a list of all the sections that an instructor is teaching in the specified curriculum,
+
+        enter the year, quarter, curriculum abbreviation and (instructor) regID parameters.
+
+        To return a list of all the sections that a course has been offered at UW, enter the starting year
+
+        in the year field, leave quarter empty, specify the curriculum abbreviation and course number parameters.
+
+        To return a list of all the sections that a course has been offered at UW but filter them for a specific
+
+        set of Delete Flag values, enter the starting year in the year field, leave quarter empty, specify
+
+        the curriculum abbreviation, course number and desired delete flag values.
+
+        To return a list of all the sections that a course has but exclude courses that do not have sections,
+
+        use the exclude_courses_without_sections flag. To use this mode, you may not also search for future terms
+
+        at the same time.",
+
+        "Links" : ["https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection"],
+
+        "Synonyms" : []
+
+        }'
       operationId: SectionSearch
       parameters:
       - name: year
@@ -165,7 +267,7 @@ paths:
           default: ''
       - name: transcriptable_course
         in: query
-        description: "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\r\n            If no then only classes from EO will be returned.\r\n            If all, both transcriptable and non-transcriptable courses will be returned.\r\n            All will return every course regardless of whether it can be included in a transcript or not."
+        description: "Choose yes, no, or all. If yes then results will include any course that can be creditable such that it can be shown on a transcript. This would include certain classes that also fall under the Educational Outreach (EO). Yes is also the default value chosen for this search criteria if none is specified.\n            If no then only classes from EO will be returned.\n            If all, both transcriptable and non-transcriptable courses will be returned.\n            All will return every course regardless of whether it can be included in a transcript or not."
         schema:
           type: string
           default: 'yes'
@@ -244,7 +346,39 @@ paths:
       tags:
       - Section
       summary: Get course sections offered in the year/quarter
-      description: "<pre>\r\n                 { \r\n                     \"DisplayTitle\" : \"Section Search by Term\",\r\n                     \"ews_guid\" : \"EC0A49F3-5969-4020-81CA-924BCA67E7AB\",\r\n                     \"LongDescription\" : \"A resource to retrieve a list of course sections offered in the year/quarter.\",\r\n                     \"ShortDescription\" : \"Search for all course sections by term\",\r\n                     \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                     \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                  - sws:Support\r\n                                  - sws:GradeSubmitter\r\n                                  - sws:UnitReader\r\n                                This resource supports the following authentication types:\r\n                                  - X.509 Certificate\r\n                                  - NetID\r\n                                  - AccessToken \",\r\n                     \"Links\" : [\"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\"],\r\n                     \"Synonyms\" : []\r\n                 }\r\n                 </pre>"
+      description: '{
+
+        "DisplayTitle" : "Section Search by Term",
+
+        "ews_guid" : "EC0A49F3-5969-4020-81CA-924BCA67E7AB",
+
+        "LongDescription" : "A resource to retrieve a list of course sections offered in the year/quarter.",
+
+        "ShortDescription" : "Search for all course sections by term",
+
+        "OriginatingSchema" : [ { "source":"swssdb" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken ",
+
+        "Links" : ["https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection"],
+
+        "Synonyms" : []
+
+        }'
       operationId: SectionTermSearch
       parameters:
       - name: year
@@ -322,7 +456,39 @@ paths:
       tags:
       - Section
       summary: Get the status of a course section
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Section Status\",\r\n                    \"ews_guid\" : \"0FE09C52-834E-4F65-A35D-23D7D890C727\",\r\n                    \"LongDescription\" : \"Get the status of a course section including how many spots are open and whether \r\n                                          students can register for the section.\",\r\n                    \"ShortDescription\" : \"Get the status of a course section\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:SectionStatusReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Section Status",
+
+        "ews_guid" : "0FE09C52-834E-4F65-A35D-23D7D890C727",
+
+        "LongDescription" : "Get the status of a course section including how many spots are open and whether
+
+        students can register for the section.",
+
+        "ShortDescription" : "Get the status of a course section",
+
+        "OriginatingSchema" : [ { "source":"swssdb" }, { "source":"uweo" }, { "source":"irws" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:SectionStatusReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID ",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetSectionStatus
       parameters:
       - name: year
@@ -400,7 +566,39 @@ paths:
       tags:
       - Section
       summary: Get the status of a course
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Section Status List\",\r\n                    \"ews_guid\" : \"135BD797-FC81-42C3-954D-EF67D7869B41\",\r\n                    \"LongDescription\" : \"Get the information about a specific course's section statuses, searching by \r\n                                          the associated course\",\r\n                    \"ShortDescription\" : \"Get the status of a course's sections\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"uweo\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:SectionStatusReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Section Status List",
+
+        "ews_guid" : "135BD797-FC81-42C3-954D-EF67D7869B41",
+
+        "LongDescription" : "Get the information about a specific course''s section statuses, searching by
+
+        the associated course",
+
+        "ShortDescription" : "Get the status of a course''s sections",
+
+        "OriginatingSchema" : [ { "source":"swssdb" }, { "source":"uweo" }, { "source":"irws" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:SectionStatusReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID ",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.coursesection" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetSectionStatusByCourse
       parameters:
       - name: year
@@ -469,146 +667,372 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    SectionStatusViewModel:
+    FinalExamBuildingUri:
       type: object
       properties:
-        CurrentEnrollment:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.current_enroll\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Current Enrollment\"\r\n            }\r\n            </pre>"
-          format: int32
-        JointCurrentEnrollment:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.joint_curr_enroll\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Joint Current Enrollment\"\r\n            }\r\n            </pre>"
-          format: int32
-        CurrentRegistrationPeriod:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_sched_access_to_add.index1\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Current Registration Period\"\r\n            }\r\n            </pre>"
-          nullable: true
-        AddCodeRequired:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_sched_access_to_add.access_to_add\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Add Code Required\"\r\n            }\r\n            </pre>"
-        FacultyCodeRequired:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.section_type_code\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Faculty Code Required\"\r\n            }\r\n            </pre>"
-        LimitEstimateEnrollment:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.l_e_enroll\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Limit Estimate Enrollment\"\r\n            }\r\n            </pre>"
-          format: int32
-        JointLimitEstimateEnrollment:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.joint_limit\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Joint Limit Estimate Enrollment\"\r\n            }\r\n            </pre>"
-          format: int32
-        LimitEstimateEnrollmentIndicator:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.l_e_indicator\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Limit Estimate Enrollment Indicator.  E=estimate, L=limit\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RoomCapacity:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.room_cap\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Room Capacity\"\r\n            }\r\n            </pre>"
-          format: int32
-        Section:
-          $ref: '#/components/schemas/SectionResourceUri'
-        SLN:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.sln\" }\r\n                ],\r\n                \"TechnicalDescription\": \"SLN\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SpaceAvailable:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.space_available\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Space Available\"\r\n            }\r\n            </pre>"
-          format: int32
-        JointSpaceAvailable:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.joint_space_avail\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Joint Space Available\"\r\n            }\r\n            </pre>"
-          format: int32
-        Status:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.room_cap\" },\r\n                    { \"source\":\"SWSSDB.time_schedule.joint_curr_enroll\" },\r\n                    { \"source\":\"SWSSDB.time_schedule.section_type_code\" },\r\n                    { \"source\":\"SWSSDB.time_sched_access_to_add.access_to_add\" },\r\n                    { \"source\":\"SWSSDB.time_schedule.joint_space_avail\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\r\n                    1.\tIf the room cap is non-zero and enrollment is in excess of 115% of room cap, section is closed.\r\n                    2.\tIf the section is IS, status is ‘faculty code required’.\r\n                    3.\tIf section currently has an add code restriction, status is ‘add code required’.\r\n                    4.\tIf space available is less than 1, section is closed.\r\n                    4.a If the section is part of a joint group we need to determine \r\n                    5\tOtherwise, section is open.\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ResponsibleCurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.resp_curric_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Responsible Curriculum Abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ResponsibleCourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.resp_course_number\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Responsible Course Number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ResponsibleSectionID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.resp_section_id\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Responsible Section ID\"\r\n            }\r\n            </pre>"
-          nullable: true
+        Href:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Status Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    SectionSearchResourceUri:
+      description: "{\n    \"DisplayTitle\" : \"Final Exam Building Uri\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    OnlineLearningTypeViewModel:
+      type: object
+      properties:
+        Code:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.oltpcd\" }\n                ],\n                \"TechnicalDescription\": \"Online learning type code\"\n            }\n            </pre>"
+        Description:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.oltp\" }\n                ],\n                \"TechnicalDescription\": \"Online learning type description\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Online Learning Type Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    LinkedSectionTypeViewModel:
+      type: object
+      properties:
+        LinkedSections:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/LinkedSectionViewModel'
+        Type:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.ltp\" }\n                ],\n                \"TechnicalDescription\": \"Linked section type\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Linked Section Type Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
+    RegistrationSearchUri:
       type: object
       properties:
         Year:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FutureTerms:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
           format: int32
-        CurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DeleteFlag:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" }\n                ],\n                \"TechnicalDescription\": \"Quarter consists of winter, spring, summer, and autumn.\"\n            }\n            </pre>"
         RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SearchBy:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        IncludeSecondaries:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fsqn\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.InstructorIndex\"}\n                ],\n                \"TechnicalDescription\": \"Faculty sequence number\"\n            }\n            </pre>"
+        SectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
+        IsActive:
           type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-        PageStart:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        PageSize:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Is active flag\"\n            }\n            </pre>"
+        Verbose:
+          type: boolean
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+        InstructorRegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Always set to null\"\n            }\n            </pre>"
         ChangedSinceDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Always empty string\"\n            }\n            </pre>"
         TranscriptableCourse:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FacilityCode:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RoomNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SLN:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Always empty string\"\n            }\n            </pre>"
+        PageStart:
+          type:
+          - string
+          - 'null'
+        PageSize:
+          type:
+          - string
+          - 'null'
         Href:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\r\n    \"TargetOperationId\" : [\"SectionSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Registration Search URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section_Registration\"}],\n    \"TargetOperationId\" : [\"RegistrationSearch\"]\n}"
+    MeetingBuildingUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Meeting Building URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    MeetingViewModel:
+      type: object
+      properties:
+        MeetingIndex:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.ndx\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingIndex\"}\n                ],\n                \"TechnicalDescription\": \"Meeting number\"\n            }\n            </pre>"
+        MeetingType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.tp\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingType\"}\n                ],\n                \"TechnicalDescription\": \"Meeting type\"\n            }\n            </pre>"
+        DaysOfWeek:
+          $ref: '#/components/schemas/DaysOfWeekViewModel'
+        DaysOfWeekToBeArranged:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\n                ],\n                \"TechnicalDescription\": \"Calculated field that represents if days are to still be arranged\"\n            }\n            </pre>"
+        StartTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.stm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.StartTime\"}\n                ],\n                \"TechnicalDescription\": \"Start Time\"\n            }\n            </pre>"
+        EndTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.etm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.EndTime\"}\n                ],\n                \"TechnicalDescription\": \"End time\"\n            }\n            </pre>"
+        BuildingToBeArranged:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.BuildingToBeArranged\"}\n                ],\n                \"TechnicalDescription\": \"Calculated flag that represents if building to be arranged\"\n            }\n            </pre>"
+        Building:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.Building\"}\n                ],\n                \"TechnicalDescription\": \"Building\"\n            }\n            </pre>"
+        Meeting:
+          $ref: '#/components/schemas/MeetingBuildingUri'
+        RoomToBeArranged:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\n                ],\n                \"TechnicalDescription\": \"Calculated flag to determine if room is to be arranged\"\n            }\n            </pre>"
+        RoomNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.RoomNumber\"}\n                ],\n                \"TechnicalDescription\": \"Room number\"\n            }\n            </pre>"
+        Instructors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FacultyViewModel'
+        EOS_StartDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.StartDate\" }\n                ],\n                \"TechnicalDescription\": \"EOS Start Date\"\n            }\n            </pre>"
+        EOS_EndDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.EndDate\" }\n                ],\n                \"TechnicalDescription\": \"EOS End Date\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Meeting Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    DistanceLearningTypeViewModel:
+      type: object
+      properties:
+        Code:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.dist_learn_type\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DistanceLearning\"}\n                ],\n                \"TechnicalDescription\": \"Distance learning code\"\n            }\n            </pre>"
+        Description:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Distance learning code description\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Distance Learning Type Model\"\n}"
+    CommentsViewModel:
+      type: object
+      properties:
+        Lines:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Line'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Comments Model\"\n}"
+    CourseResourceUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.year\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.quarter\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.department_abbrev\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.course_number\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Course Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Course\"}],\n    \"TargetOperationId\" : [\"GetCourse\"]\n}"
+    SectionSearchResultResourceUri:
+      type: object
+      properties:
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+        SectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Section Search Result Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\n    \"TargetOperationId\" : [\"SectionSearch\"]\n}"
+    FacultyViewModel:
+      type: object
+      properties:
+        FacultySequenceNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fsqn\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.InstructorIndex\"}\n                ],\n                \"TechnicalDescription\": \"Faculty sequence number\"\n            }\n            </pre>"
+        TSPrint:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.tspr\" }\n                ],\n                \"TechnicalDescription\": \"TS print\"\n            }\n            </pre>"
+        PercentInvolve:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fpct\" }\n                ],\n                \"TechnicalDescription\": \"Percent Involve\"\n            }\n            </pre>"
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        GradeRoster:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Faculty Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    SectionTermMeetingViewModel:
+      type: object
+      properties:
+        MeetingIndex:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.ndx\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingIndex\"}\n                ],\n                \"TechnicalDescription\": \"Meeting number\"\n            }\n            </pre>"
+        MeetingType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.tp\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingType\"}\n                ],\n                \"TechnicalDescription\": \"Meeting type\"\n            }\n            </pre>"
+        DaysOfWeek:
+          $ref: '#/components/schemas/DaysOfWeekViewModel'
+        DaysOfWeekToBeArranged:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\n                ],\n                \"TechnicalDescription\": \"Calculated field that represents if days are to still be arranged\"\n            }\n            </pre>"
+        StartTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.stm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.StartTime\"}\n                ],\n                \"TechnicalDescription\": \"Start Time\"\n            }\n            </pre>"
+        EndTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.etm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.EndTime\"}\n                ],\n                \"TechnicalDescription\": \"End time\"\n            }\n            </pre>"
+        BuildingToBeArranged:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.BuildingToBeArranged\"}\n                ],\n                \"TechnicalDescription\": \"Calculated flag that represents if building to be arranged\"\n            }\n            </pre>"
+        Building:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.Building\"}\n                ],\n                \"TechnicalDescription\": \"Building\"\n            }\n            </pre>"
+        RoomToBeArranged:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\n                ],\n                \"TechnicalDescription\": \"Calculated flag to determine if room is to be arranged\"\n            }\n            </pre>"
+        RoomNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.RoomNumber\"}\n                ],\n                \"TechnicalDescription\": \"Room number\"\n            }\n            </pre>"
+        Instructors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SectionTermFacultyViewModel'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Section Term Meeting Model\"\n}"
     SectionSearchViewModel:
       type: object
       properties:
@@ -616,16 +1040,19 @@ components:
           type: integer
           format: int32
         PageSize:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         PageStart:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         Sections:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/SectionSearchResultResourceUri'
-          nullable: true
           readOnly: true
         Current:
           $ref: '#/components/schemas/SectionSearchResourceUri'
@@ -634,292 +1061,444 @@ components:
         Previous:
           $ref: '#/components/schemas/SectionSearchResourceUri'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    MeetingBuildingUri:
+      description: "{\n    \"DisplayTitle\" : \"Section Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    SectionStatusListViewModel:
       type: object
       properties:
-        Href:
-          type: string
-          nullable: true
+        SectionStatuses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SectionStatusViewModel'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Meeting Building URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    DistanceLearningTypeViewModel:
+      description: "{\n    \"DisplayTitle\" : \"Section Status List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    SectionViewModel:
       type: object
       properties:
-        Code:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.dist_learn_type\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DistanceLearning\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Distance learning code\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Description:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Distance learning code description\"\r\n            }\r\n            </pre>"
-          nullable: true
+        Term:
+          $ref: '#/components/schemas/TermResourceUri'
+        CourseCampus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.course_branch\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseCampus\" }\n                ],\n                \"TechnicalDescription\": \"Campus that section is offered\"\n            }\n            </pre>"
+        CreditControl:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.crcl\" }\n                ],\n                \"TechnicalDescription\": \"Credit Control\"\n            }\n            </pre>"
+        RoomCapacity:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.rcap\" }\n                ],\n                \"TechnicalDescription\": \"Room capacity\"\n            }\n            </pre>"
+          format: int32
+        SummerTerm:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sumt\" }\n                ],\n                \"TechnicalDescription\": \"Summer term\"\n            }\n            </pre>"
+        Course:
+          $ref: '#/components/schemas/CourseResourceUri'
+        SectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
+        CourseTitle:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.course_title\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.CourseTitle\"}\n                ],\n                \"TechnicalDescription\": \"Course title\"\n            }\n            </pre>"
+        CourseTitleLong:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.long_course_title\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.CourseTitle\"}\n                ],\n                \"TechnicalDescription\": \"Course title long\"\n            }\n            </pre>"
+        CourseDescription:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.course.course_dscr\" }\n                ],\n                \"TechnicalDescription\": \"Course description\"\n            }\n            </pre>"
+        ClassWebsiteUrl:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csurl\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.ClassWebsiteUrl\"}\n                ],\n                \"TechnicalDescription\": \"Class website\"\n            }\n            </pre>"
+        Curriculum:
+          $ref: '#/components/schemas/CurriculumTimeScheduleUrlViewModel'
+        ResponsibleCourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.resp_course_no\" }\n                ],\n                \"TechnicalDescription\": \"Responsible Course Number\"\n            }\n            </pre>"
+        ResponsibleCurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.resp_curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Responsible Curriculum Abbreviation\"\n            }\n            </pre>"
+        FeeAmount:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.feeamt\" }\n                ],\n                \"TechnicalDescription\": \"Fee amount\"\n            }\n            </pre>"
+        FeeBudget:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.feebgt\" }\n                ],\n                \"TechnicalDescription\": \"Fee budget\"\n            }\n            </pre>"
+        FeeWorktag:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.feetag\" }\n                ],\n                \"TechnicalDescription\": \"Fee Worktag\"\n            }\n            </pre>"
+        FeeType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.feetp\" }\n                ],\n                \"TechnicalDescription\": \"Fee Type\"\n            }\n            </pre>"
+        AddCodeRequired:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.addreq\" }\n                ],\n                \"TechnicalDescription\": \"Add code required\"\n            }\n            </pre>"
+        EnrollmentRestrictions:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.rqexind\" }\n                ],\n                \"TechnicalDescription\": \"Enrollment restrictions\"\n            }\n            </pre>"
+        FinancialAidEligible:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.faelig\" }\n                ],\n                \"TechnicalDescription\": \"This field is DEPRECATED/INCORRECT. Please use FinancialAidEligibleDisplay.\"\n            }\n            </pre>"
+        FinancialAidEligibleDisplay:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.faelig\" }\n                ],\n                \"TechnicalDescription\": \"Financial aid eligible display\"\n            }\n            </pre>"
+        IndependentStudy:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sctp\" }\n                ],\n                \"TechnicalDescription\": \"Independent study\"\n            }\n            </pre>"
+        SLN:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\n                ],\n                \"TechnicalDescription\": \"SLN\"\n            }\n            </pre>"
+        TimeScheduleComments:
+          $ref: '#/components/schemas/TimeScheduleCommentsViewModel'
+        DeleteFlag:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dflg\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DeleteFlag\"}\n                ],\n                \"TechnicalDescription\": \"Delete flag\"\n            }\n            </pre>"
+        DistanceLearning:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dlind\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DistanceLearning\"}\n                ],\n                \"TechnicalDescription\": \"Distance learning\"\n            }\n            </pre>"
+        DistanceLearningCalendarType:
+          $ref: '#/components/schemas/DistanceLearningCalendarTypeViewModel'
+        DistanceLearningType:
+          $ref: '#/components/schemas/DistanceLearningTypeViewModel'
+        EndDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.edt\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.EndDate\"}\n                ],\n                \"TechnicalDescription\": \"End date\"\n            }\n            </pre>"
+        FinalExam:
+          $ref: '#/components/schemas/FinalExamViewModel'
+        GradingSystem:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.grs\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GradingSystem\"}\n                ],\n                \"TechnicalDescription\": \"Grading system\"\n            }\n            </pre>"
+        HonorsCourse:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.hnr\" }\n                ],\n                \"TechnicalDescription\": \"Honors course\"\n            }\n            </pre>"
+        InstituteName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.inst\" }\n                ],\n                \"TechnicalDescription\": \"Institute name\"\n            }\n            </pre>"
+        RepositoryTimeStamp:
+          type:
+          - string
+          - 'null'
+        Metadata:
+          type:
+          - string
+          - 'null'
+        JointSections:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SectionSearchResultResourceUri'
+        CourseHasVariableContent:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Course has variable content\"\n            }\n            </pre>"
+        SameVariableContentAs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SectionResourceUri'
+        MaximumCredit:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.repcr\" }\n                ],\n                \"TechnicalDescription\": \"Maximum credit\"\n            }\n            </pre>"
+        MaximumTermCredit:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.maxcr\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.MaximumTermCredit\"}\n                ],\n                \"TechnicalDescription\": \"Maximum Term Credit\"\n            }\n            </pre>"
+        MinimumTermCredit:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.mincr\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.MinimumTermCredit\"}\n                ],\n                \"TechnicalDescription\": \"Minimum term credit\"\n            }\n            </pre>"
+        ResearchCredit:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.rcr\" }\n                ],\n                \"TechnicalDescription\": \"Research credit\"\n            }\n            </pre>"
+        ServiceLearning:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.scr\" }\n                ],\n                \"TechnicalDescription\": \"Service learning\"\n            }\n            </pre>"
+        SectionType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sctp\" }\n                ],\n                \"TechnicalDescription\": \"Section type\"\n            }\n            </pre>"
+        SecondaryGradingOption:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.grsc\" }\n                ],\n                \"TechnicalDescription\": \"Secondary grading option\"\n            }\n            </pre>"
+        StartDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sdt\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.StartDate\"}\n                ],\n                \"TechnicalDescription\": \"Start date\"\n            }\n            </pre>"
+        DuplicateEnrollmentAllowed:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.de\" }\n                ],\n                \"TechnicalDescription\": \"Duplicate enrollment allowed\"\n            }\n            </pre>"
+        PrimarySection:
+          $ref: '#/components/schemas/SectionResourceUri'
+        LinkedSectionTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/LinkedSectionTypeViewModel'
+        Meetings:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MeetingViewModel'
+        GradeSubmissionDelegates:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GradeSubmissionDelegateViewModel'
+        Auditors:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.stdaud\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.Auditors\"}\n                ],\n                \"TechnicalDescription\": \"Auditors\"\n            }\n            </pre>"
+          format: int32
+        CurrentEnrollment:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.cen\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.CurrentEnrollment\"}\n                ],\n                \"TechnicalDescription\": \"Current enrollment\"\n            }\n            </pre>"
+          format: int32
+        LimitEstimateEnrollment:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.leenr\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.LimitEstimatedEnrollment\"}\n                ],\n                \"TechnicalDescription\": \"Limit estimated enrollment\"\n            }\n            </pre>"
+          format: int32
+        LimitEstimateEnrollmentIndicator:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.le\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.LimitEstimatedEnrollmentIndicator\"}\n                ],\n                \"TechnicalDescription\": \"Limit estimated enrollment indicator\"\n            }\n            </pre>"
+        StudentCreditHours:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.stdcr\" }\n                ],\n                \"TechnicalDescription\": \"Student credit hours\"\n            }\n            </pre>"
+        SelfRegistrationAllowed:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_Schedule.self_sustaining\" }\n                ],\n                \"TechnicalDescription\": \"Self registration allowed\"\n            }\n            </pre>"
+        GeneralEducationRequirements:
+          $ref: '#/components/schemas/GeneralEducationRequirementViewModel'
+        Registrations:
+          $ref: '#/components/schemas/RegistrationSearchUri'
+        OnlineLearningType:
+          $ref: '#/components/schemas/OnlineLearningTypeViewModel'
+        LMSOwnership:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.LMSOwnership\"}\n                ],\n                \"TechnicalDescription\": \"LMS ownership\"\n            }\n            </pre>"
+        PrimaryLMS:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.primaryLMS\"}\n                ],\n                \"TechnicalDescription\": \"Primary LMS\"\n            }\n            </pre>"
+        IsIndependentStart:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.IsIndependentStart\"}\n                ],\n                \"TechnicalDescription\": \"Is independent start\"\n            }\n            </pre>"
+        EOS_CID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.EOScourseId\" }\n                ],\n                \"TechnicalDescription\": \"EOS Course Identification Number\"\n            }\n            </pre>"
+        BlockRegistrationParents:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SectionResourceUri'
+        BlockRegistrationChildren:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SectionResourceUri'
+        TimeMaskException:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.time_mask_except\" }\n                ],\n                \"TechnicalDescription\": \"Indicates whether or not a time slot overlap between two courses causes a registration limit\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Distance Learning Type Model\"\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Section Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    DayViewModel:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Day Model\"\n}"
     GradeSubmissionDelegateViewModel:
       type: object
       properties:
         Person:
           $ref: '#/components/schemas/PersonResourceUri'
         DelegateLevel:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.dlg.lvl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Delegate level\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.dlg.lvl\" }\n                ],\n                \"TechnicalDescription\": \"Delegate level\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Grade Submission Delegate Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Grade\"}]\r\n}"
-    FinalExamBuildingUri:
+      description: "{\n    \"DisplayTitle\" : \"Grade Submission Delegate Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Grade\"}]\n}"
+    TermResourceUri:
       type: object
       properties:
         Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Final Exam Building Uri\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    SectionStatusListViewModel:
-      type: object
-      properties:
-        SectionStatuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionStatusViewModel'
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Status List Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    PersonResourceUri:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Pronouns:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
-    SectionTermMeetingViewModel:
-      type: object
-      properties:
-        MeetingIndex:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.ndx\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingIndex\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Meeting number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        MeetingType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.tp\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingType\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Meeting type\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DaysOfWeek:
-          $ref: '#/components/schemas/DaysOfWeekViewModel'
-        DaysOfWeekToBeArranged:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated field that represents if days are to still be arranged\"\r\n            }\r\n            </pre>"
-        StartTime:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.stm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.StartTime\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Start Time\"\r\n            }\r\n            </pre>"
-          nullable: true
-        EndTime:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.etm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.EndTime\"}\r\n                ],\r\n                \"TechnicalDescription\": \"End time\"\r\n            }\r\n            </pre>"
-          nullable: true
-        BuildingToBeArranged:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.BuildingToBeArranged\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated flag that represents if building to be arranged\"\r\n            }\r\n            </pre>"
-        Building:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.Building\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Building\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RoomToBeArranged:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated flag to determine if room is to be arranged\"\r\n            }\r\n            </pre>"
-        RoomNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.RoomNumber\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Room number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Instructors:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionTermFacultyViewModel'
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Term Meeting Model\"\r\n}"
-    SectionSearchResultResourceUri:
-      type: object
-      properties:
+          type:
+          - string
+          - 'null'
         Year:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
           format: int32
         Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SectionID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Section ID\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Search Result Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\r\n    \"TargetOperationId\" : [\"SectionSearch\"]\r\n}"
-    MeetingViewModel:
+      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
+    SectionTermSearchResponseViewModel:
       type: object
       properties:
-        MeetingIndex:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.ndx\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingIndex\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Meeting number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        MeetingType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.tp\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.MeetingType\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Meeting type\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DaysOfWeek:
-          $ref: '#/components/schemas/DaysOfWeekViewModel'
-        DaysOfWeekToBeArranged:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated field that represents if days are to still be arranged\"\r\n            }\r\n            </pre>"
-        StartTime:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.stm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.StartTime\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Start Time\"\r\n            }\r\n            </pre>"
-          nullable: true
-        EndTime:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.etm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.EndTime\"}\r\n                ],\r\n                \"TechnicalDescription\": \"End time\"\r\n            }\r\n            </pre>"
-          nullable: true
-        BuildingToBeArranged:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.BuildingToBeArranged\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated flag that represents if building to be arranged\"\r\n            }\r\n            </pre>"
-        Building:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.bld\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.Building\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Building\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Meeting:
-          $ref: '#/components/schemas/MeetingBuildingUri'
-        RoomToBeArranged:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeekToBeArranged\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Calculated flag to determine if room is to be arranged\"\r\n            }\r\n            </pre>"
-        RoomNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.rm\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.RoomNumber\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Room number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Instructors:
-          type: array
+        Section:
+          $ref: '#/components/schemas/SectionResourceUri'
+        CourseCampus:
+          type:
+          - string
+          - 'null'
+        CourseTitle:
+          type:
+          - string
+          - 'null'
+        CourseTitleLong:
+          type:
+          - string
+          - 'null'
+        SLN:
+          type:
+          - string
+          - 'null'
+        EndDate:
+          type:
+          - string
+          - 'null'
+        SectionType:
+          type:
+          - string
+          - 'null'
+        RepositoryTimeStamp:
+          type:
+          - string
+          - 'null'
+        Metadata:
+          type:
+          - string
+          - 'null'
+        MaximumCredit:
+          type:
+          - string
+          - 'null'
+        MaximumTermCredit:
+          type:
+          - string
+          - 'null'
+        MinimumTermCredit:
+          type:
+          - string
+          - 'null'
+        StartDate:
+          type:
+          - string
+          - 'null'
+        Meetings:
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/FacultyViewModel'
-          nullable: true
-        EOS_StartDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSCourseSections.StartDate\" }\r\n                ],\r\n                \"TechnicalDescription\": \"EOS Start Date\"\r\n            }\r\n            </pre>"
-          nullable: true
-        EOS_EndDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSCourseSections.EndDate\" }\r\n                ],\r\n                \"TechnicalDescription\": \"EOS End Date\"\r\n            }\r\n            </pre>"
-          nullable: true
+            $ref: '#/components/schemas/SectionTermMeetingViewModel'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Meeting Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    FacultyViewModel:
+      description: "{\n    \"DisplayTitle\" : \"Section Term Search Response\"\n}"
+    DistanceLearningCalendarTypeViewModel:
       type: object
       properties:
-        FacultySequenceNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.fac.fsqn\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.InstructorIndex\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Faculty sequence number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        TSPrint:
+        Code:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.ts_dl_cal_type\" }\n                ],\n                \"TechnicalDescription\": \"Distance learning calendar type code\"\n            }\n            </pre>"
+        Description:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Distance learning calendar type code description\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Distance Learning Calendar Type Model\"\n}"
+    GeneralEducationRequirementViewModel:
+      type: object
+      properties:
+        Diversity:
           type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.fac.tspr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"TS print\"\r\n            }\r\n            </pre>"
-        PercentInvolve:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.fac.fpct\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Percent Involve\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Person:
-          $ref: '#/components/schemas/PersonResourceUri'
-        GradeRoster:
-          type: string
-          nullable: true
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.diversity_crs\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Diversity\"}\n                ],\n                \"TechnicalDescription\": \"Diversity\"\n            }\n            </pre>"
+        EnglishComposition:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.engc\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/EnglishComposition\"}\n                ],\n                \"TechnicalDescription\": \"English composition\"\n            }\n            </pre>"
+        IndividualsAndSocieties:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.ind\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/IndividualsAndSocieties\"}\n                ],\n                \"TechnicalDescription\": \"Individuals and societies\"\n            }\n            </pre>"
+        NaturalWorld:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.nw\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/NaturalWorld\"}\n                ],\n                \"TechnicalDescription\": \"Natural world\"\n            }\n            </pre>"
+        QuantitativeAndSymbolicReasoning:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.qsr\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/QuantitativeAndSymbolicReasoning\"}\n                ],\n                \"TechnicalDescription\": \"Quantitative and symbolic reasoning\"\n            }\n            </pre>"
+        VisualLiteraryAndPerformingArts:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.vlpa\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/VisualLiteraryAndPerformingArts\"}\n                ],\n                \"TechnicalDescription\": \"Visual literary and performing arts\"\n            }\n            </pre>"
+        Writing:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.wrt\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Writing\"}\n                ],\n                \"TechnicalDescription\": \"Writing\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Faculty Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    SectionTermSearchResourceUri:
-      type: object
-      properties:
-        Year:
-          type: string
-          nullable: true
-        Quarter:
-          type: string
-          nullable: true
-        PageStart:
-          type: string
-          nullable: true
-        PageSize:
-          type: string
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Term Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\r\n    \"TargetOperationId\" : [\"SectionTermSearch\"]\r\n}"
-    DayViewModel:
-      type: object
-      properties:
-        Name:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Day Model\"\r\n}"
-    DaysOfWeekViewModel:
-      type: object
-      properties:
-        Days:
-          type: array
-          items:
-            $ref: '#/components/schemas/DayViewModel'
-          nullable: true
-        Text:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeek/Text\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Days of the week\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Days of Week Model\"\r\n}"
-    CourseResourceUri:
-      type: object
-      properties:
-        Href:
-          type: string
-          nullable: true
-        Year:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.year\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
-          format: int32
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.quarter\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.department_abbrev\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.course_number\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course number\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Course Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Course\"}],\r\n    \"TargetOperationId\" : [\"GetCourse\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"General Education Requirement Model\",\n    \"TargetSchema\" : [\n         {\"target\" : \"SWS.Section\"},\n         {\"target\" : \"SWS.Course\"}\n    ]\n}"
     TimeScheduleCommentsViewModel:
       type: object
       properties:
@@ -938,525 +1517,83 @@ components:
         TimeScheduleGeneratedComments:
           $ref: '#/components/schemas/CommentsViewModel'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Time Schedule Comments Model\"\r\n}"
-    RegistrationSearchUri:
+      description: "{\n    \"DisplayTitle\" : \"Time Schedule Comments Model\"\n}"
+    SectionStatusViewModel:
       type: object
       properties:
-        Year:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
-          format: int32
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter consists of winter, spring, summer, and autumn.\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.fac.fsqn\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.InstructorIndex\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Faculty sequence number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SectionID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Section ID\"\r\n            }\r\n            </pre>"
-          nullable: true
-        IsActive:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Is active flag\"\r\n            }\r\n            </pre>"
-        Verbose:
-          type: boolean
-        CurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        InstructorRegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Always set to null\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ChangedSinceDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Always empty string\"\r\n            }\r\n            </pre>"
-          nullable: true
-        TranscriptableCourse:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Always empty string\"\r\n            }\r\n            </pre>"
-          nullable: true
-        PageStart:
-          type: string
-          nullable: true
-        PageSize:
-          type: string
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Registration Search URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section_Registration\"}],\r\n    \"TargetOperationId\" : [\"RegistrationSearch\"]\r\n}"
-    SectionTermSearchResponseViewModel:
-      type: object
-      properties:
-        Section:
-          $ref: '#/components/schemas/SectionResourceUri'
-        CourseCampus:
-          type: string
-          nullable: true
-        CourseTitle:
-          type: string
-          nullable: true
-        CourseTitleLong:
-          type: string
-          nullable: true
-        SLN:
-          type: string
-          nullable: true
-        EndDate:
-          type: string
-          nullable: true
-        SectionType:
-          type: string
-          nullable: true
-        RepositoryTimeStamp:
-          type: string
-          nullable: true
-        Metadata:
-          type: string
-          nullable: true
-        MaximumCredit:
-          type: string
-          nullable: true
-        MaximumTermCredit:
-          type: string
-          nullable: true
-        MinimumTermCredit:
-          type: string
-          nullable: true
-        StartDate:
-          type: string
-          nullable: true
-        Meetings:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionTermMeetingViewModel'
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Term Search Response\"\r\n}"
-    SectionViewModel:
-      type: object
-      properties:
-        Term:
-          $ref: '#/components/schemas/TermResourceUri'
-        CourseCampus:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.course_branch\" },\r\n                    { \"source\":\"UWEO.selSWSCourse.CourseCampus\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus that section is offered\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CreditControl:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.crcl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Credit Control\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RoomCapacity:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.rcap\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Room capacity\"\r\n            }\r\n            </pre>"
-          format: int32
-        SummerTerm:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sumt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Summer term\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Course:
-          $ref: '#/components/schemas/CourseResourceUri'
-        SectionID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Section ID\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseTitle:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.course_title\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.CourseTitle\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Course title\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseTitleLong:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.long_course_title\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.CourseTitle\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Course title long\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseDescription:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.course.course_dscr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course description\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ClassWebsiteUrl:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.csurl\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.ClassWebsiteUrl\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Class website\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Curriculum:
-          $ref: '#/components/schemas/CurriculumTimeScheduleUrlViewModel'
-        ResponsibleCourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.resp_course_no\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Responsible Course Number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ResponsibleCurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.resp_curric_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Responsible Curriculum Abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FeeAmount:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.feeamt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Fee amount\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FeeBudget:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.feebgt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Fee budget\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FeeWorktag:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.feetag\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Fee Worktag\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FeeType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.feetp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Fee Type\"\r\n            }\r\n            </pre>"
-          nullable: true
-        AddCodeRequired:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.addreq\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Add code required\"\r\n            }\r\n            </pre>"
-        EnrollmentRestrictions:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.rqexind\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Enrollment restrictions\"\r\n            }\r\n            </pre>"
-        FinancialAidEligible:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.faelig\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is DEPRECATED/INCORRECT. Please use FinancialAidEligibleDisplay.\"\r\n            }\r\n            </pre>"
-        FinancialAidEligibleDisplay:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.faelig\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Financial aid eligible display\"\r\n            }\r\n            </pre>"
-          nullable: true
-        IndependentStudy:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sctp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Independent study\"\r\n            }\r\n            </pre>"
-        SLN:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\r\n                ],\r\n                \"TechnicalDescription\": \"SLN\"\r\n            }\r\n            </pre>"
-          nullable: true
-        TimeScheduleComments:
-          $ref: '#/components/schemas/TimeScheduleCommentsViewModel'
-        DeleteFlag:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dflg\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DeleteFlag\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Delete flag\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DistanceLearning:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dlind\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.DistanceLearning\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Distance learning\"\r\n            }\r\n            </pre>"
-        DistanceLearningCalendarType:
-          $ref: '#/components/schemas/DistanceLearningCalendarTypeViewModel'
-        DistanceLearningType:
-          $ref: '#/components/schemas/DistanceLearningTypeViewModel'
-        EndDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.edt\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.EndDate\"}\r\n                ],\r\n                \"TechnicalDescription\": \"End date\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FinalExam:
-          $ref: '#/components/schemas/FinalExamViewModel'
-        GradingSystem:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.grs\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GradingSystem\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Grading system\"\r\n            }\r\n            </pre>"
-          nullable: true
-        HonorsCourse:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.hnr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Honors course\"\r\n            }\r\n            </pre>"
-        InstituteName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.inst\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Institute name\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RepositoryTimeStamp:
-          type: string
-          nullable: true
-        Metadata:
-          type: string
-          nullable: true
-        JointSections:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionSearchResultResourceUri'
-          nullable: true
-        CourseHasVariableContent:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course has variable content\"\r\n            }\r\n            </pre>"
-        SameVariableContentAs:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionResourceUri'
-          nullable: true
-        MaximumCredit:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.repcr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Maximum credit\"\r\n            }\r\n            </pre>"
-          nullable: true
-        MaximumTermCredit:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.maxcr\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.MaximumTermCredit\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Maximum Term Credit\"\r\n            }\r\n            </pre>"
-          nullable: true
-        MinimumTermCredit:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.mincr\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.MinimumTermCredit\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Minimum term credit\"\r\n            }\r\n            </pre>"
-          nullable: true
-        ResearchCredit:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.rcr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Research credit\"\r\n            }\r\n            </pre>"
-        ServiceLearning:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.scr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Service learning\"\r\n            }\r\n            </pre>"
-        SectionType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sctp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Section type\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SecondaryGradingOption:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.grsc\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Secondary grading option\"\r\n            }\r\n            </pre>"
-        StartDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sdt\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.StartDate\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Start date\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DuplicateEnrollmentAllowed:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.de\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Duplicate enrollment allowed\"\r\n            }\r\n            </pre>"
-        PrimarySection:
-          $ref: '#/components/schemas/SectionResourceUri'
-        LinkedSectionTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedSectionTypeViewModel'
-          nullable: true
-        Meetings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeetingViewModel'
-          nullable: true
-        GradeSubmissionDelegates:
-          type: array
-          items:
-            $ref: '#/components/schemas/GradeSubmissionDelegateViewModel'
-          nullable: true
-        Auditors:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.stdaud\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.Auditors\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Auditors\"\r\n            }\r\n            </pre>"
-          format: int32
         CurrentEnrollment:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.cen\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.CurrentEnrollment\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Current enrollment\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.current_enroll\" }\n                ],\n                \"TechnicalDescription\": \"Current Enrollment\"\n            }\n            </pre>"
           format: int32
+        JointCurrentEnrollment:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.joint_curr_enroll\" }\n                ],\n                \"TechnicalDescription\": \"Joint Current Enrollment\"\n            }\n            </pre>"
+          format: int32
+        CurrentRegistrationPeriod:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_sched_access_to_add.index1\" }\n                ],\n                \"TechnicalDescription\": \"Current Registration Period\"\n            }\n            </pre>"
+        AddCodeRequired:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_sched_access_to_add.access_to_add\" }\n                ],\n                \"TechnicalDescription\": \"Add Code Required\"\n            }\n            </pre>"
+        FacultyCodeRequired:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.section_type_code\" }\n                ],\n                \"TechnicalDescription\": \"Faculty Code Required\"\n            }\n            </pre>"
         LimitEstimateEnrollment:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.leenr\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.LimitEstimatedEnrollment\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Limit estimated enrollment\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.l_e_enroll\" }\n                ],\n                \"TechnicalDescription\": \"Limit Estimate Enrollment\"\n            }\n            </pre>"
+          format: int32
+        JointLimitEstimateEnrollment:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.joint_limit\" }\n                ],\n                \"TechnicalDescription\": \"Joint Limit Estimate Enrollment\"\n            }\n            </pre>"
           format: int32
         LimitEstimateEnrollmentIndicator:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.le\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.LimitEstimatedEnrollmentIndicator\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Limit estimated enrollment indicator\"\r\n            }\r\n            </pre>"
-          nullable: true
-        StudentCreditHours:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.stdcr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student credit hours\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SelfRegistrationAllowed:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_Schedule.self_sustaining\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Self registration allowed\"\r\n            }\r\n            </pre>"
-        GeneralEducationRequirements:
-          $ref: '#/components/schemas/GeneralEducationRequirementViewModel'
-        Registrations:
-          $ref: '#/components/schemas/RegistrationSearchUri'
-        OnlineLearningType:
-          $ref: '#/components/schemas/OnlineLearningTypeViewModel'
-        LMSOwnership:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSCourseSections.LMSOwnership\"}\r\n                ],\r\n                \"TechnicalDescription\": \"LMS ownership\"\r\n            }\r\n            </pre>"
-          nullable: true
-        PrimaryLMS:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSCourseSections.primaryLMS\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Primary LMS\"\r\n            }\r\n            </pre>"
-          nullable: true
-        IsIndependentStart:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSCourseSections.IsIndependentStart\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Is independent start\"\r\n            }\r\n            </pre>"
-        EOS_CID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"UWEO.selSWSCourseSections.EOScourseId\" }\r\n                ],\r\n                \"TechnicalDescription\": \"EOS Course Identification Number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        BlockRegistrationParents:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionResourceUri'
-          nullable: true
-        BlockRegistrationChildren:
-          type: array
-          items:
-            $ref: '#/components/schemas/SectionResourceUri'
-          nullable: true
-        TimeMaskException:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.time_mask_except\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Indicates whether or not a time slot overlap between two courses causes a registration limit\"\r\n            }\r\n            </pre>"
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    FinalExamViewModel:
-      type: object
-      properties:
-        Building:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.femt.bld\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Building\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FinalExamBuilding:
-          $ref: '#/components/schemas/FinalExamBuildingUri'
-        Date:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.femt.fedt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Date\"\r\n            }\r\n            </pre>"
-          nullable: true
-        EndTime:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.femt.etm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"End time\"\r\n            }\r\n            </pre>"
-          nullable: true
-        MeetingStatus:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.femt.sts\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Meeting status\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RoomNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.femt.rm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Room number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        StartTime:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.femt.stm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Start time\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Final Exam Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    OnlineLearningTypeViewModel:
-      type: object
-      properties:
-        Code:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.oltpcd\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Online learning type code\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Description:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.oltp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Online learning type description\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Online Learning Type Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    CommentsViewModel:
-      type: object
-      properties:
-        Lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/Line'
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Comments Model\"\r\n}"
-    Line:
-      type: object
-      properties:
-        Text:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.tscom\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionComments\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule generated comments\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Comment Line\"\r\n}"
-    SectionResourceUri:
-      type: object
-      properties:
-        Href:
-          type: string
-          nullable: true
-        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.l_e_indicator\" }\n                ],\n                \"TechnicalDescription\": \"Limit Estimate Enrollment Indicator.  E=estimate, L=limit\"\n            }\n            </pre>"
+        RoomCapacity:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.Year\"},\r\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.room_cap\" }\n                ],\n                \"TechnicalDescription\": \"Room Capacity\"\n            }\n            </pre>"
           format: int32
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\r\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.Quarter\"},\r\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CourseNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Course number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SectionID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Section ID\"\r\n            }\r\n            </pre>"
-          nullable: true
-        SLN:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\r\n                ],\r\n                \"TechnicalDescription\": \"SLN\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\r\n    \"TargetOperationId\" : [\"GetSection\"]\r\n}"
-    SectionTermFacultyViewModel:
-      type: object
-      properties:
-        Person:
-          $ref: '#/components/schemas/PersonResourceUri'
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Term Faculty Model\"\r\n}"
-    LinkedSectionViewModel:
-      type: object
-      properties:
         Section:
           $ref: '#/components/schemas/SectionResourceUri'
-        IsPrimarySection:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sectResponse.lnk\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Is primary section flag\"\r\n            }\r\n            </pre>"
+        SLN:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.sln\" }\n                ],\n                \"TechnicalDescription\": \"SLN\"\n            }\n            </pre>"
+        SpaceAvailable:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.space_available\" }\n                ],\n                \"TechnicalDescription\": \"Space Available\"\n            }\n            </pre>"
+          format: int32
+        JointSpaceAvailable:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.joint_space_avail\" }\n                ],\n                \"TechnicalDescription\": \"Joint Space Available\"\n            }\n            </pre>"
+          format: int32
+        Status:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.room_cap\" },\n                    { \"source\":\"SWSSDB.time_schedule.joint_curr_enroll\" },\n                    { \"source\":\"SWSSDB.time_schedule.section_type_code\" },\n                    { \"source\":\"SWSSDB.time_sched_access_to_add.access_to_add\" },\n                    { \"source\":\"SWSSDB.time_schedule.joint_space_avail\" }\n                ],\n                \"TechnicalDescription\": \"\n                    1.\tIf the room cap is non-zero and enrollment is in excess of 115% of room cap, section is closed.\n                    2.\tIf the section is IS, status is ‘faculty code required’.\n                    3.\tIf section currently has an add code restriction, status is ‘add code required’.\n                    4.\tIf space available is less than 1, section is closed.\n                    4.a If the section is part of a joint group we need to determine \n                    5\tOtherwise, section is open.\"\n            }\n            </pre>"
+        ResponsibleCurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.resp_curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Responsible Curriculum Abbreviation\"\n            }\n            </pre>"
+        ResponsibleCourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.resp_course_number\" }\n                ],\n                \"TechnicalDescription\": \"Responsible Course Number\"\n            }\n            </pre>"
+        ResponsibleSectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.resp_section_id\" }\n                ],\n                \"TechnicalDescription\": \"Responsible Section ID\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Linked Section Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
-    GeneralEducationRequirementViewModel:
-      type: object
-      properties:
-        Diversity:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.diversity_crs\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Diversity\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Diversity\"\r\n            }\r\n            </pre>"
-        EnglishComposition:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.ged.engc\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/EnglishComposition\"}\r\n                ],\r\n                \"TechnicalDescription\": \"English composition\"\r\n            }\r\n            </pre>"
-        IndividualsAndSocieties:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.ged.ind\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/IndividualsAndSocieties\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Individuals and societies\"\r\n            }\r\n            </pre>"
-        NaturalWorld:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.ged.nw\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/NaturalWorld\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Natural world\"\r\n            }\r\n            </pre>"
-        QuantitativeAndSymbolicReasoning:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.ged.qsr\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/QuantitativeAndSymbolicReasoning\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quantitative and symbolic reasoning\"\r\n            }\r\n            </pre>"
-        VisualLiteraryAndPerformingArts:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.ged.vlpa\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/VisualLiteraryAndPerformingArts\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Visual literary and performing arts\"\r\n            }\r\n            </pre>"
-        Writing:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.ged.wrt\" },\r\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Writing\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Writing\"\r\n            }\r\n            </pre>"
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"General Education Requirement Model\",\r\n    \"TargetSchema\" : [\r\n         {\"target\" : \"SWS.Section\"},\r\n         {\"target\" : \"SWS.Course\"}\r\n    ]\r\n}"
-    CurriculumTimeScheduleUrlViewModel:
-      type: object
-      properties:
-        DepartmentAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Department abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CollegeName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.colnm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"College name\"\r\n            }\r\n            </pre>"
-          nullable: true
-        TimeScheduleLinkAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.curl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Time schedule link abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Curriculum Time Schedule Url Model\"\r\n}"
-    LinkedSectionTypeViewModel:
-      type: object
-      properties:
-        LinkedSections:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedSectionViewModel'
-          nullable: true
-        Type:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI202.sect.ltp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Linked section type\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Linked Section Type Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Section Status Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
     SectionTermSearchViewModel:
       type: object
       properties:
@@ -1464,16 +1601,19 @@ components:
           type: integer
           format: int32
         PageSize:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         PageStart:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         Sections:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/SectionTermSearchResponseViewModel'
-          nullable: true
           readOnly: true
         Current:
           $ref: '#/components/schemas/SectionTermSearchResourceUri'
@@ -1482,33 +1622,253 @@ components:
         Previous:
           $ref: '#/components/schemas/SectionTermSearchResourceUri'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Section Term Search Model\"\r\n}"
-    DistanceLearningCalendarTypeViewModel:
+      description: "{\n    \"DisplayTitle\" : \"Section Term Search Model\"\n}"
+    Line:
       type: object
       properties:
-        Code:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.time_schedule.ts_dl_cal_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Distance learning calendar type code\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Description:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"hardcoded\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Distance learning calendar type code description\"\r\n            }\r\n            </pre>"
-          nullable: true
+        Text:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.tscom\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionComments\"}\n                ],\n                \"TechnicalDescription\": \"Time schedule generated comments\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Distance Learning Calendar Type Model\"\r\n}"
-    TermResourceUri:
+      description: "{\n    \"DisplayTitle\" : \"Comment Line\"\n}"
+    CurriculumTimeScheduleUrlViewModel:
+      type: object
+      properties:
+        DepartmentAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\n                ],\n                \"TechnicalDescription\": \"Department abbreviation\"\n            }\n            </pre>"
+        CollegeName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.colnm\" }\n                ],\n                \"TechnicalDescription\": \"College name\"\n            }\n            </pre>"
+        TimeScheduleLinkAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.curl\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule link abbreviation\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Curriculum Time Schedule Url Model\"\n}"
+    LinkedSectionViewModel:
+      type: object
+      properties:
+        Section:
+          $ref: '#/components/schemas/SectionResourceUri'
+        IsPrimarySection:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sectResponse.lnk\" }\n                ],\n                \"TechnicalDescription\": \"Is primary section flag\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Linked Section Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    SectionTermSearchResourceUri:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+        Quarter:
+          type:
+          - string
+          - 'null'
+        PageStart:
+          type:
+          - string
+          - 'null'
+        PageSize:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Section Term Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\n    \"TargetOperationId\" : [\"SectionTermSearch\"]\n}"
+    DaysOfWeekViewModel:
+      type: object
+      properties:
+        Days:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DayViewModel'
+        Text:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeek/Text\"}\n                ],\n                \"TechnicalDescription\": \"Days of the week\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Days of Week Model\"\n}"
+    SectionTermFacultyViewModel:
+      type: object
+      properties:
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Section Term Faculty Model\"\n}"
+    SectionResourceUri:
       type: object
       properties:
         Href:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         Year:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Year for the given term\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.Year\"},\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
           format: int32
         Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\r\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\r\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\r\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter for the given term\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.Quarter\"},\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+        SectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
+        SLN:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\n                ],\n                \"TechnicalDescription\": \"SLN\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Term Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\r\n    \"TargetOperationId\" : [\"GetTerm\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Section Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\n    \"TargetOperationId\" : [\"GetSection\"]\n}"
+    FinalExamViewModel:
+      type: object
+      properties:
+        Building:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.bld\" }\n                ],\n                \"TechnicalDescription\": \"Building\"\n            }\n            </pre>"
+        FinalExamBuilding:
+          $ref: '#/components/schemas/FinalExamBuildingUri'
+        Date:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.fedt\" }\n                ],\n                \"TechnicalDescription\": \"Date\"\n            }\n            </pre>"
+        EndTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.etm\" }\n                ],\n                \"TechnicalDescription\": \"End time\"\n            }\n            </pre>"
+        MeetingStatus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.sts\" }\n                ],\n                \"TechnicalDescription\": \"Meeting status\"\n            }\n            </pre>"
+        RoomNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.rm\" }\n                ],\n                \"TechnicalDescription\": \"Room number\"\n            }\n            </pre>"
+        StartTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.stm\" }\n                ],\n                \"TechnicalDescription\": \"Start time\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Final Exam Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    SectionSearchResourceUri:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        FutureTerms:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+          format: int32
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        DeleteFlag:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        SearchBy:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        IncludeSecondaries:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        PageStart:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        PageSize:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        ChangedSinceDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        TranscriptableCourse:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        FacilityCode:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        RoomNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        SLN:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Section Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\n    \"TargetOperationId\" : [\"SectionSearch\"]\n}"

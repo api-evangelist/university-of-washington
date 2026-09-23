@@ -1,14 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus ResourceList API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
-  contact:
-    name: Enterprise Web Services & Events Team
-    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+  title: University Of Washington Resource List API
+  version: '1.0'
+  description: 'Operations tagged ResourceList across 2 of this provider''s published API definitions: university-of-washington-idcard-web-service.yaml, university-of-washington-student-web-service.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /idcard
+- url: /student
 tags:
 - name: ResourceList
 paths:
@@ -55,12 +52,50 @@ paths:
           description: InternalServerError
         '503':
           description: ServiceUnavailable
+      summary: Get resources
+      x-summary-source: derived
+    servers:
+    - url: /idcard
   /v5:
     get:
       tags:
       - ResourceList
       summary: Get available v5 resources
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Service Resource List\",\r\n                    \"ews_guid\" : \"4533A5E5-2C26-4923-8574-A6C07FFFE51D\",\r\n                    \"LongDescription\" : \"Get available resources\",\r\n                    \"ShortDescription\" : \"Get available resources\",\r\n                    \"OriginatingSchema\" : [ { \"source\": \"hardcoded\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                                 - sws:AdmReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken \",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Service Resource List",
+
+        "ews_guid" : "4533A5E5-2C26-4923-8574-A6C07FFFE51D",
+
+        "LongDescription" : "Get available resources",
+
+        "ShortDescription" : "Get available resources",
+
+        "OriginatingSchema" : [ { "source": "hardcoded" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        - sws:AdmReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken ",
+
+        "Links" : [],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetSWSResources
       responses:
         '200':
@@ -100,41 +135,82 @@ paths:
           description: InternalServerError
         '503':
           description: ServiceUnavailable
+    servers:
+    - url: /student
 components:
   schemas:
     UriResourceWithTitle:
       type: object
       properties:
         href:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    UriResourceWithTitle_2:
+    ResourceListViewModel:
       type: object
       properties:
-        Href:
-          type: string
-          format: uri
-          nullable: true
-        Name:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Resource URI\"\r\n}"
-    ResourceListViewModel_2:
-      type: object
-      properties:
-        Resources:
-          type: array
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        xhtmlTitle:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        resources:
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/UriResourceWithTitle_2'
-          nullable: true
+            $ref: '#/components/schemas/UriResourceWithTitle'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Resource List Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Resource\"}]\r\n}"
     ViewFormats:
       enum:
       - 1
@@ -143,50 +219,38 @@ components:
       - 5
       type: integer
       format: int32
-    ResourceListViewModel:
+    UriResourceWithTitle_2:
       type: object
       properties:
-        metadata:
-          type: string
-          nullable: true
-        pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
-        previousPageStart:
-          type: string
-          description: The counter value for the start of the previous search results page.
-          nullable: true
-          readOnly: true
-        pageSize:
-          type: string
-          description: Requested number of records for the current search results page.
-          nullable: true
-        pageStart:
-          type: string
-          description: The counter value for the start of the current search results page.
-          nullable: true
-        nextPageStart:
-          type: string
-          description: The counter value for the start of the next search results page.
-          nullable: true
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        xhtmlTitle:
-          type: string
-          nullable: true
-          readOnly: true
-        resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/UriResourceWithTitle'
-          nullable: true
+        Href:
+          type:
+          - string
+          - 'null'
+          format: uri
+        Name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Resource URI\"\n}"
+    ResourceListViewModel_2:
+      type: object
+      properties:
+        Resources:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UriResourceWithTitle_2'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Resource List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Resource\"}]\n}"
+x-refined-from:
+- university-of-washington-idcard-web-service.yaml
+- university-of-washington-student-web-service.yaml
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

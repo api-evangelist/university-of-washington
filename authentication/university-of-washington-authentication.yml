@@ -1,0 +1,104 @@
+name: University of Washington — Enterprise Web Services Authentication
+description: How access is granted to the University of Washington's institution-operated API surfaces.
+  Every mechanism below was either read out of a UW-published contract in openapi/ or observed in a live
+  HTTP probe on 2026-08-30; none is inferred.
+generated: '2026-08-30'
+method: probed
+source: openapi/_original/*.yaml (UW-published contracts) plus live probes of ws.admin.washington.edu,
+  iam-tools.u.washington.edu and digital.lib.washington.edu.
+x-operator: institution
+mechanisms:
+- id: uw-netid-entra-oidc
+  name: UW NetID via Microsoft Entra ID (OpenID Connect)
+  type: openIdConnect
+  applies_to:
+  - Student Web Service (SWS)
+  - IdCard Web Service (IdCardWS)
+  evidence:
+    location: https://ws.admin.washington.edu/student/v5/campus.json
+    status: 302
+    observed: Unauthenticated request to a data resource redirects to login.microsoftonline.com/f6b6dd5b-f02f-441a-99a0-162ac5060bd2/oauth2/v2.0/authorize
+      with response_type=id_token, scope="openid profile", response_mode=form_post and redirect_uri https://ws.admin.washington.edu/student/signin-oidc.
+  note: The interactive documentation at /student/swagger/ and /idcard/swagger/ is public (HTTP 200);
+    the DATA resources behind it are not.
+- id: x509-client-certificate
+  name: X.509 client certificate (InCommon; UWCA deprecated)
+  type: mutualTLS
+  applies_to:
+  - Student Web Service (SWS)
+  - IdCard Web Service (IdCardWS)
+  - Groups Web Service (GWS)
+  evidence:
+    location: openapi/_original/university-of-washington-groups-web-service-v3.yaml
+    observed: servers[] carry explicit certificate descriptions — "Production server - InCommon certificate"
+      (https://groups.uw.edu/group_sws/v3) and "Production server - UWCA certificate (deprecated)" (https://iam-ws.u.washington.edu/group_sws/v3).
+    supporting:
+    - location: openapi/_original/university-of-washington-student-web-service.yaml
+      observed: '44 operation descriptions state "This resource supports the following authentication
+        types: - X.509 Certificate - NetID - AccessToken".'
+  live_probe:
+    location: https://groups.uw.edu/group_sws/v3
+    status: 0
+    observed: 'TLS handshake failure (LibreSSL sslv3 alert handshake failure) on an anonymous connection
+      — the server demands a client certificate. The host itself is live: https://groups.uw.edu/ returns
+      200. This is a GATED surface, not a dead one.'
+- id: access-token
+  name: Enterprise Web Services AccessToken
+  type: apiKey
+  applies_to:
+  - Student Web Service (SWS)
+  - IdCard Web Service (IdCardWS)
+  evidence:
+    location: openapi/_original/university-of-washington-student-web-service.yaml
+    observed: 18 operation descriptions list "AccessToken" as a supported authentication type.
+  supporting:
+  - location: openapi/_original/university-of-washington-token-authentication-web-service-v2.yaml
+    observed: The Token Authentication Web Service (TAWS) V2 contract at https://taws.s.uw.edu:716/token/v2
+      is the UW-operated issuer for these tokens.
+- id: dspace-rest-auth
+  name: ResearchWorks DSpace REST authentication
+  type: http
+  applies_to:
+  - ResearchWorks institutional repository (DSpace 9.2)
+  evidence:
+  - location: https://digital.lib.washington.edu/server/api
+    status: 200
+    observed: Public HAL root document — dspaceName "ResearchWorks", dspaceVersion "DSpace 9.2", with
+      _links to authn, authz, core and discover endpoints.
+  - location: https://digital.lib.washington.edu/server/api/core/items
+    status: 401
+    observed: '{"status":401,"error":"Unauthorized","message":"Authentication is required"}'
+  note: Discovery of the API surface is open; item retrieval through the REST API is gated. Open metadata
+    for the same content IS harvestable unauthenticated over OAI-PMH.
+- id: shibboleth-saml-sso
+  name: Shibboleth / InCommon SAML 2.0 single sign-on
+  type: saml
+  applies_to:
+  - Web single sign-on for UW services and InCommon-federated relying parties
+  evidence:
+    location: https://idp.u.washington.edu/metadata/idp-metadata.xml
+    status: 200
+    observed: Signed SAML 2.0 metadata, entityID urn:mace:incommon:washington.edu, shibmd:Scope washington.edu.
+authorization:
+  model: ASTRA role-based authorization
+  description: Beyond authentication, SWS resources require named ASTRA roles. The roles are stated in
+    the operation descriptions of the UW-published contract; they are enumerated in scopes/university-of-washington-astra-roles.yml.
+  evidence:
+    location: openapi/_original/university-of-washington-student-web-service.yaml
+    observed: 49 operation descriptions reference ASTRA roles.
+unreachable:
+- surface: Identity Registration Web Service (IRWS)
+  location: https://mango.u.washington.edu:646/registry/v2/person
+  status: 0
+  observed: No connection from the public internet — the IRWS runtime listens on a non-standard port on
+    a restricted network. The CONTRACT is public (iam-tools.u.washington.edu, HTTP 200); the runtime is
+    not internet-facing.
+- surface: Token Authentication Web Service (TAWS)
+  location: https://taws.s.uw.edu:716/token/v2
+  status: 0
+  observed: No connection from the public internet; non-standard port on a restricted network.
+- surface: Student Web Service Confluence documentation space
+  location: https://wiki.cac.washington.edu/display/SWS
+  status: 0
+  observed: Connection timed out (curl 28) for the entire wiki.cac.washington.edu host. UW's own service
+    registry still links to it. Pointer removed from apis.yml.

@@ -1,0 +1,185 @@
+openapi: 3.2.0
+info:
+  title: Token Authentication Web Service REST API V2 Preauth API
+  description: This is the API specification for V2 of the UW-IT Token Authentication Rest API. Note that there are header and querystring paramemters not documentered here (see also https://wiki.cac.washington.edu/x/GY6kB). The -type and -pretty querystring parameters are included here for GET requests since they make testing much easier.
+  version: 2.0.0
+servers:
+- url: https://taws.s.uw.edu:716/token/v2
+tags:
+- name: Pre Auth
+paths:
+  /preauth/{user}:
+    get:
+      tags:
+      - Pre Auth
+      summary: The Preauth endpoint returns the user's available authentication factors
+      description: The Preauth endpoint determines whether a user is authorized to log in, and (if so) returns the user's available authentication factors. The user is typically a UWNetID.
+      parameters:
+      - name: user
+        in: path
+        description: User identifier.  Typically a UWNetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: crn
+        in: query
+        description: Crn value
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: An array of Preauth objects
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/PreauthGetResult'
+        '400':
+          description: Invalid user
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User did not match any records
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json; charset=UTF-8; v=2.0:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getPreauthByUser
+      x-operation-id-source: derived
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    PreauthGetResult:
+      type: object
+      properties:
+        preauth:
+          type: array
+          description: Array of preauth objects matching search parameter
+          items:
+            type: object
+            properties:
+              user:
+                type: string
+                description: Unique identifier for a person.
+              vendor:
+                type: string
+                description: Authentication vendor name
+              prompt:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    description: Authentication menu, describing numeric choices for user to choose from
+                  factors:
+                    type: object
+                    properties:
+                      '{number}':
+                        type: string
+                        description: Factor corresponding to numeric menu choice
+                      default:
+                        type: string
+                        description: Default factor to use when menu is not presented to user
+                    description: Authentication factors for menu choices
+                description: Prompt information for user authentication menu choice
+              devices:
+                type: array
+                description: List of authentication devices for a user
+                items:
+                  type: object
+                  properties:
+                    device:
+                      type: string
+                      description: Device identifier
+                    display_name:
+                      type: string
+                      description: A short description, suitable to identify the device in a prompt
+                    name:
+                      type: string
+                      description: The device's name
+                    capabilities:
+                      type: array
+                      description: List of capabilities for the device
+                      items:
+                        type: string
+                        description: 'Can be one of: ''push'', ''sms'', ''phone'', ''mobile_otp''.  ''push'' means the device is activated for Duo Push.  ''sms'' means the device can receive batches of SMS passcodes.  ''phone'' means the device can receive phone calls.  ''mobile_otp'' means the device is capable of generating passcodes with Duo Mobile app.'
+                    sms_nextcode:
+                      type: string
+                      description: Single-character string containing the starting number of the next acceptable passcode previously SMSed to the user.
+                    number:
+                      type: string
+                      description: The phone number of the device
+                    type:
+                      type: string
+                      description: Device type.  Can be either 'phone' or 'token'.
+              result:
+                type: string
+                description: Result of the operation
+              message:
+                type: string
+                description: Message describing the result, suitable for display
+externalDocs:
+  description: UW-IT Token Authentication Web Service (TAWS) V2 API documentation
+  url: https://iam-tools.u.washington.edu/apis/tawsv2/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/tawsv2/tawsv2.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-token-authentication-web-service-v2.yaml

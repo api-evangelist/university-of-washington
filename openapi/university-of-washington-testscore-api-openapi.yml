@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus TestScore API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Test Score API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: TestScore
 paths:
@@ -17,7 +17,37 @@ paths:
       tags:
       - TestScore
       summary: Get the student's test scores for admission
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Test Score\",\r\n                    \"ews_guid\" : \"D2F4747C-952C-4F53-A86B-FF007F1F73C4\",\r\n                    \"LongDescription\" : \"Get information about a student's academic test scores (e.g. GMAT, SAT, TOEFL, etc.) \r\n                                          for admission\",\r\n                    \"ShortDescription\" : \"Get test scores for admission\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/ipeds.admissionstestscores\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Test Score",
+
+        "ews_guid" : "D2F4747C-952C-4F53-A86B-FF007F1F73C4",
+
+        "LongDescription" : "Get information about a student''s academic test scores (e.g. GMAT, SAT, TOEFL, etc.)
+
+        for admission",
+
+        "ShortDescription" : "Get test scores for admission",
+
+        "OriginatingSchema" : [ { "source":"swssdb" }, { "source":"irws" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID ",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/ipeds.admissionstestscores" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetTestScore
       parameters:
       - name: regID
@@ -75,7 +105,35 @@ paths:
       tags:
       - TestScore
       summary: Get the student's test scores of a specific test type
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Test Score by Type\",\r\n                    \"ews_guid\" : \"F4BBB30B-CEB8-4FF5-87AA-A522ECA0782E\",\r\n                    \"LongDescription\" : \"Get information about a student's test scores of a specific test type for admission\",\r\n                    \"ShortDescription\" : \"Get specific type of test scores for admission\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/ipeds.admissionstestscores\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Test Score by Type",
+
+        "ews_guid" : "F4BBB30B-CEB8-4FF5-87AA-A522ECA0782E",
+
+        "LongDescription" : "Get information about a student''s test scores of a specific test type for admission",
+
+        "ShortDescription" : "Get specific type of test scores for admission",
+
+        "OriginatingSchema" : [ { "source":"swssdb" }, { "source":"irws" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID ",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/ipeds.admissionstestscores" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetTestScoreWithTestType
       parameters:
       - name: testType
@@ -136,135 +194,155 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    ScoreViewModel:
+      type: object
+      properties:
+        EnteredDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.score_entered_dt\" }\n                ],\n                \"TechnicalDescription\": \"Test score entered date\"\n            }\n            </pre>"
+        Percentile:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_pctile\" }\n                ],\n                \"TechnicalDescription\": \"Percentile\"\n            }\n            </pre>"
+        RevisedScore:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.revised_score\" }\n                ],\n                \"TechnicalDescription\": \"Revised score\"\n            }\n            </pre>"
+        TakenDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_dt\" }\n                ],\n                \"TechnicalDescription\": \"Test date\"\n            }\n            </pre>"
+        TestScore:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_score\" }\n                ],\n                \"TechnicalDescription\": \"Test score\"\n            }\n            </pre>"
+          format: int32
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Score Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
     TestScoreViewModel:
       type: object
       properties:
         Person:
           $ref: '#/components/schemas/TestScorePersonViewModel'
         TestsTaken:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/TestViewModel'
-          nullable: true
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Test Score Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Test Score Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
     TestTypeViewModel:
       type: object
       properties:
         Description:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_42_test_range.test_descrip\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Test Description\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_42_test_range.test_descrip\" }\n                ],\n                \"TechnicalDescription\": \"Test Description\"\n            }\n            </pre>"
         MinScore:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_42_test_range.test_min_score\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Minimum score\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_42_test_range.test_min_score\" }\n                ],\n                \"TechnicalDescription\": \"Minimum score\"\n            }\n            </pre>"
           format: int32
         MaxScore:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sys_tbl_42_test_range.test_max_score\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Maximum score\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_42_test_range.test_max_score\" }\n                ],\n                \"TechnicalDescription\": \"Maximum score\"\n            }\n            </pre>"
           format: int32
         Name:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_test_scores.test_type\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Test name\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_type\" }\n                ],\n                \"TechnicalDescription\": \"Test name\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Test Type Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\r\n}"
-    TestScorePersonViewModel:
-      type: object
-      properties:
-        EmployeeID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwEmployeeID\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Employee id\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FirstName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPreferredFirst\"},\r\n                    { \"source\":\"IRWS.identity.uwPersonPreferredMiddle\"},\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredFirstMiddle\"}\r\n                ],\r\n                \"TechnicalDescription\": \"First name. Can be either preferred or registered first and middle name.\"\r\n            }\r\n            </pre>"
-          nullable: true
-        LastName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPreferredSurname\"},\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredSurname\"}\r\n                ],\r\n                \"TechnicalDescription\": \"Last name. Can be either preferred or registered surname.\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Pronouns:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID\"\r\n            }\r\n            </pre>"
-          nullable: true
-        StudentName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.displayName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student name\"\r\n            }\r\n            </pre>"
-          nullable: true
-        StudentNumber:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwStudentID\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student number\"\r\n            }\r\n            </pre>"
-          nullable: true
-        StudentSystemKey:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwStudentSystemKey\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Student system key\"\r\n            }\r\n            </pre>"
-          nullable: true
-        UWNetID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwNetID\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UWNetID\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Uri:
-          $ref: '#/components/schemas/PersonResourceUri'
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Test Score Person Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\r\n}"
-    PersonResourceUri:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Pronouns:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Test Type Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
     TestViewModel:
       type: object
       properties:
         TestType:
           $ref: '#/components/schemas/TestTypeViewModel'
         Scores:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/ScoreViewModel'
-          nullable: true
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Test Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\r\n}"
-    ScoreViewModel:
+      description: "{\n    \"DisplayTitle\" : \"Test Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
+    TestScorePersonViewModel:
       type: object
       properties:
-        EnteredDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_test_scores.score_entered_dt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Test score entered date\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Percentile:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_test_scores.test_pctile\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Percentile\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RevisedScore:
-          type: boolean
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_test_scores.revised_score\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Revised score\"\r\n            }\r\n            </pre>"
-        TakenDate:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_test_scores.test_dt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Test date\"\r\n            }\r\n            </pre>"
-          nullable: true
-        TestScore:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_test_scores.test_score\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Test score\"\r\n            }\r\n            </pre>"
-          format: int32
+        EmployeeID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwEmployeeID\" }\n                ],\n                \"TechnicalDescription\": \"Employee id\"\n            }\n            </pre>"
+        FirstName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPreferredFirst\"},\n                    { \"source\":\"IRWS.identity.uwPersonPreferredMiddle\"},\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredFirstMiddle\"}\n                ],\n                \"TechnicalDescription\": \"First name. Can be either preferred or registered first and middle name.\"\n            }\n            </pre>"
+        LastName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPreferredSurname\"},\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredSurname\"}\n                ],\n                \"TechnicalDescription\": \"Last name. Can be either preferred or registered surname.\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
+        StudentName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.displayName\" }\n                ],\n                \"TechnicalDescription\": \"Student name\"\n            }\n            </pre>"
+        StudentNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentID\" }\n                ],\n                \"TechnicalDescription\": \"Student number\"\n            }\n            </pre>"
+        StudentSystemKey:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentSystemKey\" }\n                ],\n                \"TechnicalDescription\": \"Student system key\"\n            }\n            </pre>"
+        UWNetID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" }\n                ],\n                \"TechnicalDescription\": \"UWNetID\"\n            }\n            </pre>"
+        Uri:
+          $ref: '#/components/schemas/PersonResourceUri'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Score Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Test Score Person Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"

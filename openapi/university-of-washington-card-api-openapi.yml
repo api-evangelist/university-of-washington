@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Card API
+  title: IdCard Web Service (IdCardWS) Card API
   description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
@@ -72,8 +72,145 @@ paths:
           description: InternalServerError
         '503':
           description: ServiceUnavailable
+      summary: Get cards
+      x-summary-source: derived
 components:
   schemas:
+    CardSearchViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        cardSearchResultVM:
+          $ref: '#/components/schemas/CardSearchResultViewModel'
+        xhtmlTitle:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        cards:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CardSearchResultViewModel'
+          readOnly: true
+        current:
+          $ref: '#/components/schemas/CardSearchResourceUri'
+      additionalProperties: false
+    CardSearchResultViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        regID:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    CardSearchResourceUri:
+      type: object
+      properties:
+        href:
+          type:
+          - string
+          - 'null'
+        magStripCode:
+          type:
+          - string
+          - 'null'
+        proxRFID:
+          type:
+          - string
+          - 'null'
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+      additionalProperties: false
     ViewFormats:
       enum:
       - 1
@@ -82,112 +219,3 @@ components:
       - 5
       type: integer
       format: int32
-    CardSearchResourceUri:
-      type: object
-      properties:
-        href:
-          type: string
-          nullable: true
-        magStripCode:
-          type: string
-          nullable: true
-        proxRFID:
-          type: string
-          nullable: true
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
-      additionalProperties: false
-    CardSearchResultViewModel:
-      type: object
-      properties:
-        metadata:
-          type: string
-          nullable: true
-        pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
-        previousPageStart:
-          type: string
-          description: The counter value for the start of the previous search results page.
-          nullable: true
-          readOnly: true
-        pageSize:
-          type: string
-          description: Requested number of records for the current search results page.
-          nullable: true
-        pageStart:
-          type: string
-          description: The counter value for the start of the current search results page.
-          nullable: true
-        nextPageStart:
-          type: string
-          description: The counter value for the start of the next search results page.
-          nullable: true
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        regID:
-          type: string
-          nullable: true
-          readOnly: true
-      additionalProperties: false
-    CardSearchViewModel:
-      type: object
-      properties:
-        metadata:
-          type: string
-          nullable: true
-        pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
-        previousPageStart:
-          type: string
-          description: The counter value for the start of the previous search results page.
-          nullable: true
-          readOnly: true
-        pageSize:
-          type: string
-          description: Requested number of records for the current search results page.
-          nullable: true
-        pageStart:
-          type: string
-          description: The counter value for the start of the current search results page.
-          nullable: true
-        nextPageStart:
-          type: string
-          description: The counter value for the start of the next search results page.
-          nullable: true
-          readOnly: true
-        pageStartOffset:
-          type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        cardSearchResultVM:
-          $ref: '#/components/schemas/CardSearchResultViewModel'
-        xhtmlTitle:
-          type: string
-          nullable: true
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        cards:
-          type: array
-          items:
-            $ref: '#/components/schemas/CardSearchResultViewModel'
-          nullable: true
-          readOnly: true
-        current:
-          $ref: '#/components/schemas/CardSearchResourceUri'
-      additionalProperties: false

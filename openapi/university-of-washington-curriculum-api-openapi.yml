@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Curriculum API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Curriculum API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: Curriculum
 paths:
@@ -17,7 +17,47 @@ paths:
       tags:
       - Curriculum
       summary: Search for curriculums that match the supplied parameters
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Curriculum Search\",\r\n                    \"ews_guid\" : \"AC340F89-812E-4FCB-B357-DCCFE65E0059\",\r\n                    \"LongDescription\" : \"Search for a list of curriculum results that match the supplied parameters\",\r\n                    \"ShortDescription\" : \"Search for a list of curriculum results\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken\r\n                               You do not need to specify all parameters to return a successful search result. This search resource \r\n                               supports different combinations of search parameters to provide different search results.\r\n                               For college abbreviations refer to the college resource.  \r\n                               For department abbreviations refer to the department resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.curriculum\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Curriculum Search",
+
+        "ews_guid" : "AC340F89-812E-4FCB-B357-DCCFE65E0059",
+
+        "LongDescription" : "Search for a list of curriculum results that match the supplied parameters",
+
+        "ShortDescription" : "Search for a list of curriculum results",
+
+        "OriginatingSchema" : [ { "source":"swssdb" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken
+
+        You do not need to specify all parameters to return a successful search result. This search resource
+
+        supports different combinations of search parameters to provide different search results.
+
+        For college abbreviations refer to the college resource.
+
+        For department abbreviations refer to the department resource.",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.curriculum" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: CurriculumSearch
       parameters:
       - name: year
@@ -101,6 +141,73 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    CurriculumResourceUri:
+      type: object
+      properties:
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CurriculumName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_name\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum name\"\n            }\n            </pre>"
+        CurriculumFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum full name\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Expanded Curriculum Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}],\n    \"TargetOperationId\" : [\"CurriculumSearch\"]\n}"
+    CurriculumSearchResourceUri:
+      type: object
+      properties:
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        DepartmentAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        CollegeAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        FutureTerms:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+          format: int32
+        ViewUnpublished:
+          type: boolean
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Curriculum Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}],\n    \"TargetOperationId\" : [\"CurriculumSearch\"]\n}"
     CurriculumSearchViewModel:
       type: object
       properties:
@@ -108,17 +215,20 @@ components:
           type: integer
           format: int32
         Curricula:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/CurriculumResourceUri'
-          nullable: true
           readOnly: true
         PageSize:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         PageStart:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         Current:
           $ref: '#/components/schemas/CurriculumSearchResourceUri'
         Next:
@@ -126,62 +236,4 @@ components:
         Previous:
           $ref: '#/components/schemas/CurriculumSearchResourceUri'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Curriculum Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}]\r\n}"
-    CurriculumResourceUri:
-      type: object
-      properties:
-        Year:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
-          format: int32
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\r\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CurriculumAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CurriculumName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_name\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum name\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CurriculumFullName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Curriculum full name\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Expanded Curriculum Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}],\r\n    \"TargetOperationId\" : [\"CurriculumSearch\"]\r\n}"
-    CurriculumSearchResourceUri:
-      type: object
-      properties:
-        Year:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          format: int32
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DepartmentAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        CollegeAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FutureTerms:
-          type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          format: int32
-        ViewUnpublished:
-          type: boolean
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Curriculum Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}],\r\n    \"TargetOperationId\" : [\"CurriculumSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Curriculum Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}]\n}"

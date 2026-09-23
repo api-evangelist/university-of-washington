@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Department API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Department API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: Department
 paths:
@@ -17,7 +17,41 @@ paths:
       tags:
       - Department
       summary: Search for departments that match the supplied parameters
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Department Search\",\r\n                    \"ews_guid\" : \"D9639897-147A-4091-955A-549E643B70A2\",\r\n                    \"LongDescription\" : \"Display a list of departments by college_abbreviation and optionally filter on year, quarter and\r\n                                         future_terms\",\r\n                    \"ShortDescription\" : \"List of departments\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"swssdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:GradeSubmitter\r\n                                 - sws:UnitReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                                 - AccessToken \",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.department\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Department Search",
+
+        "ews_guid" : "D9639897-147A-4091-955A-549E643B70A2",
+
+        "LongDescription" : "Display a list of departments by college_abbreviation and optionally filter on year, quarter and
+
+        future_terms",
+
+        "ShortDescription" : "List of departments",
+
+        "OriginatingSchema" : [ { "source":"swssdb" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:GradeSubmitter
+
+        - sws:UnitReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        - AccessToken ",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.department" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: DepartmentSearch
       parameters:
       - name: year
@@ -87,6 +121,33 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    DepartmentSearchResourceUri:
+      type: object
+      properties:
+        CollegeAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_college\" }\n                ],\n                \"TechnicalDescription\": \"CollegeAbbreviation\"\n            }\n            </pre>"
+        FutureTerms:
+          type: integer
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Department Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\n}"
     DepartmentSearchViewModel:
       type: object
       properties:
@@ -94,10 +155,11 @@ components:
           type: integer
           format: int32
         Departments:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/DepartmentResourceUri'
-          nullable: true
           readOnly: true
         Current:
           $ref: '#/components/schemas/DepartmentSearchResourceUri'
@@ -106,57 +168,40 @@ components:
         Previous:
           $ref: '#/components/schemas/DepartmentSearchResourceUri'
         PageSize:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         PageStart:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Department Search Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}]\r\n}"
-    DepartmentSearchResourceUri:
-      type: object
-      properties:
-        CollegeAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_college\" }\r\n                ],\r\n                \"TechnicalDescription\": \"CollegeAbbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
-        FutureTerms:
-          type: integer
-          format: int32
-        Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Year:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Department Search Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\r\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Department Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}]\n}"
     DepartmentResourceUri:
       type: object
       properties:
         DepartmentAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"DepartmentAbbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\n                ],\n                \"TechnicalDescription\": \"DepartmentAbbreviation\"\n            }\n            </pre>"
         DepartmentFullName:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"DepartmentFullName\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"DepartmentFullName\"\n            }\n            </pre>"
         Quarter:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Quarter\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
         Year:
           type: integer
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Year\"\r\n            }\r\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
           format: int32
         Href:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Department Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\r\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Department Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\n}"

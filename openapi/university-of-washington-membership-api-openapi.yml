@@ -1,0 +1,908 @@
+openapi: 3.2.0
+info:
+  version: 2.3.x
+  title: University of Washington Group Service Membership API
+  termsOfService: http://www.washington.edu/online/terms/
+  contact:
+    name: University of Washington
+    email: help@uw.edu
+  license:
+    name: License
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: '* This describes the Group Service /v3/ representations (GWS 2.3.x).
+
+    * For /v2/ (xml) representations see the v2 documentation.
+
+    * See the wiki article Group Service API for instructions and help with the Group Service.
+
+    The page includes access and authentication instructions.
+
+
+    * The yaml source of this document.
+
+    * Document modified: 2020-06-15'
+servers:
+- url: https://groups.uw.edu/group_sws/v3
+  description: Production server - InCommon certificate
+- url: https://eval.groups.uw.edu/group_sws/v3
+  description: Evaluation server - InCommon certificate
+- url: https://dev.groups.uw.edu/group_sws/v3
+  description: Development server - InCommon certificate
+- url: https://iam-ws.u.washington.edu/group_sws/v3
+  description: Production server - UWCA certificate (deprecated)
+tags:
+- name: Membership
+  description: Group membership information
+paths:
+  /group/{groupid}/member:
+    get:
+      tags:
+      - Membership
+      description: Gets all direct members of the group
+      operationId: getMembership
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+          example: u_joeuser
+      - name: source=registry
+        in: query
+        required: false
+        description: 'handle request via the registry (default is a fast response cache)
+
+
+          *This is a diagnostic tool.  Representations and availability may differ from those described here.*'
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of members of the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Membership'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '403':
+          $ref: '#/components/responses/403Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get membership
+      x-summary-source: derived
+    put:
+      tags:
+      - Membership
+      description: Put entire membership of the group. The PUT and POST methods are identical.
+      operationId: putMembership
+      parameters:
+      - name: groupid
+        in: path
+        description: group name or regid
+        required: true
+        schema:
+          type: string
+      - name: synchronized
+        in: query
+        required: false
+        description: do not complete request until ldaps updated (default does not wait)
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      - name: Content-type
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200ErrorM'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutMembership'
+        description: representation of the membership
+      summary: Put membership
+      x-summary-source: derived
+  /group/{groupid}/member?view=count:
+    get:
+      tags:
+      - Membership
+      description: Gets direct membership count
+      operationId: getMembershipCount
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+          example: u_joeuser
+      - name: view=count
+        in: query
+        required: true
+        description: Request only the direct membership count
+      - name: source=registry
+        in: query
+        required: false
+        description: 'handle request via the registry (default is a fast response cache)
+
+
+          *This is a diagnostic tool.  Representations and availability may differ from those described here.*'
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A count of members of the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipCount'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '403':
+          $ref: '#/components/responses/403Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get membership count
+      x-summary-source: derived
+  /group/{groupid}/member/{memberid}:
+    get:
+      tags:
+      - Membership
+      description: Gets one member of the group
+      operationId: getMember
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: memberid
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: source=registry
+        in: query
+        required: false
+        description: 'handle request via the registry (default is a fast response cache)
+
+
+          *This is a diagnostic tool.  Representations and availability may differ from those described here.*'
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array with the requested member of the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Membership'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get member
+      x-summary-source: derived
+    put:
+      tags:
+      - Membership
+      description: Put a member(s) into the group. Specified ids are added. No members are removed.
+      operationId: putMember
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: memberid
+        required: true
+        in: path
+        style: simple
+        description: one or more member ids (comma separated, no spaces)
+        schema:
+          type: array
+          items:
+            type: string
+      - name: synchronized
+        in: query
+        required: false
+        description: do not complete request until ldaps updated (default does not wait)
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      - name: Content-type
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200ErrorM'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Put member
+      x-summary-source: derived
+    delete:
+      tags:
+      - Membership
+      description: Delete a member(s) from the group. Specified ids are removed.
+      operationId: deleteMember
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: memberid
+        required: true
+        in: path
+        style: simple
+        description: one or more member ids (comma separated, no spaces)
+        schema:
+          type: array
+          items:
+            type: string
+      - name: synchronized
+        in: query
+        required: false
+        description: do not complete request until ldaps updated (default does not wait)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Delete successful
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Delete member
+      x-summary-source: derived
+  /group/{groupid}/effective_member:
+    get:
+      tags:
+      - Membership
+      description: Gets all effective members of the group. All direct members of the group plus all effective members of member groups.
+      operationId: getEffectiveMembership
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of members of the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EffMembership'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get effective membership
+      x-summary-source: derived
+  /group/{groupid}/effective_member?view=count:
+    get:
+      tags:
+      - Membership
+      description: Gets effective membership count
+      operationId: getEffectiveMembershipCount
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+          example: u_joeuser
+      - name: view=count
+        in: query
+        required: true
+        description: Request only the membership count
+      - name: source=registry
+        in: query
+        required: false
+        description: 'handle request via the registry (default is a fast response cache)
+
+
+          *This is a diagnostic tool.  Representations and availability may differ from those described here.*'
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A count of effective members of the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipCount'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '403':
+          $ref: '#/components/responses/403Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get effective membership count
+      x-summary-source: derived
+  /group/{groupid}/effective_member/{memberid}:
+    get:
+      tags:
+      - Membership
+      description: Gets one effective member of the group
+      operationId: getMember
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: memberid
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: source=registry
+        in: query
+        required: false
+        description: 'handle request via the registry (default is a fast response cache)
+
+
+          *This is a diagnostic tool.  Representations and availability may differ from those described here.*'
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array with the requested member of the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Membership'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get member
+      x-summary-source: derived
+  /group/{groupid}/history:
+    get:
+      tags:
+      - Membership
+      description: Gets history of the group
+      operationId: getHistory
+      parameters:
+      - name: groupid
+        in: path
+        description: group name or regid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: start time (milliseconds since epoch)
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: maximim number of events
+        required: false
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: sort order
+        required: false
+        schema:
+          type: string
+          enum:
+          - a
+          - d
+      - name: activity
+        in: query
+        description: actity selector
+        required: false
+        schema:
+          type: string
+          enum:
+          - acl
+          - membership
+      - name: id
+        in: query
+        description: memberid selector
+        required: false
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of history for the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/History'
+        '401':
+          description: No permission
+        '404':
+          description: Group not found
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get history
+      x-summary-source: derived
+components:
+  responses:
+    406Error:
+      description: Not Acceptable (Accept or Content-type not application/json)
+    401Error:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 401
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Explaination of cause of error
+                        example: No permission to read membership
+    200ErrorM:
+      description: Member put response
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 200
+                    notFound:
+                      type: array
+                      items:
+                        id: null
+                        type: string
+                        example: joeusor
+    403Error:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 403
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Explaination of cause of error
+                        example: Group is google enabled
+    404Error:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 404
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Explaination of cause of error
+                        example: The group does not exist
+  schemas:
+    ErrorMeta:
+      type: array
+      items:
+        type: object
+        properties:
+          resource:
+            type: string
+          version:
+            description: Version of the API
+            type: string
+            example: v3.0
+          id:
+            description: Id of the group
+            type: string
+          timestamp:
+            description: Response timestamp (milli-seconds from epoch)
+            type: long
+            example: 1214343146201
+    History:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              enum:
+              - history
+            version:
+              description: Version of the API
+              type: string
+              example: v3.0
+            regid:
+              description: Regid of the group
+              type: string
+            id:
+              description: Id of the group
+              type: string
+            searchParameters:
+              type: object
+              properties:
+                start:
+                  description: start time
+                  type: integer
+                size:
+                  description: maximum number of events
+                  type: integer
+                order:
+                  description: sort order
+                  type: string
+                  enum:
+                  - ascending
+                  - descending
+                memberid:
+                  description: member id selector
+                  type: string
+            timestamp:
+              description: Response timestamp (milli-seconds from epoch)
+              type: long
+              example: 1214343146201
+        data:
+          description: Group activity entries
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryEntry'
+    MemberMeta:
+      type: object
+      properties:
+        resource:
+          type: string
+          enum:
+          - groupmembers
+        version:
+          description: Version of the API
+          type: string
+          example: v3.0
+        regid:
+          description: Regid of the group
+          type: string
+        id:
+          description: Id of the group
+          type: string
+        type:
+          description: membership type
+          type: string
+          enum:
+          - direct
+          - effective
+        selfRef:
+          description: URL of this resource
+          type: string
+        timestamp:
+          description: Response timestamp (milli-seconds from epoch)
+          type: long
+          example: 1214343146201
+    Membership:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          $ref: '#/components/schemas/MemberMeta'
+        data:
+          description: Membership
+          type: array
+          items:
+            $ref: '#/components/schemas/Member'
+    PutMember:
+      type: object
+      description: A group member.
+      properties:
+        type:
+          description: Type of member
+          type: string
+          enum:
+          - uwnetid
+          - group
+          - dns
+          - eppn
+          - uwwi
+        id:
+          description: Entity id of member
+          type: string
+    MembershipCount:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          $ref: '#/components/schemas/MemberCountMeta'
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 5901
+    HistoryEntry:
+      type: object
+      description: A group activity
+      properties:
+        timestamp:
+          description: event timestamp  (milliseconds since epoch)
+          type: integer
+        user:
+          description: User who performed the action
+          type: string
+        actAs:
+          description: Act-as user, if user acting as another
+          type: string
+        activity:
+          description: Activity name (from grouper even types)
+          type: string
+        description:
+          description: details of the event
+          type: string
+    PutMembership:
+      type: object
+      properties:
+        data:
+          description: Members
+          type: array
+          items:
+            $ref: '#/components/schemas/PutMember'
+    MemberCountMeta:
+      type: object
+      properties:
+        resource:
+          type: string
+          enum:
+          - membercount
+        version:
+          description: Version of the API
+          type: string
+          example: v3.0
+        regid:
+          description: Regid of the group
+          type: string
+        id:
+          description: Id of the group
+          type: string
+        type:
+          description: membership type
+          type: string
+          enum:
+          - direct
+          - effective
+        selfRef:
+          description: URL of this resource
+          type: string
+        timestamp:
+          description: Response timestamp (milli-seconds from epoch)
+          type: long
+          example: 1214343146201
+    EffMembership:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          $ref: '#/components/schemas/MemberMeta'
+        data:
+          description: Membership
+          type: array
+          items:
+            $ref: '#/components/schemas/EffMember'
+    EffMember:
+      type: object
+      description: An effective group member. (direct or member of member group)
+      properties:
+        type:
+          description: Type of member
+          type: string
+          enum:
+          - uwnetid
+          - group
+          - dns
+          - eppn
+          - uwwi
+        id:
+          description: Entity id of member
+          type: string
+        mtype:
+          description: Membership type
+          type: string
+          enum:
+          - direct
+          - indirect
+          example: indirect
+        source:
+          description: Source group(s) if not direct member
+          type: string
+          example: in (uw_all_members)
+    GroupSchema:
+      type: array
+      items:
+        type: string
+        enum:
+        - urn:mace:washington.edu:schemas:groups:1.0
+    Member:
+      type: object
+      description: A direct group member.
+      properties:
+        type:
+          description: Type of member
+          type: string
+          enum:
+          - uwnetid
+          - group
+          - dns
+          - eppn
+          - uwwi
+        id:
+          description: Entity id of member
+          type: string
+externalDocs:
+  description: UW-IT Groups Web Service (GWS) API documentation
+  url: https://iam-tools.u.washington.edu/apis/gws/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

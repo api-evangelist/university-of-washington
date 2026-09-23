@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus DegreeAuditStatus API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Degree Audit Status API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: DegreeAuditStatus
 paths:
@@ -17,7 +17,37 @@ paths:
       tags:
       - DegreeAuditStatus
       summary: Get the specified status of a degree audit request
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Degree Audit Status\",\r\n                    \"ews_guid\" : \"7503B636-AA7A-4145-B326-A90CA48965AE\",\r\n                    \"LongDescription\" : \"Returns the specified status of a degree audit request\",\r\n                    \"ShortDescription\" : \"The status of a degree audit request\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" }, { \"source\":\"irws\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:DegreeAuditSubmitter\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID\r\n                               This resource is associated with a previous degree audit create request.  See the degree audit resource.\",\r\n                    \"Links\" : [ \"https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Degree Audit Status",
+
+        "ews_guid" : "7503B636-AA7A-4145-B326-A90CA48965AE",
+
+        "LongDescription" : "Returns the specified status of a degree audit request",
+
+        "ShortDescription" : "The status of a degree audit request",
+
+        "OriginatingSchema" : [ { "source":"sdb" }, { "source":"irws" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:DegreeAuditSubmitter
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID
+
+        This resource is associated with a previous degree audit create request. See the degree audit resource.",
+
+        "Links" : [ "https://metadata.uw.edu/Catalog/ViewItem/Term/studentdata.degree" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetDegreeAuditStatus
       parameters:
       - name: campus
@@ -110,45 +140,54 @@ components:
       type: object
       properties:
         Campus:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/brcd\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Campus\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/brcd\" }\n                ],\n                \"TechnicalDescription\": \"Campus\"\n            }\n            </pre>"
         DegreeLevel:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/dlvl\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Level\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/dlvl\" }\n                ],\n                \"TechnicalDescription\": \"Degree Level\"\n            }\n            </pre>"
         DegreeType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/dtyp\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Degree Type\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/dtyp\" }\n                ],\n                \"TechnicalDescription\": \"Degree Type\"\n            }\n            </pre>"
         Href:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         MajorAbbreviation:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/mabb\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Major Abbreviation\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/mabb\" }\n                ],\n                \"TechnicalDescription\": \"Major Abbreviation\"\n            }\n            </pre>"
         Pathway:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/pth\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Pathway\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/pth\" }\n                ],\n                \"TechnicalDescription\": \"Pathway\"\n            }\n            </pre>"
         RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI394.dgp/sysk\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/sysk\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}],\r\n    \"TargetOperationId\" : [\"DegreeAuditSearch\"]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}],\n    \"TargetOperationId\" : [\"DegreeAuditSearch\"]\n}"
     DegreeAuditStatusViewModel:
       type: object
       properties:
         Title:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         Status:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"url\" }\r\n                ],\r\n                \"TechnicalDescription\": \"User supplied value\"\r\n            }\r\n            </pre>"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
         DegreeAuditURI:
           $ref: '#/components/schemas/DegreeAuditResourceUri'
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Degree Audit Status Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Status Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}]\n}"

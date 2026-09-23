@@ -1,61 +1,140 @@
 vocabulary:
   name: University of Washington Enterprise Web Services Vocabulary
-  description: >-
-    Controlled vocabulary of core terms observed across the University of
-    Washington UW-IT Enterprise Web Services (EWS) machine-readable API
-    descriptions, specifically the Student Web Service (SWS v5) and the
-    IdCard Web Service (IdCardWS v1).
-  version: "1.0.0"
+  description: Controlled vocabulary of core terms observed across the University of Washington UW-IT
+    Enterprise Web Services (EWS) machine-readable API descriptions — the Student Web Service (SWS v5),
+    IdCard Web Service (IdCardWS v1), Groups Web Service (GWS 2.3.x), Identity Registration Web Service
+    (IRWS v2/v3) and Token Authentication Web Service (TAWS v2) — plus UW's open OAI-PMH and SAML federation
+    surfaces.
+  version: 1.1.0
   terms:
-    - term: Student Web Service
-      definition: >-
-        UW-IT RESTful API (SWS) providing access to central student data including
-        course, curriculum, term, section, registration, and person data.
-      tags: [ sws, student, enterprise-web-services ]
-    - term: IdCard Web Service
-      definition: >-
-        UW-IT RESTful API (IdCardWS) providing access to Husky ID Card data,
-        including cardholder photos and card records.
-      tags: [ idcardws, identity, id-card ]
-    - term: RegID
-      definition: >-
-        UW registration identifier, a unique 32-character hexadecimal identifier
-        for a person used to key person, card, and photo resources.
-      tags: [ identity, person, identifier ]
-    - term: Course
-      definition: >-
-        A unit of instruction identified by year, quarter, curriculum abbreviation,
-        and course number, owned by a college and curriculum.
-      tags: [ sws, course, academic ]
-    - term: Curriculum
-      definition: >-
-        A grouping of courses under a curriculum abbreviation within a college.
-      tags: [ sws, curriculum, academic ]
-    - term: Term
-      definition: >-
-        An academic term identified by year and quarter (autumn, winter, spring, summer).
-      tags: [ sws, term, calendar ]
-    - term: Quarter
-      definition: >-
-        One of the four UW academic periods within a year - autumn, winter, spring, or summer.
-      tags: [ sws, term, calendar ]
-    - term: Campus
-      definition: >-
-        A UW campus location (Seattle, Bothell, Tacoma) associated with a course or section.
-      tags: [ sws, campus ]
-    - term: Photo
-      definition: >-
-        A cardholder photo resource exposed in small, medium, large, and custom-height sizes.
-      tags: [ idcardws, photo, identity ]
-    - term: ResourceUri
-      definition: >-
-        A hypermedia reference (Href) object linking from one EWS resource to a related resource.
-      tags: [ hypermedia, link ]
-    - term: ViewModel
-      definition: >-
-        The UW EWS naming convention for the JSON representation of a response object.
-      tags: [ convention, schema ]
-    - term: Degree Audit
-      definition: >-
-        SWS resource representing a student degree audit and audit exceptions.
-      tags: [ sws, degree, audit ]
+  - term: Student Web Service
+    definition: UW-IT RESTful API (SWS) providing access to central student data including course, curriculum,
+      term, section, registration, and person data.
+    tags:
+    - sws
+    - student
+    - enterprise-web-services
+  - term: IdCard Web Service
+    definition: UW-IT RESTful API (IdCardWS) providing access to Husky ID Card data, including cardholder
+      photos and card records.
+    tags:
+    - idcardws
+    - identity
+    - id-card
+  - term: RegID
+    definition: UW registration identifier, a unique 32-character hexadecimal identifier for a person
+      used to key person, card, and photo resources.
+    tags:
+    - identity
+    - person
+    - identifier
+  - term: Course
+    definition: A unit of instruction identified by year, quarter, curriculum abbreviation, and course
+      number, owned by a college and curriculum.
+    tags:
+    - sws
+    - course
+    - academic
+  - term: Curriculum
+    definition: A grouping of courses under a curriculum abbreviation within a college.
+    tags:
+    - sws
+    - curriculum
+    - academic
+  - term: Term
+    definition: An academic term identified by year and quarter (autumn, winter, spring, summer).
+    tags:
+    - sws
+    - term
+    - calendar
+  - term: Quarter
+    definition: One of the four UW academic periods within a year - autumn, winter, spring, or summer.
+    tags:
+    - sws
+    - term
+    - calendar
+  - term: Campus
+    definition: A UW campus location (Seattle, Bothell, Tacoma) associated with a course or section.
+    tags:
+    - sws
+    - campus
+  - term: Photo
+    definition: A cardholder photo resource exposed in small, medium, large, and custom-height sizes.
+    tags:
+    - idcardws
+    - photo
+    - identity
+  - term: ResourceUri
+    definition: A hypermedia reference (Href) object linking from one EWS resource to a related resource.
+    tags:
+    - hypermedia
+    - link
+  - term: ViewModel
+    definition: The UW EWS naming convention for the JSON representation of a response object.
+    tags:
+    - convention
+    - schema
+  - term: Degree Audit
+    definition: SWS resource representing a student degree audit and audit exceptions.
+    tags:
+    - sws
+    - degree
+    - audit
+  - term: Groups Web Service
+    definition: UW-IT RESTful API (GWS) at groups.uw.edu/group_sws/v3 providing the institutional group
+      registry and membership operations; requires an InCommon client certificate.
+    tags:
+    - gws
+    - groups
+    - identity
+    - enterprise-web-services
+  - term: Identity Registration Web Service
+    definition: UW-IT RESTful API (IRWS) exposing the Identity Registry — person, source-record and identifier
+      data. V2 and V3 contracts are published publicly; the runtime is on a restricted network.
+    tags:
+    - irws
+    - identity
+    - registry
+    - enterprise-web-services
+  - term: Token Authentication Web Service
+    definition: UW-IT RESTful API (TAWS) that issues the AccessToken credential accepted by the Student
+      and IdCard Web Services.
+    tags:
+    - taws
+    - authentication
+    - tokens
+    - enterprise-web-services
+  - term: ASTRA
+    definition: UW's authorization system. SWS resources name required ASTRA roles (sws:Support, sws:UnitReader,
+      sws:GradeSubmitter and others) in their operation descriptions.
+    tags:
+    - astra
+    - authorization
+    - roles
+  - term: UW NetID
+    definition: The University of Washington's personal identifier and sign-in credential, federated through
+      Microsoft Entra ID for the Enterprise Web Services estate.
+    tags:
+    - netid
+    - identity
+    - authentication
+  - term: ResearchWorks
+    definition: UW Libraries' institutional repository, running DSpace 9.2 on digital.lib.washington.edu
+      with an open OAI-PMH 2.0 endpoint.
+    tags:
+    - researchworks
+    - dspace
+    - oai-pmh
+    - repository
+  - term: InCommon
+    definition: The US research and education identity federation. UW's Shibboleth IdP is registered as
+      urn:mace:incommon:washington.edu, and InCommon client certificates gate the Groups Web Service.
+    tags:
+    - incommon
+    - federation
+    - saml
+    - shibboleth
+generated: '2026-08-30'
+method: derived
+source: openapi/_original/*.yaml and live probes run 2026-08-30
+x-operator: institution

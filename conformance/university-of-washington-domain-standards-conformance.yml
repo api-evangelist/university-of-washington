@@ -1,0 +1,108 @@
+name: University of Washington — Education Regime Domain Standards Conformance
+description: >-
+  Conformance evidence for the Kin Score `education` regulatory regime domain standards,
+  measured against surfaces the University of Washington itself operates. Reward-only:
+  a standard appears here ONLY where a live probe returned a conformant response body
+  from a host under a University of Washington registrable domain. Standards the regime
+  names but for which no UW-operated evidence was found are listed under `not_found`
+  with the reason, and are NOT claimed.
+generated: '2026-08-30'
+method: probed
+source: >-
+  Live HTTP probes run 2026-08-30 against institution-operated hosts, plus the four
+  UW-IT OpenAPI contracts in openapi/.
+regime: education
+x-operator: institution
+
+conforms:
+  - standard: oai-pmh
+    name: Open Archives Initiative Protocol for Metadata Harvesting 2.0
+    status: verified
+    x-operator: institution
+    evidence:
+      location: https://digital.lib.washington.edu/server/oai/request?verb=Identify
+      status: 200
+      observed: >-
+        Valid OAI-PMH 2.0 Identify response. repositoryName "ResearchWorks",
+        protocolVersion 2.0, adminEmail libsys@uw.edu, granularity YYYY-MM-DDThh:mm:ssZ,
+        repositoryIdentifier digital.lib.washington.edu, deletedRecord transient.
+      supporting:
+        - location: https://digital.lib.washington.edu/server/oai/request?verb=ListMetadataFormats
+          status: 200
+          observed: >-
+            Ten metadata formats served — oai_dc, qdc, mods, mets, didl, ore, xoai, dim,
+            rioxx, uketd_dc.
+        - location: https://digital.lib.washington.edu/server/oai/request?verb=ListSets
+          status: 200
+          observed: Departmental sets enumerated (e.g. "Anthropology, Department of").
+    notes: >-
+      The repository software is DSpace 9.2 (open source, community-governed), but the
+      deployment, host, content and admin contact are the University of Washington
+      Libraries', so the harvesting surface is institution-operated. No vendor generic
+      contract is saved under this institution for it.
+
+  - standard: shibboleth
+    name: Shibboleth Identity Provider / InCommon federation membership
+    status: verified
+    x-operator: institution
+    evidence:
+      location: https://idp.u.washington.edu/metadata/idp-metadata.xml
+      status: 200
+      observed: >-
+        Signed SAML 2.0 EntitiesDescriptor, Name "urn:washington.edu:idp-metadata",
+        document ID "INC20180221T195121" (InCommon registration), IdP entityID
+        "urn:mace:incommon:washington.edu", shibmd:Scope "washington.edu", with
+        shibmd, mdui, mdrpi and idpdisc extension namespaces present.
+    notes: >-
+      Institution-operated by definition — an IdP asserts identity for the institution's
+      own subjects and cannot be a vendor contract running under its name.
+
+  - standard: saml
+    name: SAML 2.0 metadata
+    status: verified
+    x-operator: institution
+    evidence:
+      location: https://idp.u.washington.edu/metadata/idp-metadata.xml
+      status: 200
+      observed: >-
+        urn:oasis:names:tc:SAML:2.0:metadata document, XML-DSig signed
+        (rsa-sha256, exc-c14n), publishing the SSO endpoints for the UW IdP.
+    supporting:
+      - location: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml
+        observed: >-
+          eduPerson attributes (eduPersonAffiliation, eduPersonAffiliations) modelled
+          directly in the Identity Registry contract; eduPersonPrincipalName appears in
+          the Groups Web Service contract. These are the federation attribute schema the
+          SAML surface asserts.
+
+not_found:
+  - standard: scim
+    reason: >-
+      UW-IT provisions groups through the Groups Web Service (its own /group_sws/v3
+      contract), not a SCIM endpoint. No SCIM service provider config found on a UW host.
+  - standard: lti
+    reason: >-
+      UW's LMS is Canvas (Instructure). Any LTI platform conformance belongs to
+      Instructure's contract, not to a University of Washington-operated surface.
+  - standard: oneroster
+    reason: No IMS Global OneRoster endpoint found on a UW-operated host.
+  - standard: ed-fi
+    reason: Ed-Fi is a K-12 data standard; no UW-operated Ed-Fi surface exists or is expected.
+  - standard: caliper
+    reason: >-
+      No UW-operated Caliper analytics endpoint found; learning analytics event streams
+      would originate in the vendor LMS.
+  - standard: qti
+    reason: No UW-operated QTI assessment surface found.
+  - standard: orcid
+    reason: >-
+      No UW-operated ORCID member API integration or ORCID landing surface returned a live
+      response; probes to the library and IT Connect ORCID paths returned 404.
+  - standard: datacite
+    reason: >-
+      ResearchWorks mints Handle identifiers (oai:digital.lib.washington.edu:1773/...),
+      not DataCite DOIs, in the records observed. No DataCite membership surface probed live.
+  - standard: crossref
+    reason: >-
+      Crossref registration for UW-published content is done by publishers, not by a
+      UW-operated API surface. No evidence found.

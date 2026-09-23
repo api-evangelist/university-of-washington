@@ -1,0 +1,80 @@
+name: University of Washington — Enterprise Web Services API lifecycle
+description: >-
+  Versioning and deprecation posture across the University of Washington's
+  institution-operated API estate, read from UW-published contracts and live probes.
+generated: '2026-08-30'
+method: derived
+source: openapi/_original/*.yaml plus live probes run 2026-08-30
+x-operator: institution
+
+versioning:
+  style: path-segment
+  note: >-
+    Every UW-IT Enterprise Web Service carries its major version as the first path
+    segment beneath a per-service base path (/student/v5, /idcard/v1,
+    /group_sws/v3, /registry/v2, /registry/v3, /token/v2). Two services publish
+    a machine-readable version-discovery resource of their own.
+  discovery:
+    - location: openapi/university-of-washington-version-api-openapi.yml
+      observed: GET / — GetVersions, published at the root of both SWS and IdCardWS.
+    - location: openapi/university-of-washington-resourcelist-api-openapi.yml
+      observed: GET /v5 (GetSWSResources) and GET /v1 (GetResources) enumerate live resources.
+
+services:
+  - name: Student Web Service (SWS)
+    current: v5
+    base: https://ws.admin.washington.edu/student
+    status: current
+  - name: IdCard Web Service (IdCardWS)
+    current: v1
+    base: https://ws.admin.washington.edu/idcard
+    status: current
+  - name: Groups Web Service (GWS)
+    current: 2.3.x (/v3 representations)
+    base: https://groups.uw.edu/group_sws/v3
+    status: current
+    superseded:
+      - version: /v2 (XML representations)
+        note: >-
+          The published contract states "For /v2/ (xml) representations see the v2
+          documentation", i.e. v2 is documented separately and superseded by /v3.
+    deprecated_hosts:
+      - url: https://iam-ws.u.washington.edu/group_sws/v3
+        note: 'Labelled in the contract''s own servers[]: "Production server - UWCA certificate (deprecated)".'
+    non_production_hosts:
+      - https://eval.groups.uw.edu/group_sws/v3
+      - https://dev.groups.uw.edu/group_sws/v3
+  - name: Identity Registration Web Service (IRWS)
+    current: v3
+    base: https://mango.u.washington.edu:646/registry/v3
+    status: current
+    superseded:
+      - version: v2
+        base: https://mango.u.washington.edu:646/registry/v2
+        note: Still documented and published at iam-tools.u.washington.edu/apis/irwsv2/.
+      - version: v1
+        base: https://mango-dev.u.washington.edu:646/registry-dev/v1
+        note: >-
+          DEFECT IN THE PUBLISHED CONTRACT, not in this catalog: the V1 specification
+          UW serves at iam-tools.u.washington.edu/apis/irwsv1/ declares a DEVELOPMENT
+          host (mango-dev / registry-dev) as its only server. It is therefore recorded
+          here as documentation, and is NOT saved as a production surface.
+  - name: Token Authentication Web Service (TAWS)
+    current: v2
+    base: https://taws.s.uw.edu:716/token/v2
+    status: current
+
+change_communication:
+  channels:
+  - channel: mailing list
+    location: http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev
+    for: Student Web Service — planned outages, support, new features (stated in info.description).
+  - channel: mailing list
+    location: http://mailman.u.washington.edu/mailman/listinfo/idcardws-users
+    for: IdCard Web Service — planned outages, support, new features (stated in info.description).
+  - channel: wiki
+    location: https://wiki.cac.washington.edu/display/SWS
+    for: Student Web Service documentation.
+  gaps:
+    - No machine-readable changelog, no deprecation headers, and no Sunset/Deprecation
+      HTTP header observed on any UW-operated surface.

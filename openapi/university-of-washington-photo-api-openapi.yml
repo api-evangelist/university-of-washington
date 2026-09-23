@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Photo API
+  title: IdCard Web Service (IdCardWS) Photo API
   description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
@@ -16,7 +16,7 @@ paths:
     get:
       tags:
       - Photo
-      summary: Get the Id card photo (image/jpeg) for the indicated person.
+      summary: Get the Id card photo (image/jpeg) for the indicated person
       operationId: Photo
       parameters:
       - name: reg_Id
@@ -51,7 +51,7 @@ paths:
     get:
       tags:
       - Photo
-      summary: Get the Id card photo (image/jpeg) for the indicated person.
+      summary: Get the Id card photo (image/jpeg) for the indicated person
       operationId: PhotoWithExtension
       parameters:
       - name: reg_Id
@@ -159,61 +159,66 @@ paths:
           description: InternalServerError
         '503':
           description: ServiceUnavailable
+      summary: Photo search
+      x-summary-source: derived
 components:
   schemas:
-    PhotoSearchViewModel:
+    PhotoResourceUri:
       type: object
       properties:
-        metadata:
-          type: string
-          nullable: true
-        pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
-        previousPageStart:
-          type: string
-          description: The counter value for the start of the previous search results page.
-          nullable: true
-          readOnly: true
-        pageSize:
-          type: string
-          description: Requested number of records for the current search results page.
-          nullable: true
-        pageStart:
-          type: string
-          description: The counter value for the start of the current search results page.
-          nullable: true
-        nextPageStart:
-          type: string
-          description: The counter value for the start of the next search results page.
-          nullable: true
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
-          format: int32
-        format:
+        viewFormat:
           $ref: '#/components/schemas/ViewFormats'
-        searchResultsCount:
-          type: integer
+        href:
+          type:
+          - string
+          - 'null'
+        uriAppender:
+          type:
+          - string
+          - 'null'
+        fileExtension:
+          type:
+          - string
+          - 'null'
+        height:
+          type:
+          - integer
+          - 'null'
           format: int32
-          readOnly: true
-        photos:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhotoViewModel'
-          nullable: true
-          readOnly: true
-        title:
-          type: string
-          nullable: true
-          readOnly: true
-        current:
-          $ref: '#/components/schemas/PhotoSearchResourceUri'
+        regId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PhotoSearchResourceUri:
+      type: object
+      properties:
+        href:
+          type:
+          - string
+          - 'null'
+        regId:
+          type:
+          - string
+          - 'null'
+        netId:
+          type:
+          - string
+          - 'null'
+        studentNumber:
+          type:
+          - string
+          - 'null'
+        employeeId:
+          type:
+          - string
+          - 'null'
+        height:
+          type:
+          - string
+          - 'null'
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
       additionalProperties: false
     ViewFormats:
       enum:
@@ -223,109 +228,144 @@ components:
       - 5
       type: integer
       format: int32
-    PhotoSearchResourceUri:
-      type: object
-      properties:
-        href:
-          type: string
-          nullable: true
-        regId:
-          type: string
-          nullable: true
-        netId:
-          type: string
-          nullable: true
-        studentNumber:
-          type: string
-          nullable: true
-        employeeId:
-          type: string
-          nullable: true
-        height:
-          type: string
-          nullable: true
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
-      additionalProperties: false
-    PhotoResourceUri:
-      type: object
-      properties:
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
-        href:
-          type: string
-          nullable: true
-        uriAppender:
-          type: string
-          nullable: true
-        fileExtension:
-          type: string
-          nullable: true
-        height:
-          type: integer
-          format: int32
-          nullable: true
-        regId:
-          type: string
-          nullable: true
-      additionalProperties: false
-    PhotoViewModel:
+    PhotoSearchViewModel:
       type: object
       properties:
         metadata:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
         previousPageStart:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The counter value for the start of the previous search results page.
-          nullable: true
           readOnly: true
         pageSize:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Requested number of records for the current search results page.
-          nullable: true
         pageStart:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The counter value for the start of the current search results page.
-          nullable: true
         nextPageStart:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The counter value for the start of the next search results page.
-          nullable: true
           readOnly: true
         totalCount:
           type: integer
           format: int32
         pageStartOffset:
           type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        searchResultsCount:
+          type: integer
+          format: int32
+          readOnly: true
+        photos:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PhotoViewModel'
+          readOnly: true
+        title:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        current:
+          $ref: '#/components/schemas/PhotoSearchResourceUri'
+      additionalProperties: false
+    PhotoViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
           format: int32
         format:
           $ref: '#/components/schemas/ViewFormats'
         nameAndRegID:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
         fullName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
         regId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
         fileExtension:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
         height:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
           readOnly: true
         small:
           $ref: '#/components/schemas/PhotoResourceUri'

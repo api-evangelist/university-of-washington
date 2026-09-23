@@ -1,0 +1,224 @@
+openapi: 3.2.0
+info:
+  version: 2.3.x
+  title: University of Washington Group Service Searches API
+  termsOfService: http://www.washington.edu/online/terms/
+  contact:
+    name: University of Washington
+    email: help@uw.edu
+  license:
+    name: License
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: '* This describes the Group Service /v3/ representations (GWS 2.3.x).
+
+    * For /v2/ (xml) representations see the v2 documentation.
+
+    * See the wiki article Group Service API for instructions and help with the Group Service.
+
+    The page includes access and authentication instructions.
+
+
+    * The yaml source of this document.
+
+    * Document modified: 2020-06-15'
+servers:
+- url: https://groups.uw.edu/group_sws/v3
+  description: Production server - InCommon certificate
+- url: https://eval.groups.uw.edu/group_sws/v3
+  description: Evaluation server - InCommon certificate
+- url: https://dev.groups.uw.edu/group_sws/v3
+  description: Development server - InCommon certificate
+- url: https://iam-ws.u.washington.edu/group_sws/v3
+  description: Production server - UWCA certificate (deprecated)
+tags:
+- name: Searches
+  description: Group and member searches
+paths:
+  /search:
+    get:
+      tags:
+      - Searches
+      description: 'Finds groups. Parameters specify matching conditions, which are ANDed to generate the search result.
+
+        * Note. The affiliate search ignores any other search parameters.'
+      parameters:
+      - name: name
+        in: query
+        description: some part of the group name, "*" is a wildcard character
+        required: false
+        schema:
+          type: string
+      - name: stem
+        in: query
+        description: stem part of the name
+        required: false
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: stem search scope (depth)
+        required: false
+        schema:
+          type: string
+          enum:
+          - one
+          - all
+      - name: member
+        in: query
+        description: member of the group
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: member search type
+        required: false
+        schema:
+          type: string
+          enum:
+          - direct
+          - effective
+      - name: owner
+        in: query
+        description: identifier of an administrator (admin,creator,updater,membermanager)
+        required: false
+        schema:
+          type: string
+      - name: affiliate
+        in: query
+        description: name of an affiliate
+        required: false
+        schema:
+          type: string
+          enum:
+          - uwnetid
+          - email
+          - google
+          - radius
+      - name: instructor
+        in: query
+        description: uwnetid or eppn of a course instructor (course groups only)
+        required: false
+        schema:
+          type: string
+      - name: source=registry
+        in: query
+        required: false
+        description: 'handle request via the registry (default is a fast response cache)
+
+
+          *This is a diagnostic tool.  Representations and availability may differ from those described here.*'
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of groups identifiers matching the search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '401':
+          description: No permission
+        '404':
+          description: Group not found
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get search
+      x-summary-source: derived
+      operationId: getSearch
+      x-operation-id-source: derived
+components:
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              enum:
+              - search
+            version:
+              description: Version of the API
+              type: string
+              example: v3.0
+            searchParameters:
+              type: object
+              properties:
+                name:
+                  type: string
+                stem:
+                  type: string
+                scope:
+                  type: string
+                member:
+                  type: string
+                type:
+                  type: string
+                owner:
+                  type: string
+                affiliate:
+                  type: string
+                instructor:
+                  type: string
+            selfRef:
+              description: URL of this resource
+              type: string
+              example: https://iam-ws.u.washington.edu/group_sws/v3/search?stem=u_spud99_zz
+            timestamp:
+              description: Response timestamp (milli-seconds from epoch)
+              type: long
+              example: 1214343146201
+        data:
+          description: Group entries
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupReference'
+    GroupReference:
+      type: object
+      description: A group reference
+      properties:
+        regid:
+          description: Group regid
+          type: string
+        id:
+          description: Group id
+          type: string
+        name:
+          description: Groups's display name
+          type: string
+        via:
+          type: array
+          description: For effective searches these represent the indirect group paths.
+          items:
+            type: string
+            description: Group id
+      required:
+      - regid
+      - id
+      - name
+  responses:
+    406Error:
+      description: Not Acceptable (Accept or Content-type not application/json)
+externalDocs:
+  description: UW-IT Groups Web Service (GWS) API documentation
+  url: https://iam-tools.u.washington.edu/apis/gws/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

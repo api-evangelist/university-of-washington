@@ -1,0 +1,2703 @@
+openapi: 3.0.1
+info:
+  title: Identity Registration Web Service REST API V2
+  description: >+
+    This is the API specification for V2 of the UW-IT Identity Registry Rest
+    API.  Note that there are header and querystring paramemters not
+    documentered here--they can be found in the main API documentation at
+    https://wiki.cac.washington.edu/x/H5lNB.  The -type and -pretty querystring
+    parameters are included here for GET requests since they make testing much
+    easier.  
+
+  version: '2'
+servers:
+  - url: 'https://mango.u.washington.edu:646/registry/v2'
+paths:
+  /person:
+    get:
+      tags:
+        - Person
+      summary: >-
+        The Person resource supports several Source record types.  A source
+        record is information that describes a part of a person's overall
+        identity (e.g. for a student employee, their student source record would
+        contain their student information, and their employee source record
+        would contain their employee information).
+      description: >-
+        The Person endpoint allows searching for a person by certain
+        identifiers. Search parameters can be specified in a querystring or a
+        JSON payload.  
+
+         Note that you must search on one (and only one) of the primary searchable parameters: validid, ssn, studentid, lname, regid, or uwnetid.  However, you may also search by fname, lname, or birthdate in addition to the one of the primary searchable parameters. For example, you could search by lname and birthdate.  
+
+         IMPORTANT:  search parameters MUST NOT be left blank--only include parameters you are searching for in the querystring (the automatically generated URL below contains blank search parameters).   
+      parameters:
+        - name: validid
+          in: query
+          description: Source record identifier
+          schema:
+            type: string
+            format: string
+        - name: ssn
+          in: query
+          description: Social Security Number
+          schema:
+            type: string
+            format: string
+        - name: studentid
+          in: query
+          description: Student ID Number
+          schema:
+            type: string
+            format: string
+        - name: lname
+          in: query
+          description: Last Name
+          schema:
+            type: string
+            format: string
+        - name: regid
+          in: query
+          description: UW RegID
+          schema:
+            type: string
+            format: string
+        - name: uwnetid
+          in: query
+          description: UW NetID
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: An array of person objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonSearchResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+  '/person/{source}/{validid}':
+    get:
+      tags:
+        - Person
+      summary: >-
+        The Person resource supports several Source record types.  A source
+        record is information that describes a part of a person's overall
+        identity (e.g. for a student employee, their student source record would
+        contain their student information, and their employee source record
+        would contain their employee information).
+      description: >
+        The source endpoint allows you to retrieve the source record for a
+        person.  
+      parameters:
+        - name: source
+          in: path
+          description: >-
+            Source record type to query.  Options are: 'uwhr', 'oea', 'mugs',
+            'sdb'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: validid
+          in: path
+          description: Unique identifier for source record.  e.g. Employee ID number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: >-
+            Person record.  Schema contains list of all possible properties but
+            they may not all be present depending on source type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - Person
+      summary: >-
+        The source endpoint allows you to create a source record for a person. 
+        Note that there is a slightly altered format for PUT operations for the
+        uwhr source.  It is described separately under the "/person/uwhr/*"
+        endpoint.  
+      description: >-
+        The Person resource supports several Source record types.  A source
+        record is information that describes a part of a person's overall
+        identity (e.g. for a student employee, their student source record would
+        contain their student information, and their employee source record
+        wouldd contain their employee information). 
+
+         Note that which parameters are required varies from one source to another.  For more information see:   https://wiki.cac.washington.edu/x/tZpNB.
+      parameters:
+        - name: source
+          in: path
+          description: >-
+            Source record type to create.  Options are: 'oea', 'mugs', 'hepps',
+            'sdb'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: validid
+          in: path
+          description: Unique identifier for source record.  e.g. Student ID number
+          required: true
+          schema:
+            type: string
+            format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/PersonPutPostPayloadGeneric'
+        required: true
+      responses:
+        '200':
+          description: >-
+            Person record.  Schema contains list of all possible properties but
+            they may not all be present depending on source type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonPutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+    post:
+      tags:
+        - Person
+      summary: The source endpoint allows you to update a source record for a person.
+      description: >-
+        The Person resource supports several Source record types. A source
+        record is information that describes a part of a person's overall
+        identity (e.g. for a student employee, their student source record would
+        contain their student information, and their employee source record
+        would contain their employee information).
+
+
+
+          Note that which parameters are required varies from one source to
+        another.  For more information see:  
+        https://wiki.cac.washington.edu/x/tZpNB.
+      parameters:
+        - name: source
+          in: path
+          description: >-
+            Source record type to update.  Options are: 'uwhr', 'oea', 'mugs',
+            'sdb'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: validid
+          in: path
+          description: Unique identifier for source record.  e.g. Employee ID number
+          required: true
+          schema:
+            type: string
+            format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/PersonPutPostPayloadGeneric'
+        required: true
+      responses:
+        '200':
+          description: >-
+            Person record.  Schema contains list of all possible properties but
+            they may not all be present depending on source type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonPutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+  /person/uwhr/*:
+    put:
+      tags:
+        - Person
+      summary: >-
+        This endpoint is specifically for creating an employee source record for
+        the uwhr source.  
+      description: >-
+        This endpoint is a special case of the '/person/{source}/{validid}'
+        endpoint.  However, it doesn't take validid as an argument--it generates
+        a validid and returns it in the payload. 
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/PersonPutPostPayloadUWHR'
+        required: true
+      responses:
+        '200':
+          description: >-
+            Person record.  Schema contains list of all possible properties but
+            they may not all be present depending on source type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonPutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+  '/person/{source}/{validid}/pac':
+    post:
+      tags:
+        - Person
+      summary: The pac endpoint allows you to generate a PAC for a person.
+      description: >
+        A PAC is not automatically generated when a new person record is
+        created. A PAC can be created or updated by a POST operation on the pac
+        endpoint.  
+      parameters:
+        - name: source
+          in: path
+          description: >-
+            Source record type to update.  Options are: 'uwhr', 'oea', 'mugs',
+            'sdb'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: validid
+          in: path
+          description: Unique identifier for source record.  e.g. Employee ID number
+          required: true
+          schema:
+            type: string
+            format: string
+      responses:
+        '200':
+          description: Message confirming PAC creation. Includes PAC and expiration.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  person:
+                    type: array
+                    description: Response to PUT
+                    items:
+                      type: object
+                      properties:
+                        pac:
+                          type: string
+                          description: generated PAC
+                        expiration:
+                          type: string
+                          description: 'Expiration date of PAC YYYY-MM-DD hh:mm:ss'
+                        message:
+                          type: string
+                          description: response message (usually 'pac set')
+                  totalcount:
+                    type: integer
+                    description: Number of results returned
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /account:
+    get:
+      tags:
+        - Account
+      summary: >-
+        The account endpoint allows you to search for a record within the
+        account resource.  
+      description: >-
+        You can search for an account record based on certain criteria.  Search
+        parameters can be specified as a querystring or a JSON payload.  Only
+        one search parameter can be specified (any single query parameter, or a
+        single parameter specified in a JSON payload).  
+
+         For details on search behavior please see:  https://wiki.cac.washington.edu/x/l59NB.
+      parameters:
+        - name: validid
+          in: query
+          description: >-
+            Search by validid by specifying an identifier (e.g.
+            validid=uwhr=123456789)
+          schema:
+            type: string
+            format: string
+            default: uwhr=123456789
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: 'Account search results.  '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSearchResults'
+      x-codegen-request-body-name: payload
+  '/account/{accounttype}/{identifier}':
+    get:
+      tags:
+        - Account
+      summary: 'The accounttype endpoint allows you to look up a UW NetID.  '
+      description: >-
+        If you know the account type and identifier you can look up an account
+        directly.  
+      parameters:
+        - name: accounttype
+          in: path
+          description: >-
+            Type of account.  Options are: 'personal', 'temporary',
+            'administrator', 'holder', 'forwarding'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: identifier
+          in: path
+          description: 'Account identifier, generally a UW NetID'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: 'Account search results.  '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLookupResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/social/{recordidentifier}/{identifier}':
+    put:
+      tags:
+        - Social
+      summary: >-
+        The social identifier endpoint allows you to read, create, and update
+        social identities.
+      description: >-
+        You can register a social identity from Google or Facebook through
+        IRWS.  You obtain your user's data from their social login, and must
+        submit it to the registry to receive a response.  If the data you submit
+        is different from the existing data, the existing data will be
+        overwritten. 
+      parameters:
+        - name: recordidentifier
+          in: path
+          description: Social identity provider.  Allowed values are 'facebook' or 'google'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: identifier
+          in: path
+          description: >-
+            Unique identifier from social identity provider.  Must be URL
+            encoded if appropriate
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      requestBody:
+        description: JSON payload containing social login data
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/SocialQuery'
+        required: true
+      responses:
+        '200':
+          description: Social Identity query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SocialResult'
+      x-codegen-request-body-name: payload
+  '/pdsentry/{regid}/':
+    get:
+      tags:
+        - Pdsentry
+      summary: The pdsentry endpoint allows you to read person directory information.
+      description: >-
+        You can read person directory information through queries to this
+        endpoint.  Person entities can be referenced by regid.
+      parameters:
+        - name: regid
+          in: path
+          description: regid of person entity
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: Pdsentry query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdsEntryResult'
+        '301':
+          description: Moved Permanently
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/pdsentry/validid={source}={validid}/':
+    get:
+      tags:
+        - Pdsentry
+      summary: >-
+        The pdsentry search endpoint allows you to search for a person entity in
+        the person directory.
+      description: >-
+        You can search person directory information through queries to this
+        endpoint.  Person entities can be searched for by certain source
+        identifiers.  Note the syntax for pdsentry searches is not consistent
+        with other resources.  The supported search identifiers are lname,
+        regid, employeeid, studentid, uwnetid, and sdb
+      parameters:
+        - name: source
+          in: path
+          description: >-
+            Source record type to query. Options are: 'lname', 'regid',
+            'employeeid', 'studentid', 'uwnetid', 'sdb'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: validid
+          in: path
+          description: Identifier for source record. e.g. Employee ID number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: Pdsentry query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdsEntryResult'
+        '301':
+          description: Moved Permanently
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/name/{identifier}':
+    get:
+      tags:
+        - Name
+      summary: >-
+        The name endpoint allows you to read source-independent names associated
+        with person entities.
+      description: >-
+        The name resource gets a display name for a person entity.  The name is
+        independent of source records.  That is, it applies across all different
+        affiliations a person might have (student, employee, etc.).
+      parameters:
+        - name: identifier
+          in: path
+          description: >-
+            Instutional identifier for a source record associated with the
+            person.  The RegID, UW Employee ID Number, or UW Student Number can
+            be used.  
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: Name create/update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NameGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - Name
+      summary: >-
+        The name endpoint allows you to update source-independent names
+        associated with person entities.
+      description: >-
+        The name resource sets a display name for a person entity.  The name is
+        independent of source records.  That is, it applies across all different
+        affiliations a person might have (student, employee, etc.).
+      parameters:
+        - name: identifier
+          in: path
+          description: >-
+            Instutional identifier for a source record associated with the
+            person.  The RegID, UW Employee ID Number, or UW Student Number can
+            be used.  
+          required: true
+          schema:
+            type: string
+            format: string
+      requestBody:
+        description: JSON payload containing display name data.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/NameSetPayload'
+        required: true
+      responses:
+        '200':
+          description: Name create/update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NameSetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+  '/regid/{prior_regid}/join':
+    post:
+      tags:
+        - Regid
+      summary: The regid join endpoint allows you to join two regids.
+      description: >-
+        When two regids are joined, the regid specified in the querystring
+        'to_regid' becomes the regid for all records formerly associated with
+        {prior_regid}.
+      parameters:
+        - name: prior_regid
+          in: path
+          description: Regid to be abandoned.
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: to_regid
+          in: query
+          description: 'Regid to be the identifier on the new, merged record (target_regid).'
+          required: true
+          schema:
+            type: string
+            format: string
+      responses:
+        '200':
+          description: Join response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidJoinResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflicting arguments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/d_subscription.compat/{uwnetid}/{subscription_code}/{category_code}/{status_code}':
+    get:
+      tags:
+        - D_subscription.compat
+      summary: Query d_subscription records
+      description: >-
+        The d_subscription.compat resource allows you to retrieve d_subscription
+        records.
+      parameters:
+        - name: uwnetid
+          in: path
+          description: UW Network identifier (optional)
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: subscription_code
+          in: path
+          description: Subscription Code number (optional)
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: category_code
+          in: path
+          description: 'Category Code number (optional, requires status_code)'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: status_code
+          in: path
+          description: 'Status Code number (optional, requires category_code)'
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: >-
+            D_subscription record. Schema contains list of all possible
+            properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DsubscriptionCompatGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+    put:
+      tags:
+        - D_subscription.compat
+      summary: Create d_subscription record
+      description: >-
+        The d_subscription.compat resource allows you to create a new
+        d_subscription record.
+      parameters:
+        - name: uwnetid
+          in: path
+          description: UW Network identifier (optional)
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: subscription_code
+          in: path
+          description: Subscription Code number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: category_code
+          in: path
+          description: Category Code number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: status_code
+          in: path
+          description: Status Code number
+          required: true
+          schema:
+            type: string
+            format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/DsubscriptionCompatPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: D_subscription resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DsubscriptionCompatDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+    post:
+      tags:
+        - D_subscription.compat
+      summary: Update d_subscription record
+      description: >-
+        The d_subscription.compat resource allows you to update an existing
+        d_subscription record.
+      parameters:
+        - name: uwnetid
+          in: path
+          description: UW Network identifier (optional)
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: subscription_code
+          in: path
+          description: Subscription Code number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: category_code
+          in: path
+          description: Category Code number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: status_code
+          in: path
+          description: Status Code number
+          required: true
+          schema:
+            type: string
+            format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/DsubscriptionCompatPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: D_subscription resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DsubscriptionCompatDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+    delete:
+      tags:
+        - D_subscription.compat
+      summary: Delete d_subscription record
+      description: >-
+        The d_subscription.compat resource allows you to delete an existing
+        d_subscription record.
+      parameters:
+        - name: uwnetid
+          in: path
+          description: UW Network identifier (optional)
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: subscription_code
+          in: path
+          description: Subscription Code number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: category_code
+          in: path
+          description: Category Code number
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: status_code
+          in: path
+          description: Status Code number
+          required: true
+          schema:
+            type: string
+            format: string
+      responses:
+        '200':
+          description: D_subscription resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DsubscriptionCompatDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+  '/subscription.compat/{uwnetid}/{subscription_code}':
+    get:
+      tags:
+        - Subscription.compat
+      summary: Query subscription records
+      description: >-
+        The subscription.compat resource allows you to retrieve subscription
+        records.
+      parameters:
+        - name: uwnetid
+          in: path
+          description: UW Network identifier
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: subscription_code
+          in: path
+          description: Subscription Code number (optional)
+          required: true
+          schema:
+            type: string
+            format: string
+        - name: '-type'
+          in: query
+          description: Data return type
+          schema:
+            type: string
+            format: string
+            default: json
+        - name: '-pretty'
+          in: query
+          description: Request pretty-printed data for humans
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: >-
+            Subscription record. Schema contains list of all possible properties
+            but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionCompatGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+components:
+  schemas:
+    RegidJoinResult:
+      type: object
+      properties:
+        regid:
+          type: array
+          description: Array of regid objects (should generally contain only one).
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Internal API string
+              regid:
+                type: string
+                description: 'Regid on the new, merged record'
+              prior_regid:
+                type: string
+                description: Regid of the record that was joined to this one
+              message:
+                type: string
+                description: Result of operation.  Usually 'Entities Joined'
+        totalcount:
+          type: string
+          description: Number of results returned
+    PersonPutPostPayloadUWHR:
+      type: object
+      properties:
+        person:
+          type: array
+          description: >-
+            Array of person objects (should generally contain only one).  The
+            payload demonstrated is for the uwhr source.
+          items:
+            type: object
+            properties:
+              studentid:
+                type: string
+                description: Student ID Number (only use for student employees)
+              ssn:
+                type: string
+                description: Social Security Number
+              emp_ecs_code:
+                type: string
+                description: Employee ECS code
+              emp_status_code:
+                type: string
+                description: Employee status code
+              lname:
+                type: string
+                description: Last Name
+              fname:
+                type: string
+                description: First Name
+              mname:
+                type: string
+                description: Middle Name
+              birthdate:
+                type: string
+                description: Date of Birth YYYY-MM-DD
+              org_supervisor:
+                type: string
+                description: EID of employee supervisor
+              workday_home_email:
+                type: string
+                description: Employee Home Email Address
+                format: email
+              department:
+                type: string
+                description: Employee Department Name
+              priorid:
+                type: string
+                description: Historical Validid (Workday Reference ID)
+              status_code:
+                type: string
+                description: Status Code
+    PersonPutPostResult:
+      type: object
+      properties:
+        person:
+          type: array
+          description: Response to PUT
+          items:
+            type: object
+            properties:
+              count:
+                type: integer
+                description: Number of records affected
+              validid:
+                type: integer
+                description: Unique identifier for record
+              regid:
+                type: string
+                description: RegID of person
+              message:
+                type: string
+                description: >-
+                  Result of operation (usually 'record inserted' or 'record
+                  updated')
+    PersonSearchResult:
+      type: object
+      properties:
+        person:
+          type: array
+          description: Array of identity objects matching search parameters
+          items:
+            type: object
+            properties:
+              identity:
+                type: object
+                properties:
+                  regid:
+                    type: string
+                    description: Unique identifier for a person.
+                  lname:
+                    type: string
+                    description: Last name.
+                  fname:
+                    type: string
+                    description: First name.
+                  identifiers:
+                    type: object
+                    properties:
+                      uwhr:
+                        type: string
+                        description: UW HR source URL
+                      sdb:
+                        type: string
+                        description: UW SDB source URL
+                    description: >-
+                      list of source records for this person and associated URLs
+                      (example)
+        totalcount:
+          type: string
+          description: Number of results returned
+    PersonSearchQuery:
+      type: object
+      properties:
+        person:
+          type: array
+          description: List of search parameters
+          items:
+            type: object
+            properties:
+              lname:
+                type: string
+                description: Primary OR secondary search parameter
+              validid:
+                type: string
+                description: The unique identifier for a source record
+              studentid:
+                type: string
+              regid:
+                type: string
+              uwnetid:
+                type: string
+              fname:
+                type: string
+                description: Secondary search parameter
+              birthdate:
+                type: string
+                description: Secondary search parameter
+    Person:
+      type: object
+      properties:
+        person:
+          type: array
+          description: Array of person objects (should generally contain only one)
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Unique identifier for this source record
+              regid:
+                type: string
+                description: Unique identifier for a person
+              priorid:
+                type: string
+                description: Historical Validid (Workday Reference ID)
+              ssn:
+                type: string
+                description: Social Security Number
+              studentid:
+                type: integer
+                description: Student ID Number
+              lname:
+                type: string
+                description: Last name
+              fname:
+                type: string
+                description: First name
+              birthdate:
+                type: string
+                description: Date of birth YYYY-MM-DD
+              categories:
+                type: array
+                description: List of categories
+                items:
+                  type: object
+                  properties:
+                    category code:
+                      type: integer
+                      description: Category code
+                    category_name:
+                      type: string
+                      description: Category name
+              org_supervisor:
+                type: string
+                description: EID of employee supervisor
+              pac:
+                type: string
+                description: Private Access Code
+              wp_name:
+                type: string
+                description: >-
+                  Name to publish in White Pages Directory.  Pipe separated:
+                  First Last | Last | First
+              wp_department:
+                type: array
+                description: List of departments
+                items:
+                  type: string
+                  description: Description of department
+              wp_email:
+                type: array
+                description: List of email addresses
+                items:
+                  type: string
+                  description: Email address
+              wp_phone:
+                type: array
+                description: List of phone numbers
+                items:
+                  type: string
+                  description: Phone number
+              wp_title:
+                type: array
+                description: List of job titles
+                items:
+                  type: string
+                  description: Job title
+              wp_address:
+                type: array
+                description: List of physical addresses
+                items:
+                  type: string
+                  description: Physical address
+              wp_publish:
+                type: string
+                description: White pages publish flag
+              department:
+                type: string
+                description: Supervisory org name for primary position
+              mailstop:
+                type: string
+                description: Campus mailbox number
+              payroll_unit_code:
+                type: string
+                description: Payroll unit code
+              emp_ecs_code:
+                type: string
+                description: Employee ECS code
+              emp_status_code:
+                type: string
+                description: Employee status code
+              workday_home_email:
+                type: string
+                description: Employee Home Email Address
+              budget:
+                type: string
+                description: ''
+              workday_emp_status:
+                type: string
+                description: ''
+              workday_con_status:
+                type: string
+                description: ''
+              workday_aff_status:
+                type: string
+                description: ''
+              workday_last_active:
+                type: string
+                description: 'Last Active Classification (E, C, or A)'
+              source_code:
+                type: string
+                description: Validation source
+              source_name:
+                type: string
+                description: Validation source
+              status_code:
+                type: string
+                description: Status of source record
+              status_name:
+                type: string
+                description: Status of source record
+              in_feed:
+                type: string
+                description: ''
+              created:
+                type: string
+                description: Record created date
+              updated:
+                type: string
+                description: Record last updated date
+              expiration:
+                type: string
+                description: AVF Expiration Date
+        totalcount:
+          type: string
+          description: Number of results returned
+      description: >-
+        Note that the person object described here documents all possible
+        attributes for all possible sources.  No source will return all of these
+        attributes.
+    AccountSearchResults:
+      type: object
+      properties:
+        account:
+          type: array
+          description: List of identities returned
+          items:
+            type: object
+            properties:
+              ledger:
+                type: object
+                properties:
+                  regid:
+                    type: string
+                    description: Unique identifier for a person
+                  accounts:
+                    type: object
+                    properties:
+                      personal:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      temporary:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      administrator:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      holder:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      forwarding:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                    description: >-
+                      Accounts associated with this identity--most people will
+                      just have one of type 'personal'
+                description: Identity object (contains identity info for a single person)
+        totalcount:
+          type: string
+          description: Number of results returned
+    AccountSearchQuery:
+      type: object
+      properties:
+        account:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Search parameter
+                default: uwhr=123456789
+            description: ''
+    SocialQuery:
+      type: object
+      properties:
+        social:
+          type: array
+          description: test
+          items:
+            required:
+              - display_name
+              - fname
+              - lname
+            type: object
+            properties:
+              validid:
+                type: string
+                description: >-
+                  Unique identifier from social identity provider.  Must match
+                  validid defined in URL.  Must be URL encoded if appropriate.  
+              fname:
+                type: string
+                description: First Name
+              lname:
+                type: string
+                description: Last Name
+              display_name:
+                type: string
+                description: Display Name
+              contact_email:
+                type: string
+                description: Contact Email
+            description: test
+    SocialResult:
+      type: object
+      properties:
+        social:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: >-
+                  Unique identifier from social identity provider.  Must match
+                  validid defined in URL.  Must be URL encoded if appropriate.  
+              fname:
+                type: string
+                description: First Name
+              lname:
+                type: string
+                description: Last Name
+              display_name:
+                type: string
+                description: Display Name
+              contact_email:
+                type: string
+                description: Contact Email
+              regid:
+                type: string
+                description: ''
+              pac:
+                type: string
+                description: ''
+              category_code:
+                type: string
+                description: ''
+              category_name:
+                type: string
+                description: ''
+              source_code:
+                type: string
+                description: ''
+              source_name:
+                type: string
+                description: ''
+              status_code:
+                type: string
+                description: ''
+              status_name:
+                type: string
+                description: ''
+              in_feed:
+                type: string
+                description: ''
+              logname:
+                type: string
+                description: ''
+              created:
+                type: string
+                description: ''
+              updated:
+                type: string
+                description: ''
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    NameSetPayload:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            required:
+              - preferred_fname
+              - preferred_privacy
+              - preferred_sname
+            type: object
+            properties:
+              preferred_fname:
+                type: string
+                description: Preferred first name
+              preferred_mname:
+                type: string
+                description: Preferred middle name
+              preferred_sname:
+                type: string
+                description: Preferred surname
+              preferred_privacy:
+                type: string
+                description: Privacy flag for preferred name
+            description: ''
+    NameSetResult:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Result of operation
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    NameGetResult:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: RegID of person entity
+              formal_cname:
+                type: string
+                description: Concatenated legal name
+              formal_fname:
+                type: string
+                description: Legal first name of person entity
+              formal_sname:
+                type: string
+                description: Legal surname of person entity
+              formal_privacy:
+                type: string
+                description: Privacy flag for legal name
+              display_cname:
+                type: string
+                description: Concatenated display name
+              display_fname:
+                type: string
+                description: Display first name
+              display_sname:
+                type: string
+                description: Display surname
+              display_privacy:
+                type: string
+                description: Privacy flag for display name
+              preferred_cname:
+                type: string
+                description: Concatenated preferred name
+              preferred_fname:
+                type: string
+                description: Preferred first name
+              preferred_mname:
+                type: string
+                description: Preferred middle name
+              preferred_sname:
+                type: string
+                description: Preferred surname
+              preferred_privacy:
+                type: string
+                description: Privacy flag for preferred name
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    PersonGetPayload:
+      type: object
+      properties:
+        person:
+          type: array
+          description: >-
+            Array of person objects with a validid attribute (should generally
+            contain only one).
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Unique identifier for this source record
+    PersonPutPostPayloadGeneric:
+      type: object
+      properties:
+        person:
+          type: array
+          description: >-
+            Array of person objects (should generally contain only one).  The
+            payload demonstrated is for the uwhr source--other sources will be
+            similar.  See reference docs for exact attributes for other sources.
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Unique identifier for this source record
+              studentid:
+                type: string
+                description: Student ID Number (only use for student employees)
+              ssn:
+                type: string
+                description: Social Security Number
+              emp_ecs_code:
+                type: string
+                description: Employee ECS code
+              emp_status_code:
+                type: string
+                description: Employee status code
+              lname:
+                type: string
+                description: Last Name
+              fname:
+                type: string
+                description: First Name
+              mname:
+                type: string
+                description: Middle Name
+              birthdate:
+                type: string
+                description: Date of Birth YYYY-MM-DD
+              org_supervisor:
+                type: string
+                description: EID of employee supervisor
+              workday_home_email:
+                type: string
+                description: Employee Home Email Address
+                format: email
+              department:
+                type: string
+                description: Employee Department Name
+              priorid:
+                type: string
+                description: Historical Validid (Workday Reference ID)
+              status_code:
+                type: string
+                description: Status Code
+    AccountLookupResult:
+      type: object
+      properties:
+        account:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+              accid:
+                type: string
+              validid:
+                type: string
+              uid:
+                type: string
+              luid:
+                type: string
+              account:
+                type: string
+              disenfran:
+                type: string
+              netid_code:
+                type: string
+              netid_name:
+                type: string
+              status_code:
+                type: string
+              status_name:
+                type: string
+              logname:
+                type: string
+              created:
+                type: string
+              updated:
+                type: string
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    PdsEntryResult:
+      type: object
+      properties:
+        pdsentry:
+          type: array
+          description: Array of PDS entry objects
+          items:
+            type: object
+            properties:
+              regid:
+                type: string
+                description: RegID
+              entry:
+                type: object
+                properties:
+                  objectclass:
+                    type: array
+                    description: Array of objectClass
+                    items:
+                      type: string
+                      description: >-
+                        Object class that may contain top, uwEntity,
+                        uwPrincipal, uwPerson, uwEWPPerson, uwWPPerson,
+                        organizationalPerson, inetOrgPerson, eduPerson and
+                        others
+                  serialNumber:
+                    type: string
+                    description: Serial Number
+                  uwRegID:
+                    type: string
+                    description: UW RegID
+                  uwTest:
+                    type: string
+                    description: UW Test
+                  uwPriorRegID:
+                    type: array
+                    description: Array of Prior RegIDs
+                    items:
+                      type: string
+                      description: Prior RegID
+                  uwEmployeeID:
+                    type: string
+                    description: UW EmployeeID
+                  uwEmployeeActive:
+                    type: string
+                    description: UW Employee Active Flag
+                  uwEWPPosition:
+                    type: array
+                    description: Object class entries
+                    items:
+                      type: object
+                      properties:
+                        uwEWPDept:
+                          type: string
+                          description: UW EWP Department
+                        uwEWPTitle:
+                          type: string
+                          description: UW EWP Title
+                        primary:
+                          type: string
+                          description: Primary Position (Y/N)
+                  uwEWPEmail:
+                    type: array
+                    description: Array of UW Email Addresses
+                    items:
+                      type: string
+                      description: UW EWP Email
+                  uwEWPPhone:
+                    type: array
+                    description: Array of UW Phone Numbers
+                    items:
+                      type: string
+                      description: UW EWP Phone
+                  uwEWPAddr:
+                    type: array
+                    description: Array of Employee White Pages addresss
+                    items:
+                      type: string
+                      description: EWP Address
+                  uwEmployeeHomeDepartment:
+                    type: string
+                    description: UW Employee Home Department
+                  uwEmployeeMailstop:
+                    type: string
+                    description: UW Employee Mail Stop
+                  uwStudentSystemKey:
+                    type: string
+                    description: UW Student System Key
+                  uwStudentID:
+                    type: string
+                    description: UW Student ID
+                  uwStudentActive:
+                    type: string
+                    description: UW Student Active Flag
+                  uwSWPName:
+                    type: string
+                    description: UW Student White Pages name
+                  uwSWPMajor:
+                    type: array
+                    description: Array of Student Majors
+                    items:
+                      type: string
+                      description: Student major
+                  uwSWPEmail:
+                    type: string
+                    description: UW Student Email address
+                  uwSWPPhone:
+                    type: string
+                    description: UW Student White Pages Phone Number
+                  uwSWPClass:
+                    type: string
+                    description: UW Student White Pages Class
+                  uwDevelopmentID:
+                    type: string
+                    description: UW Development ID
+                  uwDevelopmentActive:
+                    type: string
+                    description: UW Development Active Flag
+                  uwEWPPublish:
+                    type: string
+                    description: UW EWP Publish
+                  uwSWPPublish:
+                    type: string
+                    description: UW SWP Publish
+                  uwWPPublish:
+                    type: string
+                    description: UW White Pages Publish
+                  displayName:
+                    type: string
+                    description: Display Name
+                  uwPersonRegisteredName:
+                    type: string
+                    description: UW Person Registered Name
+                  uwPersonRegisteredFirstMiddle:
+                    type: string
+                    description: UW Person Registered First Middle Name
+                  uwPersonRegisteredSurname:
+                    type: string
+                    description: UW Person Registered Surname
+                  cn:
+                    type: string
+                    description: Name
+                  sn:
+                    type: string
+                    description: Surname
+                  uwPersonPreferredName:
+                    type: string
+                    description: UW Person Preferred Name
+                  uwPersonPreferredFirst:
+                    type: string
+                    description: UW Person Preferred First Name
+                  uwPersonPreferredMiddle:
+                    type: string
+                    description: UW Person Preferred Middle Name
+                  uwPersonPreferredSurname:
+                    type: string
+                    description: UW Person Preferred Surname
+                  uwEWPName:
+                    type: string
+                    description: UW EWP Name
+                  uwNetID:
+                    type: string
+                    description: UW NetID
+                  uidNumber:
+                    type: string
+                    description: UID Number
+                  uwPriorNetID:
+                    type: array
+                    description: Array of Prior UW NetIDs
+                    items:
+                      type: string
+                      description: Prior UWNetID
+                  eduPersonAffiliation:
+                    type: array
+                    description: Array of eduPersonAffiliations
+                    items:
+                      type: string
+                      description: >-
+                        eduPerson affiliation may contain member, alum, staff,
+                        employee and other items
+              status:
+                type: string
+                description: Publish status
+        totalcount:
+          type: string
+          description: Number of pdsentry objects returned
+      description: PDS entry results.  Not all attributes will be returned for all records.
+    DsubscriptionCompatGetResult:
+      type: object
+      properties:
+        d_subscription.compat:
+          type: array
+          description: Array of d_subscription objects (typically contains only one)
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              subscription_code:
+                type: string
+                description: Subscription code
+              subscription_name:
+                type: string
+                description: Subscription name
+              subscription_data:
+                type: string
+                description: Subscription data
+              category_code:
+                type: string
+                description: Category code
+              permit:
+                type: string
+                description: Permit flag
+              deny:
+                type: string
+                description: Deny flag
+              expiration:
+                type: string
+                description: Expiration date
+              notifyid:
+                type: string
+                description: Notification identifier
+              status_code:
+                type: string
+                description: Status code
+              result:
+                type: string
+                description: Result of evaluated rule
+              post_url:
+                type: string
+                description: URL to post updates
+        totalcount:
+          type: string
+          description: Number of d_subscription objects returned
+      description: >-
+        Note that the d_subscription object described here documents all
+        possible attributes.  Not all attributes will be returned for all
+        records.
+    DsubscriptionCompatPutPostPayload:
+      type: object
+      properties:
+        d_subscription.compat:
+          type: array
+          description: >-
+            Array of d_subscription objects.  See reference docs for exact
+            attributes.
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              subscription_code:
+                type: string
+                description: Subscription code
+              category_code:
+                type: string
+                description: Category code
+              permit:
+                type: string
+                description: Permit flag
+              deny:
+                type: string
+                description: Deny flag
+              status_code:
+                type: string
+                description: Status code
+    DsubscriptionCompatDeletePutPostResult:
+      type: object
+      properties:
+        d_subscription.compat:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: >-
+                  Result of operation (usually 'record inserted' or 'record
+                  updated')
+    SubscriptionCompatGetResult:
+      type: object
+      properties:
+        account.subscription.compat:
+          type: array
+          description: >-
+            Array of subscription objects (also contains evaluated
+            subscriptions)
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              subscription_code:
+                type: string
+                description: Subscription code
+              subscription_name:
+                type: string
+                description: Subscription name
+              subscription_data:
+                type: string
+                description: Subscription data
+              category_code:
+                type: string
+                description: Category code
+              permit:
+                type: string
+                description: Permitted status flag
+              deny:
+                type: string
+                description: Denied status flag
+              notify_code:
+                type: string
+                description: Notification code
+              status_code:
+                type: string
+                description: Status code
+              status_name:
+                type: string
+                description: Status name
+              logname:
+                type: string
+                description: Last change author
+              created:
+                type: string
+                description: Record created date
+              updated:
+                type: string
+                description: Record last updated date
+              post_url:
+                type: string
+                description: URL to post updates
+        totalcount:
+          type: string
+          description: Number of subscription objects returned
+      description: >-
+        Note that the subscription object described here documents all possible
+        attributes.  Not all attributes will be returned for all records.

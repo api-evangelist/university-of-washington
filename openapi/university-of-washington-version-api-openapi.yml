@@ -1,14 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Version API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
-  contact:
-    name: Enterprise Web Services & Events Team
-    url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+  title: University Of Washington Version API
+  version: '1.0'
+  description: 'Operations tagged Version across 2 of this provider''s published API definitions: university-of-washington-idcard-web-service.yaml, university-of-washington-student-web-service.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /idcard
+- url: /student
 tags:
 - name: Version
 paths:
@@ -17,7 +14,37 @@ paths:
       tags:
       - Version
       summary: Get available versions
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Service Version\",\r\n                    \"sws_guid\" : \"3BFD2A3E-5BAE-47D3-9BE2-4A603320F632\",\r\n                    \"LongDescription\" : \"Get available versions\",\r\n                    \"ShortDescription\" : \"Get available versions\",\r\n                    \"OriginatingSchema\" : [{ \"source\": \"hardcoded\" }],\r\n                    \"Notes\" : \"The version list resource lists the contract versions that are currently available for the service.\r\n                                Each contract version in the list links to a resource list which provides a list of search resources.\r\n                                Also provided in this resource are the code versions that supports the given contract versions.\r\n                                The code version is divided into 2 types:\r\n                                    Domain Core Version\r\n                                    Service Version\r\n                                This is primarily useful for change management.\",\r\n                    \"Links\" : [],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Service Version",
+
+        "sws_guid" : "3BFD2A3E-5BAE-47D3-9BE2-4A603320F632",
+
+        "LongDescription" : "Get available versions",
+
+        "ShortDescription" : "Get available versions",
+
+        "OriginatingSchema" : [{ "source": "hardcoded" }],
+
+        "Notes" : "The version list resource lists the contract versions that are currently available for the service.
+
+        Each contract version in the list links to a resource list which provides a list of search resources.
+
+        Also provided in this resource are the code versions that supports the given contract versions.
+
+        The code version is divided into 2 types:
+
+        Domain Core Version
+
+        Service Version
+
+        This is primarily useful for change management.",
+
+        "Links" : [],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetVersions
       responses:
         '200':
@@ -57,74 +84,10 @@ paths:
           description: InternalServerError
         '503':
           description: ServiceUnavailable
+    servers:
+    - url: /idcard
 components:
   schemas:
-    VersionListViewModel:
-      type: object
-      properties:
-        metadata:
-          type: string
-          nullable: true
-        pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
-        previousPageStart:
-          type: string
-          description: The counter value for the start of the previous search results page.
-          nullable: true
-          readOnly: true
-        pageSize:
-          type: string
-          description: Requested number of records for the current search results page.
-          nullable: true
-        pageStart:
-          type: string
-          description: The counter value for the start of the current search results page.
-          nullable: true
-        nextPageStart:
-          type: string
-          description: The counter value for the start of the next search results page.
-          nullable: true
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        listModel:
-          $ref: '#/components/schemas/IVersionList'
-        listViewModel:
-          type: array
-          items:
-            $ref: '#/components/schemas/VersionViewModel'
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        current:
-          $ref: '#/components/schemas/VersionViewModel'
-        supportedVersions:
-          type: array
-          items:
-            $ref: '#/components/schemas/VersionViewModel'
-          nullable: true
-          readOnly: true
-        serviceVersion:
-          type: string
-          nullable: true
-        domainCoreVersion:
-          type: string
-          nullable: true
-        environment:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Version List Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\r\n    \"TargetOperationId\" : [\"VersionList\"],\r\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\r\n}"
     IVersionList:
       type: object
       properties:
@@ -139,65 +102,20 @@ components:
           format: date-time
           readOnly: true
         serviceCodeVersion:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         domainCoreVersion:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         list:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/VersionModel'
-          nullable: true
       additionalProperties: false
-    VersionViewModel:
-      type: object
-      properties:
-        metadata:
-          type: string
-          nullable: true
-        pageCount:
-          type: string
-          description: "Actual number of records on the current search results page. This must be set by the view in order\r\nfor paging to work."
-          nullable: true
-        previousPageStart:
-          type: string
-          description: The counter value for the start of the previous search results page.
-          nullable: true
-          readOnly: true
-        pageSize:
-          type: string
-          description: Requested number of records for the current search results page.
-          nullable: true
-        pageStart:
-          type: string
-          description: The counter value for the start of the current search results page.
-          nullable: true
-        nextPageStart:
-          type: string
-          description: The counter value for the start of the next search results page.
-          nullable: true
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: "The page start offset. Since sources are generally 0 based and the view\r\ndefaults to 1 based, our offset defaults to -1."
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        versionNumber:
-          type: string
-          nullable: true
-          readOnly: true
-        href:
-          type: string
-          format: uri
-          nullable: true
-          readOnly: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Version Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"EWSE.Version\"}],\r\n    \"TargetOperationId\" : [\"Version\"],\r\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\r\n}"
     ViewFormats:
       enum:
       - 1
@@ -210,14 +128,209 @@ components:
       type: object
       properties:
         key:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         metadata:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         versionNumber:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isCurrent:
           type: boolean
       additionalProperties: false
+    VersionListViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        listModel:
+          $ref: '#/components/schemas/IVersionList'
+        listViewModel:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VersionViewModel'
+        title:
+          type:
+          - string
+          - 'null'
+        current:
+          $ref: '#/components/schemas/VersionViewModel'
+        supportedVersions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VersionViewModel'
+          readOnly: true
+        serviceVersion:
+          type:
+          - string
+          - 'null'
+        domainCoreVersion:
+          type:
+          - string
+          - 'null'
+        environment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Version List Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\n    \"TargetOperationId\" : [\"VersionList\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+    VersionViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        versionNumber:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        href:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Version Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.Version\"}],\n    \"TargetOperationId\" : [\"Version\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+    VersionListViewModel_2:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/VersionViewModel_2'
+        SupportedVersions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VersionViewModel_2'
+          readOnly: true
+        ServiceVersion:
+          type:
+          - string
+          - 'null'
+        DomainCoreVersion:
+          type:
+          - string
+          - 'null'
+        Environment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Version List Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\n    \"TargetOperationId\" : [\"VersionList\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+    VersionViewModel_2:
+      type: object
+      properties:
+        VersionNumber:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Version Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.Version\"}],\n    \"TargetOperationId\" : [\"Version\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+x-refined-from:
+- university-of-washington-idcard-web-service.yaml
+- university-of-washington-student-web-service.yaml
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

@@ -1,0 +1,156 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V3…
+  description: 'This is the specification for Identity Registration Web Service REST API V3. See the supplementary API documentation at https://wiki.cac.washington.edu/x/jI8qBQ for header/querystring paramemters, payload attributes, function descriptions and example code not included here. Note: The -type and -pretty querystring parameters are described here for GET requests as they make testing much easier.'
+  version: '3'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: entity.sponsor.avf
+paths:
+  /entity.sponsor.avf/{sponsorid}:
+    get:
+      tags:
+      - entity.sponsor.avf
+      summary: Query AVF sponsorships
+      description: The entity.sponsor.avf resource allows you to retrieve data about AVF sponsorships.
+      parameters:
+      - name: sponsorid
+        in: path
+        description: Sponsor identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: AVF sponsorship record. Schema contains list of all possible properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitySponsorAvfGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getEntitySponsorAvfBySponsorid
+      x-operation-id-source: derived
+components:
+  schemas:
+    EntitySponsorAvfGetResult:
+      type: object
+      properties:
+        entity.sponsor.avf:
+          type: array
+          description: 'Array of entity.sponsor.avf objects.  Note: Information pertains to sponsee.'
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Entity identifier
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              lname:
+                type: string
+                description: Primary last name
+              fname:
+                type: string
+                description: Primary first name
+              expiration:
+                type: string
+                description: Record expiration date
+              comment_code:
+                type: string
+                description: Comment code
+              comment_name:
+                type: string
+                description: Comment name
+              category_code:
+                type: string
+                description: Category code
+              category_name:
+                type: string
+                description: Category name
+              status_code:
+                type: string
+                description: Status code
+              status_name:
+                type: string
+                description: Status name
+        totalcount:
+          type: string
+          description: Number of entity.sponsor.avf objects returned
+      description: Note that the entity.sponsor.avf object described here documents all possible attributes.  Not all attributes will be returned for all records.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv3/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv3/irwsv3.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml

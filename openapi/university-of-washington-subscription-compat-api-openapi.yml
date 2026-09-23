@@ -1,0 +1,173 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V2…
+  description: This is the API specification for V2 of the UW-IT Identity Registry Rest API. Note that there are header and querystring paramemters not documentered here--they can be found in the main API documentation at https://wiki.cac.washington.edu/x/H5lNB. The -type and -pretty querystring parameters are included here for GET requests since they make testing much easier.
+  version: '2'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v2
+tags:
+- name: Subscription.compat
+paths:
+  /subscription.compat/{uwnetid}/{subscription_code}:
+    get:
+      tags:
+      - Subscription.compat
+      summary: Query subscription records
+      description: The subscription.compat resource allows you to retrieve subscription records.
+      parameters:
+      - name: uwnetid
+        in: path
+        description: UW Network identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: subscription_code
+        in: path
+        description: Subscription Code number (optional)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Subscription record. Schema contains list of all possible properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionCompatGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getSubscriptionCompatByUwnetidBySubscriptionCode
+      x-operation-id-source: derived
+components:
+  schemas:
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    SubscriptionCompatGetResult:
+      type: object
+      properties:
+        account.subscription.compat:
+          type: array
+          description: Array of subscription objects (also contains evaluated subscriptions)
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              subscription_code:
+                type: string
+                description: Subscription code
+              subscription_name:
+                type: string
+                description: Subscription name
+              subscription_data:
+                type: string
+                description: Subscription data
+              category_code:
+                type: string
+                description: Category code
+              permit:
+                type: string
+                description: Permitted status flag
+              deny:
+                type: string
+                description: Denied status flag
+              notify_code:
+                type: string
+                description: Notification code
+              status_code:
+                type: string
+                description: Status code
+              status_name:
+                type: string
+                description: Status name
+              logname:
+                type: string
+                description: Last change author
+              created:
+                type: string
+                description: Record created date
+              updated:
+                type: string
+                description: Record last updated date
+              post_url:
+                type: string
+                description: URL to post updates
+        totalcount:
+          type: string
+          description: Number of subscription objects returned
+      description: Note that the subscription object described here documents all possible attributes.  Not all attributes will be returned for all records.
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv2/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv2/irwsv2.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v2.yaml

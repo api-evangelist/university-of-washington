@@ -1,0 +1,208 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V3 Entity.pac API
+  description: 'This is the specification for Identity Registration Web Service REST API V3. See the supplementary API documentation at https://wiki.cac.washington.edu/x/jI8qBQ for header/querystring paramemters, payload attributes, function descriptions and example code not included here. Note: The -type and -pretty querystring parameters are described here for GET requests as they make testing much easier.'
+  version: '3'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: entity.pac
+paths:
+  /entity.pac/{validid}/{source_code}:
+    post:
+      tags:
+      - entity.pac
+      summary: Generate validation record PAC
+      description: The entity.pac resource allows you to generate a PAC for a validation record.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: source_code
+        in: path
+        description: Source Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Message confirming PAC creation. Includes PAC and expiration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityPacPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: postEntityPacByValididBySourceCode
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - entity.pac
+      summary: Delete validation record PAC
+      description: The entity.pac resource allows you to remove a PAC from a validation record.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: source_code
+        in: path
+        description: Source Code number
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Entity.pac resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityPacDeleteResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: deleteEntityPacByValididBySourceCode
+      x-operation-id-source: derived
+components:
+  schemas:
+    EntityPacDeleteResult:
+      type: object
+      properties:
+        entity.pac:
+          type: array
+          description: Response to DELETE
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Response message (usually 'pac set')
+    EntityPacPostResult:
+      type: object
+      properties:
+        entity.pac:
+          type: array
+          description: Response to POST
+          items:
+            type: object
+            properties:
+              pac:
+                type: string
+                description: generated PAC
+              expiration:
+                type: string
+                description: Expiration date of PAC YYYY-MM-DD hh:mm:ss
+              message:
+                type: string
+                description: Result of operation (usually 'pac set')
+        totalcount:
+          type: string
+          description: Number of entity.pac objects returned
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv3/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv3/irwsv3.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml

@@ -1,0 +1,389 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V2 Pdsentry API
+  description: This is the API specification for V2 of the UW-IT Identity Registry Rest API. Note that there are header and querystring paramemters not documentered here--they can be found in the main API documentation at https://wiki.cac.washington.edu/x/H5lNB. The -type and -pretty querystring parameters are included here for GET requests since they make testing much easier.
+  version: '2'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v2
+tags:
+- name: Pdsentry
+paths:
+  /pdsentry/{regid}/:
+    get:
+      tags:
+      - Pdsentry
+      summary: The pdsentry endpoint allows you to read person directory information
+      description: You can read person directory information through queries to this endpoint. Person entities can be referenced by regid.
+      parameters:
+      - name: regid
+        in: path
+        description: regid of person entity
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Pdsentry query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdsEntryResult'
+        '301':
+          description: Moved Permanently
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getPdsentryByRegid
+      x-operation-id-source: derived
+  /pdsentry/validid={source}={validid}/:
+    get:
+      tags:
+      - Pdsentry
+      summary: The pdsentry search endpoint allows you to search for a person entity in the…
+      description: You can search person directory information through queries to this endpoint. Person entities can be searched for by certain source identifiers. Note the syntax for pdsentry searches is not consistent with other resources. The supported search identifiers are lname, regid, employeeid, studentid, uwnetid, and sdb
+      parameters:
+      - name: source
+        in: path
+        description: 'Source record type to query. Options are: ''lname'', ''regid'', ''employeeid'', ''studentid'', ''uwnetid'', ''sdb'''
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: validid
+        in: path
+        description: Identifier for source record. e.g. Employee ID number
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Pdsentry query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdsEntryResult'
+        '301':
+          description: Moved Permanently
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getPdsentryValidid={source}={validid}
+      x-operation-id-source: derived
+components:
+  schemas:
+    PdsEntryResult:
+      type: object
+      properties:
+        pdsentry:
+          type: array
+          description: Array of PDS entry objects
+          items:
+            type: object
+            properties:
+              regid:
+                type: string
+                description: RegID
+              entry:
+                type: object
+                properties:
+                  objectclass:
+                    type: array
+                    description: Array of objectClass
+                    items:
+                      type: string
+                      description: Object class that may contain top, uwEntity, uwPrincipal, uwPerson, uwEWPPerson, uwWPPerson, organizationalPerson, inetOrgPerson, eduPerson and others
+                  serialNumber:
+                    type: string
+                    description: Serial Number
+                  uwRegID:
+                    type: string
+                    description: UW RegID
+                  uwTest:
+                    type: string
+                    description: UW Test
+                  uwPriorRegID:
+                    type: array
+                    description: Array of Prior RegIDs
+                    items:
+                      type: string
+                      description: Prior RegID
+                  uwEmployeeID:
+                    type: string
+                    description: UW EmployeeID
+                  uwEmployeeActive:
+                    type: string
+                    description: UW Employee Active Flag
+                  uwEWPPosition:
+                    type: array
+                    description: Object class entries
+                    items:
+                      type: object
+                      properties:
+                        uwEWPDept:
+                          type: string
+                          description: UW EWP Department
+                        uwEWPTitle:
+                          type: string
+                          description: UW EWP Title
+                        primary:
+                          type: string
+                          description: Primary Position (Y/N)
+                  uwEWPEmail:
+                    type: array
+                    description: Array of UW Email Addresses
+                    items:
+                      type: string
+                      description: UW EWP Email
+                  uwEWPPhone:
+                    type: array
+                    description: Array of UW Phone Numbers
+                    items:
+                      type: string
+                      description: UW EWP Phone
+                  uwEWPAddr:
+                    type: array
+                    description: Array of Employee White Pages addresss
+                    items:
+                      type: string
+                      description: EWP Address
+                  uwEmployeeHomeDepartment:
+                    type: string
+                    description: UW Employee Home Department
+                  uwEmployeeMailstop:
+                    type: string
+                    description: UW Employee Mail Stop
+                  uwStudentSystemKey:
+                    type: string
+                    description: UW Student System Key
+                  uwStudentID:
+                    type: string
+                    description: UW Student ID
+                  uwStudentActive:
+                    type: string
+                    description: UW Student Active Flag
+                  uwSWPName:
+                    type: string
+                    description: UW Student White Pages name
+                  uwSWPMajor:
+                    type: array
+                    description: Array of Student Majors
+                    items:
+                      type: string
+                      description: Student major
+                  uwSWPEmail:
+                    type: string
+                    description: UW Student Email address
+                  uwSWPPhone:
+                    type: string
+                    description: UW Student White Pages Phone Number
+                  uwSWPClass:
+                    type: string
+                    description: UW Student White Pages Class
+                  uwDevelopmentID:
+                    type: string
+                    description: UW Development ID
+                  uwDevelopmentActive:
+                    type: string
+                    description: UW Development Active Flag
+                  uwEWPPublish:
+                    type: string
+                    description: UW EWP Publish
+                  uwSWPPublish:
+                    type: string
+                    description: UW SWP Publish
+                  uwWPPublish:
+                    type: string
+                    description: UW White Pages Publish
+                  displayName:
+                    type: string
+                    description: Display Name
+                  uwPersonRegisteredName:
+                    type: string
+                    description: UW Person Registered Name
+                  uwPersonRegisteredFirstMiddle:
+                    type: string
+                    description: UW Person Registered First Middle Name
+                  uwPersonRegisteredSurname:
+                    type: string
+                    description: UW Person Registered Surname
+                  cn:
+                    type: string
+                    description: Name
+                  sn:
+                    type: string
+                    description: Surname
+                  uwPersonPreferredName:
+                    type: string
+                    description: UW Person Preferred Name
+                  uwPersonPreferredFirst:
+                    type: string
+                    description: UW Person Preferred First Name
+                  uwPersonPreferredMiddle:
+                    type: string
+                    description: UW Person Preferred Middle Name
+                  uwPersonPreferredSurname:
+                    type: string
+                    description: UW Person Preferred Surname
+                  uwEWPName:
+                    type: string
+                    description: UW EWP Name
+                  uwNetID:
+                    type: string
+                    description: UW NetID
+                  uidNumber:
+                    type: string
+                    description: UID Number
+                  uwPriorNetID:
+                    type: array
+                    description: Array of Prior UW NetIDs
+                    items:
+                      type: string
+                      description: Prior UWNetID
+                  eduPersonAffiliation:
+                    type: array
+                    description: Array of eduPersonAffiliations
+                    items:
+                      type: string
+                      description: eduPerson affiliation may contain member, alum, staff, employee and other items
+              status:
+                type: string
+                description: Publish status
+        totalcount:
+          type: string
+          description: Number of pdsentry objects returned
+      description: PDS entry results.  Not all attributes will be returned for all records.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv2/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv2/irwsv2.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v2.yaml

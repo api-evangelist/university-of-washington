@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: IdCard Web Service (IdCardWS) Campus Notice API
-  description: IdCard Web Service (IdCardWS) provides a RESTful API to UW IdCard data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/idcardws-users to get notifications about planned outages, support and the announcement of new features.
+  title: Student Web Service (SWS) Notice API
+  description: Student Web Service (SWS) provides a RESTful API to access and update central student data. Subscribe to http://mailman.u.washington.edu/mailman/listinfo/sws-client-app-dev to get notifications about planned outages, support and the announcement of new features.
   contact:
     name: Enterprise Web Services & Events Team
     url: https://itconnect.uw.edu/service/enterprise-web-services-and-events/
-    email: idcardws-support@uw.edu
-  version: v1
+    email: sws-support@uw.edu
+  version: v5
 servers:
-- url: /idcard
+- url: /student
 tags:
 - name: Notice
 paths:
@@ -17,7 +17,37 @@ paths:
       tags:
       - Notice
       summary: Get the notices for the specified student
-      description: "<pre>\r\n                {\r\n                    \"DisplayTitle\" : \"Notice\",\r\n                    \"ews_guid\" : \"DBDF33C9-EB9E-4C67-8E71-61477BE427A9\",\r\n                    \"LongDescription\" : \"Display the notices that should be relevant to the specified student at the time of request.\r\n                                          (e.g. alert notice, general notice, dates and deadlines notice, checklist item notice)\",\r\n                    \"ShortDescription\" : \"Notices for a student\",\r\n                    \"OriginatingSchema\" : [ { \"source\":\"sdb\" } ],\r\n                    \"Notes\" : \"This resource requires any of the following ASTRA roles:\r\n                                 - sws:Support\r\n                                 - sws:NoticeReader\r\n                               This resource supports the following authentication types:\r\n                                 - X.509 Certificate\r\n                                 - NetID \",\r\n                    \"Links\" : [ \"\" ],\r\n                    \"Synonyms\" : []\r\n                }\r\n                </pre>"
+      description: '{
+
+        "DisplayTitle" : "Notice",
+
+        "ews_guid" : "DBDF33C9-EB9E-4C67-8E71-61477BE427A9",
+
+        "LongDescription" : "Display the notices that should be relevant to the specified student at the time of request.
+
+        (e.g. alert notice, general notice, dates and deadlines notice, checklist item notice)",
+
+        "ShortDescription" : "Notices for a student",
+
+        "OriginatingSchema" : [ { "source":"sdb" } ],
+
+        "Notes" : "This resource requires any of the following ASTRA roles:
+
+        - sws:Support
+
+        - sws:NoticeReader
+
+        This resource supports the following authentication types:
+
+        - X.509 Certificate
+
+        - NetID ",
+
+        "Links" : [ "" ],
+
+        "Synonyms" : []
+
+        }'
       operationId: GetNotice
       parameters:
       - name: uwregid
@@ -70,74 +100,86 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
+    NoticeAttributeViewModel:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.nm\" }\n                ],\n                \"TechnicalDescription\": \"Notice attribute name\"\n            }\n            </pre>"
+        DataType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.typ\" }\n                ],\n                \"TechnicalDescription\": \"Data Type\"\n            }\n            </pre>"
+        Value:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.val\" }\n                ],\n                \"TechnicalDescription\": \"Value\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Notice Attribute Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}]\n}"
+    NoticeViewModel:
+      type: object
+      properties:
+        NoticeAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/NoticeAttributeViewModel'
+        NoticeCategory:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.msg.cat\" }\n                ],\n                \"TechnicalDescription\": \"Notice Category\"\n            }\n            </pre>"
+        NoticeContent:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.msg.txt\" }\n                ],\n                \"TechnicalDescription\": \"Notice Content\"\n            }\n            </pre>"
+        NoticeType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.msg.typ\" }\n                ],\n                \"TechnicalDescription\": \"Notice Type\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Notice Model\"\n}"
     MainNoticeViewModel:
       type: object
       properties:
         Person:
           $ref: '#/components/schemas/PersonResourceUri'
         Notices:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/NoticeViewModel'
-          nullable: true
       additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Person Notices Model\"\r\n}"
-    NoticeViewModel:
-      type: object
-      properties:
-        NoticeAttributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/NoticeAttributeViewModel'
-          nullable: true
-        NoticeCategory:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.msg.cat\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice Category\"\r\n            }\r\n            </pre>"
-          nullable: true
-        NoticeContent:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.msg.txt\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice Content\"\r\n            }\r\n            </pre>"
-          nullable: true
-        NoticeType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.msg.typ\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice Type\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Notice Model\"\r\n}"
-    PersonResourceUri:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\r\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\r\n                ],\r\n                \"TechnicalDescription\": \"This field is resource specific\"\r\n            }\r\n            </pre>"
-          nullable: true
-        RegID:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.regid\" }\r\n                ],\r\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Pronouns:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\r\n                ],\r\n                \"TechnicalDescription\": \"\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Href:
-          type: string
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Person Resource URI\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\r\n    \"TargetOperationId\" : [\"GetPerson\"]\r\n}"
-    NoticeAttributeViewModel:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.attr.nm\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Notice attribute name\"\r\n            }\r\n            </pre>"
-          nullable: true
-        DataType:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.attr.typ\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Data Type\"\r\n            }\r\n            </pre>"
-          nullable: true
-        Value:
-          type: string
-          description: "<pre>\r\n            {\r\n                \"OriginatingSchema\" : [\r\n                    { \"source\":\"SDB.SWI102.attr.val\" }\r\n                ],\r\n                \"TechnicalDescription\": \"Value\"\r\n            }\r\n            </pre>"
-          nullable: true
-      additionalProperties: false
-      description: "{\r\n    \"DisplayTitle\" : \"Notice Attribute Model\",\r\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}]\r\n}"
+      description: "{\n    \"DisplayTitle\" : \"Person Notices Model\"\n}"

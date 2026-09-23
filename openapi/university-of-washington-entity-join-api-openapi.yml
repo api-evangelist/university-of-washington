@@ -1,0 +1,119 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V3 Entity.join…
+  description: 'This is the specification for Identity Registration Web Service REST API V3. See the supplementary API documentation at https://wiki.cac.washington.edu/x/jI8qBQ for header/querystring paramemters, payload attributes, function descriptions and example code not included here. Note: The -type and -pretty querystring parameters are described here for GET requests as they make testing much easier.'
+  version: '3'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: entity.join
+paths:
+  /entity.join/{regid}/{to_regid}:
+    post:
+      tags:
+      - entity.join
+      summary: Join entities
+      description: The entity.join resource allows you to join entities together.
+      parameters:
+      - name: regid
+        in: path
+        description: Registry identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: to_regid
+        in: path
+        description: Registry identifier to join to
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Message confirming entity join.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityJoinPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: postEntityJoinByRegidByToRegid
+      x-operation-id-source: derived
+components:
+  schemas:
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    EntityJoinPostResult:
+      type: object
+      properties:
+        entity.join:
+          type: array
+          description: Response to POST
+          items:
+            type: object
+            properties:
+              regid:
+                type: string
+                description: regid of joined entities
+        totalcount:
+          type: string
+          description: Number of entity.join objects returned
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv3/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv3/irwsv3.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml

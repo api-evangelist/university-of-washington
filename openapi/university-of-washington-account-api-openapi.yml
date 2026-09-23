@@ -1,0 +1,741 @@
+openapi: 3.2.0
+info:
+  title: University Of Washington Account API
+  version: '1.0'
+  description: 'Operations tagged Account across 2 of this provider''s published API definitions: university-of-washington-identity-registry-web-service-v2-openapi.yml, university-of-washington-identity-registry-web-service-v3-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v2
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: Account
+paths:
+  /account:
+    get:
+      tags:
+      - Account
+      summary: The account endpoint allows you to search for a record within the account…
+      description: 'You can search for an account record based on certain criteria. Search parameters can be specified as a querystring or a JSON payload. Only one search parameter can be specified (any single query parameter, or a single parameter specified in a JSON payload).
+
+
+        For details on search behavior please see: https://wiki.cac.washington.edu/x/l59NB.'
+      parameters:
+      - name: validid
+        in: query
+        description: Search by validid by specifying an identifier (e.g. validid=uwhr=123456789)
+        schema:
+          type: string
+          format: string
+          default: uwhr=123456789
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: 'Account search results.  '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSearchResults'
+      x-codegen-request-body-name: payload
+      operationId: getAccount
+      x-operation-id-source: derived
+    servers:
+    - url: https://mango.u.washington.edu:646/registry/v2
+  /account/{accounttype}/{identifier}:
+    get:
+      tags:
+      - Account
+      summary: The accounttype endpoint allows you to look up a UW NetID
+      description: If you know the account type and identifier you can look up an account directly.
+      parameters:
+      - name: accounttype
+        in: path
+        description: 'Type of account.  Options are: ''personal'', ''temporary'', ''administrator'', ''holder'', ''forwarding'''
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: identifier
+        in: path
+        description: Account identifier, generally a UW NetID
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: 'Account search results.  '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLookupResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getAccountByAccounttypeByIdentifier
+      x-operation-id-source: derived
+    servers:
+    - url: https://mango.u.washington.edu:646/registry/v2
+  /account/{uwnetid}/{netid_code}:
+    get:
+      tags:
+      - Account
+      summary: Query account record
+      description: The account resource allows you to retrieve an account record.
+      parameters:
+      - name: uwnetid
+        in: path
+        description: UW Network identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: netid_code
+        in: path
+        description: Netid code (optional)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Account record. Schema contains list of all possible properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getAccountByUwnetidByNetidCode
+      x-operation-id-source: derived
+    put:
+      tags:
+      - Account
+      summary: Create account record
+      description: The account resource allows you to create a new account record.
+      parameters:
+      - name: uwnetid
+        in: path
+        description: UW Network identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: netid_code
+        in: path
+        description: Netid code
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/AccountPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Account resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: putAccountByUwnetidByNetidCode
+      x-operation-id-source: derived
+    post:
+      tags:
+      - Account
+      summary: Update account record
+      description: The account resource allows you to update an existing account record.
+      parameters:
+      - name: uwnetid
+        in: path
+        description: UW Network identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: netid_code
+        in: path
+        description: Netid code
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/AccountPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Account resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: postAccountByUwnetidByNetidCode
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - Account
+      summary: Delete account record
+      description: The account resource allows you to delete an existing account record.
+      parameters:
+      - name: uwnetid
+        in: path
+        description: UW Network identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: netid_code
+        in: path
+        description: Netid code
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Account resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: deleteAccountByUwnetidByNetidCode
+      x-operation-id-source: derived
+    servers:
+    - url: https://mango.u.washington.edu:646/registry/v3
+components:
+  schemas:
+    AccountSearchResults:
+      type: object
+      properties:
+        account:
+          type: array
+          description: List of identities returned
+          items:
+            type: object
+            properties:
+              ledger:
+                type: object
+                properties:
+                  regid:
+                    type: string
+                    description: Unique identifier for a person
+                  accounts:
+                    type: object
+                    properties:
+                      personal:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      temporary:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      administrator:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      holder:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                      forwarding:
+                        type: array
+                        description: list of links to account records (usually only one)
+                        items:
+                          type: string
+                          description: link to account record
+                    description: Accounts associated with this identity--most people will just have one of type 'personal'
+                description: Identity object (contains identity info for a single person)
+        totalcount:
+          type: string
+          description: Number of results returned
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    AccountLookupResult:
+      type: object
+      properties:
+        account:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+              accid:
+                type: string
+              validid:
+                type: string
+              uid:
+                type: string
+              luid:
+                type: string
+              account:
+                type: string
+              disenfran:
+                type: string
+              netid_code:
+                type: string
+              netid_name:
+                type: string
+              status_code:
+                type: string
+              status_name:
+                type: string
+              logname:
+                type: string
+              created:
+                type: string
+              updated:
+                type: string
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    AccountDeletePutPostResult:
+      type: object
+      properties:
+        account:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
+    AccountPutPostPayload:
+      type: object
+      properties:
+        account:
+          type: object
+          description: Account object.  See supplemental docs for exact attributes.
+          properties:
+            uwnetid:
+              type: string
+              description: UW Network identifier
+            uid:
+              type: string
+              description: UID
+            account:
+              type: string
+              description: Account name
+            disenfran:
+              type: string
+              description: Disenfranchise indicator
+            netid_code:
+              type: string
+              description: Code for UW NetID type
+            status_code:
+              type: string
+              description: Status of account record
+      description: Note that the account object can also be presented as an array of exactly one object.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    AccountGetResult:
+      type: object
+      properties:
+        account:
+          type: array
+          description: Array of account objects
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              accid:
+                type: string
+                description: Account identifier
+              validid:
+                type: string
+                description: Entity identifier
+              uid:
+                type: string
+                description: UID
+              account:
+                type: string
+                description: Account name
+              disenfran:
+                type: string
+                description: Disenfranchise indicator
+              netid_code:
+                type: string
+                description: Code for UW NetID type
+              netid_name:
+                type: string
+                description: UW NetID Type
+              status_code:
+                type: string
+                description: Status of account record
+              status_name:
+                type: string
+                description: Status of account record
+              logname:
+                type: string
+                description: Last change author
+              created:
+                type: string
+                description: Record created date
+              updated:
+                type: string
+                description: Record last updated date
+              post_url:
+                type: string
+                description: URL to post update
+        totalcount:
+          type: string
+          description: Number of account objects returned
+      description: Note that the account object described here documents all possible attributes.  Not all attributes will be returned for all records.
+    AccountSearchResult:
+      type: object
+      properties:
+        account:
+          type: array
+          description: Array of account search objects
+          items:
+            type: object
+            properties:
+              regid:
+                type: string
+                description: Registry identifier
+              lname:
+                type: string
+                description: Primary last name
+              fname:
+                type: string
+                description: Primary first name
+              mname:
+                type: string
+                description: Primary middle name
+              accounts:
+                type: object
+                properties:
+                  personal:
+                    type: array
+                    description: Array of personal URLs
+                    items:
+                      type: string
+                      description: Personal account URL
+                  administrator:
+                    type: array
+                    description: Array of administrator URLs
+                    items:
+                      type: string
+                      description: Administrator account URL
+                  reserved:
+                    type: array
+                    description: Array of reserved URLs
+                    items:
+                      type: string
+                      description: Reserved account URL
+                  holder:
+                    type: array
+                    description: Array of holder URLs
+                    items:
+                      type: string
+                      description: Holder account URL
+                  forwarding:
+                    type: array
+                    description: Array of forwarding URLs
+                    items:
+                      type: string
+                      description: Forwarding account URL
+                  temporary:
+                    type: array
+                    description: Array of temporary URLs
+                    items:
+                      type: string
+                      description: Temporary account URL
+                description: List of account records for this entity and associated URLs (example)
+        totalcount:
+          type: string
+          description: Number of account search objects returned
+x-refined-from:
+- university-of-washington-identity-registry-web-service-v2-openapi.yml
+- university-of-washington-identity-registry-web-service-v3-openapi.yml
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

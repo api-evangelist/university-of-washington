@@ -1,0 +1,1096 @@
+openapi: 3.2.0
+info:
+  version: 2.3.x
+  title: University of Washington Group Service Groups API
+  termsOfService: http://www.washington.edu/online/terms/
+  contact:
+    name: University of Washington
+    email: help@uw.edu
+  license:
+    name: License
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: '* This describes the Group Service /v3/ representations (GWS 2.3.x).
+
+    * For /v2/ (xml) representations see the v2 documentation.
+
+    * See the wiki article Group Service API for instructions and help with the Group Service.
+
+    The page includes access and authentication instructions.
+
+
+    * The yaml source of this document.
+
+    * Document modified: 2020-06-15'
+servers:
+- url: https://groups.uw.edu/group_sws/v3
+  description: Production server - InCommon certificate
+- url: https://eval.groups.uw.edu/group_sws/v3
+  description: Evaluation server - InCommon certificate
+- url: https://dev.groups.uw.edu/group_sws/v3
+  description: Development server - InCommon certificate
+- url: https://iam-ws.u.washington.edu/group_sws/v3
+  description: Production server - UWCA certificate (deprecated)
+tags:
+- name: Groups
+  description: Group information--except membership
+paths:
+  /group/{groupid}:
+    get:
+      tags:
+      - Groups
+      description: Get the group referenced by the groupid.
+      operationId: getGroup
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: If-None-Match
+        in: header
+        description: Match nonce from GET ETag header
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested Group
+          headers:
+            ETag:
+              schema:
+                type: integer
+              description: Represents the current 'state' of the resource.  For If-Match, If-None-Match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '304':
+          description: Group matches If-None-Match
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get group
+      x-summary-source: derived
+    put:
+      tags:
+      - Groups
+      description: Create or update a group. The PUT and POST methods are identical.
+      operationId: putGroup
+      parameters:
+      - name: groupid
+        in: path
+        description: group id regid
+        required: true
+        schema:
+          type: string
+      - name: synchronized
+        in: query
+        required: false
+        description: Do not complete request until ldaps updated (default does not wait).
+        schema:
+          type: string
+      - name: If-Match
+        in: header
+        description: Match nonce from GET ETag header. Use '*' to match any resource.  Required to update existing groups.
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      - name: Content-type
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The updated group
+          headers:
+            ETag:
+              schema:
+                type: integer
+              description: Represents the current 'state' of the resource.  For If-Match, If-None-Match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '201':
+          description: 'The created group.
+
+            * Content same as response 200.
+
+            '
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '404':
+          $ref: '#/components/responses/404Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+        '412':
+          $ref: '#/components/responses/412Error'
+        5xx:
+          $ref: '#/components/responses/5xxError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutGroup'
+        description: representation of the group
+        required: true
+      summary: Put group
+      x-summary-source: derived
+    delete:
+      tags:
+      - Groups
+      description: Delete a group
+      operationId: deleteGroup
+      parameters:
+      - name: groupid
+        in: path
+        description: group id or regid
+        required: true
+        schema:
+          type: string
+      - name: If-Match
+        in: header
+        description: Match nonce from GET ETag header. Use '*' to match any resource.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Group deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - schemas
+                properties:
+                  schemas:
+                    $ref: '#/components/schemas/GroupSchema'
+                  meta:
+                    $ref: '#/components/schemas/ErrorMeta'
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: integer
+                          enum:
+                          - 200
+                        notFound:
+                          type: array
+                          items:
+                            id: null
+                            type: string
+        '401':
+          $ref: '#/components/responses/401Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Delete group
+      x-summary-source: derived
+  /groupMove/{groupid}:
+    put:
+      tags:
+      - Groups
+      description: 'Renames a group or moves a group to a new stem.
+
+        * Idempotent if the group id is specified with a regid.
+
+        * One of **newext** or **newstem** is required.'
+      parameters:
+      - name: groupid
+        in: path
+        description: A group name or regid
+        required: true
+        schema:
+          type: string
+      - name: newext
+        in: query
+        description: The new 'leaf' name for the group
+        schema:
+          type: string
+      - name: newstem
+        in: query
+        description: The new 'stem' part of the group
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The name was updated
+        '400':
+          $ref: '#/components/responses/400Error'
+        '401':
+          $ref: '#/components/responses/401Error'
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Replace group move by groupid
+      x-summary-source: derived
+      operationId: putGroupMoveByGroupid
+      x-operation-id-source: derived
+  /group/{groupid}/affiliate/{affiliate}:
+    get:
+      tags:
+      - Groups
+      description: Get the specified affiliate of the group.
+      operationId: getAffiliate
+      parameters:
+      - name: groupid
+        in: path
+        description: A group name or regid
+        required: true
+        schema:
+          type: string
+      - name: affiliate
+        in: path
+        description: An affiliate name
+        required: true
+        schema:
+          type: string
+          enum:
+          - netid
+          - google
+          - email
+          - radius
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested affiliateion
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateResponse'
+        '404':
+          description: Affiliate does not exist
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get affiliate
+      x-summary-source: derived
+    put:
+      tags:
+      - Groups
+      description: Put the affiliate of the group
+      operationId: putAffiliate
+      parameters:
+      - name: groupid
+        in: path
+        description: A group name or regid
+        required: true
+        schema:
+          type: string
+      - name: affiliate
+        in: path
+        description: An affiliate name
+        required: true
+        schema:
+          type: string
+          enum:
+          - netid
+          - google
+          - email
+          - radius
+      - name: status
+        in: query
+        description: status
+        required: true
+        schema:
+          type: string
+          enum:
+          - active
+          - inactive
+      - name: sender
+        in: query
+        description: 'Authorized senders to the group
+
+          * if email affiliation: comma separated list of sender ids
+
+          * if google affiliation: one of ''none'', ''all'', ''member'', ''uw''
+
+          '
+        required: false
+        type: string
+        example: joeuser,u_joeuser
+      - name: synchronized
+        in: query
+        required: false
+        description: do not complete request until ldaps updated (default does not wait)
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      - name: Content-type
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The updated affiliate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+        '201':
+          description: The newly created affiliate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+        '400':
+          description: Invalid affiliate representation
+        '401':
+          description: No permission
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Put affiliate
+      x-summary-source: derived
+    delete:
+      tags:
+      - Groups
+      description: Delete an affiliate
+      operationId: deleteAffiliate
+      parameters:
+      - name: groupid
+        in: path
+        description: A group name or regid
+        required: true
+        schema:
+          type: string
+      - name: affiliate
+        in: path
+        description: An affiliate name
+        required: true
+        schema:
+          type: string
+          enum:
+          - netid
+          - google
+          - email
+          - radius
+      responses:
+        '200':
+          description: Affiliate deleted
+        '401':
+          description: No premission
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Delete affiliate
+      x-summary-source: derived
+  /group/{groupid}/history:
+    get:
+      tags:
+      - Groups
+      description: Gets history of the group
+      operationId: getHistory
+      parameters:
+      - name: groupid
+        in: path
+        description: group name or regid
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: start time (milliseconds since epoch)
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: maximim number of events
+        required: false
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: sort order
+        required: false
+        schema:
+          type: string
+          enum:
+          - a
+          - d
+      - name: activity
+        in: query
+        description: actity selector
+        required: false
+        schema:
+          type: string
+          enum:
+          - acl
+          - membership
+      - name: id
+        in: query
+        description: memberid selector
+        required: false
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: If specified, must be "application/json"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of history for the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/History'
+        '401':
+          description: No permission
+        '404':
+          description: Group not found
+        '406':
+          $ref: '#/components/responses/406Error'
+      summary: Get history
+      x-summary-source: derived
+components:
+  schemas:
+    Affiliate:
+      type: object
+      required:
+      - name
+      - status
+      properties:
+        name:
+          description: Affiliate name
+          type: string
+          enum:
+          - netid
+          - google
+          - email
+          - radius
+        status:
+          description: Activation status
+          type: string
+          enum:
+          - active
+          - inactive
+        sender:
+          description: authorized senders
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        forward:
+          description: email forwarding address
+          type: string
+      example:
+        name: google
+        status: active
+    ErrorMeta:
+      type: array
+      items:
+        type: object
+        properties:
+          resource:
+            type: string
+          version:
+            description: Version of the API
+            type: string
+            example: v3.0
+          id:
+            description: Id of the group
+            type: string
+          timestamp:
+            description: Response timestamp (milli-seconds from epoch)
+            type: long
+            example: 1214343146201
+    Group:
+      type: object
+      properties:
+        regid:
+          description: Unique, opaque idenfier for the group
+          type: string
+          example: a1681c3fcba3f54f759e6c9432004381
+        name:
+          description: id of the group - includes path
+          type: string
+          example: u_fox_browser6
+        displayName:
+          description: Descriptive name of the group
+          type: string
+          example: Fox's test group
+        description:
+          description: Group's description
+          type: string
+          example: This is a general purpose group for testing various Group Service functionality.
+        created:
+          description: Create timestamp (milli-seconds from epoch)
+          type: long
+          example: 1214343146000
+        lastModified:
+          description: modify timestamp (milli-seconds from epoch)
+          type: long
+          example: 1277499258870
+        lastMemberModified:
+          description: lastMember timestamp (milli-seconds from epoch)
+          type: long
+          example: 1455304388228
+        contact:
+          description: Contact person (uwnetid) for the group
+          type: string
+          example: fox
+        authnfactor:
+          description: Multi-factor authn required
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+        classification:
+          description: Classification of membership. u=unclassified, r=restricted, c=confidential, missing=no classification
+          type: string
+          enum:
+          - u
+          - r
+          - c
+        dependsOn:
+          description: Membership dependency group
+          type: string
+          example: uw_employee
+        gid:
+          description: unique int
+          type: integer
+          example: 12001
+        affiliates:
+          description: affiliations for the group
+          type: array
+          items:
+            $ref: '#/components/schemas/Affiliate'
+        course:
+          description: course info, if group represents a course
+          type: object
+          properties:
+            quarter:
+              type: string
+              enum:
+              - win
+              - spr
+              - sum
+              - aut
+            year:
+              type: integer
+              example: 2017
+            curriculum:
+              type: string
+              example: phys
+            number:
+              type: integer
+              example: 121
+            section:
+              type: string
+              example: a
+            sln:
+              type: integer
+              example: 19029
+            instructors:
+              type: array
+              items:
+                $ref: '#/components/schemas/Instructor'
+        admins:
+          description: Entities with full group access
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          example:
+          - type: group
+            name: Admins of the zyzz school
+            id: x_zyzz_admins
+        updaters:
+          description: Entities who can edit membership
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          example:
+          - type: eppn
+            name: Ray G. Biv
+            id: raybiv@somestate.edu
+        creators:
+          description: Entities who can create sub-groups
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          example:
+          - type: uwnetid
+            name: Roy G. Biv
+            id: rgbiv99
+          - type: uwnetid
+            name: J. Average
+            id: joeuser
+        readers:
+          description: Entities who can read group membership
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        optins:
+          description: Entities who can opt in to membership
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        optouts:
+          description: Entities who can opt out of membership
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+      required:
+      - regid
+      - name
+      - displayName
+      - description
+      - created
+      - authnfactor
+      - classification
+      - gid
+      - admins
+    uwnetid:
+      type: string
+      description: A University of Washington UWNetID
+      example: joeuser
+    Entity:
+      type: object
+      description: An eitity
+      properties:
+        type:
+          description: Type of entity
+          type: string
+          enum:
+          - uwnetid
+          - group
+          - dns
+          - eppn
+          - set
+        id:
+          description: "If the type is 'set' the id is: \n* all: any entity\n* none: no entity\n* uw: any UW member entity\n* member: any member of the group\n"
+          type: string
+        name:
+          description: Display name of entity.
+          type: string
+    History:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              enum:
+              - history
+            version:
+              description: Version of the API
+              type: string
+              example: v3.0
+            regid:
+              description: Regid of the group
+              type: string
+            id:
+              description: Id of the group
+              type: string
+            searchParameters:
+              type: object
+              properties:
+                start:
+                  description: start time
+                  type: integer
+                size:
+                  description: maximum number of events
+                  type: integer
+                order:
+                  description: sort order
+                  type: string
+                  enum:
+                  - ascending
+                  - descending
+                memberid:
+                  description: member id selector
+                  type: string
+            timestamp:
+              description: Response timestamp (milli-seconds from epoch)
+              type: long
+              example: 1214343146201
+        data:
+          description: Group activity entries
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryEntry'
+    AffiliateResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              enum:
+              - affiliate
+            version:
+              description: Version of the API
+              type: string
+              example: v3.0
+            regid:
+              description: Regid of the group
+              type: string
+            id:
+              description: Id of the group
+              type: string
+            selfRef:
+              description: URL of this resource
+              type: string
+              example: https://iam-ws.u.washington.edu/group_sws/v3/group/u_spud11/affiliate/google
+            timestamp:
+              description: Response timestamp (milli-seconds from epoch)
+              type: long
+              example: 1214343146201
+        data:
+          $ref: '#/components/schemas/Affiliate'
+    Instructor:
+      type: object
+      description: A course instructor
+      properties:
+        type:
+          description: Type of entity
+          type: string
+          enum:
+          - uwnetid
+          - eppn
+          example: uwnetid
+        name:
+          description: Display name of the instructor.
+          type: string
+          example: Joe Average
+        id:
+          description: Netid (type=uwnetid), email (type=eppn)
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/uwnetid'
+          - $ref: '#/components/schemas/eppn'
+          example: joeuser
+    PutGroup:
+      type: object
+      required:
+      - name
+      - admins
+      properties:
+        data:
+          type: object
+          required:
+          - id
+          properties:
+            regid:
+              description: Unique, opaque idenfier for the group
+              type: string
+              example: a1681c3fcba3f54f759e6c9432004381
+            id:
+              description: id of the group - includes path
+              type: string
+              example: u_fox_browser6
+            displayName:
+              description: Descriptive name of the group
+              type: string
+              example: Fox's test group
+            description:
+              description: Group's description
+              type: string
+              example: This is a general purpose group for testing various Group Service functionality.
+            contact:
+              description: Contact person (uwnetid) for the group
+              type: string
+              example: fox
+            authnfactor:
+              description: Multi-factor authn required
+              type: integer
+              enum:
+              - 0
+              - 1
+              - 2
+            classification:
+              description: "Classification of membership.\n  * **u**: unclassified\n  * **r**: restricted,\n  * **c**: confidential\n  * *missing*: no classification"
+              type: string
+              enum:
+              - u
+              - r
+              - c
+            dependsOn:
+              description: Membership dependency group
+              type: string
+              example: uw_employee
+            admins:
+              description: Entities with full group access
+              type: array
+              items:
+                $ref: '#/components/schemas/Entity'
+              example:
+              - type: group
+                id: x_zyzz_admins
+            updaters:
+              description: Entities who can edit membership
+              type: array
+              items:
+                $ref: '#/components/schemas/Entity'
+              example:
+              - type: eppn
+                id: raybiv@somestate.edu
+            creators:
+              description: Entities who can create sub-groups
+              type: array
+              items:
+                $ref: '#/components/schemas/Entity'
+              example:
+              - type: uwnetid
+                id: rgbiv99
+              - type: uwnetid
+                id: joeuser
+            readers:
+              description: Entities who can read group membership
+              type: array
+              items:
+                $ref: '#/components/schemas/Entity'
+              example:
+              - type: group
+                id: u_spud_1234
+            optins:
+              description: Entities who can opt in to membership
+              type: array
+              items:
+                $ref: '#/components/schemas/Entity'
+              example:
+              - type: set
+                id: any-entity
+            optouts:
+              description: Entities who can opt out of membership
+              type: array
+              items:
+                $ref: '#/components/schemas/Entity'
+              example:
+              - type: set
+                id: no-entity
+    HistoryEntry:
+      type: object
+      description: A group activity
+      properties:
+        timestamp:
+          description: event timestamp  (milliseconds since epoch)
+          type: integer
+        user:
+          description: User who performed the action
+          type: string
+        actAs:
+          description: Act-as user, if user acting as another
+          type: string
+        activity:
+          description: Activity name (from grouper even types)
+          type: string
+        description:
+          description: details of the event
+          type: string
+    eppn:
+      type: string
+      description: An eduPersonPrincipalName or an email address
+      example: joeuser@washington.edu
+    GroupResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+            enum:
+            - urn:mace:washington.edu:schemas:groups:1.0
+        meta:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              enum:
+              - group
+            version:
+              description: Version of the API
+              type: string
+              example: v3.0
+            regid:
+              description: Regid of the group
+              type: string
+            id:
+              description: Id of the group
+              type: string
+            selfRef:
+              description: URL of this resource
+              type: string
+              example: https://iam-ws.u.washington.edu/group_sws/v3/group/a1681c3fcba3f54f759e6c9432004381
+            memberRef:
+              description: URL of this group's members
+              type: string
+              example: https://iam-ws.u.washington.edu/group_sws/v3/group/a1681c3fcba3f54f759e6c9432004381/member/
+            timestamp:
+              description: Response timestamp (milli-seconds from epoch)
+              type: long
+              example: 1214343146201
+        data:
+          $ref: '#/components/schemas/Group'
+    GroupSchema:
+      type: array
+      items:
+        type: string
+        enum:
+        - urn:mace:washington.edu:schemas:groups:1.0
+  responses:
+    5xxError:
+      description: Unknown server errror
+    400Error:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 400
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Explaination of cause of error
+                        example: Invalid group name
+    412Error:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 412
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Incorrect ETag
+    404Error:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 404
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Explaination of cause of error
+                        example: The group does not exist
+    406Error:
+      description: Not Acceptable (Accept or Content-type not application/json)
+    401Error:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - schemas
+            - errors
+            properties:
+              schemas:
+                $ref: '#/components/schemas/GroupSchema'
+              meta:
+                $ref: '#/components/schemas/ErrorMeta'
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      enum:
+                      - 401
+                    detail:
+                      items:
+                        id: null
+                        type: string
+                        description: Explaination of cause of error
+                        example: No permission to read membership
+externalDocs:
+  description: UW-IT Groups Web Service (GWS) API documentation
+  url: https://iam-tools.u.washington.edu/apis/gws/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

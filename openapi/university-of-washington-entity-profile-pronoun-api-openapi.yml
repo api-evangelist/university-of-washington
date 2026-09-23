@@ -1,0 +1,237 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V3…
+  description: 'This is the specification for Identity Registration Web Service REST API V3. See the supplementary API documentation at https://wiki.cac.washington.edu/x/jI8qBQ for header/querystring paramemters, payload attributes, function descriptions and example code not included here. Note: The -type and -pretty querystring parameters are described here for GET requests as they make testing much easier.'
+  version: '3'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: entity.profile.pronoun
+paths:
+  /entity.profile.pronoun/{validid}:
+    get:
+      tags:
+      - entity.profile.pronoun
+      summary: Query entity profile pronoun
+      description: The entity.profile.pronoun resource allows you to retrieve the pronoun associated with a person.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Name create/update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityProfilePronounGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getEntityProfilePronounByValidid
+      x-operation-id-source: derived
+    post:
+      tags:
+      - entity.profile.pronoun
+      summary: Update entity profile pronoun
+      description: The entity.profile.pronoun resource allows you to change the pronoun associated with a person.
+      parameters:
+      - name: validid
+        in: path
+        description: Entity identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/EntityProfilePronounPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Name resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityProfilePronounPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: postEntityProfilePronounByValidid
+      x-operation-id-source: derived
+components:
+  schemas:
+    EntityProfilePronounPostResult:
+      type: object
+      properties:
+        entity.profile.pronoun:
+          type: array
+          description: Response to POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'pronoun set')
+    EntityProfilePronounGetResult:
+      type: object
+      properties:
+        entity.profile.pronoun:
+          type: array
+          description: Array of entity.profile.pronoun objects
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Entity identifier
+              pronoun:
+                type: string
+                description: Pronoun value
+              logname:
+                type: string
+                description: Last change author
+              updated:
+                type: string
+                description: Record last updated date
+              post_url:
+                type: string
+                description: URL to post update
+        totalcount:
+          type: integer
+          description: Number of entity.profile.pronoun objects returned
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    EntityProfilePronounPostPayload:
+      type: object
+      properties:
+        entity.profile.pronoun:
+          type: object
+          description: Entity.profile.pronoun object.  See supplemental docs for exact attributes.
+          properties:
+            validid:
+              type: string
+              description: Entity identifier
+            pronoun:
+              type: string
+              description: Pronoun value
+      description: Note that the entity.profile.pronoun object can also be presented as an array of exactly one object.
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv3/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv3/irwsv3.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml

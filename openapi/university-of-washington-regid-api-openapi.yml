@@ -1,0 +1,596 @@
+openapi: 3.2.0
+info:
+  title: University Of Washington Regid API
+  version: '1.0'
+  description: 'Operations tagged Regid across 2 of this provider''s published API definitions: university-of-washington-identity-registry-web-service-v2-openapi.yml, university-of-washington-identity-registry-web-service-v3-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v2
+- url: https://mango.u.washington.edu:646/registry/v3
+tags:
+- name: Regid
+paths:
+  /regid/{prior_regid}/join:
+    post:
+      tags:
+      - Regid
+      summary: The regid join endpoint allows you to join two regids
+      description: When two regids are joined, the regid specified in the querystring 'to_regid' becomes the regid for all records formerly associated with {prior_regid}.
+      parameters:
+      - name: prior_regid
+        in: path
+        description: Regid to be abandoned.
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: to_regid
+        in: query
+        description: Regid to be the identifier on the new, merged record (target_regid).
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Join response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidJoinResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflicting arguments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: postRegidByPriorRegidJoin
+      x-operation-id-source: derived
+    servers:
+    - url: https://mango.u.washington.edu:646/registry/v2
+  /regid:
+    get:
+      tags:
+      - Regid
+      summary: Search for regid records
+      description: The regid resource allows you to search for records based on certain criteria. Search parameters must be specified as a querystring. See supplemental documentation for available search parameters and rules.
+      parameters:
+      - name: regid
+        in: query
+        description: Registry identifier (e.g., regid=1F1F1F1F1F1FF1F1F1F1F1F1F1F1F1F1)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: validid
+        in: query
+        description: Entity identifier (e.g., validid=uwhr=123456789)
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Regid record. Schema contains list of all possible properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getRegid
+      x-operation-id-source: derived
+    servers:
+    - url: https://mango.u.washington.edu:646/registry/v3
+  /regid/{regid}:
+    get:
+      tags:
+      - Regid
+      summary: Query regid record
+      description: The regid resource allows you to retrieve a regid record.
+      parameters:
+      - name: regid
+        in: path
+        description: Registry identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Regid record. Schema contains list of all possible properties but they may not all be present.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: getRegidByRegid
+      x-operation-id-source: derived
+    put:
+      tags:
+      - Regid
+      summary: Create regid record
+      description: The regid resource allows you to create a new regid record.
+      parameters:
+      - name: regid
+        in: path
+        description: Registry identifier (optional)
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/RegidPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Regid resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: putRegidByRegid
+      x-operation-id-source: derived
+    post:
+      tags:
+      - Regid
+      summary: Update regid record
+      description: The regid resource allows you to update an existing regid record.
+      parameters:
+      - name: regid
+        in: path
+        description: Registry identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/RegidPutPostPayload'
+        required: true
+      responses:
+        '200':
+          description: Regid resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      x-codegen-request-body-name: payload
+      operationId: postRegidByRegid
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - Regid
+      summary: Delete regid record
+      description: The regid resource allows you to delete an existing regid record.
+      parameters:
+      - name: regid
+        in: path
+        description: Registry identifier
+        required: true
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: Regid resource operation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegidDeletePutPostResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+      operationId: deleteRegidByRegid
+      x-operation-id-source: derived
+    servers:
+    - url: https://mango.u.washington.edu:646/registry/v3
+components:
+  schemas:
+    RegidJoinResult:
+      type: object
+      properties:
+        regid:
+          type: array
+          description: Array of regid objects (should generally contain only one).
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Internal API string
+              regid:
+                type: string
+                description: Regid on the new, merged record
+              prior_regid:
+                type: string
+                description: Regid of the record that was joined to this one
+              message:
+                type: string
+                description: Result of operation.  Usually 'Entities Joined'
+        totalcount:
+          type: string
+          description: Number of results returned
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    RegidPutPostPayload:
+      type: object
+      properties:
+        regid:
+          type: object
+          description: Regid object.  See supplemental docs for exact attributes.
+          properties:
+            regid:
+              type: string
+              description: Registry identifier
+            test:
+              type: string
+              description: Test status
+            status_code:
+              type: string
+              description: Status of source record
+      description: Note that the regid object can also be presented as an array of exactly one object.
+    RegidDeletePutPostResult:
+      type: object
+      properties:
+        regid:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    RegidGetResult:
+      type: object
+      properties:
+        regid:
+          type: array
+          description: Array of regid objects
+          items:
+            type: object
+            properties:
+              regid:
+                type: string
+                description: Registry identifier
+              entity_code:
+                type: string
+                description: Entity code
+              entity_name:
+                type: string
+                description: Entity name
+              test:
+                type: string
+                description: Test status
+              status_code:
+                type: string
+                description: Status of source record
+              status_name:
+                type: string
+                description: Status of source record
+              logname:
+                type: string
+                description: Last change author
+              created:
+                type: string
+                description: Record created date
+              updated:
+                type: string
+                description: Record last updated date
+              post_url:
+                type: string
+                description: URL to post update
+        totalcount:
+          type: integer
+          description: Number of records affected
+      description: Note that the regid object described here documents all possible attributes.  Not all attributes will be returned for all records.
+x-refined-from:
+- university-of-washington-identity-registry-web-service-v2-openapi.yml
+- university-of-washington-identity-registry-web-service-v3-openapi.yml
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/gws/api.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-groups-web-service-v3.yaml

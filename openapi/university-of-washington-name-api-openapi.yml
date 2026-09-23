@@ -1,0 +1,280 @@
+openapi: 3.2.0
+info:
+  title: Identity Registration Web Service REST API V2 Name API
+  description: This is the API specification for V2 of the UW-IT Identity Registry Rest API. Note that there are header and querystring paramemters not documentered here--they can be found in the main API documentation at https://wiki.cac.washington.edu/x/H5lNB. The -type and -pretty querystring parameters are included here for GET requests since they make testing much easier.
+  version: '2'
+servers:
+- url: https://mango.u.washington.edu:646/registry/v2
+tags:
+- name: Name
+paths:
+  /name/{identifier}:
+    get:
+      tags:
+      - Name
+      summary: The name endpoint allows you to read source-independent names associated with…
+      description: The name resource gets a display name for a person entity. The name is independent of source records. That is, it applies across all different affiliations a person might have (student, employee, etc.).
+      parameters:
+      - name: identifier
+        in: path
+        description: 'Instutional identifier for a source record associated with the person.  The RegID, UW Employee ID Number, or UW Student Number can be used.  '
+        required: true
+        schema:
+          type: string
+          format: string
+      - name: -type
+        in: query
+        description: Data return type
+        schema:
+          type: string
+          format: string
+          default: json
+      - name: -pretty
+        in: query
+        description: Request pretty-printed data for humans
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Name create/update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NameGetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getNameByIdentifier
+      x-operation-id-source: derived
+    post:
+      tags:
+      - Name
+      summary: The name endpoint allows you to update source-independent names associated with…
+      description: The name resource sets a display name for a person entity. The name is independent of source records. That is, it applies across all different affiliations a person might have (student, employee, etc.).
+      parameters:
+      - name: identifier
+        in: path
+        description: 'Instutional identifier for a source record associated with the person.  The RegID, UW Employee ID Number, or UW Student Number can be used.  '
+        required: true
+        schema:
+          type: string
+          format: string
+      requestBody:
+        description: JSON payload containing display name data.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/NameSetPayload'
+        required: true
+      responses:
+        '200':
+          description: Name create/update response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NameSetResult'
+        '400':
+          description: Invalid identifier type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Identifier did not match any records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '406':
+          description: Content type not supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Not implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+      operationId: postNameByIdentifier
+      x-operation-id-source: derived
+components:
+  schemas:
+    NameSetResult:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Result of operation
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    NameSetPayload:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            required:
+            - preferred_fname
+            - preferred_privacy
+            - preferred_sname
+            type: object
+            properties:
+              preferred_fname:
+                type: string
+                description: Preferred first name
+              preferred_mname:
+                type: string
+                description: Preferred middle name
+              preferred_sname:
+                type: string
+                description: Preferred surname
+              preferred_privacy:
+                type: string
+                description: Privacy flag for preferred name
+            description: ''
+    NameGetResult:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: RegID of person entity
+              formal_cname:
+                type: string
+                description: Concatenated legal name
+              formal_fname:
+                type: string
+                description: Legal first name of person entity
+              formal_sname:
+                type: string
+                description: Legal surname of person entity
+              formal_privacy:
+                type: string
+                description: Privacy flag for legal name
+              display_cname:
+                type: string
+                description: Concatenated display name
+              display_fname:
+                type: string
+                description: Display first name
+              display_sname:
+                type: string
+                description: Display surname
+              display_privacy:
+                type: string
+                description: Privacy flag for display name
+              preferred_cname:
+                type: string
+                description: Concatenated preferred name
+              preferred_fname:
+                type: string
+                description: Preferred first name
+              preferred_mname:
+                type: string
+                description: Preferred middle name
+              preferred_sname:
+                type: string
+                description: Preferred surname
+              preferred_privacy:
+                type: string
+                description: Privacy flag for preferred name
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+externalDocs:
+  description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
+  url: https://iam-tools.u.washington.edu/apis/irwsv2/
+x-operator: institution
+x-provenance:
+  method: searched
+  source: https://iam-tools.u.washington.edu/apis/irwsv2/irwsv2.yaml
+  generated: '2026-08-30'
+  note: Fetched verbatim from the UW-IT IAM tools API documentation host on 2026-08-30 (HTTP 200). servers[] resolve to University of Washington registrable domains (uw.edu / washington.edu), so the operator is the institution, not a vendor. Only externalDocs, x-operator and x-provenance were added; info and paths are as published.
+  pristine_copy: openapi/_original/university-of-washington-identity-registry-web-service-v2.yaml
