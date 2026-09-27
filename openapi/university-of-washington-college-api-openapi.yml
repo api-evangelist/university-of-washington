@@ -144,6 +144,34 @@ components:
           readOnly: true
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"College Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"
+    CollegeSearchResourceUri:
+      type: object
+      properties:
+        CampusShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus short name\"\n            }\n            </pre>"
+        FutureTerms:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Number of future terms to look ahead\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"College Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}],\n    \"TargetOperationId\" : [\"CollegeSearch\"]\n}"
     CollegeSearchResultViewModel:
       type: object
       properties:
@@ -188,31 +216,3 @@ components:
           format: int32
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"College Search Result\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"
-    CollegeSearchResourceUri:
-      type: object
-      properties:
-        CampusShortName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus short name\"\n            }\n            </pre>"
-        FutureTerms:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Number of future terms to look ahead\"\n            }\n            </pre>"
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"College Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}],\n    \"TargetOperationId\" : [\"CollegeSearch\"]\n}"

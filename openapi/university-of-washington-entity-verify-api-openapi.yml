@@ -432,16 +432,6 @@ components:
               type: string
               description: Instance number
       description: Note that the entity.verify object can also be presented as an array of exactly one object.
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     EntityVerifyGetResult:
       type: object
       properties:
@@ -476,6 +466,16 @@ components:
           type: string
           description: Number of entity.verify objects returned
       description: Note that the entity.verify object described here documents all possible attributes.  Not all attributes will be returned for all records.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv3/

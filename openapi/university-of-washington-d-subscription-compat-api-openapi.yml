@@ -389,33 +389,21 @@ components:
               format: int32
             message:
               type: string
-    DsubscriptionCompatPutPostPayload:
+    DsubscriptionCompatDeletePutPostResult:
       type: object
       properties:
         d_subscription.compat:
           type: array
-          description: Array of d_subscription objects.  See reference docs for exact attributes.
+          description: Response to DELETE/PUT/POST
           items:
             type: object
             properties:
-              uwnetid:
+              count:
                 type: string
-                description: UW Network identifier
-              subscription_code:
+                description: Number of records affected
+              message:
                 type: string
-                description: Subscription code
-              category_code:
-                type: string
-                description: Category code
-              permit:
-                type: string
-                description: Permit flag
-              deny:
-                type: string
-                description: Deny flag
-              status_code:
-                type: string
-                description: Status code
+                description: Result of operation (usually 'record inserted' or 'record updated')
     DsubscriptionCompatGetResult:
       type: object
       properties:
@@ -465,21 +453,33 @@ components:
           type: string
           description: Number of d_subscription objects returned
       description: Note that the d_subscription object described here documents all possible attributes.  Not all attributes will be returned for all records.
-    DsubscriptionCompatDeletePutPostResult:
+    DsubscriptionCompatPutPostPayload:
       type: object
       properties:
         d_subscription.compat:
           type: array
-          description: Response to DELETE/PUT/POST
+          description: Array of d_subscription objects.  See reference docs for exact attributes.
           items:
             type: object
             properties:
-              count:
+              uwnetid:
                 type: string
-                description: Number of records affected
-              message:
+                description: UW Network identifier
+              subscription_code:
                 type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
+                description: Subscription code
+              category_code:
+                type: string
+                description: Category code
+              permit:
+                type: string
+                description: Permit flag
+              deny:
+                type: string
+                description: Deny flag
+              status_code:
+                type: string
+                description: Status code
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv2/

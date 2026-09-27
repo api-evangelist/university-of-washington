@@ -146,57 +146,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    MajorStudentsPersonResourceUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        RegID:
-          type:
-          - string
-          - 'null'
-        Pronouns:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Major Students Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
-    MajorStudentsViewModel:
-      type: object
-      properties:
-        Major:
-          $ref: '#/components/schemas/MajorViewModel'
-        Students:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/MajorStudentsPersonResourceUri'
-        PageStart:
-          type:
-          - string
-          - 'null'
-        PageSize:
-          type:
-          - string
-          - 'null'
-        TotalCount:
-          type: integer
-          format: int32
-        Current:
-          $ref: '#/components/schemas/MajorStudentsResourceUri'
-        Previous:
-          $ref: '#/components/schemas/MajorStudentsResourceUri'
-        Next:
-          $ref: '#/components/schemas/MajorStudentsResourceUri'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Major Students Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\n}"
     MajorStudentsResourceUri:
       type: object
       properties:
@@ -321,3 +270,54 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Department Full Name\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Expanded Major Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\n}"
+    MajorStudentsViewModel:
+      type: object
+      properties:
+        Major:
+          $ref: '#/components/schemas/MajorViewModel'
+        Students:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MajorStudentsPersonResourceUri'
+        PageStart:
+          type:
+          - string
+          - 'null'
+        PageSize:
+          type:
+          - string
+          - 'null'
+        TotalCount:
+          type: integer
+          format: int32
+        Current:
+          $ref: '#/components/schemas/MajorStudentsResourceUri'
+        Previous:
+          $ref: '#/components/schemas/MajorStudentsResourceUri'
+        Next:
+          $ref: '#/components/schemas/MajorStudentsResourceUri'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Major Students Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\n}"
+    MajorStudentsPersonResourceUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        RegID:
+          type:
+          - string
+          - 'null'
+        Pronouns:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Major Students Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"

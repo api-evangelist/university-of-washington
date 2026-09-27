@@ -294,50 +294,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TermResourceUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-        Year:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
-    GeneralEducationRequirementViewModel:
-      type: object
-      properties:
-        Diversity:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.diversity_crs\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Diversity\"}\n                ],\n                \"TechnicalDescription\": \"Diversity\"\n            }\n            </pre>"
-        EnglishComposition:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.engc\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/EnglishComposition\"}\n                ],\n                \"TechnicalDescription\": \"English composition\"\n            }\n            </pre>"
-        IndividualsAndSocieties:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.ind\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/IndividualsAndSocieties\"}\n                ],\n                \"TechnicalDescription\": \"Individuals and societies\"\n            }\n            </pre>"
-        NaturalWorld:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.nw\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/NaturalWorld\"}\n                ],\n                \"TechnicalDescription\": \"Natural world\"\n            }\n            </pre>"
-        QuantitativeAndSymbolicReasoning:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.qsr\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/QuantitativeAndSymbolicReasoning\"}\n                ],\n                \"TechnicalDescription\": \"Quantitative and symbolic reasoning\"\n            }\n            </pre>"
-        VisualLiteraryAndPerformingArts:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.vlpa\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/VisualLiteraryAndPerformingArts\"}\n                ],\n                \"TechnicalDescription\": \"Visual literary and performing arts\"\n            }\n            </pre>"
-        Writing:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.wrt\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Writing\"}\n                ],\n                \"TechnicalDescription\": \"Writing\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"General Education Requirement Model\",\n    \"TargetSchema\" : [\n         {\"target\" : \"SWS.Section\"},\n         {\"target\" : \"SWS.Course\"}\n    ]\n}"
     CourseSearchResourceUri:
       type: object
       properties:
@@ -406,6 +362,86 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Course Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Course\"}],\n    \"TargetOperationId\" : [\"CourseSearch\"]\n}"
+    CourseSearchResultViewModel:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Year:
+          type: integer
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+        CourseTitle:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.course_title\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseTitle\" }\n                ],\n                \"TechnicalDescription\": \"Course title\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseTitleLong:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.long_course_title\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseTitleLong\" }\n                ],\n                \"TechnicalDescription\": \"Course title long\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.course.course_number\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseNumber\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Course Search Result\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Course\"}]\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
+    GeneralEducationRequirementViewModel:
+      type: object
+      properties:
+        Diversity:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.diversity_crs\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Diversity\"}\n                ],\n                \"TechnicalDescription\": \"Diversity\"\n            }\n            </pre>"
+        EnglishComposition:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.engc\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/EnglishComposition\"}\n                ],\n                \"TechnicalDescription\": \"English composition\"\n            }\n            </pre>"
+        IndividualsAndSocieties:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.ind\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/IndividualsAndSocieties\"}\n                ],\n                \"TechnicalDescription\": \"Individuals and societies\"\n            }\n            </pre>"
+        NaturalWorld:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.nw\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/NaturalWorld\"}\n                ],\n                \"TechnicalDescription\": \"Natural world\"\n            }\n            </pre>"
+        QuantitativeAndSymbolicReasoning:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.qsr\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/QuantitativeAndSymbolicReasoning\"}\n                ],\n                \"TechnicalDescription\": \"Quantitative and symbolic reasoning\"\n            }\n            </pre>"
+        VisualLiteraryAndPerformingArts:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.vlpa\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/VisualLiteraryAndPerformingArts\"}\n                ],\n                \"TechnicalDescription\": \"Visual literary and performing arts\"\n            }\n            </pre>"
+        Writing:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.ged.wrt\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.GeneralEducationRequirements/Writing\"}\n                ],\n                \"TechnicalDescription\": \"Writing\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"General Education Requirement Model\",\n    \"TargetSchema\" : [\n         {\"target\" : \"SWS.Section\"},\n         {\"target\" : \"SWS.Course\"}\n    ]\n}"
     CourseViewModel:
       type: object
       properties:
@@ -484,42 +520,6 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Course Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Course\"}]\n}"
-    CourseSearchResultViewModel:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-        Year:
-          type: integer
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-        CourseTitle:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.course_title\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseTitle\" }\n                ],\n                \"TechnicalDescription\": \"Course title\"\n            }\n            </pre>"
-        CurriculumAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
-        CourseTitleLong:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.long_course_title\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseTitleLong\" }\n                ],\n                \"TechnicalDescription\": \"Course title long\"\n            }\n            </pre>"
-        CourseNumber:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.course.course_number\" },\n                    { \"source\":\"UWEO.selSWSCourse.CourseNumber\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Course Search Result\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Course\"}]\n}"
     CurriculumShortResourceUri:
       type: object
       properties:

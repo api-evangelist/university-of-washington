@@ -464,6 +464,17 @@ paths:
     - url: https://mango.u.washington.edu:646/registry/v3
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
     RegidJoinResult:
       type: object
       properties:
@@ -488,34 +499,16 @@ components:
         totalcount:
           type: string
           description: Number of results returned
-    Error:
+    GenericError:
       type: object
       properties:
         error:
           type: object
           properties:
             code:
-              type: integer
-              format: int32
+              type: string
             message:
               type: string
-    RegidPutPostPayload:
-      type: object
-      properties:
-        regid:
-          type: object
-          description: Regid object.  See supplemental docs for exact attributes.
-          properties:
-            regid:
-              type: string
-              description: Registry identifier
-            test:
-              type: string
-              description: Test status
-            status_code:
-              type: string
-              description: Status of source record
-      description: Note that the regid object can also be presented as an array of exactly one object.
     RegidDeletePutPostResult:
       type: object
       properties:
@@ -531,16 +524,6 @@ components:
               message:
                 type: string
                 description: Result of operation (usually 'record inserted' or 'record updated')
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     RegidGetResult:
       type: object
       properties:
@@ -584,6 +567,23 @@ components:
           type: integer
           description: Number of records affected
       description: Note that the regid object described here documents all possible attributes.  Not all attributes will be returned for all records.
+    RegidPutPostPayload:
+      type: object
+      properties:
+        regid:
+          type: object
+          description: Regid object.  See supplemental docs for exact attributes.
+          properties:
+            regid:
+              type: string
+              description: Registry identifier
+            test:
+              type: string
+              description: Test status
+            status_code:
+              type: string
+              description: Status of source record
+      description: Note that the regid object can also be presented as an array of exactly one object.
 x-refined-from:
 - university-of-washington-identity-registry-web-service-v2-openapi.yml
 - university-of-washington-identity-registry-web-service-v3-openapi.yml

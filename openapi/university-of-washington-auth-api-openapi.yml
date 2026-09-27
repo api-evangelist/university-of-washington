@@ -109,32 +109,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AuthPostPayload:
-      type: object
-      properties:
-        auth:
-          type: array
-          description: Array of auth objects (should generally contain only one).
-          items:
-            type: object
-            properties:
-              vendor:
-                type: string
-                description: Authentication vendor to use
-              factor:
-                type: string
-                description: Authentication factor to use
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
     AuthPostResult:
       type: object
       properties:
@@ -150,6 +124,32 @@ components:
               message:
                 type: string
                 description: A string describing the result of the authentication attempt.  This is intended for display to the user.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    AuthPostPayload:
+      type: object
+      properties:
+        auth:
+          type: array
+          description: Array of auth objects (should generally contain only one).
+          items:
+            type: object
+            properties:
+              vendor:
+                type: string
+                description: Authentication vendor to use
+              factor:
+                type: string
+                description: Authentication factor to use
 externalDocs:
   description: UW-IT Token Authentication Web Service (TAWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/tawsv2/

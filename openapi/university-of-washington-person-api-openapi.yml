@@ -1176,18 +1176,36 @@ paths:
     - url: /student
 components:
   schemas:
-    PersonPutPostPayloadGeneric:
+    PersonPutPostResult:
       type: object
       properties:
         person:
           type: array
-          description: Array of person objects (should generally contain only one).  The payload demonstrated is for the uwhr source--other sources will be similar.  See reference docs for exact attributes for other sources.
+          description: Response to PUT
           items:
             type: object
             properties:
+              count:
+                type: integer
+                description: Number of records affected
               validid:
+                type: integer
+                description: Unique identifier for record
+              regid:
                 type: string
-                description: Unique identifier for this source record
+                description: RegID of person
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
+    PersonPutPostPayloadUWHR:
+      type: object
+      properties:
+        person:
+          type: array
+          description: Array of person objects (should generally contain only one).  The payload demonstrated is for the uwhr source.
+          items:
+            type: object
+            properties:
               studentid:
                 type: string
                 description: Student ID Number (only use for student employees)
@@ -1228,15 +1246,29 @@ components:
               status_code:
                 type: string
                 description: Status Code
-    PersonPutPostPayloadUWHR:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    PersonPutPostPayloadGeneric:
       type: object
       properties:
         person:
           type: array
-          description: Array of person objects (should generally contain only one).  The payload demonstrated is for the uwhr source.
+          description: Array of person objects (should generally contain only one).  The payload demonstrated is for the uwhr source--other sources will be similar.  See reference docs for exact attributes for other sources.
           items:
             type: object
             properties:
+              validid:
+                type: string
+                description: Unique identifier for this source record
               studentid:
                 type: string
                 description: Student ID Number (only use for student employees)
@@ -1459,38 +1491,69 @@ components:
         totalcount:
           type: string
           description: Number of results returned
-    Error:
+    AcademicAdvisersResourceUri:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
-    PersonPutPostResult:
+        RegID:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Academic Advisers Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.AcademicAdvisers\"}],\n    \"TargetOperationId\" : [\"GetAcademicAdvisers\"]\n}"
+    TermResourceUri:
       type: object
       properties:
-        person:
-          type: array
-          description: Response to PUT
-          items:
-            type: object
-            properties:
-              count:
-                type: integer
-                description: Number of records affected
-              validid:
-                type: integer
-                description: Unique identifier for record
-              regid:
-                type: string
-                description: RegID of person
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
+        Href:
+          type:
+          - string
+          - 'null'
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
+    RegistrationBlockViewModel:
+      type: object
+      properties:
+        StudentName:
+          type:
+          - string
+          - 'null'
+        RegID:
+          type:
+          - string
+          - 'null'
+        StudentSystemKey:
+          type:
+          - string
+          - 'null'
+        Covid19StatusCode:
+          type: integer
+          format: int32
+        Covid19StatusDescription:
+          type:
+          - string
+          - 'null'
+        Covid19StatusDate:
+          type:
+          - string
+          - 'null'
+        Covid19StatusUpdateDate:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Registration Block Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.RegistrationBlock\"}]\n}"
     EthnicCodeDescriptionViewModel:
       type: object
       properties:
@@ -1505,78 +1568,58 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Ethnic Code Description Model\"\n}"
-    SportCodeDescriptionViewModel:
+    PersonSearchResourceUri:
       type: object
       properties:
-        Code:
+        EmployeeID:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_sport_code.sport_code\" }\n                ],\n                \"TechnicalDescription\": \"Sport Code\"\n            }\n            </pre>"
-        Description:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwEmployeeID\" }\n                ],\n                \"TechnicalDescription\": \"Employee id\"\n            }\n            </pre>"
+        NetID:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_40_sport.sport_descrip\" }\n                ],\n                \"TechnicalDescription\": \"Sport description\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Sport Code Description Model\"\n}"
-    AcademicAdvisersListViewModel:
-      type: object
-      properties:
-        StudentFullName:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" }\n                ],\n                \"TechnicalDescription\": \"UWNetID\"\n            }\n            </pre>"
+        PageStart:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.displayName\" }\n                ],\n                \"TechnicalDescription\": \"Student full name\"\n            }\n            </pre>"
-        StudentPronouns:
+        PageSize:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Verbose:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
         StudentNumber:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentID\" }\n                ],\n                \"TechnicalDescription\": \"Student Number\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentID\" }\n                ],\n                \"TechnicalDescription\": \"Student number\"\n            }\n            </pre>"
+        ChangedSinceDate:
+          type:
+          - string
+          - 'null'
         StudentSystemKey:
           type:
           - string
           - 'null'
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentSystemKey\" }\n                ],\n                \"TechnicalDescription\": \"Student system key\"\n            }\n            </pre>"
-        StudentUWNetID:
+        HasDisability:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" }\n                ],\n                \"TechnicalDescription\": \"Student UWNetID\"\n            }\n            </pre>"
-        StudentRegID:
+        Href:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"Student UW Registration ID\"\n            }\n            </pre>"
-        AcademicAdvisers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AcademicAdviserViewModel'
-          readOnly: true
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Academic Adviser List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.AcademicAdviser\"}]\n}"
-    VeteranCodeDescriptionViewModel:
-      type: object
-      properties:
-        Code:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_44_veteran.table_key\" }\n                ],\n                \"TechnicalDescription\": \"Veteran Code\"\n            }\n            </pre>"
-        Description:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_44_veteran.veteran_descrip\" }\n                ],\n                \"TechnicalDescription\": \"Veteran description\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Veteran Code Description Model\"\n}"
+      description: "{\n    \"DisplayTitle\" : \"Person Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"PersonSearch\"]\n}"
     TestScoreResourceUri:
       type: object
       properties:
@@ -1591,39 +1634,6 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Test Score Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}],\n    \"TargetOperationId\" : [\"GetTestScore\"]\n}"
-    DisablityCodeDescriptionViewModel:
-      type: object
-      properties:
-        Code:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1.disability_dss\" }\n                ],\n                \"TechnicalDescription\": \"Disability Code\"\n            }\n            </pre>"
-        Description:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_20_disability.disability_desc\" }\n                ],\n                \"TechnicalDescription\": \"Disability description\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Disablity Code Description Model\"\n}"
-    PersonViewModelBase:
-      type: object
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Model\",\n    \"RuntimeTypes\" : [\"PersonViewModel\"]\n}"
-    HispanicCodeDescriptionViewModel:
-      type: object
-      properties:
-        Code:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_hispanic.hispanic\" }\n                ],\n                \"TechnicalDescription\": \"Code\"\n            }\n            </pre>"
-        Description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Hispanic Code Description Model\"\n}"
     PersonViewModel:
       type: object
       properties:
@@ -1770,59 +1780,175 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Person Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}]\n}"
-    PersonDegreeResourceUri:
+    MajorViewModel:
       type: object
       properties:
+        Abbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation\"\n            }\n            </pre>"
+        Campus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus name\"\n            }\n            </pre>"
+        DegreeLevel:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\n                ],\n                \"TechnicalDescription\": \"Degree level\"\n            }\n            </pre>"
+          format: int32
+        DegreeName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\n                ],\n                \"TechnicalDescription\": \"Degree name\"\n            }\n            </pre>"
+        DegreeType:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\n                ],\n                \"TechnicalDescription\": \"Degree type\"\n            }\n            </pre>"
+          format: int32
+        FullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major full name\"\n            }\n            </pre>"
+        MajorName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\n                ],\n                \"TechnicalDescription\": \"Major name\"\n            }\n            </pre>"
+        Pathway:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\n                ],\n                \"TechnicalDescription\": \"Major pathway\"\n            }\n            </pre>"
+          format: int32
+        ShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major short name\"\n            }\n            </pre>"
+        CollegeAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\n                ],\n                \"TechnicalDescription\": \"College Abbreviation\"\n            }\n            </pre>"
+        CollegeFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"College full name\"\n            }\n            </pre>"
+        DepartmentCode:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_code\" }\n                ],\n                \"TechnicalDescription\": \"Department Code\"\n            }\n            </pre>"
+        DepartmentAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Department Abbreviation\"\n            }\n            </pre>"
+        DepartmentFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Department Full Name\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Expanded Major Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\n}"
+    RegistrationBlockViewUpdateModel:
+      type: object
+      properties:
+        Covid19StatusCode:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Covid19StatusDate:
+          type:
+          - string
+          - 'null'
         RegID:
           type:
           - string
           - 'null'
-        Href:
+        StudentName:
+          type:
+          - string
+          - 'null'
+        StudentSystemKey:
           type:
           - string
           - 'null'
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Degree Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonDegree\"}],\n    \"TargetOperationId\" : [\"GetEarnedDegrees\"]\n}"
-    LocalAddressViewModel:
+    PermanentAddressViewModel:
       type: object
       properties:
         Line1:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_line_1\" }\n                ],\n                \"TechnicalDescription\": \"Line1\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_line_1\" }\n                ],\n                \"TechnicalDescription\": \"Line1\"\n            }\n            </pre>"
         Line2:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_line_2\" }\n                ],\n                \"TechnicalDescription\": \"Line2\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_line_2\" }\n                ],\n                \"TechnicalDescription\": \"Line2\"\n            }\n            </pre>"
         City:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_city\" }\n                ],\n                \"TechnicalDescription\": \"City\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_city\" }\n                ],\n                \"TechnicalDescription\": \"City\"\n            }\n            </pre>"
         State:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_state\" }\n                ],\n                \"TechnicalDescription\": \"State\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_state\" }\n                ],\n                \"TechnicalDescription\": \"State\"\n            }\n            </pre>"
         Zip:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_zip_5\" },\n                    { \"source\":\"SWSSDB.addresses.local_zip_4\" }\n                ],\n                \"TechnicalDescription\": \"Zip\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_zip_5\" },\n                    { \"source\":\"SWSSDB.addresses.perm_zip_4\" }\n                ],\n                \"TechnicalDescription\": \"Zip\"\n            }\n            </pre>"
         Country:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_country\" }\n                ],\n                \"TechnicalDescription\": \"Country\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_country\" }\n                ],\n                \"TechnicalDescription\": \"Country\"\n            }\n            </pre>"
         PostalCode:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_postal_cd\" }\n                ],\n                \"TechnicalDescription\": \"Postal Code\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_postal_cd\" }\n                ],\n                \"TechnicalDescription\": \"Postal Code\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Local Address Model\"\n}"
+      description: "{\n    \"DisplayTitle\" : \"Permanent Address Model\"\n}"
+    SportCodeDescriptionViewModel:
+      type: object
+      properties:
+        Code:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_sport_code.sport_code\" }\n                ],\n                \"TechnicalDescription\": \"Sport Code\"\n            }\n            </pre>"
+        Description:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_40_sport.sport_descrip\" }\n                ],\n                \"TechnicalDescription\": \"Sport description\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Sport Code Description Model\"\n}"
+    EthnicViewModel:
+      type: object
+      properties:
+        Ethnic:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EthnicCodeDescriptionViewModel'
+        Hispanic:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/HispanicCodeDescriptionViewModel'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Ethnic Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}]\n}"
     MinorViewModel:
       type: object
       properties:
@@ -1872,144 +1998,175 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Department Full Name\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Minor Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\n}"
-    AcademicAdvisersResourceUri:
+    PersonViewModelBase:
+      type: object
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Model\",\n    \"RuntimeTypes\" : [\"PersonViewModel\"]\n}"
+    HispanicCodeDescriptionViewModel:
       type: object
       properties:
-        RegID:
+        Code:
           type:
           - string
           - 'null'
-        Href:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_hispanic.hispanic\" }\n                ],\n                \"TechnicalDescription\": \"Code\"\n            }\n            </pre>"
+        Description:
           type:
           - string
           - 'null'
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Academic Advisers Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.AcademicAdvisers\"}],\n    \"TargetOperationId\" : [\"GetAcademicAdvisers\"]\n}"
-    PersonSearchResourceUri:
+      description: "{\n    \"DisplayTitle\" : \"Hispanic Code Description Model\"\n}"
+    PersonSearchViewModel:
       type: object
       properties:
-        EmployeeID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwEmployeeID\" }\n                ],\n                \"TechnicalDescription\": \"Employee id\"\n            }\n            </pre>"
-        NetID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" }\n                ],\n                \"TechnicalDescription\": \"UWNetID\"\n            }\n            </pre>"
-        PageStart:
-          type:
-          - string
-          - 'null'
+        TotalCount:
+          type: integer
+          format: int32
         PageSize:
           type:
           - string
           - 'null'
-        Verbose:
+        PageStart:
+          type:
+          - string
+          - 'null'
+        Persons:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PersonViewModelBase'
+          readOnly: true
+        Current:
+          $ref: '#/components/schemas/PersonSearchResourceUri'
+        Previous:
+          $ref: '#/components/schemas/PersonSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/PersonSearchResourceUri'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}]\n}"
+    AcademicAdviserViewModel:
+      type: object
+      properties:
+        AdvisingFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.displayName\" }\n                ],\n                \"TechnicalDescription\": \"Advising full name\"\n            }\n            </pre>"
+        AdvisingPronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        AdvisingEmailAddress:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.UWEWPEmail\" },\n                    { \"source\":\"AADB.advisers.override_email\" }\n                ],\n                \"TechnicalDescription\": \"Advising email address\"\n            }\n            </pre>"
+        AdvisingPhoneNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.UWEWPPhone\" },\n                    { \"source\":\"AADB.advisers.override_phone\" }\n                ],\n                \"TechnicalDescription\": \"Advising phone number\"\n            }\n            </pre>"
+        AdvisingUWNetID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" },\n                    { \"source\":\"AADB.assigned_advisers.adviser_netid\" }\n                ],\n                \"TechnicalDescription\": \"Advising UWNetID\"\n            }\n            </pre>"
+        AdvisingRegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"Advising UW Registration ID\"\n            }\n            </pre>"
+        AdvisingProgram:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"AADB.sources.source_desc\" }\n                ],\n                \"TechnicalDescription\": \"Advising Program\"\n            }\n            </pre>"
+        BookingUrl:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"AADB.advisers.booking_url\" }\n                ],\n                \"TechnicalDescription\": \"Booking Url\"\n            }\n            </pre>"
+        IsDepartmentAdviser:
           type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
-        RegID:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Denotes whether or not this record is for a departmental adviser\"\n            }\n            </pre>"
+        StudentAdvisingIsActive:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"AADB.assigned_advisers.active\" }\n                ],\n                \"TechnicalDescription\": \"Student Advising is Active\"\n            }\n            </pre>"
+        Metadata:
           type:
           - string
           - 'null'
-        StudentNumber:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentID\" }\n                ],\n                \"TechnicalDescription\": \"Student number\"\n            }\n            </pre>"
-        ChangedSinceDate:
-          type:
-          - string
-          - 'null'
-        StudentSystemKey:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentSystemKey\" }\n                ],\n                \"TechnicalDescription\": \"Student system key\"\n            }\n            </pre>"
-        HasDisability:
-          type:
-          - string
-          - 'null'
-        Href:
+          readOnly: true
+        RepositoryTimeStamp:
           type:
           - string
           - 'null'
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"PersonSearch\"]\n}"
-    TermResourceUri:
+      description: "{\n    \"DisplayTitle\" : \"Academic Adviser Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.AcademicAdviser\"}]\n}"
+    DisablityCodeDescriptionViewModel:
       type: object
       properties:
-        Href:
+        Code:
           type:
           - string
           - 'null'
-        Year:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1.disability_dss\" }\n                ],\n                \"TechnicalDescription\": \"Disability Code\"\n            }\n            </pre>"
+        Description:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_20_disability.disability_desc\" }\n                ],\n                \"TechnicalDescription\": \"Disability description\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Disablity Code Description Model\"\n}"
+    DegreeEarnedViewModel:
+      type: object
+      properties:
+        Campus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_branch\" }\n                ],\n                \"TechnicalDescription\": \"Campus name\"\n            }\n            </pre>"
+        DegreeLevel:
           type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_level\" }\n                ],\n                \"TechnicalDescription\": \"Degree level\"\n            }\n            </pre>"
           format: int32
-        Quarter:
+        DegreeTitle:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
-    RegistrationBlockViewUpdateModel:
-      type: object
-      properties:
-        Covid19StatusCode:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_title\" }\n                ],\n                \"TechnicalDescription\": \"Degree Title\"\n            }\n            </pre>"
+        DegreeType:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_type\" }\n                ],\n                \"TechnicalDescription\": \"Degree type\"\n            }\n            </pre>"
+          format: int32
+        DegreeEarnedYear:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_earned_yr\" }\n                ],\n                \"TechnicalDescription\": \"Degree Earned Year\"\n            }\n            </pre>"
+          format: int32
+        DegreeEarnedQuarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_earned_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Degree Earned Quarter\"\n            }\n            </pre>"
+        DegreeStatus:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_status\" }\n                ],\n                \"TechnicalDescription\": \"Degree Status\"\n            }\n            </pre>"
+          format: int32
+        DiplomaName:
+          type:
+          - string
+          - 'null'
+        DiplomaMail:
           type:
           - integer
           - 'null'
           format: int32
-        Covid19StatusDate:
-          type:
-          - string
-          - 'null'
-        RegID:
-          type:
-          - string
-          - 'null'
-        StudentName:
-          type:
-          - string
-          - 'null'
-        StudentSystemKey:
-          type:
-          - string
-          - 'null'
+        DiplomaMailToLocalAddress:
+          type: boolean
       additionalProperties: false
-    PersonFinancialResourceUri:
-      type: object
-      properties:
-        RegID:
-          type:
-          - string
-          - 'null'
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Financial Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonFinancial\"}],\n    \"TargetOperationId\" : [\"GetPersonalFinancial\"]\n}"
-    EthnicViewModel:
-      type: object
-      properties:
-        Ethnic:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/EthnicCodeDescriptionViewModel'
-        Hispanic:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/HispanicCodeDescriptionViewModel'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Ethnic Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}]\n}"
+      description: "{\n    \"DisplayTitle\" : \"Degree Earned Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreesEarned\"}]\n}"
     EarnedDegreeListViewModel:
       type: object
       properties:
@@ -2047,6 +2204,87 @@ components:
           readOnly: true
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Degrees Earned List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreesEarned\"}]\n}"
+    NoticeResourceUri:
+      type: object
+      properties:
+        RegID:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Notice Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}],\n    \"TargetOperationId\" : [\"GetNotice\"]\n}"
+    PersonFinancialResourceUri:
+      type: object
+      properties:
+        RegID:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Financial Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonFinancial\"}],\n    \"TargetOperationId\" : [\"GetPersonalFinancial\"]\n}"
+    VeteranCodeDescriptionViewModel:
+      type: object
+      properties:
+        Code:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_44_veteran.table_key\" }\n                ],\n                \"TechnicalDescription\": \"Veteran Code\"\n            }\n            </pre>"
+        Description:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_44_veteran.veteran_descrip\" }\n                ],\n                \"TechnicalDescription\": \"Veteran description\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Veteran Code Description Model\"\n}"
+    LocalAddressViewModel:
+      type: object
+      properties:
+        Line1:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_line_1\" }\n                ],\n                \"TechnicalDescription\": \"Line1\"\n            }\n            </pre>"
+        Line2:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_line_2\" }\n                ],\n                \"TechnicalDescription\": \"Line2\"\n            }\n            </pre>"
+        City:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_city\" }\n                ],\n                \"TechnicalDescription\": \"City\"\n            }\n            </pre>"
+        State:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_state\" }\n                ],\n                \"TechnicalDescription\": \"State\"\n            }\n            </pre>"
+        Zip:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_zip_5\" },\n                    { \"source\":\"SWSSDB.addresses.local_zip_4\" }\n                ],\n                \"TechnicalDescription\": \"Zip\"\n            }\n            </pre>"
+        Country:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_country\" }\n                ],\n                \"TechnicalDescription\": \"Country\"\n            }\n            </pre>"
+        PostalCode:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.local_postal_cd\" }\n                ],\n                \"TechnicalDescription\": \"Postal Code\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Local Address Model\"\n}"
     CurrentEnrollmentViewModel:
       type: object
       properties:
@@ -2159,7 +2397,7 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Current Enrollment Model\"\n}"
-    NoticeResourceUri:
+    PersonDegreeResourceUri:
       type: object
       properties:
         RegID:
@@ -2171,287 +2409,49 @@ components:
           - string
           - 'null'
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Notice Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}],\n    \"TargetOperationId\" : [\"GetNotice\"]\n}"
-    RegistrationBlockViewModel:
+      description: "{\n    \"DisplayTitle\" : \"Person Degree Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonDegree\"}],\n    \"TargetOperationId\" : [\"GetEarnedDegrees\"]\n}"
+    AcademicAdvisersListViewModel:
       type: object
       properties:
-        StudentName:
+        StudentFullName:
           type:
           - string
           - 'null'
-        RegID:
-          type:
-          - string
-          - 'null'
-        StudentSystemKey:
-          type:
-          - string
-          - 'null'
-        Covid19StatusCode:
-          type: integer
-          format: int32
-        Covid19StatusDescription:
-          type:
-          - string
-          - 'null'
-        Covid19StatusDate:
-          type:
-          - string
-          - 'null'
-        Covid19StatusUpdateDate:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Registration Block Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.RegistrationBlock\"}]\n}"
-    AcademicAdviserViewModel:
-      type: object
-      properties:
-        AdvisingFullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.displayName\" }\n                ],\n                \"TechnicalDescription\": \"Advising full name\"\n            }\n            </pre>"
-        AdvisingPronouns:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.displayName\" }\n                ],\n                \"TechnicalDescription\": \"Student full name\"\n            }\n            </pre>"
+        StudentPronouns:
           type:
           - string
           - 'null'
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
-        AdvisingEmailAddress:
+        StudentNumber:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.UWEWPEmail\" },\n                    { \"source\":\"AADB.advisers.override_email\" }\n                ],\n                \"TechnicalDescription\": \"Advising email address\"\n            }\n            </pre>"
-        AdvisingPhoneNumber:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentID\" }\n                ],\n                \"TechnicalDescription\": \"Student Number\"\n            }\n            </pre>"
+        StudentSystemKey:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.UWEWPPhone\" },\n                    { \"source\":\"AADB.advisers.override_phone\" }\n                ],\n                \"TechnicalDescription\": \"Advising phone number\"\n            }\n            </pre>"
-        AdvisingUWNetID:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwStudentSystemKey\" }\n                ],\n                \"TechnicalDescription\": \"Student system key\"\n            }\n            </pre>"
+        StudentUWNetID:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" },\n                    { \"source\":\"AADB.assigned_advisers.adviser_netid\" }\n                ],\n                \"TechnicalDescription\": \"Advising UWNetID\"\n            }\n            </pre>"
-        AdvisingRegID:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwNetID\" }\n                ],\n                \"TechnicalDescription\": \"Student UWNetID\"\n            }\n            </pre>"
+        StudentRegID:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"Advising UW Registration ID\"\n            }\n            </pre>"
-        AdvisingProgram:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"AADB.sources.source_desc\" }\n                ],\n                \"TechnicalDescription\": \"Advising Program\"\n            }\n            </pre>"
-        BookingUrl:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"AADB.advisers.booking_url\" }\n                ],\n                \"TechnicalDescription\": \"Booking Url\"\n            }\n            </pre>"
-        IsDepartmentAdviser:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Denotes whether or not this record is for a departmental adviser\"\n            }\n            </pre>"
-        StudentAdvisingIsActive:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"AADB.assigned_advisers.active\" }\n                ],\n                \"TechnicalDescription\": \"Student Advising is Active\"\n            }\n            </pre>"
-        Metadata:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        RepositoryTimeStamp:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Academic Adviser Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.AcademicAdviser\"}]\n}"
-    PermanentAddressViewModel:
-      type: object
-      properties:
-        Line1:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_line_1\" }\n                ],\n                \"TechnicalDescription\": \"Line1\"\n            }\n            </pre>"
-        Line2:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_line_2\" }\n                ],\n                \"TechnicalDescription\": \"Line2\"\n            }\n            </pre>"
-        City:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_city\" }\n                ],\n                \"TechnicalDescription\": \"City\"\n            }\n            </pre>"
-        State:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_state\" }\n                ],\n                \"TechnicalDescription\": \"State\"\n            }\n            </pre>"
-        Zip:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_zip_5\" },\n                    { \"source\":\"SWSSDB.addresses.perm_zip_4\" }\n                ],\n                \"TechnicalDescription\": \"Zip\"\n            }\n            </pre>"
-        Country:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_country\" }\n                ],\n                \"TechnicalDescription\": \"Country\"\n            }\n            </pre>"
-        PostalCode:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.addresses.perm_postal_cd\" }\n                ],\n                \"TechnicalDescription\": \"Postal Code\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Permanent Address Model\"\n}"
-    DegreeEarnedViewModel:
-      type: object
-      properties:
-        Campus:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_branch\" }\n                ],\n                \"TechnicalDescription\": \"Campus name\"\n            }\n            </pre>"
-        DegreeLevel:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_level\" }\n                ],\n                \"TechnicalDescription\": \"Degree level\"\n            }\n            </pre>"
-          format: int32
-        DegreeTitle:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_title\" }\n                ],\n                \"TechnicalDescription\": \"Degree Title\"\n            }\n            </pre>"
-        DegreeType:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_type\" }\n                ],\n                \"TechnicalDescription\": \"Degree type\"\n            }\n            </pre>"
-          format: int32
-        DegreeEarnedYear:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_earned_yr\" }\n                ],\n                \"TechnicalDescription\": \"Degree Earned Year\"\n            }\n            </pre>"
-          format: int32
-        DegreeEarnedQuarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_earned_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Degree Earned Quarter\"\n            }\n            </pre>"
-        DegreeStatus:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_2_uw_degree_info.deg_status\" }\n                ],\n                \"TechnicalDescription\": \"Degree Status\"\n            }\n            </pre>"
-          format: int32
-        DiplomaName:
-          type:
-          - string
-          - 'null'
-        DiplomaMail:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        DiplomaMailToLocalAddress:
-          type: boolean
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Earned Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreesEarned\"}]\n}"
-    PersonSearchViewModel:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          format: int32
-        PageSize:
-          type:
-          - string
-          - 'null'
-        PageStart:
-          type:
-          - string
-          - 'null'
-        Persons:
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"Student UW Registration ID\"\n            }\n            </pre>"
+        AcademicAdvisers:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/PersonViewModelBase'
+            $ref: '#/components/schemas/AcademicAdviserViewModel'
           readOnly: true
-        Current:
-          $ref: '#/components/schemas/PersonSearchResourceUri'
-        Previous:
-          $ref: '#/components/schemas/PersonSearchResourceUri'
-        Next:
-          $ref: '#/components/schemas/PersonSearchResourceUri'
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}]\n}"
-    MajorViewModel:
-      type: object
-      properties:
-        Abbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation\"\n            }\n            </pre>"
-        Campus:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus name\"\n            }\n            </pre>"
-        DegreeLevel:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\n                ],\n                \"TechnicalDescription\": \"Degree level\"\n            }\n            </pre>"
-          format: int32
-        DegreeName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\n                ],\n                \"TechnicalDescription\": \"Degree name\"\n            }\n            </pre>"
-        DegreeType:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\n                ],\n                \"TechnicalDescription\": \"Degree type\"\n            }\n            </pre>"
-          format: int32
-        FullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major full name\"\n            }\n            </pre>"
-        MajorName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\n                ],\n                \"TechnicalDescription\": \"Major name\"\n            }\n            </pre>"
-        Pathway:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\n                ],\n                \"TechnicalDescription\": \"Major pathway\"\n            }\n            </pre>"
-          format: int32
-        ShortName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major short name\"\n            }\n            </pre>"
-        CollegeAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\n                ],\n                \"TechnicalDescription\": \"College Abbreviation\"\n            }\n            </pre>"
-        CollegeFullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"College full name\"\n            }\n            </pre>"
-        DepartmentCode:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_code\" }\n                ],\n                \"TechnicalDescription\": \"Department Code\"\n            }\n            </pre>"
-        DepartmentAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Department Abbreviation\"\n            }\n            </pre>"
-        DepartmentFullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Department Full Name\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Expanded Major Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\n}"
+      description: "{\n    \"DisplayTitle\" : \"Academic Adviser List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.AcademicAdviser\"}]\n}"
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv2/

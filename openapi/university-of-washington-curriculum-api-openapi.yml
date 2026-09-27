@@ -141,39 +141,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    CurriculumResourceUri:
-      type: object
-      properties:
-        Year:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-        CurriculumAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
-        CurriculumName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_name\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum name\"\n            }\n            </pre>"
-        CurriculumFullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum full name\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Expanded Curriculum Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}],\n    \"TargetOperationId\" : [\"CurriculumSearch\"]\n}"
     CurriculumSearchResourceUri:
       type: object
       properties:
@@ -237,3 +204,36 @@ components:
           $ref: '#/components/schemas/CurriculumSearchResourceUri'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Curriculum Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}]\n}"
+    CurriculumResourceUri:
+      type: object
+      properties:
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CurriculumName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_name\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum name\"\n            }\n            </pre>"
+        CurriculumFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_curric_code.curric_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum full name\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Expanded Curriculum Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Curriculum\"}],\n    \"TargetOperationId\" : [\"CurriculumSearch\"]\n}"

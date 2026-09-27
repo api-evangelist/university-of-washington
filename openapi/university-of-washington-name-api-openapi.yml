@@ -160,6 +160,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
     NameSetResult:
       type: object
       properties:
@@ -176,17 +187,6 @@ components:
         totalcount:
           type: integer
           description: Number of records affected
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
     NameSetPayload:
       type: object
       properties:

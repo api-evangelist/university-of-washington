@@ -194,70 +194,19 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    ScoreViewModel:
+    TestViewModel:
       type: object
       properties:
-        EnteredDate:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.score_entered_dt\" }\n                ],\n                \"TechnicalDescription\": \"Test score entered date\"\n            }\n            </pre>"
-        Percentile:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_pctile\" }\n                ],\n                \"TechnicalDescription\": \"Percentile\"\n            }\n            </pre>"
-        RevisedScore:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.revised_score\" }\n                ],\n                \"TechnicalDescription\": \"Revised score\"\n            }\n            </pre>"
-        TakenDate:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_dt\" }\n                ],\n                \"TechnicalDescription\": \"Test date\"\n            }\n            </pre>"
-        TestScore:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_score\" }\n                ],\n                \"TechnicalDescription\": \"Test score\"\n            }\n            </pre>"
-          format: int32
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Score Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
-    PersonResourceUri:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
-        RegID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
-        Pronouns:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
-    TestScoreViewModel:
-      type: object
-      properties:
-        Person:
-          $ref: '#/components/schemas/TestScorePersonViewModel'
-        TestsTaken:
+        TestType:
+          $ref: '#/components/schemas/TestTypeViewModel'
+        Scores:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TestViewModel'
+            $ref: '#/components/schemas/ScoreViewModel'
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Test Score Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
+      description: "{\n    \"DisplayTitle\" : \"Test Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
     TestTypeViewModel:
       type: object
       properties:
@@ -281,19 +230,6 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_type\" }\n                ],\n                \"TechnicalDescription\": \"Test name\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Test Type Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
-    TestViewModel:
-      type: object
-      properties:
-        TestType:
-          $ref: '#/components/schemas/TestTypeViewModel'
-        Scores:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ScoreViewModel'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Test Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
     TestScorePersonViewModel:
       type: object
       properties:
@@ -346,3 +282,67 @@ components:
           $ref: '#/components/schemas/PersonResourceUri'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Test Score Person Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
+    ScoreViewModel:
+      type: object
+      properties:
+        EnteredDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.score_entered_dt\" }\n                ],\n                \"TechnicalDescription\": \"Test score entered date\"\n            }\n            </pre>"
+        Percentile:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_pctile\" }\n                ],\n                \"TechnicalDescription\": \"Percentile\"\n            }\n            </pre>"
+        RevisedScore:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.revised_score\" }\n                ],\n                \"TechnicalDescription\": \"Revised score\"\n            }\n            </pre>"
+        TakenDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_dt\" }\n                ],\n                \"TechnicalDescription\": \"Test date\"\n            }\n            </pre>"
+        TestScore:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_test_scores.test_score\" }\n                ],\n                \"TechnicalDescription\": \"Test score\"\n            }\n            </pre>"
+          format: int32
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Score Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
+    TestScoreViewModel:
+      type: object
+      properties:
+        Person:
+          $ref: '#/components/schemas/TestScorePersonViewModel'
+        TestsTaken:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TestViewModel'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Test Score Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Test\"}]\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"

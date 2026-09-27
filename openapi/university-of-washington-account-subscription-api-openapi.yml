@@ -322,6 +322,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    AccountSubscriptionDeletePutPostResult:
+      type: object
+      properties:
+        account.subscription:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
     AccountSubscriptionGetResult:
       type: object
       properties:
@@ -374,21 +389,6 @@ components:
           type: string
           description: Number of account.subscription objects returned
       description: Note that the account.subscription object described here documents all possible attributes.  Not all attributes will be returned for all records.
-    AccountSubscriptionDeletePutPostResult:
-      type: object
-      properties:
-        account.subscription:
-          type: array
-          description: Response to DELETE/PUT/POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
     GenericError:
       type: object
       properties:

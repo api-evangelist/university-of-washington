@@ -134,6 +134,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    GroupReference:
+      type: object
+      description: A group reference
+      properties:
+        regid:
+          description: Group regid
+          type: string
+        id:
+          description: Group id
+          type: string
+        name:
+          description: Groups's display name
+          type: string
+        via:
+          type: array
+          description: For effective searches these represent the indirect group paths.
+          items:
+            type: string
+            description: Group id
+      required:
+      - regid
+      - id
+      - name
     SearchResponse:
       type: object
       properties:
@@ -186,29 +209,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupReference'
-    GroupReference:
-      type: object
-      description: A group reference
-      properties:
-        regid:
-          description: Group regid
-          type: string
-        id:
-          description: Group id
-          type: string
-        name:
-          description: Groups's display name
-          type: string
-        via:
-          type: array
-          description: For effective searches these represent the indirect group paths.
-          items:
-            type: string
-            description: Group id
-      required:
-      - regid
-      - id
-      - name
   responses:
     406Error:
       description: Not Acceptable (Accept or Content-type not application/json)

@@ -136,6 +136,22 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    DegreeAuditStatusViewModel:
+      type: object
+      properties:
+        Title:
+          type:
+          - string
+          - 'null'
+        Status:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        DegreeAuditURI:
+          $ref: '#/components/schemas/DegreeAuditResourceUri'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Status Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}]\n}"
     DegreeAuditResourceUri:
       type: object
       properties:
@@ -175,19 +191,3 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI394.dgp/sysk\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Degree Audit Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}],\n    \"TargetOperationId\" : [\"DegreeAuditSearch\"]\n}"
-    DegreeAuditStatusViewModel:
-      type: object
-      properties:
-        Title:
-          type:
-          - string
-          - 'null'
-        Status:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
-        DegreeAuditURI:
-          $ref: '#/components/schemas/DegreeAuditResourceUri'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Audit Status Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAudit\"}]\n}"

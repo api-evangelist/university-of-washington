@@ -153,18 +153,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    EntityPacDeleteResult:
-      type: object
-      properties:
-        entity.pac:
-          type: array
-          description: Response to DELETE
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-                description: Response message (usually 'pac set')
     EntityPacPostResult:
       type: object
       properties:
@@ -196,6 +184,18 @@ components:
               type: string
             message:
               type: string
+    EntityPacDeleteResult:
+      type: object
+      properties:
+        entity.pac:
+          type: array
+          description: Response to DELETE
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Response message (usually 'pac set')
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv3/

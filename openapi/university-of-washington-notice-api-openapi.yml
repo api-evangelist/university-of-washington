@@ -100,30 +100,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    PersonResourceUri:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
-        RegID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
-        Pronouns:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
     NoticeAttributeViewModel:
       type: object
       properties:
@@ -170,6 +146,30 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.msg.typ\" }\n                ],\n                \"TechnicalDescription\": \"Notice Type\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Notice Model\"\n}"
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
     MainNoticeViewModel:
       type: object
       properties:

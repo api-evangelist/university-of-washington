@@ -185,6 +185,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
     PdsEntryResult:
       type: object
       properties:
@@ -366,17 +377,6 @@ components:
           type: string
           description: Number of pdsentry objects returned
       description: PDS entry results.  Not all attributes will be returned for all records.
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv2/

@@ -163,33 +163,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PhotoResourceUri:
-      type: object
-      properties:
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
-        href:
-          type:
-          - string
-          - 'null'
-        uriAppender:
-          type:
-          - string
-          - 'null'
-        fileExtension:
-          type:
-          - string
-          - 'null'
-        height:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        regId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     PhotoSearchResourceUri:
       type: object
       properties:
@@ -219,80 +192,6 @@ components:
           - 'null'
         viewFormat:
           $ref: '#/components/schemas/ViewFormats'
-      additionalProperties: false
-    ViewFormats:
-      enum:
-      - 1
-      - 2
-      - 3
-      - 5
-      type: integer
-      format: int32
-    PhotoSearchViewModel:
-      type: object
-      properties:
-        metadata:
-          type:
-          - string
-          - 'null'
-        pageCount:
-          type:
-          - string
-          - 'null'
-          description: 'Actual number of records on the current search results page. This must be set by the view in order
-
-            for paging to work.'
-        previousPageStart:
-          type:
-          - string
-          - 'null'
-          description: The counter value for the start of the previous search results page.
-          readOnly: true
-        pageSize:
-          type:
-          - string
-          - 'null'
-          description: Requested number of records for the current search results page.
-        pageStart:
-          type:
-          - string
-          - 'null'
-          description: The counter value for the start of the current search results page.
-        nextPageStart:
-          type:
-          - string
-          - 'null'
-          description: The counter value for the start of the next search results page.
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: 'The page start offset. Since sources are generally 0 based and the view
-
-            defaults to 1 based, our offset defaults to -1.'
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        searchResultsCount:
-          type: integer
-          format: int32
-          readOnly: true
-        photos:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PhotoViewModel'
-          readOnly: true
-        title:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        current:
-          $ref: '#/components/schemas/PhotoSearchResourceUri'
       additionalProperties: false
     PhotoViewModel:
       type: object
@@ -375,4 +274,105 @@ components:
           $ref: '#/components/schemas/PhotoResourceUri'
         customHeight:
           $ref: '#/components/schemas/PhotoResourceUri'
+      additionalProperties: false
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32
+    PhotoResourceUri:
+      type: object
+      properties:
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+        href:
+          type:
+          - string
+          - 'null'
+        uriAppender:
+          type:
+          - string
+          - 'null'
+        fileExtension:
+          type:
+          - string
+          - 'null'
+        height:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        regId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PhotoSearchViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        searchResultsCount:
+          type: integer
+          format: int32
+          readOnly: true
+        photos:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PhotoViewModel'
+          readOnly: true
+        title:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        current:
+          $ref: '#/components/schemas/PhotoSearchResourceUri'
       additionalProperties: false

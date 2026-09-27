@@ -322,6 +322,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     EntitySponsorDeletePutPostResult:
       type: object
       properties:
@@ -337,6 +347,44 @@ components:
               message:
                 type: string
                 description: Result of operation (usually 'record inserted' or 'record updated')
+    EntitySponsorPutPostPayload:
+      type: object
+      properties:
+        entity.sponsor:
+          type: object
+          description: Entity.sponsor object.  See supplemental docs for exact attributes.
+          properties:
+            validid:
+              type: string
+              description: Entity identifier
+            sponsorid:
+              type: string
+              description: Sponsor's entity identifier
+            category_code:
+              type: string
+              description: Category code
+            category_name:
+              type: string
+              description: Category name - ignored
+            status_code:
+              type: string
+              description: Status code
+            status_name:
+              type: string
+              description: Status name -ignored
+            logname:
+              type: string
+              description: Log name - ignored
+            created:
+              type: string
+              description: timestamp of create event - ignored
+            updated:
+              type: string
+              description: timestamp of updated event - ignored
+            post_url:
+              type: string
+              description: Post back url - ignored
+      description: Note that the entity.sponsor object can also be presented as an array of exactly one object.
     EntitySponsorGetResult:
       type: object
       properties:
@@ -376,54 +424,6 @@ components:
               post_url:
                 type: string
                 description: Post back url
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-    EntitySponsorPutPostPayload:
-      type: object
-      properties:
-        entity.sponsor:
-          type: object
-          description: Entity.sponsor object.  See supplemental docs for exact attributes.
-          properties:
-            validid:
-              type: string
-              description: Entity identifier
-            sponsorid:
-              type: string
-              description: Sponsor's entity identifier
-            category_code:
-              type: string
-              description: Category code
-            category_name:
-              type: string
-              description: Category name - ignored
-            status_code:
-              type: string
-              description: Status code
-            status_name:
-              type: string
-              description: Status name -ignored
-            logname:
-              type: string
-              description: Log name - ignored
-            created:
-              type: string
-              description: timestamp of create event - ignored
-            updated:
-              type: string
-              description: timestamp of updated event - ignored
-            post_url:
-              type: string
-              description: Post back url - ignored
-      description: Note that the entity.sponsor object can also be presented as an array of exactly one object.
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv3/
