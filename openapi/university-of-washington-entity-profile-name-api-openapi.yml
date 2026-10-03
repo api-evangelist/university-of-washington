@@ -159,6 +159,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     EntityProfileNameGetResult:
       type: object
       properties:
@@ -252,31 +262,6 @@ components:
         totalcount:
           type: integer
           description: Number of entity.profile.name objects returned
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-    EntityProfileNamePostResult:
-      type: object
-      properties:
-        entity.profile.name:
-          type: array
-          description: Response to POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'name set')
     EntityProfileNamePostPayload:
       type: object
       properties:
@@ -318,6 +303,21 @@ components:
               type: string
               description: Privacy indicator for preferred name
       description: Note that the entity.profile.name object can also be presented as an array of exactly one object.
+    EntityProfileNamePostResult:
+      type: object
+      properties:
+        entity.profile.name:
+          type: array
+          description: Response to POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'name set')
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv3/

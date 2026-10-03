@@ -96,88 +96,6 @@ components:
       - 5
       type: integer
       format: int32
-    VersionListViewModel:
-      type: object
-      properties:
-        metadata:
-          type:
-          - string
-          - 'null'
-        pageCount:
-          type:
-          - string
-          - 'null'
-          description: 'Actual number of records on the current search results page. This must be set by the view in order
-
-            for paging to work.'
-        previousPageStart:
-          type:
-          - string
-          - 'null'
-          description: The counter value for the start of the previous search results page.
-          readOnly: true
-        pageSize:
-          type:
-          - string
-          - 'null'
-          description: Requested number of records for the current search results page.
-        pageStart:
-          type:
-          - string
-          - 'null'
-          description: The counter value for the start of the current search results page.
-        nextPageStart:
-          type:
-          - string
-          - 'null'
-          description: The counter value for the start of the next search results page.
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-        pageStartOffset:
-          type: integer
-          description: 'The page start offset. Since sources are generally 0 based and the view
-
-            defaults to 1 based, our offset defaults to -1.'
-          format: int32
-        format:
-          $ref: '#/components/schemas/ViewFormats'
-        listModel:
-          $ref: '#/components/schemas/IVersionList'
-        listViewModel:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/VersionViewModel'
-        title:
-          type:
-          - string
-          - 'null'
-        current:
-          $ref: '#/components/schemas/VersionViewModel'
-        supportedVersions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/VersionViewModel'
-          readOnly: true
-        serviceVersion:
-          type:
-          - string
-          - 'null'
-        domainCoreVersion:
-          type:
-          - string
-          - 'null'
-        environment:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Version List Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\n    \"TargetOperationId\" : [\"VersionList\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
     VersionModel:
       type: object
       properties:
@@ -284,6 +202,88 @@ components:
           readOnly: true
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Version Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.Version\"}],\n    \"TargetOperationId\" : [\"Version\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+    VersionListViewModel:
+      type: object
+      properties:
+        metadata:
+          type:
+          - string
+          - 'null'
+        pageCount:
+          type:
+          - string
+          - 'null'
+          description: 'Actual number of records on the current search results page. This must be set by the view in order
+
+            for paging to work.'
+        previousPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the previous search results page.
+          readOnly: true
+        pageSize:
+          type:
+          - string
+          - 'null'
+          description: Requested number of records for the current search results page.
+        pageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the current search results page.
+        nextPageStart:
+          type:
+          - string
+          - 'null'
+          description: The counter value for the start of the next search results page.
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+        pageStartOffset:
+          type: integer
+          description: 'The page start offset. Since sources are generally 0 based and the view
+
+            defaults to 1 based, our offset defaults to -1.'
+          format: int32
+        format:
+          $ref: '#/components/schemas/ViewFormats'
+        listModel:
+          $ref: '#/components/schemas/IVersionList'
+        listViewModel:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VersionViewModel'
+        title:
+          type:
+          - string
+          - 'null'
+        current:
+          $ref: '#/components/schemas/VersionViewModel'
+        supportedVersions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VersionViewModel'
+          readOnly: true
+        serviceVersion:
+          type:
+          - string
+          - 'null'
+        domainCoreVersion:
+          type:
+          - string
+          - 'null'
+        environment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Version List Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\n    \"TargetOperationId\" : [\"VersionList\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
     VersionListViewModel_2:
       type: object
       properties:

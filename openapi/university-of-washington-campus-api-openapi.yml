@@ -93,34 +93,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    CampusSearchViewModel:
-      type: object
-      properties:
-        Current:
-          $ref: '#/components/schemas/CampusSearchResourceUri'
-        Next:
-          $ref: '#/components/schemas/CampusSearchResourceUri'
-        PageSize:
-          type:
-          - string
-          - 'null'
-        PageStart:
-          type:
-          - string
-          - 'null'
-        Previous:
-          $ref: '#/components/schemas/CampusSearchResourceUri'
-        TotalCount:
-          type: integer
-          format: int32
-        Campuses:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CampusResourceUri'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Campus Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}]\n}"
     CampusResourceUri:
       type: object
       properties:
@@ -154,3 +126,31 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Campus Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\n    \"TargetOperationId\" : [\"CampusSearch\"]\n}"
+    CampusSearchViewModel:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/CampusSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/CampusSearchResourceUri'
+        PageSize:
+          type:
+          - string
+          - 'null'
+        PageStart:
+          type:
+          - string
+          - 'null'
+        Previous:
+          $ref: '#/components/schemas/CampusSearchResourceUri'
+        TotalCount:
+          type: integer
+          format: int32
+        Campuses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CampusResourceUri'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Campus Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}]\n}"

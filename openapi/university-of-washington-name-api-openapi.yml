@@ -160,33 +160,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
-    NameSetResult:
-      type: object
-      properties:
-        name:
-          type: array
-          description: ''
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-                description: Result of operation
-            description: ''
-        totalcount:
-          type: integer
-          description: Number of records affected
     NameSetPayload:
       type: object
       properties:
@@ -213,6 +186,22 @@ components:
                 type: string
                 description: Privacy flag for preferred name
             description: ''
+    NameSetResult:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Result of operation
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
     NameGetResult:
       type: object
       properties:
@@ -268,6 +257,17 @@ components:
         totalcount:
           type: integer
           description: Number of records affected
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv2/

@@ -332,21 +332,49 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    CatalogTerm1DAEEntryDateViewModel:
+    CLEntryTermDAEEntryDateViewModel:
       type: object
       properties:
         Year:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat1yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cleyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
         Quarter:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat1qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\" \n            }\n            </pre>"
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cleqtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Catalog Term 1 DAE Entry Date Model\"\n}"
+      description: "{\n    \"DisplayTitle\" : \"CL Entry Term DAE Entry Date Model\"\n}"
+    DegreeAuditExceptionSearchResourceUri:
+      type: object
+      properties:
+        RegId:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Exception Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}],\n    \"TargetOperationId\" : [\"DegreeAuditExceptionSearch\"]\n}"
+    CatalogTerm2DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat2yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat2qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Catalog Term 2 DAE Entry Date Model\"\n}"
     DegreeAuditExceptionSearchViewModel:
       type: object
       properties:
@@ -364,154 +392,6 @@ components:
           $ref: '#/components/schemas/DegreeAuditExceptionSearchResourceUri'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Degree Audit Exception Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\n}"
-    DegreeAuditExceptionListViewModel:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          format: int32
-        DegreeAuditExceptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DegreeAuditExceptionViewModel'
-          readOnly: true
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Audit Exception List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\n}"
-    CatalogTerm3DAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat3yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat3qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Catalog Term 3 DAE Entry Date Model\"\n}"
-    MinorCatalogTerm3DAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc3yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc3qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Minor Catalog Term 3 DAE Entry Date Model\"\n}"
-    ExceptionTermDAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Exception Term DAE Entry Date Model\"\n}"
-    LastTermDAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.lyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ltm\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Last Term DAE Entry Date Model\"\n}"
-    MinorCatalogTerm2DAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc2yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc2qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Minor Catalog Term 2 DAE Entry Date Model\"\n}"
-    UWEntryTermDAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.uweyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.uweqtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"UW Entry Term DAE Entry Date Model\"\n}"
-    DegreeAuditExceptionSearchResourceUri:
-      type: object
-      properties:
-        RegId:
-          type:
-          - string
-          - 'null'
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Audit Exception Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}],\n    \"TargetOperationId\" : [\"DegreeAuditExceptionSearch\"]\n}"
-    SCEntryTermDAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.sceyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.sceqtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"SC Entry Term DAE Entry Date Model\"\n}"
-    CatalogTerm2DAEEntryDateViewModel:
-      type: object
-      properties:
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat2yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat2qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Catalog Term 2 DAE Entry Date Model\"\n}"
     MinorCatalogTerm1DAEEntryDateViewModel:
       type: object
       properties:
@@ -527,21 +407,81 @@ components:
           description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc1qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Minor Catalog Term 1 DAE Entry Date Model\"\n}"
-    CLEntryTermDAEEntryDateViewModel:
+    ExceptionTermDAEEntryDateViewModel:
       type: object
       properties:
         Year:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cleyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
         Quarter:
           type:
           - string
           - 'null'
-          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cleqtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"CL Entry Term DAE Entry Date Model\"\n}"
+      description: "{\n    \"DisplayTitle\" : \"Exception Term DAE Entry Date Model\"\n}"
+    CatalogTerm3DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat3yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat3qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Catalog Term 3 DAE Entry Date Model\"\n}"
+    CatalogTerm1DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat1yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.cat1qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\" \n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Catalog Term 1 DAE Entry Date Model\"\n}"
+    DegreeAuditExceptionListViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        DegreeAuditExceptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DegreeAuditExceptionViewModel'
+          readOnly: true
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Exception List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\n}"
+    MinorCatalogTerm2DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc2yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc2qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Minor Catalog Term 2 DAE Entry Date Model\"\n}"
     FirstTermDAEEntryDateViewModel:
       type: object
       properties:
@@ -730,3 +670,63 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Degree Audit Exception Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditException\"}]\n}"
+    UWEntryTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.uweyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.uweqtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"UW Entry Term DAE Entry Date Model\"\n}"
+    MinorCatalogTerm3DAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc3yr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ovr/mc3qtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Minor Catalog Term 3 DAE Entry Date Model\"\n}"
+    LastTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.lyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.ltm\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Last Term DAE Entry Date Model\"\n}"
+    SCEntryTermDAEEntryDateViewModel:
+      type: object
+      properties:
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.sceyr\" }\n                        ],\n                        \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                        \"OriginatingSchema\" : [\n                            { \"source\":\"SDB.SWI370.sceqtr\" }\n                        ],\n                        \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"SC Entry Term DAE Entry Date Model\"\n}"

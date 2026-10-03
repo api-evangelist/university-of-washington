@@ -123,6 +123,50 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    CollegeSearchResultViewModel:
+      type: object
+      properties:
+        CampusShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [        \n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus short name\"\n            }\n            </pre>"
+        CollegeAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\n                ],\n                \"TechnicalDescription\": \"College abbreviation\"\n            }\n            </pre>"
+        CollegeFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"College full name\"\n            }\n            </pre>"
+        CollegeFullNameTitleCased:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"College full name title cased\"\n            }\n            </pre>"
+        CollegeName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_name\" }\n                ],\n                \"TechnicalDescription\": \"College name\"\n            }\n            </pre>"
+        CollegeShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_short_nm\" }\n                ],\n                \"TechnicalDescription\": \"Campus short name\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
+          format: int32
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"College Search Result\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"
     CollegeSearchViewModel:
       type: object
       properties:
@@ -172,47 +216,3 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"College Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}],\n    \"TargetOperationId\" : [\"CollegeSearch\"]\n}"
-    CollegeSearchResultViewModel:
-      type: object
-      properties:
-        CampusShortName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [        \n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus short name\"\n            }\n            </pre>"
-        CollegeAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_abbrev\" }\n                ],\n                \"TechnicalDescription\": \"College abbreviation\"\n            }\n            </pre>"
-        CollegeFullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"College full name\"\n            }\n            </pre>"
-        CollegeFullNameTitleCased:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"College full name title cased\"\n            }\n            </pre>"
-        CollegeName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_name\" }\n                ],\n                \"TechnicalDescription\": \"College name\"\n            }\n            </pre>"
-        CollegeShortName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_coll_code.college_short_nm\" }\n                ],\n                \"TechnicalDescription\": \"Campus short name\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
-        Year:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.last_eff_yr\" }\n                ],\n                \"TechnicalDescription\": \"Calculated field based on a range of first effective to last effective.\"\n            }\n            </pre>"
-          format: int32
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"College Search Result\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"

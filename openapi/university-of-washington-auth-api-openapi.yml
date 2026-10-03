@@ -109,6 +109,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
     AuthPostResult:
       type: object
       properties:
@@ -124,17 +135,6 @@ components:
               message:
                 type: string
                 description: A string describing the result of the authentication attempt.  This is intended for display to the user.
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
     AuthPostPayload:
       type: object
       properties:

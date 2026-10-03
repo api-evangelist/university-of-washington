@@ -441,6 +441,34 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    PersonResourceUri:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
+        Pronouns:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
+    RegistrationViewModelBase:
+      type: object
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Registration Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}],\n    \"RuntimeTypes\" : [\"RegistrationViewModel\"]\n}"
     RegistrationSearchViewModel:
       type: object
       properties:
@@ -469,10 +497,113 @@ components:
           $ref: '#/components/schemas/RegistrationSearchResourceUri'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Registration Search Model\"\n}"
-    RegistrationViewModelBase:
+    SectionResourceUri:
       type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.Year\"},\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.Quarter\"},\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+        SectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
+        SLN:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\n                ],\n                \"TechnicalDescription\": \"SLN\"\n            }\n            </pre>"
       additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Registration Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}],\n    \"RuntimeTypes\" : [\"RegistrationViewModel\"]\n}"
+      description: "{\n    \"DisplayTitle\" : \"Section Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\n    \"TargetOperationId\" : [\"GetSection\"]\n}"
+    RegistrationSearchResourceUri:
+      type: object
+      properties:
+        Year:
+          type:
+          - integer
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.year\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.quarter\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        RegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
+        SectionID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.section_id\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.section_id\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.section_id\" }\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
+        IsActive:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.request_status\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.is_active\" }\n                ],\n                \"TechnicalDescription\": \"Is registration active\"\n            }\n            </pre>"
+        Verbose:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value for determining payload size\"\n            }\n            </pre>"
+        CurriculumAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.dept_abbrev\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.dept_abbrev\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.curriculum_abbreviation\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
+        CourseNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.course_no\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.course_number\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.course_number\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
+        InstructorRegID:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_instr.fac_ssn\" },\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Instructor id\"\n            }\n            </pre>"
+        ChangedSinceDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Pulled from viewstate. Used to filter search results.\"\n            }\n            </pre>"
+        TranscriptableCourse:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Pulled from viewstate. Used to filter search results.\"\n            }\n            </pre>"
+        PageStart:
+          type:
+          - string
+          - 'null'
+        PageSize:
+          type:
+          - string
+          - 'null'
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Registration Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}],\n    \"TargetOperationId\" : [\"RegistrationSearch\"]\n}"
     RegistrationViewModel:
       type: object
       properties:
@@ -595,134 +726,3 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSRegistrations.IsIndependentStart\" }\n                ],\n                \"TechnicalDescription\": \"Is independent start EO only\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Registration Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}]\n}"
-    SectionResourceUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-        Year:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.Year\"},\n                    { \"source\":\"SDB.SWI202.trm.yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.Quarter\"},\n                    { \"source\":\"SDB.SWI202.trm.qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-        CurriculumAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.dept\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
-        CourseNumber:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.crsn\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
-        SectionID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.csid\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SectionID\"}\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
-        SLN:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.sect.sln\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.SLN\"}\n                ],\n                \"TechnicalDescription\": \"SLN\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Section Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}],\n    \"TargetOperationId\" : [\"GetSection\"]\n}"
-    RegistrationSearchResourceUri:
-      type: object
-      properties:
-        Year:
-          type:
-          - integer
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_yr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.year\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.regis_qtr\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.tran_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.quarter\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-        RegID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
-        SectionID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.section_id\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.section_id\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.section_id\" }\n                ],\n                \"TechnicalDescription\": \"Section ID\"\n            }\n            </pre>"
-        IsActive:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_courses.request_status\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.is_active\" }\n                ],\n                \"TechnicalDescription\": \"Is registration active\"\n            }\n            </pre>"
-        Verbose:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value for determining payload size\"\n            }\n            </pre>"
-        CurriculumAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.dept_abbrev\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.dept_abbrev\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.curriculum_abbreviation\" }\n                ],\n                \"TechnicalDescription\": \"Curriculum abbreviation\"\n            }\n            </pre>"
-        CourseNumber:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.time_schedule.course_no\" },\n                    { \"source\":\"SWSSDB.transcript_courses_taken.course_number\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.course_number\" }\n                ],\n                \"TechnicalDescription\": \"Course number\"\n            }\n            </pre>"
-        InstructorRegID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_course_instr.fac_ssn\" },\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Instructor id\"\n            }\n            </pre>"
-        ChangedSinceDate:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Pulled from viewstate. Used to filter search results.\"\n            }\n            </pre>"
-        TranscriptableCourse:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"Pulled from viewstate. Used to filter search results.\"\n            }\n            </pre>"
-        PageStart:
-          type:
-          - string
-          - 'null'
-        PageSize:
-          type:
-          - string
-          - 'null'
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Registration Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}],\n    \"TargetOperationId\" : [\"RegistrationSearch\"]\n}"
-    PersonResourceUri:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPrefferredName\" },\n                    { \"source\":\"IRWS.identity.uwPersonRegisteredName\" }\n                ],\n                \"TechnicalDescription\": \"This field is resource specific\"\n            }\n            </pre>"
-        RegID:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.regid\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID. This field is resource specific\"\n            }\n            </pre>"
-        Pronouns:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"IRWS.identity.uwPersonPronoun\" }\n                ],\n                \"TechnicalDescription\": \"\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"

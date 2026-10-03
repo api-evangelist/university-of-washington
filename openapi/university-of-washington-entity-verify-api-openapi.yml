@@ -378,25 +378,44 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    EntityVerifyGetResult:
+      type: object
+      properties:
+        entity.verify:
+          type: array
+          description: Array of entity.verify objects
+          items:
+            type: object
+            properties:
+              validid:
+                type: string
+                description: Entity identifier
+              verify_code:
+                type: string
+                description: Verify code
+              verify_name:
+                type: string
+                description: Verify name
+              verify_data:
+                type: string
+                description: Verify data
+              source_code:
+                type: string
+                description: Source code
+              source_name:
+                type: string
+                description: Source name
+              instance:
+                type: string
+                description: Instance number
+        totalcount:
+          type: string
+          description: Number of entity.verify objects returned
+      description: Note that the entity.verify object described here documents all possible attributes.  Not all attributes will be returned for all records.
     EntityDeletePutPostResult:
       type: object
       properties:
         entity:
-          type: array
-          description: Response to DELETE/PUT/POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
-    EntityVerifyDeletePutPostResult:
-      type: object
-      properties:
-        entity.verify:
           type: array
           description: Response to DELETE/PUT/POST
           items:
@@ -432,40 +451,21 @@ components:
               type: string
               description: Instance number
       description: Note that the entity.verify object can also be presented as an array of exactly one object.
-    EntityVerifyGetResult:
+    EntityVerifyDeletePutPostResult:
       type: object
       properties:
         entity.verify:
           type: array
-          description: Array of entity.verify objects
+          description: Response to DELETE/PUT/POST
           items:
             type: object
             properties:
-              validid:
+              count:
                 type: string
-                description: Entity identifier
-              verify_code:
+                description: Number of records affected
+              message:
                 type: string
-                description: Verify code
-              verify_name:
-                type: string
-                description: Verify name
-              verify_data:
-                type: string
-                description: Verify data
-              source_code:
-                type: string
-                description: Source code
-              source_name:
-                type: string
-                description: Source name
-              instance:
-                type: string
-                description: Instance number
-        totalcount:
-          type: string
-          description: Number of entity.verify objects returned
-      description: Note that the entity.verify object described here documents all possible attributes.  Not all attributes will be returned for all records.
+                description: Result of operation (usually 'record inserted' or 'record updated')
     GenericError:
       type: object
       properties:

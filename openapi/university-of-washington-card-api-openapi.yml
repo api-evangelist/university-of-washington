@@ -140,6 +140,24 @@ components:
         current:
           $ref: '#/components/schemas/CardSearchResourceUri'
       additionalProperties: false
+    CardSearchResourceUri:
+      type: object
+      properties:
+        href:
+          type:
+          - string
+          - 'null'
+        magStripCode:
+          type:
+          - string
+          - 'null'
+        proxRFID:
+          type:
+          - string
+          - 'null'
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+      additionalProperties: false
     ViewFormats:
       enum:
       - 1
@@ -200,22 +218,4 @@ components:
           - string
           - 'null'
           readOnly: true
-      additionalProperties: false
-    CardSearchResourceUri:
-      type: object
-      properties:
-        href:
-          type:
-          - string
-          - 'null'
-        magStripCode:
-          type:
-          - string
-          - 'null'
-        proxRFID:
-          type:
-          - string
-          - 'null'
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
       additionalProperties: false

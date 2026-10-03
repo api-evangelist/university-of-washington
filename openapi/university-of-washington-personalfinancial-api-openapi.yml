@@ -104,23 +104,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    PersonalFinancialViewModel:
-      type: object
-      properties:
-        Person:
-          $ref: '#/components/schemas/PersonResourceUri'
-        AccountBalance:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"SDB.SWI102.acctamt\" }\n                ],\n                \"TechnicalDescription\": \"Account balanace\"\n            }\n            </pre>"
-        PCEAccountBalance:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"UWEO.selSWSPersonFinancial.AccountBalance\" }\n                ],\n                \"TechnicalDescription\": \"PCE Account Balance\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Personal Financial Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonFinancial\"}]\n}"
     PersonResourceUri:
       type: object
       properties:
@@ -145,3 +128,20 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
+    PersonalFinancialViewModel:
+      type: object
+      properties:
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        AccountBalance:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"SDB.SWI102.acctamt\" }\n                ],\n                \"TechnicalDescription\": \"Account balanace\"\n            }\n            </pre>"
+        PCEAccountBalance:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"UWEO.selSWSPersonFinancial.AccountBalance\" }\n                ],\n                \"TechnicalDescription\": \"PCE Account Balance\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Personal Financial Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.PersonFinancial\"}]\n}"

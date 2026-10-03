@@ -198,6 +198,27 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" }\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\n                ],\n                \"TechnicalDescription\": \"Major pathway\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Major Students Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\n    \"TargetOperationId\" : [\"GetMajorStudents\"]\n}"
+    MajorStudentsPersonResourceUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        RegID:
+          type:
+          - string
+          - 'null'
+        Pronouns:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Major Students Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
     MajorViewModel:
       type: object
       properties:
@@ -300,24 +321,3 @@ components:
           $ref: '#/components/schemas/MajorStudentsResourceUri'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Major Students Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}]\n}"
-    MajorStudentsPersonResourceUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        RegID:
-          type:
-          - string
-          - 'null'
-        Pronouns:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Major Students Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.MajorStudents\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"

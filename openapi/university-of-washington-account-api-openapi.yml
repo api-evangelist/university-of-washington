@@ -454,6 +454,17 @@ paths:
     - url: https://mango.u.washington.edu:646/registry/v3
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
     AccountLookupResult:
       type: object
       properties:
@@ -495,17 +506,6 @@ components:
         totalcount:
           type: integer
           description: Number of records affected
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
     AccountSearchResults:
       type: object
       properties:
@@ -559,6 +559,57 @@ components:
         totalcount:
           type: string
           description: Number of results returned
+    AccountDeletePutPostResult:
+      type: object
+      properties:
+        account:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
+    AccountPutPostPayload:
+      type: object
+      properties:
+        account:
+          type: object
+          description: Account object.  See supplemental docs for exact attributes.
+          properties:
+            uwnetid:
+              type: string
+              description: UW Network identifier
+            uid:
+              type: string
+              description: UID
+            account:
+              type: string
+              description: Account name
+            disenfran:
+              type: string
+              description: Disenfranchise indicator
+            netid_code:
+              type: string
+              description: Code for UW NetID type
+            status_code:
+              type: string
+              description: Status of account record
+      description: Note that the account object can also be presented as an array of exactly one object.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     AccountSearchResult:
       type: object
       properties:
@@ -678,57 +729,6 @@ components:
           type: string
           description: Number of account objects returned
       description: Note that the account object described here documents all possible attributes.  Not all attributes will be returned for all records.
-    AccountDeletePutPostResult:
-      type: object
-      properties:
-        account:
-          type: array
-          description: Response to DELETE/PUT/POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
-    AccountPutPostPayload:
-      type: object
-      properties:
-        account:
-          type: object
-          description: Account object.  See supplemental docs for exact attributes.
-          properties:
-            uwnetid:
-              type: string
-              description: UW Network identifier
-            uid:
-              type: string
-              description: UID
-            account:
-              type: string
-              description: Account name
-            disenfran:
-              type: string
-              description: Disenfranchise indicator
-            netid_code:
-              type: string
-              description: Code for UW NetID type
-            status_code:
-              type: string
-              description: Status of account record
-      description: Note that the account object can also be presented as an array of exactly one object.
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
 x-refined-from:
 - university-of-washington-identity-registry-web-service-v2-openapi.yml
 - university-of-washington-identity-registry-web-service-v3-openapi.yml

@@ -248,6 +248,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
     CrnGetResult:
       type: object
       properties:
@@ -263,17 +274,6 @@ components:
               crns:
                 type: string
                 description: List of crn's for 2fa authentication
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
 externalDocs:
   description: UW-IT Token Authentication Web Service (TAWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/tawsv2/

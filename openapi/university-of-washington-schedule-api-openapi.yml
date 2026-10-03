@@ -202,157 +202,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    FacultyViewModel:
-      type: object
-      properties:
-        FacultySequenceNumber:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fsqn\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.InstructorIndex\"}\n                ],\n                \"TechnicalDescription\": \"Faculty sequence number\"\n            }\n            </pre>"
-        TSPrint:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.tspr\" }\n                ],\n                \"TechnicalDescription\": \"TS print\"\n            }\n            </pre>"
-        PercentInvolve:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fpct\" }\n                ],\n                \"TechnicalDescription\": \"Percent Involve\"\n            }\n            </pre>"
-        Person:
-          $ref: '#/components/schemas/PersonResourceUri'
-        GradeRoster:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Faculty Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
-    DaysOfWeekViewModel:
-      type: object
-      properties:
-        Days:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DayViewModel'
-        Text:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeek/Text\"}\n                ],\n                \"TechnicalDescription\": \"Days of the week\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Days of Week Model\"\n}"
-    FinalExamViewModel:
-      type: object
-      properties:
-        Building:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.bld\" }\n                ],\n                \"TechnicalDescription\": \"Building\"\n            }\n            </pre>"
-        FinalExamBuilding:
-          $ref: '#/components/schemas/FinalExamBuildingUri'
-        Date:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.fedt\" }\n                ],\n                \"TechnicalDescription\": \"Date\"\n            }\n            </pre>"
-        EndTime:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.etm\" }\n                ],\n                \"TechnicalDescription\": \"End time\"\n            }\n            </pre>"
-        MeetingStatus:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.sts\" }\n                ],\n                \"TechnicalDescription\": \"Meeting status\"\n            }\n            </pre>"
-        RoomNumber:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.rm\" }\n                ],\n                \"TechnicalDescription\": \"Room number\"\n            }\n            </pre>"
-        StartTime:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.stm\" }\n                ],\n                \"TechnicalDescription\": \"Start time\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Final Exam Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
-    MeetingBuildingUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Meeting Building URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
-    DayViewModel:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Day Model\"\n}"
-    ScheduleTermViewModel:
-      type: object
-      properties:
-        FirstDay:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.fdy\" }\n                ],\n                \"TechnicalDescription\": \"First day\"\n            }\n            </pre>"
-        BTermFirstDay:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.fdyb\" }\n                ],\n                \"TechnicalDescription\": \"B term first day\"\n            }\n            </pre>"
-        LastDayOfClasses:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.ldy\" }\n                ],\n                \"TechnicalDescription\": \"Last day of classes\"\n            }\n            </pre>"
-        ATermLastDay:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.ldya\" }\n                ],\n                \"TechnicalDescription\": \"A term last day\"\n            }\n            </pre>"
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter consists of winter, spring, summer, and autumn.\"\n            }\n            </pre>"
-        Year:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-          format: int32
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Schedule Term Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Schedule\"}]\n}"
-    FinalExamBuildingUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Final Exam Building Uri\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
-    ScheduleViewModel:
-      type: object
-      properties:
-        Term:
-          $ref: '#/components/schemas/ScheduleTermViewModel'
-        Schedule:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ScheduleRegistrationViewModel'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Schedule Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Schedule\"}]\n}"
     ScheduleRegistrationViewModel:
       type: object
       properties:
@@ -451,6 +300,15 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSRegistrations.IsIndependentStart\" }\n                ],\n                \"TechnicalDescription\": \"Is independent start EO only\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Student Schedule Registration Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Schedule\"}]\n}"
+    MeetingBuildingUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Meeting Building URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
     PersonResourceUri:
       type: object
       properties:
@@ -475,6 +333,19 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
+    ScheduleViewModel:
+      type: object
+      properties:
+        Term:
+          $ref: '#/components/schemas/ScheduleTermViewModel'
+        Schedule:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ScheduleRegistrationViewModel'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Schedule Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Schedule\"}]\n}"
     ScheduleSectionViewModel:
       type: object
       properties:
@@ -536,6 +407,77 @@ components:
           $ref: '#/components/schemas/FinalExamViewModel'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Student Schedule Section Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Schedule\"}]\n}"
+    ScheduleTermViewModel:
+      type: object
+      properties:
+        FirstDay:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.fdy\" }\n                ],\n                \"TechnicalDescription\": \"First day\"\n            }\n            </pre>"
+        BTermFirstDay:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.fdyb\" }\n                ],\n                \"TechnicalDescription\": \"B term first day\"\n            }\n            </pre>"
+        LastDayOfClasses:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.ldy\" }\n                ],\n                \"TechnicalDescription\": \"Last day of classes\"\n            }\n            </pre>"
+        ATermLastDay:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.ldya\" }\n                ],\n                \"TechnicalDescription\": \"A term last day\"\n            }\n            </pre>"
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter consists of winter, spring, summer, and autumn.\"\n            }\n            </pre>"
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+          format: int32
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Schedule Term Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Schedule\"}]\n}"
+    FinalExamViewModel:
+      type: object
+      properties:
+        Building:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.bld\" }\n                ],\n                \"TechnicalDescription\": \"Building\"\n            }\n            </pre>"
+        FinalExamBuilding:
+          $ref: '#/components/schemas/FinalExamBuildingUri'
+        Date:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.fedt\" }\n                ],\n                \"TechnicalDescription\": \"Date\"\n            }\n            </pre>"
+        EndTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.etm\" }\n                ],\n                \"TechnicalDescription\": \"End time\"\n            }\n            </pre>"
+        MeetingStatus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.sts\" }\n                ],\n                \"TechnicalDescription\": \"Meeting status\"\n            }\n            </pre>"
+        RoomNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.rm\" }\n                ],\n                \"TechnicalDescription\": \"Room number\"\n            }\n            </pre>"
+        StartTime:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.femt.stm\" }\n                ],\n                \"TechnicalDescription\": \"Start time\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Final Exam Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
     MeetingViewModel:
       type: object
       properties:
@@ -600,3 +542,61 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"UWEO.selSWSCourseSections.EndDate\" }\n                ],\n                \"TechnicalDescription\": \"EOS End Date\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Meeting Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    DaysOfWeekViewModel:
+      type: object
+      properties:
+        Days:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DayViewModel'
+        Text:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.mt.dys\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.DaysOfWeek/Text\"}\n                ],\n                \"TechnicalDescription\": \"Days of the week\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Days of Week Model\"\n}"
+    FinalExamBuildingUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Final Exam Building Uri\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"
+    DayViewModel:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Day Model\"\n}"
+    FacultyViewModel:
+      type: object
+      properties:
+        FacultySequenceNumber:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fsqn\" },\n                    { \"source\":\"UWEO.selSWSCourseSections.InstructorIndex\"}\n                ],\n                \"TechnicalDescription\": \"Faculty sequence number\"\n            }\n            </pre>"
+        TSPrint:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.tspr\" }\n                ],\n                \"TechnicalDescription\": \"TS print\"\n            }\n            </pre>"
+        PercentInvolve:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI202.fac.fpct\" }\n                ],\n                \"TechnicalDescription\": \"Percent Involve\"\n            }\n            </pre>"
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        GradeRoster:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Faculty Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Section\"}]\n}"

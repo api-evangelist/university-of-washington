@@ -118,6 +118,47 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    DegreeAuditProgramSearchResourceURI:
+      type: object
+      properties:
+        Campus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        MajorAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        DegreeGroup:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}],\n    \"TargetOperationId\" : [\"DegreeAuditProgramSearch\"]\n}"
+    DegreeAuditProgramSearchViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        DegreeAuditPrograms:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DegreeAuditProgramSearchResultViewModel'
+          readOnly: true
+        Current:
+          $ref: '#/components/schemas/DegreeAuditProgramSearchResourceURI'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\n}"
     DegreeAuditProgramSearchResultViewModel:
       type: object
       properties:
@@ -158,44 +199,3 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"UW Registration ID\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Result Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\n}"
-    DegreeAuditProgramSearchViewModel:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          format: int32
-        DegreeAuditPrograms:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DegreeAuditProgramSearchResultViewModel'
-          readOnly: true
-        Current:
-          $ref: '#/components/schemas/DegreeAuditProgramSearchResourceURI'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\n}"
-    DegreeAuditProgramSearchResourceURI:
-      type: object
-      properties:
-        Campus:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
-        MajorAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
-        DegreeGroup:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"url\" }\n                ],\n                \"TechnicalDescription\": \"User supplied value\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}],\n    \"TargetOperationId\" : [\"DegreeAuditProgramSearch\"]\n}"
