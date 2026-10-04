@@ -1418,6 +1418,8 @@ apis:
   humanURL: https://webservices.washington.edu/
   baseURL: https://idp.u.washington.edu/metadata/idp-metadata.xml
   tags:
+  - Pre-Auth
+  tags_raw:
   - Pre Auth
   properties:
   - type: OpenAPI
