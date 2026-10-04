@@ -322,6 +322,31 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    EntitySponsorDeletePutPostResult:
+      type: object
+      properties:
+        entity.sponsor:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
     EntitySponsorPutPostPayload:
       type: object
       properties:
@@ -360,31 +385,6 @@ components:
               type: string
               description: Post back url - ignored
       description: Note that the entity.sponsor object can also be presented as an array of exactly one object.
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-    EntitySponsorDeletePutPostResult:
-      type: object
-      properties:
-        entity.sponsor:
-          type: array
-          description: Response to DELETE/PUT/POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
     EntitySponsorGetResult:
       type: object
       properties:

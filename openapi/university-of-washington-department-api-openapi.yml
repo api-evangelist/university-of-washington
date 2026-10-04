@@ -121,33 +121,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    DepartmentSearchResourceUri:
-      type: object
-      properties:
-        CollegeAbbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_college\" }\n                ],\n                \"TechnicalDescription\": \"CollegeAbbreviation\"\n            }\n            </pre>"
-        FutureTerms:
-          type: integer
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
-        Year:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Department Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\n}"
     DepartmentSearchViewModel:
       type: object
       properties:
@@ -205,3 +178,30 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Department Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\n}"
+    DepartmentSearchResourceUri:
+      type: object
+      properties:
+        CollegeAbbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_dept_code.dept_college\" }\n                ],\n                \"TechnicalDescription\": \"CollegeAbbreviation\"\n            }\n            </pre>"
+        FutureTerms:
+          type: integer
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" }\n                ],\n                \"TechnicalDescription\": \"Quarter\"\n            }\n            </pre>"
+        Year:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" }\n                ],\n                \"TechnicalDescription\": \"Year\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Department Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Department\"}],\n    \"TargetOperationId\" : [\"DepartmentSearch\"]\n}"

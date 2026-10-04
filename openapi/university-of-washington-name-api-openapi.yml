@@ -160,48 +160,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    NameSetPayload:
-      type: object
-      properties:
-        name:
-          type: array
-          description: ''
-          items:
-            required:
-            - preferred_fname
-            - preferred_privacy
-            - preferred_sname
-            type: object
-            properties:
-              preferred_fname:
-                type: string
-                description: Preferred first name
-              preferred_mname:
-                type: string
-                description: Preferred middle name
-              preferred_sname:
-                type: string
-                description: Preferred surname
-              preferred_privacy:
-                type: string
-                description: Privacy flag for preferred name
-            description: ''
-    NameSetResult:
-      type: object
-      properties:
-        name:
-          type: array
-          description: ''
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-                description: Result of operation
-            description: ''
-        totalcount:
-          type: integer
-          description: Number of records affected
     NameGetResult:
       type: object
       properties:
@@ -253,6 +211,48 @@ components:
               preferred_privacy:
                 type: string
                 description: Privacy flag for preferred name
+            description: ''
+        totalcount:
+          type: integer
+          description: Number of records affected
+    NameSetPayload:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            required:
+            - preferred_fname
+            - preferred_privacy
+            - preferred_sname
+            type: object
+            properties:
+              preferred_fname:
+                type: string
+                description: Preferred first name
+              preferred_mname:
+                type: string
+                description: Preferred middle name
+              preferred_sname:
+                type: string
+                description: Preferred surname
+              preferred_privacy:
+                type: string
+                description: Privacy flag for preferred name
+            description: ''
+    NameSetResult:
+      type: object
+      properties:
+        name:
+          type: array
+          description: ''
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Result of operation
             description: ''
         totalcount:
           type: integer

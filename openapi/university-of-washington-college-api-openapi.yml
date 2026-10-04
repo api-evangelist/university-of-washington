@@ -123,6 +123,27 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    CollegeSearchViewModel:
+      type: object
+      properties:
+        Current:
+          $ref: '#/components/schemas/CollegeSearchResourceUri'
+        Next:
+          $ref: '#/components/schemas/CollegeSearchResourceUri'
+        Previous:
+          $ref: '#/components/schemas/CollegeSearchResourceUri'
+        TotalCount:
+          type: integer
+          format: int32
+        Colleges:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CollegeSearchResultViewModel'
+          readOnly: true
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"College Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"
     CollegeSearchResultViewModel:
       type: object
       properties:
@@ -167,27 +188,6 @@ components:
           format: int32
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"College Search Result\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"
-    CollegeSearchViewModel:
-      type: object
-      properties:
-        Current:
-          $ref: '#/components/schemas/CollegeSearchResourceUri'
-        Next:
-          $ref: '#/components/schemas/CollegeSearchResourceUri'
-        Previous:
-          $ref: '#/components/schemas/CollegeSearchResourceUri'
-        TotalCount:
-          type: integer
-          format: int32
-        Colleges:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CollegeSearchResultViewModel'
-          readOnly: true
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"College Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.College\"}]\n}"
     CollegeSearchResourceUri:
       type: object
       properties:

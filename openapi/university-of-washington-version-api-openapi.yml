@@ -88,60 +88,6 @@ paths:
     - url: /idcard
 components:
   schemas:
-    ViewFormats:
-      enum:
-      - 1
-      - 2
-      - 3
-      - 5
-      type: integer
-      format: int32
-    VersionModel:
-      type: object
-      properties:
-        key:
-          type:
-          - string
-          - 'null'
-        metadata:
-          type:
-          - string
-          - 'null'
-        versionNumber:
-          type:
-          - string
-          - 'null'
-        isCurrent:
-          type: boolean
-      additionalProperties: false
-    IVersionList:
-      type: object
-      properties:
-        dfdsSendRequestTiming:
-          type: number
-          format: double
-        dfdsOpenRequestTiming:
-          type: number
-          format: double
-        expires:
-          type: string
-          format: date-time
-          readOnly: true
-        serviceCodeVersion:
-          type:
-          - string
-          - 'null'
-        domainCoreVersion:
-          type:
-          - string
-          - 'null'
-        list:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/VersionModel'
-      additionalProperties: false
     VersionViewModel:
       type: object
       properties:
@@ -202,6 +148,32 @@ components:
           readOnly: true
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Version Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.Version\"}],\n    \"TargetOperationId\" : [\"Version\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+    VersionModel:
+      type: object
+      properties:
+        key:
+          type:
+          - string
+          - 'null'
+        metadata:
+          type:
+          - string
+          - 'null'
+        versionNumber:
+          type:
+          - string
+          - 'null'
+        isCurrent:
+          type: boolean
+      additionalProperties: false
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32
     VersionListViewModel:
       type: object
       properties:
@@ -284,6 +256,34 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Version List Model\",\n    \"TargetSchema\" : [{\"target\" : \"EWSE.VersionList\"}],\n    \"TargetOperationId\" : [\"VersionList\"],\n    \"OriginatingSchema\" : [{ \"source\" : \"hardcoded\" }]\n}"
+    IVersionList:
+      type: object
+      properties:
+        dfdsSendRequestTiming:
+          type: number
+          format: double
+        dfdsOpenRequestTiming:
+          type: number
+          format: double
+        expires:
+          type: string
+          format: date-time
+          readOnly: true
+        serviceCodeVersion:
+          type:
+          - string
+          - 'null'
+        domainCoreVersion:
+          type:
+          - string
+          - 'null'
+        list:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VersionModel'
+      additionalProperties: false
     VersionListViewModel_2:
       type: object
       properties:

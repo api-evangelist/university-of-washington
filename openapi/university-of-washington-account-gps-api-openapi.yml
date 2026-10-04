@@ -100,16 +100,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     AccountGpsGetResult:
       type: object
       properties:
@@ -138,6 +128,16 @@ components:
           type: string
           description: Number of account.gps objects returned
       description: GPS affiliation groups.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V3 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv3/

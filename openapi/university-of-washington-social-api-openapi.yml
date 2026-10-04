@@ -61,6 +61,35 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    SocialQuery:
+      type: object
+      properties:
+        social:
+          type: array
+          description: test
+          items:
+            required:
+            - display_name
+            - fname
+            - lname
+            type: object
+            properties:
+              validid:
+                type: string
+                description: 'Unique identifier from social identity provider.  Must match validid defined in URL.  Must be URL encoded if appropriate.  '
+              fname:
+                type: string
+                description: First Name
+              lname:
+                type: string
+                description: Last Name
+              display_name:
+                type: string
+                description: Display Name
+              contact_email:
+                type: string
+                description: Contact Email
+            description: test
     SocialResult:
       type: object
       properties:
@@ -125,35 +154,6 @@ components:
         totalcount:
           type: integer
           description: Number of records affected
-    SocialQuery:
-      type: object
-      properties:
-        social:
-          type: array
-          description: test
-          items:
-            required:
-            - display_name
-            - fname
-            - lname
-            type: object
-            properties:
-              validid:
-                type: string
-                description: 'Unique identifier from social identity provider.  Must match validid defined in URL.  Must be URL encoded if appropriate.  '
-              fname:
-                type: string
-                description: First Name
-              lname:
-                type: string
-                description: Last Name
-              display_name:
-                type: string
-                description: Display Name
-              contact_email:
-                type: string
-                description: Contact Email
-            description: test
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv2/

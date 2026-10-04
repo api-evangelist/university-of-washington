@@ -163,14 +163,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ViewFormats:
-      enum:
-      - 1
-      - 2
-      - 3
-      - 5
-      type: integer
-      format: int32
+    PhotoResourceUri:
+      type: object
+      properties:
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
+        href:
+          type:
+          - string
+          - 'null'
+        uriAppender:
+          type:
+          - string
+          - 'null'
+        fileExtension:
+          type:
+          - string
+          - 'null'
+        height:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        regId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     PhotoSearchViewModel:
       type: object
       properties:
@@ -236,6 +255,36 @@ components:
           readOnly: true
         current:
           $ref: '#/components/schemas/PhotoSearchResourceUri'
+      additionalProperties: false
+    PhotoSearchResourceUri:
+      type: object
+      properties:
+        href:
+          type:
+          - string
+          - 'null'
+        regId:
+          type:
+          - string
+          - 'null'
+        netId:
+          type:
+          - string
+          - 'null'
+        studentNumber:
+          type:
+          - string
+          - 'null'
+        employeeId:
+          type:
+          - string
+          - 'null'
+        height:
+          type:
+          - string
+          - 'null'
+        viewFormat:
+          $ref: '#/components/schemas/ViewFormats'
       additionalProperties: false
     PhotoViewModel:
       type: object
@@ -319,60 +368,11 @@ components:
         customHeight:
           $ref: '#/components/schemas/PhotoResourceUri'
       additionalProperties: false
-    PhotoResourceUri:
-      type: object
-      properties:
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
-        href:
-          type:
-          - string
-          - 'null'
-        uriAppender:
-          type:
-          - string
-          - 'null'
-        fileExtension:
-          type:
-          - string
-          - 'null'
-        height:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        regId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PhotoSearchResourceUri:
-      type: object
-      properties:
-        href:
-          type:
-          - string
-          - 'null'
-        regId:
-          type:
-          - string
-          - 'null'
-        netId:
-          type:
-          - string
-          - 'null'
-        studentNumber:
-          type:
-          - string
-          - 'null'
-        employeeId:
-          type:
-          - string
-          - 'null'
-        height:
-          type:
-          - string
-          - 'null'
-        viewFormat:
-          $ref: '#/components/schemas/ViewFormats'
-      additionalProperties: false
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32

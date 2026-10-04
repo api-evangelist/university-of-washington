@@ -139,19 +139,6 @@ paths:
     - url: /student
 components:
   schemas:
-    UriResourceWithTitle:
-      type: object
-      properties:
-        href:
-          type:
-          - string
-          - 'null'
-          format: uri
-        name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ResourceListViewModel:
       type: object
       properties:
@@ -211,6 +198,19 @@ components:
           items:
             $ref: '#/components/schemas/UriResourceWithTitle'
       additionalProperties: false
+    UriResourceWithTitle:
+      type: object
+      properties:
+        href:
+          type:
+          - string
+          - 'null'
+          format: uri
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     ViewFormats:
       enum:
       - 1
@@ -219,6 +219,17 @@ components:
       - 5
       type: integer
       format: int32
+    ResourceListViewModel_2:
+      type: object
+      properties:
+        Resources:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UriResourceWithTitle_2'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Resource List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Resource\"}]\n}"
     UriResourceWithTitle_2:
       type: object
       properties:
@@ -233,17 +244,6 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Resource URI\"\n}"
-    ResourceListViewModel_2:
-      type: object
-      properties:
-        Resources:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/UriResourceWithTitle_2'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Resource List Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Resource\"}]\n}"
 x-refined-from:
 - university-of-washington-idcard-web-service.yaml
 - university-of-washington-student-web-service.yaml

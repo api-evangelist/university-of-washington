@@ -93,30 +93,6 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
-    CampusResourceUri:
-      type: object
-      properties:
-        CampusShortName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation of campus\"\n            }\n            </pre>"
-        CampusFullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Full Name of the Campus\"\n            }\n            </pre>"
-        CampusName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Name of the campus\"\n            }\n            </pre>"
-        Href:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Campus Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\n    \"TargetOperationId\" : [\"CampusSearch\"]\n}"
     CampusSearchResourceUri:
       type: object
       properties:
@@ -154,3 +130,27 @@ components:
             $ref: '#/components/schemas/CampusResourceUri'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Campus Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}]\n}"
+    CampusResourceUri:
+      type: object
+      properties:
+        CampusShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation of campus\"\n            }\n            </pre>"
+        CampusFullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Full Name of the Campus\"\n            }\n            </pre>"
+        CampusName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                   { \"source\":\"hardcoded\" }\n                ],\n                \"TechnicalDescription\": \"Name of the campus\"\n            }\n            </pre>"
+        Href:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Campus Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Campus\"}],\n    \"TargetOperationId\" : [\"CampusSearch\"]\n}"

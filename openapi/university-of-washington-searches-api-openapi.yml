@@ -133,6 +133,9 @@ paths:
       operationId: getSearch
       x-operation-id-source: derived
 components:
+  responses:
+    406Error:
+      description: Not Acceptable (Accept or Content-type not application/json)
   schemas:
     GroupReference:
       type: object
@@ -209,9 +212,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupReference'
-  responses:
-    406Error:
-      description: Not Acceptable (Accept or Content-type not application/json)
 externalDocs:
   description: UW-IT Groups Web Service (GWS) API documentation
   url: https://iam-tools.u.washington.edu/apis/gws/

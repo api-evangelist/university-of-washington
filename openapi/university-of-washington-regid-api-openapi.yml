@@ -499,48 +499,6 @@ components:
         totalcount:
           type: string
           description: Number of results returned
-    RegidDeletePutPostResult:
-      type: object
-      properties:
-        regid:
-          type: array
-          description: Response to DELETE/PUT/POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-    RegidPutPostPayload:
-      type: object
-      properties:
-        regid:
-          type: object
-          description: Regid object.  See supplemental docs for exact attributes.
-          properties:
-            regid:
-              type: string
-              description: Registry identifier
-            test:
-              type: string
-              description: Test status
-            status_code:
-              type: string
-              description: Status of source record
-      description: Note that the regid object can also be presented as an array of exactly one object.
     RegidGetResult:
       type: object
       properties:
@@ -584,6 +542,48 @@ components:
           type: integer
           description: Number of records affected
       description: Note that the regid object described here documents all possible attributes.  Not all attributes will be returned for all records.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    RegidPutPostPayload:
+      type: object
+      properties:
+        regid:
+          type: object
+          description: Regid object.  See supplemental docs for exact attributes.
+          properties:
+            regid:
+              type: string
+              description: Registry identifier
+            test:
+              type: string
+              description: Test status
+            status_code:
+              type: string
+              description: Status of source record
+      description: Note that the regid object can also be presented as an array of exactly one object.
+    RegidDeletePutPostResult:
+      type: object
+      properties:
+        regid:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
 x-refined-from:
 - university-of-washington-identity-registry-web-service-v2-openapi.yml
 - university-of-washington-identity-registry-web-service-v3-openapi.yml

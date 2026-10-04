@@ -359,6 +359,35 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    RegistrationPeriodViewModel:
+      type: object
+      properties:
+        StartDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.sdt\" }\n                ],\n                \"TechnicalDescription\": \"Registration period start\"\n            }\n            </pre>"
+        EndDate:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.edt\" }\n                ],\n                \"TechnicalDescription\": \"Registration period end\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Registration Period Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}]\n}"
+    TimeScheduleConstructionViewModel:
+      type: object
+      properties:
+        Bothell:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_b\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule construction on for the Bothell campus\"\n            }\n            </pre>"
+        Seattle:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_s\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule construction on for the Seattle campus\"\n            }\n            </pre>"
+        Tacoma:
+          type: boolean
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_t\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule construction on for the Tacoma campus\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Time Schedule Construction Model\"\n}"
     TermViewModel:
       type: object
       properties:
@@ -538,35 +567,6 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
-    TimeScheduleConstructionViewModel:
-      type: object
-      properties:
-        Bothell:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_b\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule construction on for the Bothell campus\"\n            }\n            </pre>"
-        Seattle:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_s\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule construction on for the Seattle campus\"\n            }\n            </pre>"
-        Tacoma:
-          type: boolean
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.cal_ts_cnst_off_t\" }\n                ],\n                \"TechnicalDescription\": \"Time schedule construction on for the Tacoma campus\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Time Schedule Construction Model\"\n}"
-    RegistrationPeriodViewModel:
-      type: object
-      properties:
-        StartDate:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.sdt\" }\n                ],\n                \"TechnicalDescription\": \"Registration period start\"\n            }\n            </pre>"
-        EndDate:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI701.term.edt\" }\n                ],\n                \"TechnicalDescription\": \"Registration period end\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Registration Period Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Registration\"}]\n}"
     TimeSchedulePublishedViewModel:
       type: object
       properties:

@@ -239,6 +239,97 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    MajorViewModelRetro:
+      type: object
+      properties:
+        Abbreviation:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation\"\n            }\n            </pre>"
+        Campus:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus name\"\n            }\n            </pre>"
+        DegreeLevel:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\n                ],\n                \"TechnicalDescription\": \"Degree level\"\n            }\n            </pre>"
+          format: int32
+        DegreeName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\n                ],\n                \"TechnicalDescription\": \"Degree name\"\n            }\n            </pre>"
+        DegreeType:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\n                ],\n                \"TechnicalDescription\": \"Degree type\"\n            }\n            </pre>"
+          format: int32
+        FullName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major full name\"\n            }\n            </pre>"
+        MajorName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\n                ],\n                \"TechnicalDescription\": \"Major name\"\n            }\n            </pre>"
+        Pathway:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\n                ],\n                \"TechnicalDescription\": \"Major pathway\"\n            }\n            </pre>"
+          format: int32
+        ShortName:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major short name\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Major Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\n}"
+    TermResourceUri:
+      type: object
+      properties:
+        Href:
+          type:
+          - string
+          - 'null'
+        Year:
+          type: integer
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
+          format: int32
+        Quarter:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
+    EnrollmentMajorListViewUpdateModel:
+      type: object
+      properties:
+        StudentName:
+          type:
+          - string
+          - 'null'
+        Person:
+          $ref: '#/components/schemas/PersonResourceUri'
+        Majors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MajorViewModelRetro'
+        StudentSystemKey:
+          type:
+          - string
+          - 'null'
+        RegID:
+          type:
+          - string
+          - 'null'
+        Term:
+          $ref: '#/components/schemas/TermResourceUri'
+      additionalProperties: false
     EnrollmentMajorListViewModel:
       type: object
       properties:
@@ -293,94 +384,3 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Person Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Person\"}],\n    \"TargetOperationId\" : [\"GetPerson\"]\n}"
-    TermResourceUri:
-      type: object
-      properties:
-        Href:
-          type:
-          - string
-          - 'null'
-        Year:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_yr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_yr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_yr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/yr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_yr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Year\"}\n                ],\n                \"TechnicalDescription\": \"Year for the given term\"\n            }\n            </pre>"
-          format: int32
-        Quarter:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_last_qtr\" },\n                    { \"source\":\"SWSSDB.sr_major_code.major_first_qtr\" },\n                    { \"source\":\"SWSSDB.sys_tbl_39_calendar.table_key\" },\n                    { \"source\":\"SWSSDB.student_1.last_qtr_enrolled\" },\n                    { \"source\":\"SDB.SWI610.trm/qtr\" },\n                    { \"source\":\"SWSSDB.sr_course_titles.first_eff_qtr\" },\n                    { \"source\":\"UWEO.selSWSRegistrations.FirstEffectiveTerm/Quarter\"}\n                ],\n                \"TechnicalDescription\": \"Quarter for the given term\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Term Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Term\"}],\n    \"TargetOperationId\" : [\"GetTerm\"]\n}"
-    MajorViewModelRetro:
-      type: object
-      properties:
-        Abbreviation:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_abbr\" }\n                ],\n                \"TechnicalDescription\": \"Abbreviation\"\n            }\n            </pre>"
-        Campus:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sys_tbl_25_campus.branch_name\" }\n                ],\n                \"TechnicalDescription\": \"Campus name\"\n            }\n            </pre>"
-        DegreeLevel:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_level\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_level\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_level\" }\n                ],\n                \"TechnicalDescription\": \"Degree level\"\n            }\n            </pre>"
-          format: int32
-        DegreeName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_degree.deg_title\" }\n                ],\n                \"TechnicalDescription\": \"Degree name\"\n            }\n            </pre>"
-        DegreeType:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.student_1_college_major.deg_type\" },\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_deg_type\" },\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_deg_type\" }\n                ],\n                \"TechnicalDescription\": \"Degree type\"\n            }\n            </pre>"
-          format: int32
-        FullName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_full_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major full name\"\n            }\n            </pre>"
-        MajorName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_name\" }\n                ],\n                \"TechnicalDescription\": \"Major name\"\n            }\n            </pre>"
-        Pathway:
-          type: integer
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.registration_regis_col_major.regis_pathway\" },\n                    { \"source\":\"SWSSDB.student_1_college_major.pathway\"},\n                    { \"source\":\"SWSSDB.transcript_tran_col_major.tran_pathway\" }\n                ],\n                \"TechnicalDescription\": \"Major pathway\"\n            }\n            </pre>"
-          format: int32
-        ShortName:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SWSSDB.sr_major_code.major_short_nm\" }\n                ],\n                \"TechnicalDescription\": \"Major short name\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Major Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Enrollment\"}]\n}"
-    EnrollmentMajorListViewUpdateModel:
-      type: object
-      properties:
-        StudentName:
-          type:
-          - string
-          - 'null'
-        Person:
-          $ref: '#/components/schemas/PersonResourceUri'
-        Majors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/MajorViewModelRetro'
-        StudentSystemKey:
-          type:
-          - string
-          - 'null'
-        RegID:
-          type:
-          - string
-          - 'null'
-        Term:
-          $ref: '#/components/schemas/TermResourceUri'
-      additionalProperties: false

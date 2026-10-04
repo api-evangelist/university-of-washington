@@ -100,6 +100,26 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    NoticeAttributeViewModel:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.nm\" }\n                ],\n                \"TechnicalDescription\": \"Notice attribute name\"\n            }\n            </pre>"
+        DataType:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.typ\" }\n                ],\n                \"TechnicalDescription\": \"Data Type\"\n            }\n            </pre>"
+        Value:
+          type:
+          - string
+          - 'null'
+          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.val\" }\n                ],\n                \"TechnicalDescription\": \"Value\"\n            }\n            </pre>"
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Notice Attribute Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}]\n}"
     PersonResourceUri:
       type: object
       properties:
@@ -150,26 +170,6 @@ components:
           description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.msg.typ\" }\n                ],\n                \"TechnicalDescription\": \"Notice Type\"\n            }\n            </pre>"
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Notice Model\"\n}"
-    NoticeAttributeViewModel:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.nm\" }\n                ],\n                \"TechnicalDescription\": \"Notice attribute name\"\n            }\n            </pre>"
-        DataType:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.typ\" }\n                ],\n                \"TechnicalDescription\": \"Data Type\"\n            }\n            </pre>"
-        Value:
-          type:
-          - string
-          - 'null'
-          description: "<pre>\n            {\n                \"OriginatingSchema\" : [\n                    { \"source\":\"SDB.SWI102.attr.val\" }\n                ],\n                \"TechnicalDescription\": \"Value\"\n            }\n            </pre>"
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Notice Attribute Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.Notice\"}]\n}"
     MainNoticeViewModel:
       type: object
       properties:

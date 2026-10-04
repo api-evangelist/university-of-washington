@@ -118,6 +118,23 @@ paths:
           description: ServiceUnavailable
 components:
   schemas:
+    DegreeAuditProgramSearchViewModel:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        DegreeAuditPrograms:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DegreeAuditProgramSearchResultViewModel'
+          readOnly: true
+        Current:
+          $ref: '#/components/schemas/DegreeAuditProgramSearchResourceURI'
+      additionalProperties: false
+      description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\n}"
     DegreeAuditProgramSearchResourceURI:
       type: object
       properties:
@@ -142,23 +159,6 @@ components:
           - 'null'
       additionalProperties: false
       description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Resource URI\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}],\n    \"TargetOperationId\" : [\"DegreeAuditProgramSearch\"]\n}"
-    DegreeAuditProgramSearchViewModel:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          format: int32
-        DegreeAuditPrograms:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DegreeAuditProgramSearchResultViewModel'
-          readOnly: true
-        Current:
-          $ref: '#/components/schemas/DegreeAuditProgramSearchResourceURI'
-      additionalProperties: false
-      description: "{\n    \"DisplayTitle\" : \"Degree Audit Program Search Model\",\n    \"TargetSchema\" : [{\"target\" : \"SWS.DegreeAuditProgram\"}]\n}"
     DegreeAuditProgramSearchResultViewModel:
       type: object
       properties:

@@ -378,6 +378,59 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    DsubscriptionCompatPutPostPayload:
+      type: object
+      properties:
+        d_subscription.compat:
+          type: array
+          description: Array of d_subscription objects.  See reference docs for exact attributes.
+          items:
+            type: object
+            properties:
+              uwnetid:
+                type: string
+                description: UW Network identifier
+              subscription_code:
+                type: string
+                description: Subscription code
+              category_code:
+                type: string
+                description: Category code
+              permit:
+                type: string
+                description: Permit flag
+              deny:
+                type: string
+                description: Deny flag
+              status_code:
+                type: string
+                description: Status code
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+            message:
+              type: string
+    DsubscriptionCompatDeletePutPostResult:
+      type: object
+      properties:
+        d_subscription.compat:
+          type: array
+          description: Response to DELETE/PUT/POST
+          items:
+            type: object
+            properties:
+              count:
+                type: string
+                description: Number of records affected
+              message:
+                type: string
+                description: Result of operation (usually 'record inserted' or 'record updated')
     DsubscriptionCompatGetResult:
       type: object
       properties:
@@ -427,59 +480,6 @@ components:
           type: string
           description: Number of d_subscription objects returned
       description: Note that the d_subscription object described here documents all possible attributes.  Not all attributes will be returned for all records.
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
-    DsubscriptionCompatDeletePutPostResult:
-      type: object
-      properties:
-        d_subscription.compat:
-          type: array
-          description: Response to DELETE/PUT/POST
-          items:
-            type: object
-            properties:
-              count:
-                type: string
-                description: Number of records affected
-              message:
-                type: string
-                description: Result of operation (usually 'record inserted' or 'record updated')
-    DsubscriptionCompatPutPostPayload:
-      type: object
-      properties:
-        d_subscription.compat:
-          type: array
-          description: Array of d_subscription objects.  See reference docs for exact attributes.
-          items:
-            type: object
-            properties:
-              uwnetid:
-                type: string
-                description: UW Network identifier
-              subscription_code:
-                type: string
-                description: Subscription code
-              category_code:
-                type: string
-                description: Category code
-              permit:
-                type: string
-                description: Permit flag
-              deny:
-                type: string
-                description: Deny flag
-              status_code:
-                type: string
-                description: Status code
 externalDocs:
   description: UW-IT Identity Registration Web Service (IRWS) V2 API documentation
   url: https://iam-tools.u.washington.edu/apis/irwsv2/

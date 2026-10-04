@@ -174,16 +174,6 @@ components:
               message:
                 type: string
                 description: Result of operation (usually 'recovery set')
-    GenericError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     EntityProfileRecoveryPostPayload:
       type: object
       properties:
@@ -216,6 +206,16 @@ components:
                 type: string
                 description: Reason to block recovery
       description: Note that the entity.profile.recovery object can also be presented as an array of exactly one object.
+    GenericError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     EntityProfileRecoveryGetResult:
       type: object
       properties:

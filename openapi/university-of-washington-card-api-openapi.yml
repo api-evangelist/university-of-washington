@@ -140,6 +140,14 @@ components:
         current:
           $ref: '#/components/schemas/CardSearchResourceUri'
       additionalProperties: false
+    ViewFormats:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 5
+      type: integer
+      format: int32
     CardSearchResourceUri:
       type: object
       properties:
@@ -158,14 +166,6 @@ components:
         viewFormat:
           $ref: '#/components/schemas/ViewFormats'
       additionalProperties: false
-    ViewFormats:
-      enum:
-      - 1
-      - 2
-      - 3
-      - 5
-      type: integer
-      format: int32
     CardSearchResultViewModel:
       type: object
       properties:
