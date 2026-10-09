@@ -1,4 +1,4 @@
-generated: '2026-09-16'
+generated: '2026-09-24'
 method: generated
 source: openapi/university-of-washington-account-api-openapi.yml, openapi/university-of-washington-account-canonical-api-openapi.yml,
   openapi/university-of-washington-account-gps-api-openapi.yml, openapi/university-of-washington-account-history-api-openapi.yml,

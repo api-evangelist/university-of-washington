@@ -180,6 +180,9 @@ artifacts:
   finops/university-of-washington-finops.yml:
     method: unknown
     evidence: no authorship recorded
+  front-door-ai/2026-09-17.yml:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/university-of-washington-context.jsonld:
     method: unknown
     evidence: no authorship recorded
@@ -195,55 +198,7 @@ artifacts:
   json-structure/university-of-washington-photo-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -330,117 +285,348 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/university-of-washington-api-lifecycle.yml:
     method: derived
     evidence: declared in the artifact
+  openapi/_original/university-of-washington-groups-web-service-openapi.yml:
+    method: searched
+    evidence: declared in the artifact
   openapi/_original/university-of-washington-groups-web-service-v3.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/_original/university-of-washington-idcard-web-service.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/university-of-washington-identity-registry-web-service-v2-openapi.yml:
+    method: searched
+    evidence: declared in the artifact
   openapi/_original/university-of-washington-identity-registry-web-service-v2.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/university-of-washington-identity-registry-web-service-v3-openapi.yml:
+    method: searched
+    evidence: declared in the artifact
   openapi/_original/university-of-washington-identity-registry-web-service-v3.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/_original/university-of-washington-student-web-service.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/university-of-washington-token-authentication-web-service-v2-openapi.yml:
+    method: searched
+    evidence: declared in the artifact
   openapi/_original/university-of-washington-token-authentication-web-service-v2.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/university-of-washington-account-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-canonical-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-gps-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-history-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-mail-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-subscription-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-subscription-history-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-subscription-pac-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-account-subscription-rule-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-auth-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-campus-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-card-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-college-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-course-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-crn-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-curriculum-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-d-subscription-compat-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-degree-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-degreeaudit-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-degreeauditexception-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-degreeauditprogram-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-degreeauditstatus-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-department-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-enrollment-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-enrollmentmajor-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
-  openapi/university-of-washington-groups-web-service-openapi.yml:
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-canonical-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-category-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-history-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-join-api-openapi.yml:
     method: searched
     evidence: declared in the artifact
-  openapi/university-of-washington-identity-registry-web-service-v2-openapi.yml:
-    method: searched
-    evidence: declared in the artifact
-  openapi/university-of-washington-identity-registry-web-service-v3-openapi.yml:
-    method: searched
-    evidence: declared in the artifact
+  openapi/university-of-washington-entity-name-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-pac-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-pds-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-profile-name-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-profile-pronoun-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-profile-recovery-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-sponsor-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-sponsor-avf-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-entity-verify-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-groups-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-majorstudents-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-membership-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-name-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-notice-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-pdsentry-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-person-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-personalfinancial-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-photo-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-pre-auth-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-program-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-reference-subscription-rule-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-regid-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-registration-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-resourcelist-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-schedule-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-searches-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-section-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-social-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/university-of-washington-subscription-compat-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-term-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-testscore-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
-  openapi/university-of-washington-token-authentication-web-service-v2-openapi.yml:
-    method: searched
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/university-of-washington-version-api-openapi.yml:
     method: derived
-    evidence: declared in the artifact
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   plans/university-of-washington-plans-pricing.yml:
     method: unknown
     evidence: no authorship recorded
